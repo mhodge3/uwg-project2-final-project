@@ -45,3 +45,29 @@ User must authenticate themselves before accessing the system. The passwords mus
 Create Login UI from UI wireframe
 When either the password or username is incorrect, the user is notified that their login attempt failed.</p>
 <hr>
+
+<p>As a user, I want to be able to create a new game story.</p>
+<hr>
+<p>As a user, I want to load an existing game story.</p>
+<hr>
+<p>As a user, I want to be able to create both playable and non-playable characters.</p>
+<hr>
+<p>As a user, I want to be able to create items.</p>
+<hr>
+<h3>Task Assignments</h3>
+<ul>
+  <li>DB Design ERD for Characters, Players, Admins, and Items - Hodge</li>
+  <li>DB MySQL implementation - Hodge</li>
+  <li>Characters DAL & Controller - Scott</li>
+  <li>Players DAL & Controller - Scott</li>
+  <li>Admins DAL & Controller - Scott</li>
+  <li>Items DAL & Controller - Scott</li>
+  <li>Characters Model - Palmer</li>
+  <li>Players Model - Palmer</li>
+  <li>Admins Model - Palmer</li>
+  <li>Items Model - Palmer</li>
+  <li>UI Wireframe for Iteration 1 GUI elements (and preparing for Iteration 2 elements) - Hodge</li>
+  <li>GUI - login - Hodge</li>
+  <li>GUI - Management Dashboard - Scott</li>
+  <li>GUI - Category Management (The Iteration 1 categories are largely the same layout) - Palmer</li>
+</ul>
