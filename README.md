@@ -62,10 +62,10 @@ When either the password or username is incorrect, the user is notified that the
   <li>Players DAL & Controller - Scott</li>
   <li>Admins DAL & Controller - Scott</li>
   <li>Items DAL & Controller - Scott</li>
-  <li>Characters Model - Palmer</li>
-  <li>Players Model - Palmer</li>
-  <li>Admins Model - Palmer</li>
-  <li>Items Model - Palmer</li>
+  <li>Characters Model - A.Palmer</li>
+  <li>Players Model - A.Palmer</li>
+  <li>Admins Model - A.Palmer</li>
+  <li>Items Model - A.Palmer</li>
   <li>UI Wireframe for Iteration 1 GUI elements (and preparing for Iteration 2 elements) - Hodge</li>
   <li>GUI - login - Hodge</li>
   <li>GUI - Management Dashboard - Scott</li>
