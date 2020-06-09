@@ -54,6 +54,7 @@ When either the password or username is incorrect, the user is notified that the
 <hr>
 <p>As a user, I want to be able to create items.</p>
 <hr>
+<p><strong>Issues: </strong><a target="blank" title="Track issues at Trello" href="https://trello.com/b/gGr4IUbZ/cs6920-team-project">Issue Tracking on Trello</a></p>
 <h3>Task Assignments</h3>
 <ul>
   <li>DB Design ERD for Characters, Players, Admins, and Items - Hodge</li>
