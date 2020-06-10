@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `rpg_story_mapper_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `rpg_story_mapper_db`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
 -- Host: localhost    Database: rpg_story_mapper_db
@@ -18,124 +16,124 @@ USE `rpg_story_mapper_db`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `demo.admins`
+-- Table structure for table `demo_admins`
 --
 
-DROP TABLE IF EXISTS `demo.admins`;
+DROP TABLE IF EXISTS `demo_admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `demo.admins` (
-  `demo.admin_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `demo.player_id` int NOT NULL,
-  PRIMARY KEY (`demo.admin_id`),
-  UNIQUE KEY `admin_id_UNIQUE` (`demo.admin_id`),
-  KEY `demo.fk_admin_player_id_idx` (`demo.player_id`),
-  CONSTRAINT `demo.fk_admin_player_id` FOREIGN KEY (`demo.player_id`) REFERENCES `demo.players` (`demo.player_id`)
+CREATE TABLE `demo_admins` (
+  `demo_admin_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `demo_player_id` int NOT NULL,
+  PRIMARY KEY (`demo_admin_id`),
+  UNIQUE KEY `admin_id_UNIQUE` (`demo_admin_id`),
+  KEY `demo.fk_admin_player_id_idx` (`demo_player_id`),
+  CONSTRAINT `demo.fk_admin_player_id` FOREIGN KEY (`demo_player_id`) REFERENCES `demo_players` (`demo_player_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `demo.admins`
+-- Dumping data for table `demo_admins`
 --
 
-LOCK TABLES `demo.admins` WRITE;
-/*!40000 ALTER TABLE `demo.admins` DISABLE KEYS */;
-INSERT INTO `demo.admins` VALUES (1,1);
-/*!40000 ALTER TABLE `demo.admins` ENABLE KEYS */;
+LOCK TABLES `demo_admins` WRITE;
+/*!40000 ALTER TABLE `demo_admins` DISABLE KEYS */;
+INSERT INTO `demo_admins` VALUES (1,1);
+/*!40000 ALTER TABLE `demo_admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `demo.characters_npc`
+-- Table structure for table `demo_characters_npc`
 --
 
-DROP TABLE IF EXISTS `demo.characters_npc`;
+DROP TABLE IF EXISTS `demo_characters_npc`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `demo.characters_npc` (
-  `demo.character_npc_id` int NOT NULL AUTO_INCREMENT,
-  `demo.character_npc_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `demo.character_npc_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `demo.character_npc_type` int NOT NULL,
-  `demo.character_npc_faction` int NOT NULL,
-  `demo.character_npc_pos_x` decimal(10,2) NOT NULL,
-  `demo.character_npc_pos_y` decimal(10,2) NOT NULL,
-  `demo.character_npc_pos_z` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`demo.character_npc_id`),
-  UNIQUE KEY `demo.characters_npc_id_UNIQUE` (`demo.character_npc_id`),
-  UNIQUE KEY `demo.characters_npc_name_UNIQUE` (`demo.character_npc_name`),
-  UNIQUE KEY `demo.characters_npc_description_UNIQUE` (`demo.character_npc_description`)
+CREATE TABLE `demo_characters_npc` (
+  `demo_character_npc_id` int NOT NULL AUTO_INCREMENT,
+  `demo_character_npc_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demo_character_npc_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demo_character_npc_type` int NOT NULL,
+  `demo_character_npc_faction` int NOT NULL,
+  `demo_character_npc_pos_x` decimal(10,2) NOT NULL,
+  `demo_character_npc_pos_y` decimal(10,2) NOT NULL,
+  `demo_character_npc_pos_z` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`demo_character_npc_id`),
+  UNIQUE KEY `demo.characters_npc_id_UNIQUE` (`demo_character_npc_id`),
+  UNIQUE KEY `demo.characters_npc_name_UNIQUE` (`demo_character_npc_name`),
+  UNIQUE KEY `demo.characters_npc_description_UNIQUE` (`demo_character_npc_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `demo.characters_npc`
+-- Dumping data for table `demo_characters_npc`
 --
 
-LOCK TABLES `demo.characters_npc` WRITE;
-/*!40000 ALTER TABLE `demo.characters_npc` DISABLE KEYS */;
-INSERT INTO `demo.characters_npc` VALUES (1,'Sum Guy','Testing dummy.',0,0,0.00,0.00,0.00),(2,'Sum Gal','Testing dummy 2.',0,0,0.00,0.00,0.00);
-/*!40000 ALTER TABLE `demo.characters_npc` ENABLE KEYS */;
+LOCK TABLES `demo_characters_npc` WRITE;
+/*!40000 ALTER TABLE `demo_characters_npc` DISABLE KEYS */;
+INSERT INTO `demo_characters_npc` VALUES (1,'Sum Guy','Testing dummy.',0,0,0.00,0.00,0.00),(2,'Sum Gal','Testing dummy 2.',0,0,0.00,0.00,0.00);
+/*!40000 ALTER TABLE `demo_characters_npc` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `demo.items`
+-- Table structure for table `demo_items`
 --
 
-DROP TABLE IF EXISTS `demo.items`;
+DROP TABLE IF EXISTS `demo_items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `demo.items` (
-  `demo.item_id` int NOT NULL AUTO_INCREMENT,
-  `demo.item_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Item Name',
-  `demo.item_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Item Description',
-  `demo.item_type` int NOT NULL DEFAULT '0',
-  `demo.is_quest_item` tinyint NOT NULL DEFAULT '0',
-  `demo.is_implicit_item` tinyint NOT NULL DEFAULT '0',
-  PRIMARY KEY (`demo.item_id`),
-  UNIQUE KEY `item_id_UNIQUE` (`demo.item_id`),
-  UNIQUE KEY `demo.item_name_UNIQUE` (`demo.item_name`),
-  UNIQUE KEY `demo.item_description_UNIQUE` (`demo.item_description`)
+CREATE TABLE `demo_items` (
+  `demo_item_id` int NOT NULL AUTO_INCREMENT,
+  `demo_item_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Item Name',
+  `demo_item_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Item Description',
+  `demo_item_type` int NOT NULL DEFAULT '0',
+  `demo_is_quest_item` tinyint NOT NULL DEFAULT '0',
+  `demo_is_implicit_item` tinyint NOT NULL DEFAULT '0',
+  PRIMARY KEY (`demo_item_id`),
+  UNIQUE KEY `item_id_UNIQUE` (`demo_item_id`),
+  UNIQUE KEY `demo.item_name_UNIQUE` (`demo_item_name`),
+  UNIQUE KEY `demo.item_description_UNIQUE` (`demo_item_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `demo.items`
+-- Dumping data for table `demo_items`
 --
 
-LOCK TABLES `demo.items` WRITE;
-/*!40000 ALTER TABLE `demo.items` DISABLE KEYS */;
-INSERT INTO `demo.items` VALUES (1,'Dagger of Suck','You get what you get and you don\'t throw a fit.',0,0,0),(2,'Pointy Stick of Okayness','A slightly better dagger.',0,0,0);
-/*!40000 ALTER TABLE `demo.items` ENABLE KEYS */;
+LOCK TABLES `demo_items` WRITE;
+/*!40000 ALTER TABLE `demo_items` DISABLE KEYS */;
+INSERT INTO `demo_items` VALUES (1,'Dagger of Suck','You get what you get and you don\'t throw a fit.',0,0,0),(2,'Pointy Stick of Okayness','A slightly better dagger.',0,0,0);
+/*!40000 ALTER TABLE `demo_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `demo.players`
+-- Table structure for table `demo_players`
 --
 
-DROP TABLE IF EXISTS `demo.players`;
+DROP TABLE IF EXISTS `demo_players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `demo.players` (
-  `demo.player_id` int NOT NULL AUTO_INCREMENT,
-  `demo.player_name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `demo.player_password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `demo.player_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `demo.player_country_code` char(4) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USA',
-  PRIMARY KEY (`demo.player_id`),
-  UNIQUE KEY `demo.players_id_UNIQUE` (`demo.player_id`),
-  UNIQUE KEY `demo.players_name_UNIQUE` (`demo.player_name`),
-  UNIQUE KEY `demo.player_email_UNIQUE` (`demo.player_email`)
+CREATE TABLE `demo_players` (
+  `demo_player_id` int NOT NULL AUTO_INCREMENT,
+  `demo_player_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demo_player_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demo_player_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demo_player_country_code` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USA',
+  PRIMARY KEY (`demo_player_id`),
+  UNIQUE KEY `demo.players_id_UNIQUE` (`demo_player_id`),
+  UNIQUE KEY `demo.players_name_UNIQUE` (`demo_player_name`),
+  UNIQUE KEY `demo.player_email_UNIQUE` (`demo_player_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `demo.players`
+-- Dumping data for table `demo_players`
 --
 
-LOCK TABLES `demo.players` WRITE;
-/*!40000 ALTER TABLE `demo.players` DISABLE KEYS */;
-INSERT INTO `demo.players` VALUES (1,'admin','test1234','admin@demo.com','USA'),(2,'player','test1234','player@demo.com','USA');
-/*!40000 ALTER TABLE `demo.players` ENABLE KEYS */;
+LOCK TABLES `demo_players` WRITE;
+/*!40000 ALTER TABLE `demo_players` DISABLE KEYS */;
+INSERT INTO `demo_players` VALUES (1,'admin','test1234','admin@demo.com','USA'),(2,'player','test1234','player@demo.com','USA');
+/*!40000 ALTER TABLE `demo_players` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -147,4 +145,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-10 14:11:43
+-- Dump completed on 2020-06-10 15:54:01

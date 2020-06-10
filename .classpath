@@ -2,12 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="scr/main/java"/>
 	<classpathentry kind="src" path="scr/test/java"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="scr/lib/mysql-connector-java-8.0.20.jar"/>
+	<classpathentry kind="lib" path="src/src/storymapper/lib/mysql-connector-java-8.0.20.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
