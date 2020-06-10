@@ -5,7 +5,7 @@
 
 <p>The collaborators on this project agree a technical skill gap exists for many creative story tellers. In the world of RPG games this gap is all to often present. Many times, those most equipped to create compelling stories, or RPG quests, are the least equipped to manage the very content they have created. We believe steps to soften the skills neccessary to create stories will serve as a benefit to the entire RPG industry.</p>
 
-<p>Through this project we seek to create a GUI application, focused on ease of use, that will allow even the least technically skilled to develop content through a guided process. Saved to a DB, stories can be created and shared simply throughout an organzation. Creators can focus on what they do best and stories will be all the better for it.</p>
+<p>Through this project we seek to create a GUI application, focused on ease of use, that will allow even the least technically skilled to develop content through a guided process. Saved to a DB, stories can be created and shared simply throughout an organzation. Creators can focus on what they do best and stories will be all the better for it. </p>
 
 <p>We expect to have an intial version completed over the course of the 2020 summer semester. Upon completion, this software will be useful in practice and as an example of our technical skills. We believe this application will be well recieved. We hope you enjoy it.</p>
 
