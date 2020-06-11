@@ -1,5 +1,5 @@
 package controller;
 
-public class admins {
+public class Character {
 
 }
