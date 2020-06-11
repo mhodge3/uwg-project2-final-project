@@ -1,4 +1,4 @@
-package src.storymapper.controller;
+package src.storymapper.DAL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
