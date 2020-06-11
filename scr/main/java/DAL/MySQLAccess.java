@@ -39,7 +39,7 @@ public class MySQLAccess {
             statement = connect.createStatement();
             // Result set get the result of the SQL query
             resultSet = statement
-                    .executeQuery("select * from rpg_story_mapper_db.demo_characters_npc");
+                    .executeQuery("select * from rpg_story_mapper_db.characters_npc");
             writeResultSet(resultSet);
 
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class MySQLAccess {
 
     private void writeResultSet(ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
-            String characterName = resultSet.getString("demo_character_npc_name");
+            String characterName = resultSet.getString("character_npc_name");
             System.out.println("Character Name: " + characterName);
         }
     }
