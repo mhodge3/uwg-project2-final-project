@@ -1,4 +1,6 @@
-package src.storymapper.controller;
+package storyMapper;
+
+import DAL.MySQLAccess;
 
 /**
  * Entry point to the RPG Story Mapper program
