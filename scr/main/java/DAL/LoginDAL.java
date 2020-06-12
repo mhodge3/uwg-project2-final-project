@@ -28,7 +28,9 @@ public class LoginDAL {
             theConnection = theDBConnection.GetDBConnection();
             // Statements allow to issue SQL queries to the database
             theStatement = theConnection.createStatement();
-            String pST = "SELECT * FROM `rpg_story_mapper_db`.`players` WHERE `rpg_story_mapper_db`.`players`.`player_name` = \"" + playerName + "\";";
+            String pST = "SELECT * FROM `rpg_story_mapper_db`.`players` "
+            		+ "WHERE `rpg_story_mapper_db`.`players`.`player_name` = \"" + playerName + "\""
+            				+ "AND `rpg_story_mapper_db`.`players`.`player_password` = \"" + playerPassword + "\";";
             // Result set get the result of the SQL query
             theResultSet = theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {
