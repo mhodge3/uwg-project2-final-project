@@ -34,7 +34,7 @@
                   <TextField fx:id="adminNameLoginTextBox" />
                   <Label id="AdminPasswordLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Password" />
                   <TextField fx:id="adminPasswordLoginTextBox" />
-                  <Button id="AdminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" text="Login" />
+                  <Button id="AdminLoginButton" fx:id="adminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAdminLoginButtonAction" text="Login" />
                </children>
             </VBox>
          </children>

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import model.Player;
 
 /**
  * This control communicates between the FXML View and Logic Control for Login
@@ -22,6 +23,10 @@ public class LoginViewControl {
     private TextField passwordDBTextInput;
 	@FXML
     private Label dBConnectionMessageLabel;
+	@FXML
+    private TextField adminNameLoginTextBox;
+	@FXML
+    private TextField adminPasswordLoginTextBox;
 	
 	private FXMLLoader theFxmlLoader;
 	private LoginControl theLoginControl;
@@ -47,6 +52,22 @@ public class LoginViewControl {
 		else {
 		    dBConnectionMessageLabel.setText("A connection was not established.");
 		    dBConnectionMessageLabel.setTextFill(Color.RED);
+		}
+	}
+	
+	@FXML
+	private void handleAdminLoginButtonAction(ActionEvent event)
+	{
+		Player thePlayerToLogIn = null;
+		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText());
+		try {
+			thePlayerToLogIn = theLoginControl.GetPlayer(adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
+		} catch (Exception e) {
+			System.out.println("Player was not found");
+		}
+		
+		if (thePlayerToLogIn != null) {
+			System.out.println("the Player named " + thePlayerToLogIn.GetPlayerName() +" found");
 		}
 	}
 	

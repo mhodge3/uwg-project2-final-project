@@ -8,6 +8,6 @@ package model;
  * @date 6/11/2020
  *
  */
-public class Admins {
+public class Admin extends Player {
 
 }

@@ -27,6 +27,15 @@ public class MySQLAccess {
     	BuildConnectionString("localhost", "root", "test1234");
     }
     
+    public Connection GetDBConnection() throws ClassNotFoundException, SQLException {
+    	Connection theNewConnection;
+        // This will load the MySQL driver, each DB has its own driver
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        // Setup the connection with the DB
+        theNewConnection = DriverManager.getConnection(connectionString);
+        return theNewConnection;
+    }
+    
     /**
      * Simple test of whether or not the MySQL server can be reached with the supplied credentials
      * @return	bool, whether or not the server accessed
