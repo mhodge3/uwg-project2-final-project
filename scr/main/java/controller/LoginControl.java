@@ -2,7 +2,7 @@ package controller;
 
 import DAL.MySQLAccess;
 
-public class AdminControl {
+public class LoginControl {
 	private MySQLAccess theDBConnection;
 	
 	public void SetTheDBConnection(MySQLAccess theDBConnection) {

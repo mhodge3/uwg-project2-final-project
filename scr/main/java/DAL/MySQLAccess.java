@@ -27,6 +27,11 @@ public class MySQLAccess {
     	BuildConnectionString("localhost", "root", "test1234");
     }
     
+    /**
+     * Simple test of whether or not the MySQL server can be reached with the supplied credentials
+     * @return	bool, whether or not the server accessed
+     * @throws Exception
+     */
     public Boolean TestDBConnection() throws Exception {
     	Boolean connectionSuccess = false;
         try {
@@ -36,10 +41,8 @@ public class MySQLAccess {
             theConnection = DriverManager.getConnection(connectionString);
         	thePreparedStatement = null;
         	theResultSet = null;
-        	System.out.println("Can Connect");
         	connectionSuccess = true;
         } catch (Exception e) {
-        	System.out.println("Cannot Connect");
         } finally {
             close();
         }
@@ -55,14 +58,12 @@ public class MySQLAccess {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = DriverManager
-                    .getConnection(connectionString);
+            theConnection = DriverManager.getConnection(connectionString);
 
             // Statements allow to issue SQL queries to the database
             theStatement = theConnection.createStatement();
             // Result set get the result of the SQL query
-            theResultSet = theStatement
-                    .executeQuery("select * from rpg_story_mapper_db.characters_npc");
+            theResultSet = theStatement.executeQuery("select * from rpg_story_mapper_db.characters_npc");
             writeResultSet(theResultSet);
 
         } catch (Exception e) {
@@ -73,6 +74,12 @@ public class MySQLAccess {
 
     }
     
+    /**
+     * Build the connection string for the DB based on user input for credentails
+     * @param hostName	location of the host. Ex, localhost
+     * @param userName	username to access the DB. Ex, root
+     * @param password	password for this DB user. Ex, test1234
+     */
     public void BuildConnectionString(String hostName, String userName, String password) {
     	connectionString = "jdbc:mysql://" + hostName + "/?user=" + userName + "&password=" + password;
     }

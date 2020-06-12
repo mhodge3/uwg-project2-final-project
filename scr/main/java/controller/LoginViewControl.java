@@ -3,21 +3,35 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+
+/**
+ * This control communicates between the FXML View and Logic Control for Login
+ * @author Matthew Hodge
+ * @version 6.12.2020
+ */
 
 public class LoginViewControl {
 	@FXML
-    private TextField HostTextInput;
+    private TextField hostTextInput;
 	@FXML
-    private TextField UsernameDBTextInput;
+    private TextField usernameDBTextInput;
 	@FXML
-    private TextField PasswordDBTextInput;
+    private TextField passwordDBTextInput;
+	@FXML
+    private Label dBConnectionMessageLabel;
 	
 	private FXMLLoader theFxmlLoader;
-	private AdminControl theAdminControl;
+	private LoginControl theLoginControl;
 	
-	public LoginViewControl(AdminControl theAdminControl) {
-		this.theAdminControl = theAdminControl;
+	/**
+	 * Constructor for the LoginView Control with 1 argument
+	 * @param theLoginControl	the instance of a LoginControl to communicate with
+	 */
+	public LoginViewControl(LoginControl theLoginControl) {
+		this.theLoginControl = theLoginControl;
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginView.fxml"));
         theFxmlLoader.setController(this);
 	} 
@@ -25,15 +39,21 @@ public class LoginViewControl {
 	@FXML
 	private void handleTestServerButtonAction(ActionEvent event)
 	{
-		theAdminControl.BuildConnectionString(HostTextInput.getText(), UsernameDBTextInput.getText(), PasswordDBTextInput.getText());
-		if (theAdminControl.TestDBConnection()) {
-		    System.out.println("Go!");
+		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText());
+		if (theLoginControl.TestDBConnection()) {
+		    dBConnectionMessageLabel.setText("Connection successful.");
+		    dBConnectionMessageLabel.setTextFill(Color.GREEN);
 		}
 		else {
-		    System.out.println("No Go.");
+		    dBConnectionMessageLabel.setText("A connection was not established.");
+		    dBConnectionMessageLabel.setTextFill(Color.RED);
 		}
 	}
 	
+	/**
+	 * Provides access to this Fxml view. Primarily for the Main Application to load and manage it.
+	 * @return	this FXMLLoader
+	 */
 	public FXMLLoader getTheFxmlLoader() {
 		return theFxmlLoader;
 	}

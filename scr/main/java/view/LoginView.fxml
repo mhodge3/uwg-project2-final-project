@@ -14,14 +14,14 @@
         <content>
           <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="798.0">
                <children>
-                  <Label layoutX="14.0" layoutY="12.0" prefHeight="19.0" prefWidth="32.0" text="Host: " AnchorPane.leftAnchor="14.0" />
-                  <TextField fx:id="HostTextInput" layoutX="56.0" layoutY="9.0" text="localhost" AnchorPane.leftAnchor="56.0" />
-                  <Label layoutX="228.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Username: " />
-                  <TextField fx:id="UsernameDBTextInput" layoutX="290.0" layoutY="9.0" text="root" />
-                  <Label layoutX="458.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Password:" />
-                  <TextField fx:id="PasswordDBTextInput" layoutX="520.0" layoutY="9.0" text="test1234" />
-                  <Label id="DBConnectionStatusMessage" alignment="CENTER_RIGHT" layoutX="478.0" layoutY="43.0" prefHeight="17.0" prefWidth="306.0" text="?" />
-                  <Button fx:id="TestDBConnectionButton" layoutX="682.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTestServerButtonAction" text="Test Connection" />
+                  <Label layoutX="8.0" layoutY="12.0" prefHeight="19.0" prefWidth="32.0" text="Host: " AnchorPane.topAnchor="12.0" />
+                  <TextField fx:id="hostTextInput" layoutX="43.0" layoutY="9.0" text="localhost" AnchorPane.topAnchor="9.0" />
+                  <Label layoutX="208.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Username: " AnchorPane.topAnchor="12.0" />
+                  <TextField fx:id="usernameDBTextInput" layoutX="270.0" layoutY="9.0" text="root" AnchorPane.topAnchor="9.0" />
+                  <Label layoutX="430.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Password:" AnchorPane.topAnchor="12.0" />
+                  <TextField fx:id="passwordDBTextInput" layoutX="492.0" layoutY="9.0" text="test1234" AnchorPane.topAnchor="9.0" />
+                  <Label id="DBConnectionStatusMessage" fx:id="dBConnectionMessageLabel" alignment="CENTER_RIGHT" layoutX="449.0" layoutY="43.0" prefHeight="17.0" prefWidth="306.0" AnchorPane.topAnchor="43.0" />
+                  <Button fx:id="testDBConnectionButton" layoutX="659.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTestServerButtonAction" text="Test Connection" AnchorPane.topAnchor="9.0" />
                </children>
             </AnchorPane>
         </content>
@@ -31,9 +31,9 @@
             <VBox alignment="CENTER_LEFT" prefHeight="284.0" prefWidth="259.0">
                <children>
                   <Label id="AdminNameLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Name:" />
-                  <TextField fx:id="AdminNameLoginTextBox" />
+                  <TextField fx:id="adminNameLoginTextBox" />
                   <Label id="AdminPasswordLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Password" />
-                  <TextField fx:id="AdminPasswordLoginTextBox" />
+                  <TextField fx:id="adminPasswordLoginTextBox" />
                   <Button id="AdminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" text="Login" />
                </children>
             </VBox>
