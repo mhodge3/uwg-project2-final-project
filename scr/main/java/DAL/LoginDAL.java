@@ -36,6 +36,7 @@ public class LoginDAL {
             if (theResultSet.next() != false) {
                 thePlayer = new Player();
                 thePlayer.SetPlayerName(theResultSet.getString("player_name"));
+                thePlayer.SetPlayerId(Integer.parseInt(theResultSet.getString("player_id")));
             }
         } catch (Exception e) {
             thePlayer = null;
@@ -44,5 +45,29 @@ public class LoginDAL {
         	theConnection.close();
         }
         return thePlayer;
+    }
+	
+    public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
+    	Boolean isAdmin = false;
+        try {
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Setup the connection with the DB
+            theConnection = theDBConnection.GetDBConnection();
+            // Statements allow to issue SQL queries to the database
+            theStatement = theConnection.createStatement();
+            String pST = "SELECT * FROM `rpg_story_mapper_db`.`admins` "
+            		+ "WHERE `rpg_story_mapper_db`.`admins`.`player_id` = \"" + thePlayer.GetPlayerId() + "\";";
+            // Result set get the result of the SQL query
+            theResultSet = theStatement.executeQuery(pST);
+            if (theResultSet.next() != false) {
+                isAdmin = true;
+            }
+        } catch (Exception e) {
+        }
+        finally {
+        	theConnection.close();
+        }
+        return isAdmin;
     }
 }

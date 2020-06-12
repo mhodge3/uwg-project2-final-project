@@ -28,4 +28,8 @@ public class LoginControl {
 	public Player GetPlayer(String playerName, String playerPassword) throws Exception {
 		return theLoginDAL.GetPlayer(playerName, playerPassword);
 	}
+	
+	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
+		return theLoginDAL.IsPlayerAdmin(thePlayer);
+	}
 }

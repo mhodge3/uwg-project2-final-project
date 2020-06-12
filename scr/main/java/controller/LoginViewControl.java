@@ -27,6 +27,8 @@ public class LoginViewControl {
     private TextField adminNameLoginTextBox;
 	@FXML
     private TextField adminPasswordLoginTextBox;
+	@FXML
+	private Label adminLoginMessageLabel;
 	
 	private FXMLLoader theFxmlLoader;
 	private LoginControl theLoginControl;
@@ -56,18 +58,31 @@ public class LoginViewControl {
 	}
 	
 	@FXML
-	private void handleAdminLoginButtonAction(ActionEvent event)
+	private void handleAdminLoginButtonAction(ActionEvent event) throws Exception
 	{
 		Player thePlayerToLogIn = null;
 		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText());
 		try {
 			thePlayerToLogIn = theLoginControl.GetPlayer(adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
 		} catch (Exception e) {
-			System.out.println("Player was not found");
+			adminLoginMessageLabel.setText("No account was found");
+			adminLoginMessageLabel.setTextFill(Color.RED);
 		}
 		
 		if (thePlayerToLogIn != null) {
-			System.out.println("the Player named " + thePlayerToLogIn.GetPlayerName() +" found");
+			if (theLoginControl.IsPlayerAdmin(thePlayerToLogIn)) {
+				thePlayerToLogIn.SetPlayerIsAdmin(true);
+				adminLoginMessageLabel.setText("The Player is an Admin");
+				adminLoginMessageLabel.setTextFill(Color.GREEN);
+			}
+			else {
+				adminLoginMessageLabel.setText("The Player is NOT an Admin");
+				adminLoginMessageLabel.setTextFill(Color.RED);
+			}
+		}
+		else {
+			adminLoginMessageLabel.setText("No account was found");
+			adminLoginMessageLabel.setTextFill(Color.RED);
 		}
 	}
 	

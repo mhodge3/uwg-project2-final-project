@@ -9,6 +9,7 @@ package model;
  *
  */
 public class Player {
+	private int playerId;
 	private String playerName;
 	private Boolean playerIsAdmin;
 	
@@ -26,5 +27,13 @@ public class Player {
 	
 	public void SetPlayerIsAdmin(Boolean playerIsAdmin) {
 		this.playerIsAdmin = playerIsAdmin;
+	}
+	
+	public int GetPlayerId() {
+		return playerId;
+	}
+	
+	public void SetPlayerId(int playerId) {
+		this.playerId = playerId;
 	}
 }
