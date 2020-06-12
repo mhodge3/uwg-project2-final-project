@@ -21,7 +21,7 @@
                   <Label layoutX="458.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Password:" />
                   <TextField fx:id="PasswordDBTextInput" layoutX="520.0" layoutY="9.0" text="test1234" />
                   <Label id="DBConnectionStatusMessage" alignment="CENTER_RIGHT" layoutX="478.0" layoutY="43.0" prefHeight="17.0" prefWidth="306.0" text="?" />
-                  <Button fx:id="TestDBConnectionButton" layoutX="682.0" layoutY="9.0" mnemonicParsing="false" text="Test Connection" />
+                  <Button fx:id="TestDBConnectionButton" layoutX="682.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTestServerButtonAction" text="Test Connection" />
                </children>
             </AnchorPane>
         </content>

@@ -17,18 +17,33 @@ import java.util.Date;
  */
 
 public class MySQLAccess {
-    private Connection connect = null;
-    private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
-    private ResultSet resultSet = null;
+    private Connection theConnection = null;
+    private Statement theStatement = null;
+    private PreparedStatement thePreparedStatement = null;
+    private ResultSet theResultSet = null;
     private String connectionString;
     
     public MySQLAccess() {
-    	buildConnectionString("localhost", "root", "test1234");
+    	BuildConnectionString("localhost", "root", "test1234");
     }
-
-    public MySQLAccess(String hostName, String userName, String password) {
-    	buildConnectionString(hostName, userName, password);
+    
+    public Boolean TestDBConnection() throws Exception {
+    	Boolean connectionSuccess = false;
+        try {
+            // This will load the MySQL driver, each DB has its own driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Setup the connection with the DB
+            theConnection = DriverManager.getConnection(connectionString);
+        	thePreparedStatement = null;
+        	theResultSet = null;
+        	System.out.println("Can Connect");
+        	connectionSuccess = true;
+        } catch (Exception e) {
+        	System.out.println("Cannot Connect");
+        } finally {
+            close();
+        }
+        return connectionSuccess;
     }
 
     /**
@@ -40,15 +55,15 @@ public class MySQLAccess {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            connect = DriverManager
+            theConnection = DriverManager
                     .getConnection(connectionString);
 
             // Statements allow to issue SQL queries to the database
-            statement = connect.createStatement();
+            theStatement = theConnection.createStatement();
             // Result set get the result of the SQL query
-            resultSet = statement
+            theResultSet = theStatement
                     .executeQuery("select * from rpg_story_mapper_db.characters_npc");
-            writeResultSet(resultSet);
+            writeResultSet(theResultSet);
 
         } catch (Exception e) {
             throw e;
@@ -58,7 +73,7 @@ public class MySQLAccess {
 
     }
     
-    private void buildConnectionString(String hostName, String userName, String password) {
+    public void BuildConnectionString(String hostName, String userName, String password) {
     	connectionString = "jdbc:mysql://" + hostName + "/?user=" + userName + "&password=" + password;
     }
 
@@ -72,16 +87,16 @@ public class MySQLAccess {
     // You need to close the resultSet
     private void close() {
         try {
-            if (resultSet != null) {
-                resultSet.close();
+            if (theResultSet != null) {
+                theResultSet.close();
             }
 
-            if (statement != null) {
-                statement.close();
+            if (theStatement != null) {
+                theStatement.close();
             }
 
-            if (connect != null) {
-                connect.close();
+            if (theConnection != null) {
+                theConnection.close();
             }
         } catch (Exception e) {
 

@@ -3,8 +3,10 @@ package storyMapper;
 import java.io.IOException;
 
 import DAL.MySQLAccess;
-import controller.AdminController;
+import controller.AdminControl;
+import controller.LoginViewControl;
 import javafx.application.Application;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -25,15 +27,22 @@ public class Main extends Application {
 	}
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        AdminController adminControl = new AdminController();
-        
-        primaryStage.setScene(new Scene(adminControl));
+    public void start(Stage primaryStage) throws Exception {
+    	AdminControl theAdminControl = new AdminControl();
+        LoginViewControl theLoginViewControl = new LoginViewControl(theAdminControl);
+        MySQLAccess theDBConnection = new MySQLAccess();
+        theAdminControl.SetTheDBConnection(theDBConnection);
+        Parent theLoginParentView;
+        try {
+        	theLoginParentView = theLoginViewControl.getTheFxmlLoader().load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+        primaryStage.setScene(new Scene(theLoginParentView));
         primaryStage.setTitle("Story Mapper");
         primaryStage.setWidth(800);
         primaryStage.setHeight(600);
         primaryStage.show();
-        adminControl.doSomething();
     }
 
 }
