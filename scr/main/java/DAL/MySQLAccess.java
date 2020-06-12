@@ -21,7 +21,15 @@ public class MySQLAccess {
     private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    private String tablePrefix = "demo.";
+    private String connectionString;
+    
+    public MySQLAccess() {
+    	buildConnectionString("localhost", "root", "test1234");
+    }
+
+    public MySQLAccess(String hostName, String userName, String password) {
+    	buildConnectionString(hostName, userName, password);
+    }
 
     /**
      * Simple test to see if we're reading information from the DB. Be sure the connection string is correct for your environment.
@@ -33,7 +41,7 @@ public class MySQLAccess {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             connect = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/?user=root&password=test1234");
+                    .getConnection(connectionString);
 
             // Statements allow to issue SQL queries to the database
             statement = connect.createStatement();
@@ -48,6 +56,10 @@ public class MySQLAccess {
             close();
         }
 
+    }
+    
+    private void buildConnectionString(String hostName, String userName, String password) {
+    	connectionString = "jdbc:mysql://" + hostName + "/?user=" + userName + "&password=" + password;
     }
 
     private void writeResultSet(ResultSet resultSet) throws SQLException {
