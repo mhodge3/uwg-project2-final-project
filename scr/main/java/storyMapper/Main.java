@@ -3,9 +3,8 @@ package storyMapper;
 import java.io.IOException;
 
 import DAL.MySQLAccess;
+import controller.AdminController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,20 +18,22 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("Hello World");
-        MySQLAccess dao = new MySQLAccess();
-        dao.readDataBase();
+		//System.out.println("Hello World");
+        //MySQLAccess dao = new MySQLAccess();
+        //dao.readDataBase();
         launch(args);
 	}
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
-    	Scene scene = new Scene(root, 800, 600);
+        AdminController adminControl = new AdminController();
         
-    	primaryStage.setTitle("FXML Welcome");
-    	primaryStage.setScene(scene);
-    	primaryStage.show();
+        primaryStage.setScene(new Scene(adminControl));
+        primaryStage.setTitle("Story Mapper");
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(600);
+        primaryStage.show();
+        adminControl.doSomething();
     }
 
 }
