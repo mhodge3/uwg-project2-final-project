@@ -33,7 +33,7 @@ public class MySQLAccess {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             connect = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/?user=root&password=test1234");
+                    .getConnection("jdbc:mysql://localhost:3306/?user=root&password=Theresa1");
 
             // Statements allow to issue SQL queries to the database
             statement = connect.createStatement();
@@ -74,6 +74,14 @@ public class MySQLAccess {
         } catch (Exception e) {
 
         }
+    }
+    
+    public Connection getConnection() throws SQLException {
+    	connect = null;
+    	connect = DriverManager
+                .getConnection("jdbc:mysql://localhost:3306/?user=root&password=Theresa1");
+
+    	return connect;
     }
 
 }
