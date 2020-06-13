@@ -100,15 +100,24 @@ public class LoginViewControl {
 		}
 	}
 	
+	/**
+	 * Clears login fields from last login and shows the login stage.
+	 */
 	public void ShowLoginStage() {
 		resetAdminLoginFields();
 		this.theLoginStage.show();
 	}
 	
+	/**
+	 * Hidge the Login stage
+	 */
 	public void HideLoginStage() {
 		this.theLoginStage.hide();
 	}
 	
+	/**
+	 * Creates the initial Login view. this is never destroyed, just hidden.
+	 */
 	public void LoadLoginView() {
         Parent theLoginParentView;
         try {
@@ -122,8 +131,9 @@ public class LoginViewControl {
 	
 	private void resetAdminLoginFields() {
 		adminLoginMessageLabel.setText("");
+		adminLoginMessageLabel.setText("");
 		adminNameLoginTextBox.setText("");
-		adminPasswordLoginTextBox.setText("");
+		dBConnectionMessageLabel.setText("");
 	}
 	
 }

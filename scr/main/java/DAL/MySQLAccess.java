@@ -23,10 +23,19 @@ public class MySQLAccess {
     private ResultSet theResultSet = null;
     private String connectionString;
     
+    /**
+     * Default constructor builds the initial connection string from hard coded values for a test server
+     */
     public MySQLAccess() {
     	BuildConnectionString("localhost", "root", "test1234");
     }
     
+    /**
+     * Gets an open connection to a MySQL database
+     * @return	the open connection
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public Connection GetDBConnection() throws ClassNotFoundException, SQLException {
     	Connection theNewConnection;
         // This will load the MySQL driver, each DB has its own driver
@@ -57,31 +66,6 @@ public class MySQLAccess {
         }
         return connectionSuccess;
     }
-
-    /**
-     * Simple test to see if we're reading information from the DB. Be sure the connection string is correct for your environment.
-     * @throws Exception
-     */
-    public void readDataBase() throws Exception {
-        try {
-            // This will load the MySQL driver, each DB has its own driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            // Setup the connection with the DB
-            theConnection = DriverManager.getConnection(connectionString);
-
-            // Statements allow to issue SQL queries to the database
-            theStatement = theConnection.createStatement();
-            // Result set get the result of the SQL query
-            theResultSet = theStatement.executeQuery("select * from rpg_story_mapper_db.characters_npc");
-            writeResultSet(theResultSet);
-
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            close();
-        }
-
-    }
     
     /**
      * Build the connection string for the DB based on user input for credentails
@@ -91,13 +75,6 @@ public class MySQLAccess {
      */
     public void BuildConnectionString(String hostName, String userName, String password) {
     	connectionString = "jdbc:mysql://" + hostName + "/?user=" + userName + "&password=" + password;
-    }
-
-    private void writeResultSet(ResultSet resultSet) throws SQLException {
-        while (resultSet.next()) {
-            String characterName = resultSet.getString("character_npc_name");
-            System.out.println("Character Name: " + characterName);
-        }
     }
 
     // You need to close the resultSet

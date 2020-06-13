@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * Entry point to the RPG Story Mapper program
  * 
- * @author Hodge
+ * @author Matthew Hodge
  * @version 6.10.2020
  */
 

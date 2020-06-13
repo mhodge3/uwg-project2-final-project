@@ -6,6 +6,11 @@ import DAL.MySQLAccess;
 import javafx.stage.Stage;
 import model.Player;
 
+/**
+ * Controls the Logic for Login
+ * @author Matthew Hodge
+ * @version 6.12.2020
+ */
 public class LoginControl {
 	private MySQLAccess theDBConnection;
 	private LoginDAL theLoginDAL;
@@ -13,15 +18,27 @@ public class LoginControl {
 	private MainDashboardControl theMainDashboardControl;
 	private MainDashboardViewControl theMainDashboardViewControl;
 	
+	/**
+	 * Gives this LoginControl a reference to its View control
+	 * @param theLoginViewControl
+	 */
 	public void SetLoginViewControl(LoginViewControl theLoginViewControl) {
 		this.theLoginViewControl = theLoginViewControl;
 	}
 	
+	/**
+	 * Passes in the already created DB access object
+	 * @param theDBConnection the DB connection object
+	 */
 	public void SetTheDBConnection(MySQLAccess theDBConnection) {
 		this.theDBConnection = theDBConnection;
 		this.theLoginDAL = new LoginDAL(theDBConnection);
 	}
 	
+	/**
+	 * Check if a database can be accessed
+	 * @return true if yes, false if no
+	 */
 	public Boolean TestDBConnection() {
 		try {
 			return theDBConnection.TestDBConnection();
@@ -30,23 +47,47 @@ public class LoginControl {
 		}
 	}
 	
+	/**
+	 * Builds the Connection string that the DB will use to access a DDB
+	 * @param hostName 
+	 * @param userName
+	 * @param password
+	 */
 	public void BuildConnectionString(String hostName, String userName, String password) {
 		theDBConnection.BuildConnectionString(hostName, userName, password);
 	}
 	
+	/**
+	 * Returns a Player if found in the DB
+	 * @param playerName
+	 * @param playerPassword
+	 * @return The Player found
+	 * @throws Exception
+	 */
 	public Player GetPlayer(String playerName, String playerPassword) throws Exception {
 		return theLoginDAL.GetPlayer(playerName, playerPassword);
 	}
 	
+	/**
+	 * Determins if a Player object is an Admin
+	 * @param thePlayer
+	 * @return true if yes, false if no
+	 * @throws Exception
+	 */
 	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
 		Boolean isPlayerAnAdmin = theLoginDAL.IsPlayerAdmin(thePlayer);
 		return isPlayerAnAdmin;
 	}
 	
-	public void SetUpMainDashboard(Player theAdminPlayer, Stage thePrimaryStage) {
+	/**
+	 * Set's up the initial main dashboard, and show's it if it already exists
+	 * @param theAdminPlayer the validated Admin Player object
+	 * @param theMainDashboardStage
+	 */
+	public void SetUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) {
 		if(theMainDashboardControl == null) {
 			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
-			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, thePrimaryStage);
+			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, theMainDashboardStage);
 			theMainDashboardControl.SetMainDashboardViewControl(theMainDashboardViewControl);
 			theMainDashboardViewControl.LoadMainDashboardView();
 		}

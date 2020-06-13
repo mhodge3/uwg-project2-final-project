@@ -9,10 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This class is the View Logic for a MainDashboard
+ * @author Matthew Hodge
+ * @version 6.12.2020
+ */
 public class MainDashboardViewControl {
 	private FXMLLoader theFxmlLoader;
 	private MainDashboardControl theMainDashbaordControl;
 	private Stage theMainDashboardStage;
+	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
 	 * @param theMainDashboardControl	the instance of a MainDashboard to communicate with
@@ -31,14 +37,23 @@ public class MainDashboardViewControl {
 		HideMainDashboardView();
 	}
 	
+	/**
+	 * Enabiles the view of the MainDashboard
+	 */
 	public void ShowMainDashboardView() {
 		theMainDashboardStage.show();
 	}
 	
+	/**
+	 * Hidge the view of the MainDashboard
+	 */
 	public void HideMainDashboardView() {
 		theMainDashboardStage.hide();
 	}
 	
+	/**
+	 * Loads the new MainDashboard when the dashboard is first accessed
+	 */
 	public void LoadMainDashboardView() {
         Parent theMainDashboardParentView;
         try {
