@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -8,33 +9,44 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane animated="false" text="Server Address and Login">
+      <TitledPane animated="false" expanded="false" prefHeight="366.0" prefWidth="350.0" text="Server Address and Login">
         <content>
-          <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="798.0">
+          <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="348.0">
                <children>
-                  <Label layoutX="8.0" layoutY="12.0" prefHeight="19.0" prefWidth="32.0" text="Host: " AnchorPane.topAnchor="12.0" />
-                  <TextField fx:id="hostTextInput" layoutX="43.0" layoutY="9.0" text="localhost" AnchorPane.topAnchor="9.0" />
-                  <Label layoutX="208.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Username: " AnchorPane.topAnchor="12.0" />
-                  <TextField fx:id="usernameDBTextInput" layoutX="270.0" layoutY="9.0" text="root" AnchorPane.topAnchor="9.0" />
-                  <Label layoutX="430.0" layoutY="12.0" prefHeight="19.0" prefWidth="62.0" text="Password:" AnchorPane.topAnchor="12.0" />
-                  <TextField fx:id="passwordDBTextInput" layoutX="492.0" layoutY="9.0" text="test1234" AnchorPane.topAnchor="9.0" />
-                  <Label id="DBConnectionStatusMessage" fx:id="dBConnectionMessageLabel" alignment="CENTER_RIGHT" layoutX="449.0" layoutY="43.0" prefHeight="17.0" prefWidth="306.0" AnchorPane.topAnchor="43.0" />
-                  <Button fx:id="testDBConnectionButton" layoutX="659.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleTestServerButtonAction" text="Test Connection" AnchorPane.topAnchor="9.0" />
+                  <VBox layoutX="22.0" layoutY="14.0" prefHeight="200.0" prefWidth="301.0">
+                     <children>
+                        <Label prefHeight="19.0" prefWidth="32.0" text="Host: " />
+                        <TextField fx:id="hostTextInput" text="localhost" />
+                        <Label prefHeight="19.0" prefWidth="62.0" text="Username: " />
+                        <TextField fx:id="usernameDBTextInput" text="root" />
+                        <Label prefHeight="19.0" prefWidth="62.0" text="Password:" />
+                        <TextField fx:id="passwordDBTextInput" text="test1234" />
+                        <Button fx:id="testDBConnectionButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTestServerButtonAction" prefHeight="25.0" prefWidth="347.0" text="Test Connection">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Label id="DBConnectionStatusMessage" fx:id="dBConnectionMessageLabel" alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="301.0" />
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
         </content>
       </TitledPane>
       <HBox id="GameStoryAdminLoginHBox" alignment="TOP_CENTER" prefHeight="284.0" prefWidth="800.0">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="284.0" prefWidth="259.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="242.0" prefWidth="259.0">
                <children>
                   <Label id="AdminNameLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Name:" />
                   <TextField fx:id="adminNameLoginTextBox" />
                   <Label id="AdminPasswordLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Password" />
                   <TextField fx:id="adminPasswordLoginTextBox" />
-                  <Button id="AdminLoginButton" fx:id="adminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAdminLoginButtonAction" text="Login" />
+                  <Button id="AdminLoginButton" fx:id="adminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAdminLoginButtonAction" text="Login">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                   <Label fx:id="adminLoginMessageLabel" prefHeight="17.0" prefWidth="260.0" />
                </children>
             </VBox>

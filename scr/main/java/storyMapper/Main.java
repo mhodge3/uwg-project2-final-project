@@ -27,8 +27,8 @@ public class Main extends Application {
         theLoginControl.SetTheDBConnection(theDBConnection);
         theLoginControl.SetLoginViewControl(theLoginViewControl);
         theLoginStage.setTitle("Story Mapper");
-        theLoginStage.setWidth(800);
-        theLoginStage.setHeight(600);
+        theLoginStage.setWidth(375);
+        theLoginStage.setHeight(450);
         theLoginViewControl.LoadLoginView();
     }
 
