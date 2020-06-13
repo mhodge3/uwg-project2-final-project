@@ -1,5 +1,6 @@
 package controller;
 
+
 import DAL.LoginDAL;
 import DAL.MySQLAccess;
 import model.Player;
@@ -30,6 +31,7 @@ public class LoginControl {
 	}
 	
 	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
-		return theLoginDAL.IsPlayerAdmin(thePlayer);
+		Boolean isPlayerAnAdmin = theLoginDAL.IsPlayerAdmin(thePlayer);
+		return isPlayerAnAdmin;
 	}
 }
