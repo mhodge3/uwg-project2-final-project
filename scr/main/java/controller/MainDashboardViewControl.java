@@ -44,7 +44,6 @@ public class MainDashboardViewControl {
 		theMainDashbaordControl.ResetLoginView();
 		HideMainDashboardView();
 	}
-
 	
 	@FXML
 	private void handleManagePlayersAndAdminsButton(ActionEvent event) throws Exception
@@ -66,10 +65,6 @@ public class MainDashboardViewControl {
 	 */
 	public void ShowMainDashboardView() {
 		theMainDashboardStage.show();
-	}
-	
-	public VBox GetMainDashboardVBox() {
-		return mainDashboardVBox;
 	}
 	
 	/**

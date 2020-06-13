@@ -69,7 +69,7 @@ public class LoginControl {
 	}
 	
 	/**
-	 * Determins if a Player object is an Admin
+	 * Determines if a Player object is an Admin
 	 * @param thePlayer
 	 * @return true if yes, false if no
 	 * @throws Exception
@@ -88,7 +88,6 @@ public class LoginControl {
 		if(theMainDashboardControl == null) {
 			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
 			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, theMainDashboardStage);
-			theMainDashboardControl.SetMainDashboardViewControl(theMainDashboardViewControl);
 			theMainDashboardViewControl.LoadMainDashboardView();
 		}
 		else {

@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.stage.Stage;
 import model.Player;
 
 /**
@@ -11,7 +10,6 @@ import model.Player;
 public class MainDashboardControl {
 	private Player theAdminPlayer;
 	private LoginViewControl theLoginViewControl;
-	private MainDashboardViewControl theMainDashboardViewControl;
 	
 	/**
 	 * Constructor for the MainDashboard
@@ -21,14 +19,6 @@ public class MainDashboardControl {
 	public MainDashboardControl(Player theAdminPlayer, LoginViewControl theLoginViewControl) {
 		this.theAdminPlayer = theAdminPlayer;
 		this.theLoginViewControl = theLoginViewControl;
-	}
-	
-	/**
-	 * Gives this MainDashboardControl a reference to its coresponding View control
-	 * @param theMainDashboardViewControl
-	 */
-	public void SetMainDashboardViewControl(MainDashboardViewControl theMainDashboardViewControl) {
-		this.theMainDashboardViewControl = theMainDashboardViewControl;
 	}
 	
 	/**
