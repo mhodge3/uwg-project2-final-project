@@ -20,7 +20,7 @@ public class ManageNPCCharactersViewControl {
     }
 	
 	@FXML
-	private void handlePlayerAndAdminBackButton() {
+	private void handleNPCCharacterBackButton() {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
 }

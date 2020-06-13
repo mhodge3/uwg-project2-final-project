@@ -20,7 +20,7 @@ public class ManageItemsViewControl {
     }
 	
 	@FXML
-	private void handlePlayerAndAdminBackButton() {
+	private void handleItemsBackButton() {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
 }

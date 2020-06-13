@@ -21,17 +21,17 @@
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <Button minWidth="250.0" mnemonicParsing="false" text="Manage NPC Characters (Story Actors)">
+            <Button minWidth="250.0" mnemonicParsing="false" onAction="#handleNPCCharactersButton" text="Manage NPC Characters (Story Actors)">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button minWidth="250.0" mnemonicParsing="false" text="Manage Items (Story Props)">
+            <Button minWidth="250.0" mnemonicParsing="false" onAction="#handleItemsButton" text="Manage Items (Story Props)">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Button>
-            <Button minWidth="250.0" mnemonicParsing="false" text="Manage Quest Chains (Story Conflicts)" />
+            <Button minWidth="250.0" mnemonicParsing="false" onAction="#handleQuestChainsButton" text="Manage Quest Chains (Story Conflicts)" />
          </children>
       </VBox>
       <HBox alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="800.0">

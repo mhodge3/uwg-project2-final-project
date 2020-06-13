@@ -26,6 +26,12 @@ public class MainDashboardViewControl {
 	private Scene theMainDashboardScene;
     private Parent theManagePlayersAndAdminsParentView;
     private Scene theManagePlayersAndAdminsScene;
+    private Parent theManageItemsParentView;
+    private Scene theManageItemsScene;
+    private Parent theManageNPCCharactersParentView;
+    private Scene theManageNPCCharactersScene;
+    private Parent theManageQuestChainsParentView;
+    private Scene theManageQuestChainsScene;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -36,6 +42,9 @@ public class MainDashboardViewControl {
 		this.theMainDashboardStage = theMainDashboardStage;
 		CreateMainDashboardScene();
 		CreateManagePlayersAndAdminsrScene();
+		CreateManageItemsScene();
+		CreateManageNPCCharactersScene();
+		CreateManageQuestChainsScene();
 	} 
 	
 	@FXML
@@ -49,6 +58,27 @@ public class MainDashboardViewControl {
 	private void handleManagePlayersAndAdminsButton(ActionEvent event) throws Exception
 	{
         theMainDashboardStage.setScene(theManagePlayersAndAdminsScene);
+        ShowMainDashboardView();
+	}
+	
+	@FXML
+	private void handleItemsButton(ActionEvent event) throws Exception
+	{
+        theMainDashboardStage.setScene(theManageItemsScene);
+        ShowMainDashboardView();
+	}
+	
+	@FXML
+	private void handleNPCCharactersButton(ActionEvent event) throws Exception
+	{
+        theMainDashboardStage.setScene(theManageNPCCharactersScene);
+        ShowMainDashboardView();
+	}
+	
+	@FXML
+	private void handleQuestChainsButton(ActionEvent event) throws Exception
+	{
+        theMainDashboardStage.setScene(theManageQuestChainsScene);
         ShowMainDashboardView();
 	}
 	
@@ -91,6 +121,39 @@ public class MainDashboardViewControl {
         try {
         	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
         	theManagePlayersAndAdminsScene = new Scene(theManagePlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageItemsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageItemsView.fxml"));
+        theFxmlLoader.setController(new ManageItemsViewControl(this));
+        try {
+        	theManageItemsParentView = theFxmlLoader.load();
+        	theManageItemsScene = new Scene(theManageItemsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageNPCCharactersScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageNPCCharactersView.fxml"));
+        theFxmlLoader.setController(new ManageNPCCharactersViewControl(this));
+        try {
+        	theManageNPCCharactersParentView = theFxmlLoader.load();
+        	theManageNPCCharactersScene = new Scene(theManageNPCCharactersParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageQuestChainsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageQuestChainsView.fxml"));
+        theFxmlLoader.setController(new ManageQuestChainsViewControl(this));
+        try {
+        	theManageQuestChainsParentView = theFxmlLoader.load();
+        	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

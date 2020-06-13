@@ -14,7 +14,14 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="800.0" />
+      <VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="800.0">
+         <children>
+            <Label text="Iteration 2 Feature">
+               <font>
+                  <Font size="69.0" />
+               </font>
+            </Label>
+         </children></VBox>
       <HBox alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="800.0">
          <children>
             <Button fx:id="questChainsBackButton" mnemonicParsing="false" onAction="#handleQuestChainsBackButton" text="Back">

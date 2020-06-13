@@ -20,7 +20,7 @@ public class ManageQuestChainsViewControl {
     }
 	
 	@FXML
-	private void handlePlayerAndAdminBackButton() {
+	private void handleQuestChainsBackButton() {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
 }
