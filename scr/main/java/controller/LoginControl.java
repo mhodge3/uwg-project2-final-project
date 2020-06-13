@@ -3,12 +3,15 @@ package controller;
 
 import DAL.LoginDAL;
 import DAL.MySQLAccess;
+import javafx.stage.Stage;
 import model.Player;
 
 public class LoginControl {
 	private MySQLAccess theDBConnection;
 	private LoginDAL theLoginDAL;
 	private LoginViewControl theLoginViewControl;
+	private MainDashboardControl theMainDashboardControl;
+	private MainDashboardViewControl theMainDashboardViewControl;
 	
 	public void SetLoginViewControl(LoginViewControl theLoginViewControl) {
 		this.theLoginViewControl = theLoginViewControl;
@@ -40,9 +43,15 @@ public class LoginControl {
 		return isPlayerAnAdmin;
 	}
 	
-	public void SetUpMainDashboard(Player theAdminPlayer) {
-		MainDashboardControl theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
-		MainDashboardViewControl theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl);
-		theMainDashboardControl.SetMainDashboardViewControl(theMainDashboardViewControl);
+	public void SetUpMainDashboard(Player theAdminPlayer, Stage thePrimaryStage) {
+		if(theMainDashboardControl == null) {
+			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
+			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, thePrimaryStage);
+			theMainDashboardControl.SetMainDashboardViewControl(theMainDashboardViewControl);
+			theMainDashboardViewControl.LoadMainDashboardView();
+		}
+		else {
+			theMainDashboardViewControl.ShowMainDashboardView();
+		}
 	}
 }

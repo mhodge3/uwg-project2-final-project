@@ -19,4 +19,8 @@ public class MainDashboardControl {
 	public void LogOut() {
 		theAdminPlayer = null;
 	}
+	
+	public void ResetLoginView() {
+		theLoginViewControl.ShowLoginStage();
+	}
 }

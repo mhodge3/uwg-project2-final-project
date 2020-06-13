@@ -37,17 +37,22 @@ public class LoginViewControl {
 	
 	private FXMLLoader theFxmlLoader;
 	private LoginControl theLoginControl;
-	private Stage thePrimaryStage;
+	private Stage theLoginStage;
+	private Stage theMainDashboardStage;
 	
 	/**
 	 * Constructor for the LoginView Control with 1 argument
 	 * @param theLoginControl	the instance of a LoginControl to communicate with
 	 */
-	public LoginViewControl(LoginControl theLoginControl, Stage thePrimaryStage) {
+	public LoginViewControl(LoginControl theLoginControl, Stage theLoginStage) {
 		this.theLoginControl = theLoginControl;
-		this.thePrimaryStage = thePrimaryStage;
+		this.theLoginStage = theLoginStage;
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginView.fxml"));
         theFxmlLoader.setController(this);
+        theMainDashboardStage = new Stage();
+        theMainDashboardStage.setTitle("Story Mapper");
+        theMainDashboardStage.setWidth(800);
+        theMainDashboardStage.setHeight(600);
 	} 
 	
 	@FXML
@@ -81,6 +86,8 @@ public class LoginViewControl {
 				thePlayerToLogIn.SetPlayerIsAdmin(true);
 				adminLoginMessageLabel.setText("The Player is an Admin");
 				adminLoginMessageLabel.setTextFill(Color.GREEN);
+				theLoginControl.SetUpMainDashboard(thePlayerToLogIn, theMainDashboardStage);
+				HideLoginStage();
 			}
 			else {
 				adminLoginMessageLabel.setText("The Player is NOT an Admin");
@@ -93,6 +100,15 @@ public class LoginViewControl {
 		}
 	}
 	
+	public void ShowLoginStage() {
+		resetAdminLoginFields();
+		this.theLoginStage.show();
+	}
+	
+	public void HideLoginStage() {
+		this.theLoginStage.hide();
+	}
+	
 	public void LoadLoginView() {
         Parent theLoginParentView;
         try {
@@ -100,11 +116,14 @@ public class LoginViewControl {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        thePrimaryStage.setScene(new Scene(theLoginParentView));
-        thePrimaryStage.setTitle("Story Mapper");
-        thePrimaryStage.setWidth(800);
-        thePrimaryStage.setHeight(600);
-        thePrimaryStage.show();
+        theLoginStage.setScene(new Scene(theLoginParentView));
+        ShowLoginStage();
+	}
+	
+	private void resetAdminLoginFields() {
+		adminLoginMessageLabel.setText("");
+		adminNameLoginTextBox.setText("");
+		adminPasswordLoginTextBox.setText("");
 	}
 	
 }
