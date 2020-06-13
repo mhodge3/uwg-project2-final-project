@@ -131,8 +131,8 @@ public class LoginViewControl {
 	
 	private void resetAdminLoginFields() {
 		adminLoginMessageLabel.setText("");
-		adminLoginMessageLabel.setText("");
 		adminNameLoginTextBox.setText("");
+		adminPasswordLoginTextBox.setText("");
 		dBConnectionMessageLabel.setText("");
 	}
 	
