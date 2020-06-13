@@ -8,6 +8,11 @@ import model.Player;
 public class LoginControl {
 	private MySQLAccess theDBConnection;
 	private LoginDAL theLoginDAL;
+	private LoginViewControl theLoginViewControl;
+	
+	public void SetLoginViewControl(LoginViewControl theLoginViewControl) {
+		this.theLoginViewControl = theLoginViewControl;
+	}
 	
 	public void SetTheDBConnection(MySQLAccess theDBConnection) {
 		this.theDBConnection = theDBConnection;
@@ -33,5 +38,11 @@ public class LoginControl {
 	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
 		Boolean isPlayerAnAdmin = theLoginDAL.IsPlayerAdmin(thePlayer);
 		return isPlayerAnAdmin;
+	}
+	
+	public void SetUpMainDashboard(Player theAdminPlayer) {
+		MainDashboardControl theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
+		MainDashboardViewControl theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl);
+		theMainDashboardControl.SetMainDashboardViewControl(theMainDashboardViewControl);
 	}
 }

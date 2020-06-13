@@ -30,20 +30,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
     	LoginControl theLoginControl = new LoginControl();
-        LoginViewControl theLoginViewControl = new LoginViewControl(theLoginControl);
+        LoginViewControl theLoginViewControl = new LoginViewControl(theLoginControl, primaryStage);
         MySQLAccess theDBConnection = new MySQLAccess();
         theLoginControl.SetTheDBConnection(theDBConnection);
-        Parent theLoginParentView;
-        try {
-        	theLoginParentView = theLoginViewControl.getTheFxmlLoader().load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-        primaryStage.setScene(new Scene(theLoginParentView));
-        primaryStage.setTitle("Story Mapper");
-        primaryStage.setWidth(800);
-        primaryStage.setHeight(600);
-        primaryStage.show();
+        theLoginControl.SetLoginViewControl(theLoginViewControl);
+        theLoginViewControl.LoadLoginView();
     }
 
 }

@@ -1,11 +1,16 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import model.Player;
 
 /**
@@ -32,13 +37,15 @@ public class LoginViewControl {
 	
 	private FXMLLoader theFxmlLoader;
 	private LoginControl theLoginControl;
+	private Stage thePrimaryStage;
 	
 	/**
 	 * Constructor for the LoginView Control with 1 argument
 	 * @param theLoginControl	the instance of a LoginControl to communicate with
 	 */
-	public LoginViewControl(LoginControl theLoginControl) {
+	public LoginViewControl(LoginControl theLoginControl, Stage thePrimaryStage) {
 		this.theLoginControl = theLoginControl;
+		this.thePrimaryStage = thePrimaryStage;
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/LoginView.fxml"));
         theFxmlLoader.setController(this);
 	} 
@@ -86,11 +93,18 @@ public class LoginViewControl {
 		}
 	}
 	
-	/**
-	 * Provides access to this Fxml view. Primarily for the Main Application to load and manage it.
-	 * @return	this FXMLLoader
-	 */
-	public FXMLLoader getTheFxmlLoader() {
-		return theFxmlLoader;
+	public void LoadLoginView() {
+        Parent theLoginParentView;
+        try {
+        	theLoginParentView = theFxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+        thePrimaryStage.setScene(new Scene(theLoginParentView));
+        thePrimaryStage.setTitle("Story Mapper");
+        thePrimaryStage.setWidth(800);
+        thePrimaryStage.setHeight(600);
+        thePrimaryStage.show();
 	}
+	
 }
