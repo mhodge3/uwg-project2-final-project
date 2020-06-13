@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -15,9 +16,16 @@ import javafx.stage.Stage;
  * @version 6.12.2020
  */
 public class MainDashboardViewControl {
+	@FXML
+    private VBox mainDashboardVBox;
+	
 	private FXMLLoader theFxmlLoader;
 	private MainDashboardControl theMainDashbaordControl;
 	private Stage theMainDashboardStage;
+	private Parent theMainDashboardParentView;
+	private Scene theMainDashboardScene;
+    private Parent theManagePlayersAndAdminsParentView;
+    private Scene theManagePlayersAndAdminsScene;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -26,8 +34,8 @@ public class MainDashboardViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/MainDashboardView.fxml"));
-        theFxmlLoader.setController(this);
+		CreateMainDashboardScene();
+		CreateManagePlayersAndAdminsrScene();
 	} 
 	
 	@FXML
@@ -35,6 +43,22 @@ public class MainDashboardViewControl {
 	{
 		theMainDashbaordControl.ResetLoginView();
 		HideMainDashboardView();
+	}
+
+	
+	@FXML
+	private void handleManagePlayersAndAdminsButton(ActionEvent event) throws Exception
+	{
+        theMainDashboardStage.setScene(theManagePlayersAndAdminsScene);
+        ShowMainDashboardView();
+	}
+	
+	/**
+	 * Loads the new MainDashboard when the dashboard is first accessed
+	 */
+	public void LoadMainDashboardView() {
+        theMainDashboardStage.setScene(theMainDashboardScene);
+        ShowMainDashboardView();
 	}
 	
 	/**
@@ -44,6 +68,10 @@ public class MainDashboardViewControl {
 		theMainDashboardStage.show();
 	}
 	
+	public VBox GetMainDashboardVBox() {
+		return mainDashboardVBox;
+	}
+	
 	/**
 	 * Hidge the view of the MainDashboard
 	 */
@@ -51,17 +79,25 @@ public class MainDashboardViewControl {
 		theMainDashboardStage.hide();
 	}
 	
-	/**
-	 * Loads the new MainDashboard when the dashboard is first accessed
-	 */
-	public void LoadMainDashboardView() {
-        Parent theMainDashboardParentView;
+	private void CreateMainDashboardScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/MainDashboardView.fxml"));
+        theFxmlLoader.setController(this);
         try {
         	theMainDashboardParentView = theFxmlLoader.load();
+        	theMainDashboardScene = new Scene(theMainDashboardParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        theMainDashboardStage.setScene(new Scene(theMainDashboardParentView));
-        ShowMainDashboardView();
+	}
+	
+	private void CreateManagePlayersAndAdminsrScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManagePlayersAndAdminsView.fxml"));
+        theFxmlLoader.setController(new ManagePlayersAndAdminsViewControl(this));
+        try {
+        	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
+        	theManagePlayersAndAdminsScene = new Scene(theManagePlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 	}
 }

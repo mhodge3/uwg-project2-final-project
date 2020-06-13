@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="mainDashboardVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Game Story Management Dashboard">
          <font>
@@ -16,7 +16,7 @@
       </Label>
       <VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="800.0">
          <children>
-            <Button alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="250.0" mnemonicParsing="false" text="Manage Players &amp; Admins">
+            <Button fx:id="managePlayersAndAdminsButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="250.0" mnemonicParsing="false" onAction="#handleManagePlayersAndAdminsButton" text="Manage Players &amp; Admins">
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
