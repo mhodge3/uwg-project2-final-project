@@ -50,6 +50,21 @@ public class Character {
 		this.npcDescprition = setNpcDescprition;
 	}
 	
+	/**
+	 * Gets the npcName
+	 * @return npcName
+	 */
+	public String GetNpcName() {
+		return npcName;
+	}
+	
+	/**
+	 * Sets the NpcName
+	 * @param setNpcName
+	 */
+	public void SetNpcName(String setNpcName) {
+		this.npcName = setNpcName;
+	}
 	
 
 }
