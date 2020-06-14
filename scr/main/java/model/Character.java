@@ -9,5 +9,47 @@ package model;
  *
  */
 public class Character {
+	private int npcId;
+	private String npcDescprition;
+	private String npcName;
+	private int npcType;
+	private int npcFaction;
+	private double npcPosX;
+	private double npcPosY;
+	private double npcPosZ;
+	
+	/**
+	 * Gets the npcId
+	 * @return npcId
+	 */
+	public int GetNpcId() {
+		return npcId;
+	}
+	
+	/**
+	 * Sets the npcID
+	 * @param setNpcId
+	 */
+	public void SetNpcId(int setNpcId) {
+		this.npcId = setNpcId;
+	}
+	
+	/**
+	 * GEts the npcDescprition
+	 * @return npcDescprition
+	 */
+	public String GetNpcDescprition() {
+		return npcDescprition;
+	}
+	
+	/**
+	 * Sets the NpcDescprition
+	 * @param setNpcDescprition
+	 */
+	public void SetNpcDescprition(String setNpcDescprition) {
+		this.npcDescprition = setNpcDescprition;
+	}
+	
+	
 
 }
