@@ -66,5 +66,20 @@ public class Character {
 		this.npcName = setNpcName;
 	}
 	
+	/**
+	 * Gets the npctype
+	 * @return npcType
+	 */
+	public int GetNpcType() {
+		return npcType;
+	}
+	
+	/**
+	 * Sets the npc Type
+	 * @param setNpcType
+	 */
+	public void SetNpcType(int setNpcType) {
+		this.npcType = setNpcType;
+	}
 
 }
