@@ -97,5 +97,21 @@ public class Character {
 	public void SetNpcFaction(int setNpcFaction) {
 		this.npcFaction = setNpcFaction;
 	}
+	
+	/**
+	 * Gets the NpcPosX
+	 * @return npcPosX
+	 */
+	public double GetNpcPosX() {
+		return npcPosX;
+	}
+	
+	/**
+	 * Sets the npcPosX
+	 * @param setNpcPosX
+	 */
+	public void SetNpcPosX(double setNpcPosX) {
+		this.npcPosX = setNpcPosX;
+	}
 
 }
