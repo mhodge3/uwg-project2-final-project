@@ -81,5 +81,21 @@ public class Character {
 	public void SetNpcType(int setNpcType) {
 		this.npcType = setNpcType;
 	}
+	
+	/**
+	 * Gets the npcFaction
+	 * @return npcFaction
+	 */
+	public int GetNpcFaction() {
+		return npcFaction;
+	}
+	
+	/**
+	 * Sets the npc Faction
+	 * @param setNpcFaction
+	 */
+	public void SetNpcFaction(int setNpcFaction) {
+		this.npcFaction = setNpcFaction;
+	}
 
 }
