@@ -113,5 +113,21 @@ public class Character {
 	public void SetNpcPosX(double setNpcPosX) {
 		this.npcPosX = setNpcPosX;
 	}
+	
+	/**
+	 * Gets the NpcPosY
+	 * @return npcPosY
+	 */
+	public double GetNpcPosY() {
+		return npcPosY;
+	}
+	
+	/**
+	 * Sets the npcPosY
+	 * @param setNpcPosY
+	 */
+	public void SetNpcPosY(double setNpcPosY) {
+		this.npcPosY = setNpcPosY;
+	}
 
 }
