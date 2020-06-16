@@ -38,6 +38,17 @@ public class CharacterTests {
 		assertEquals("cool player", testCharacter.GetNpcDescription());
 	}
 	
+	/**
+	 * Tests the GetNpcName and SetNpcName Methods
+	 * 
+	 */
+	@Test
+	public void testGetNpcNameShouldBeTom() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcName("Tom");
+		assertEquals("Tom", testCharacter.GetNpcName());
+	}
+	
 	
 
 }
