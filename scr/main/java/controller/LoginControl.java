@@ -3,6 +3,7 @@ package controller;
 
 import DAL.LoginDAL;
 import DAL.MySQLAccess;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Player;
 
@@ -17,7 +18,6 @@ public class LoginControl {
 	private LoginViewControl theLoginViewControl;
 	private MainDashboardControl theMainDashboardControl;
 	private MainDashboardViewControl theMainDashboardViewControl;
-	
 	/**
 	 * Gives this LoginControl a reference to its View control
 	 * @param theLoginViewControl
@@ -39,7 +39,8 @@ public class LoginControl {
 	 * Check if a database can be accessed
 	 * @return true if yes, false if no
 	 */
-	public Boolean TestDBConnection() {
+	public Boolean TestDBConnection(String host, String userName, String password, String dBName) {
+		BuildConnectionString(host, userName, password, dBName);
 		try {
 			return theDBConnection.TestDBConnection();
 		} catch (Exception e) {

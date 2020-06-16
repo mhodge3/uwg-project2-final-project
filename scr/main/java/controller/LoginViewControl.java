@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Player;
@@ -36,6 +38,10 @@ public class LoginViewControl {
     private TextField adminPasswordLoginTextBox;
 	@FXML
 	private Label adminLoginMessageLabel;
+	@FXML
+	private ImageView loadingConnectionTestImage;
+	@FXML
+	private ImageView loadingLoginImage;
 	
 	private FXMLLoader theFxmlLoader;
 	private LoginControl theLoginControl;
@@ -60,20 +66,37 @@ public class LoginViewControl {
 	@FXML
 	private void handleTestServerButtonAction(ActionEvent event)
 	{
-		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText());
-		if (theLoginControl.TestDBConnection()) {
-		    dBConnectionMessageLabel.setText("Connection successful.");
-		    dBConnectionMessageLabel.setTextFill(Color.GREEN);
-		}
-		else {
-		    dBConnectionMessageLabel.setText("A connection was not established.");
-		    dBConnectionMessageLabel.setTextFill(Color.RED);
-		}
+		loadingConnectionTestImage.setVisible(true);
+		Thread handleTestConnection = new Thread(new Runnable() {
+		    @Override
+		    public void run(){
+				if (theLoginControl.TestDBConnection(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText())) {
+					Platform.runLater(() -> { TestMessageSucces(); });
+				}
+				else {
+					Platform.runLater(() -> { TestMessageFail(); });
+				}
+		    }
+		});
+		handleTestConnection.start();
+	}
+	
+	public void TestMessageSucces() {
+		dBConnectionMessageLabel.setText("Connection successful.");
+	    dBConnectionMessageLabel.setTextFill(Color.GREEN);
+		loadingConnectionTestImage.setVisible(false);
+	}
+	
+	public void TestMessageFail() {
+	    dBConnectionMessageLabel.setText("A connection was not established.");
+	    dBConnectionMessageLabel.setTextFill(Color.RED);
+		loadingConnectionTestImage.setVisible(false);
 	}
 	
 	@FXML
 	private void handleAdminLoginButtonAction(ActionEvent event) throws Exception
 	{
+		loadingLoginImage.setVisible(true);
 		Player thePlayerToLogIn = null;
 		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText());
 		try {
@@ -102,6 +125,10 @@ public class LoginViewControl {
 		}
 	}
 	
+	public ImageView GetLoadingConnectionTestImage() {
+		return this.loadingConnectionTestImage;
+	}
+	
 	/**
 	 * Clears login fields from last login and shows the login stage.
 	 */
@@ -128,6 +155,8 @@ public class LoginViewControl {
             throw new RuntimeException(exception);
         }
         theLoginStage.setScene(new Scene(theLoginParentView));
+		loadingConnectionTestImage.setVisible(false);
+		loadingLoginImage.setVisible(false);
         ShowLoginStage();
 	}
 	
