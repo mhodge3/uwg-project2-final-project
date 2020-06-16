@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 
 /**
  * Connection class for a MySQL database. This is being built from information located at 
@@ -19,15 +18,18 @@ import java.util.Date;
 public class MySQLAccess {
     private Connection theConnection = null;
     private Statement theStatement = null;
+    private String theDBName;
     private PreparedStatement thePreparedStatement = null;
     private ResultSet theResultSet = null;
     private String connectionString;
+    private String theDBUserName;
+    private String theDBPassword;
     
     /**
      * Default constructor builds the initial connection string from hard coded values for a test server
      */
     public MySQLAccess() {
-    	BuildConnectionString("localhost", "root", "test1234");
+    	BuildConnectionString("localhost", "root", "test1234", "rpg_story_mapper_db");
     }
     
     /**
@@ -41,7 +43,7 @@ public class MySQLAccess {
         // This will load the MySQL driver, each DB has its own driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // Setup the connection with the DB
-        theNewConnection = DriverManager.getConnection(connectionString);
+        theNewConnection = DriverManager.getConnection(connectionString, theDBUserName, theDBPassword);
         return theNewConnection;
     }
     
@@ -56,7 +58,7 @@ public class MySQLAccess {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = DriverManager.getConnection(connectionString);
+            theConnection = GetDBConnection();
         	thePreparedStatement = null;
         	theResultSet = null;
         	connectionSuccess = true;
@@ -73,8 +75,19 @@ public class MySQLAccess {
      * @param userName	username to access the DB. Ex, root
      * @param password	password for this DB user. Ex, test1234
      */
-    public void BuildConnectionString(String hostName, String userName, String password) {
-    	connectionString = "jdbc:mysql://" + hostName + "/?user=" + userName + "&password=" + password;
+    public void BuildConnectionString(String hostName, String userName, String password, String dBName) {
+    	this.theDBName = dBName;
+    	this.theDBUserName = userName;
+    	this.theDBPassword = password;
+    	connectionString = "jdbc:mysql://" + hostName + "/?serverTimezone=UTC";
+    }
+    
+    /**
+     * Get the name of the DB to look for on the host
+     * @return the DB name
+     */
+    public String GetTheDBName() {
+    	return this.theDBName;
     }
 
     // You need to close the resultSet

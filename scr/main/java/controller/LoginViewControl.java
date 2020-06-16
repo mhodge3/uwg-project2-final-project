@@ -23,6 +23,8 @@ public class LoginViewControl {
 	@FXML
     private TextField hostTextInput;
 	@FXML
+    private TextField dBNameTextInput;
+	@FXML
     private TextField usernameDBTextInput;
 	@FXML
     private TextField passwordDBTextInput;
@@ -58,7 +60,7 @@ public class LoginViewControl {
 	@FXML
 	private void handleTestServerButtonAction(ActionEvent event)
 	{
-		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText());
+		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText());
 		if (theLoginControl.TestDBConnection()) {
 		    dBConnectionMessageLabel.setText("Connection successful.");
 		    dBConnectionMessageLabel.setTextFill(Color.GREEN);
@@ -73,7 +75,7 @@ public class LoginViewControl {
 	private void handleAdminLoginButtonAction(ActionEvent event) throws Exception
 	{
 		Player thePlayerToLogIn = null;
-		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText());
+		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText());
 		try {
 			thePlayerToLogIn = theLoginControl.GetPlayer(adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
 		} catch (Exception e) {

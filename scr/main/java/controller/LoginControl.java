@@ -53,8 +53,8 @@ public class LoginControl {
 	 * @param userName
 	 * @param password
 	 */
-	public void BuildConnectionString(String hostName, String userName, String password) {
-		theDBConnection.BuildConnectionString(hostName, userName, password);
+	public void BuildConnectionString(String hostName, String userName, String password, String dBName) {
+		theDBConnection.BuildConnectionString(hostName, userName, password, dBName);
 	}
 	
 	/**
