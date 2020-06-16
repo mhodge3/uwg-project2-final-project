@@ -1,5 +1,6 @@
 package controller;
 
+import DAL.MySQLAccess;
 import model.Player;
 
 /**
@@ -26,5 +27,9 @@ public class MainDashboardControl {
 	 */
 	public void ResetLoginView() {
 		theLoginViewControl.ShowLoginStage();
+	}
+	
+	public MySQLAccess GetDBConnection() {
+		return theLoginViewControl.GetDBConnection();
 	}
 }

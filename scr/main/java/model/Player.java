@@ -3,27 +3,46 @@
  */
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * @author Ashley Palmer
  * @date 6/11/2020
  *
  */
 public class Player {
-	private int playerId;
-	private String playerName;
+	private IntegerProperty playerId;
+	private StringProperty playerName;
 	private Boolean playerIsAdmin;
-	private String playerCountryCode;
-	private String playerEmail;
+	private StringProperty playerCountryCode;
+	private StringProperty playerEmail;
 	private String playerPassword;
 	
-	public Player() {}
+	/**
+	 * Default Player constructor. Not currently used, but exists for tests
+	 */
+	public Player () {
+		
+	}
 	
-	public Player(String playerName, Boolean playerIsAdmin, 
-				String playerCountryCode, String playerEmail, String playerPassword) {
-		this.playerName = playerName;
+	/**
+	 * Player Constructor
+	 * @param playerId
+	 * @param playerName
+	 * @param playerIsAdmin
+	 * @param playerCountryCode
+	 * @param playerEmail
+	 * @param playerPassword
+	 */
+	public Player(int playerId, String playerName, Boolean playerIsAdmin, String playerCountryCode, String playerEmail, String playerPassword) {
+		this.playerId = new SimpleIntegerProperty(playerId);
+		this.playerName = new SimpleStringProperty(playerName);
 		this.playerIsAdmin = playerIsAdmin;
-		this.playerCountryCode = playerCountryCode;
-		this.playerEmail = playerEmail;
+		this.playerCountryCode = new SimpleStringProperty(playerCountryCode);
+		this.playerEmail = new SimpleStringProperty(playerEmail);
 		this.playerPassword = playerPassword;
 	}
 	
@@ -32,7 +51,15 @@ public class Player {
 	 * @return playerName
 	 */
 	public String GetPlayerName() {
-		return playerName;
+		return playerName.get();
+	}
+	
+	/**
+	 * Gets the player name property
+	 * @return Property for TableView
+	 */
+	public final StringProperty playerNameProperty() {
+	   return playerName;
 	}
 	
 	/**
@@ -40,7 +67,7 @@ public class Player {
 	 * @param userName
 	 */
 	public void SetPlayerName(String userName) {
-		this.playerName = userName;
+		this.playerName = new SimpleStringProperty(userName);
 	}
 	
 	/**
@@ -64,7 +91,15 @@ public class Player {
 	 * @return playerId
 	 */
 	public int GetPlayerId() {
-		return playerId;
+		return playerId.get();
+	}
+
+	/**
+	 * Gets the playerId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty playerIdProperty() {
+	   return playerId;
 	}
 	
 	/**
@@ -72,7 +107,7 @@ public class Player {
 	 * @param playerId
 	 */
 	public void SetPlayerId(int playerId) {
-		this.playerId = playerId;
+		this.playerId = new SimpleIntegerProperty(playerId);
 	}
 	
 	/**
@@ -80,7 +115,15 @@ public class Player {
 	 * @return
 	 */
 	public String GetPlayerCountryCode() {
-		return playerCountryCode;
+		return playerCountryCode.get();
+	}
+
+	/**
+	 * Gets the playerCountryCode property
+	 * @return Property for TableView
+	 */
+	public final StringProperty playerCountryCodeProperty() {
+	   return playerCountryCode;
 	}
 	
 	/**
@@ -88,7 +131,7 @@ public class Player {
 	 * @param setPlayerCountryCode
 	 */
 	public void SetPlayerCountryCode(String setPlayerCountryCode) {
-		this.playerCountryCode = setPlayerCountryCode;
+		this.playerCountryCode = new SimpleStringProperty(setPlayerCountryCode);
 	}
 	
 	/**
@@ -96,16 +139,23 @@ public class Player {
 	 * @return playerEmail
 	 */
 	public String GetPlayerEmail() {
-		return playerEmail;
+		return playerEmail.get();
+	}
+
+	/**
+	 * Gets the playerEmail property
+	 * @return Property for TableView
+	 */
+	public final StringProperty playerEmailProperty() {
+	   return playerEmail;
 	}
 	
 	/**
 	 * Sets the playerEmail
 	 * @param setPlayerEmail
 	 */
-	
 	public void SetPlayerEmail(String setPlayerEmail) {
-		this.playerEmail = setPlayerEmail;
+		this.playerEmail = new SimpleStringProperty(setPlayerEmail);
 	}
 	
 	/**

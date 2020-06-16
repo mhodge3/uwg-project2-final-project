@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import DAL.MySQLAccess;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -151,6 +152,10 @@ public class LoginViewControl {
 	
 	public ImageView GetLoadingConnectionTestImage() {
 		return this.loadingConnectionTestImage;
+	}
+	
+	public MySQLAccess GetDBConnection() {
+		return theLoginControl.GetDBConnection();
 	}
 	
 	/**
