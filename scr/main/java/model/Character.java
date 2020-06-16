@@ -38,7 +38,7 @@ public class Character {
 	 * GEts the npcDescprition
 	 * @return npcDescprition
 	 */
-	public String GetNpcDescprition() {
+	public String GetNpcDescription() {
 		return npcDescprition;
 	}
 	
@@ -46,7 +46,7 @@ public class Character {
 	 * Sets the NpcDescprition
 	 * @param setNpcDescprition
 	 */
-	public void SetNpcDescprition(String setNpcDescprition) {
+	public void SetNpcDescription(String setNpcDescprition) {
 		this.npcDescprition = setNpcDescprition;
 	}
 	

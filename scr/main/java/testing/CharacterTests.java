@@ -27,6 +27,17 @@ public class CharacterTests {
 		assertEquals(1234, testCharacter.GetNpcId());
 	}
 	
+	/**
+	 * Tests the GetNpcDescription and SetNpcDescription Methods
+	 * 
+	 */
+	@Test
+	public void testGetNpcDescpritionShouldBeCoolPlayer() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcDescription("cool player");
+		assertEquals("cool player", testCharacter.GetNpcDescription());
+	}
+	
 	
 
 }
