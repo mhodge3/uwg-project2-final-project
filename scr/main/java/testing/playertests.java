@@ -59,6 +59,17 @@ public class playertests {
 		assertEquals("Tom", testPlayerID.GetPlayerName());
 	}
 	
+	/**
+	 * Tests the GetPlayerName Method and SetPlayerIsName Method
+	 * 
+	 */
+	@Test
+	public void testGetPlayerCountryCodeShouldBeABCD() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerCountryCode("ABCD");
+		assertEquals("ABCD", testPlayerID.GetPlayerCountryCode());
+	}
+	
 	
 
 }
