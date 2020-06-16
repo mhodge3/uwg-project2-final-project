@@ -16,6 +16,17 @@ public class Player {
 	private String playerEmail;
 	private String playerPassword;
 	
+	public Player() {}
+	
+	public Player(String playerName, Boolean playerIsAdmin, 
+				String playerCountryCode, String playerEmail, String playerPassword) {
+		this.playerName = playerName;
+		this.playerIsAdmin = playerIsAdmin;
+		this.playerCountryCode = playerCountryCode;
+		this.playerEmail = playerEmail;
+		this.playerPassword = playerPassword;
+	}
+	
 	/**
 	 * Gets the player Name
 	 * @return playerName

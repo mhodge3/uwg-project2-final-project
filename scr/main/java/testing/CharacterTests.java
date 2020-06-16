@@ -34,8 +34,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcDescpritionShouldBeCoolPlayer() {
 		Character testCharacter = new Character();
-		testCharacter.SetNpcDescription("cool player");
-		assertEquals("cool player", testCharacter.GetNpcDescription());
+		testCharacter.SetNpcDescprition("cool player");
+		assertEquals("cool player", testCharacter.GetNpcDescprition());
 	}
 	
 	/**
