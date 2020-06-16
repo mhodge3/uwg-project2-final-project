@@ -19,15 +19,19 @@ import java.util.Date;
 public class MySQLAccess {
     private Connection theConnection = null;
     private Statement theStatement = null;
+    private String theDBName;
     private PreparedStatement thePreparedStatement = null;
     private ResultSet theResultSet = null;
     private String connectionString;
+    private String theDBUserName;
+    private String theDBPassword;
     
     /**
      * Default constructor builds the initial connection string from hard coded values for a test server
      */
     public MySQLAccess() {
     	BuildConnectionString("localhost", "root", "Theresa1");
+    	BuildConnectionString("localhost", "root", "test1234", "rpg_story_mapper_db");
     }
     
     /**
