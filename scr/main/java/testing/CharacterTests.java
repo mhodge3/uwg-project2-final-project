@@ -93,6 +93,16 @@ public class CharacterTests {
 		assertEquals(1.1, testCharacter.GetNpcPosY());
 	}
 	
+	/**
+	 * Tests the GetNpcPosZ() Method and SetNpcPosZ() Method
+	 * 
+	 */
+	@Test
+	public void testGetNpcPosZPointShouldBe1Point1() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcPosZ(1.1);
+		assertEquals(1.1, testCharacter.GetNpcPosZ());
+	}
 	
 	
 	
