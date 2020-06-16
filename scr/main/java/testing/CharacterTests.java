@@ -49,6 +49,19 @@ public class CharacterTests {
 		assertEquals("Tom", testCharacter.GetNpcName());
 	}
 	
+	/**
+	 * Tests the GetNpcType Method and SetNpcType() Method
+	 * 
+	 */
+	@Test
+	public void testGetNpcTypeShouldBe1() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcType(1);
+		assertEquals(1, testCharacter.GetNpcType());
+	}
+	
+	
+	
 	
 
 }
