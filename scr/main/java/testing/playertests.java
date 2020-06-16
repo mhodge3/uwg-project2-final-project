@@ -16,14 +16,29 @@ import model.Player;
 public class playertests {
 	
 	/**
-	 * Tests the GetPlayerId Method
+	 * Tests the GetPlayerIdand SetPlayerID Methods
 	 * 
 	 */
 	@Test
-	public void testGetPlayerIDShouldBe1234() {
+	public void testGetSetPlayerIDShouldBe1234() {
 		Player testPlayerID = new Player();
 		testPlayerID.SetPlayerId(1234);
 		assertEquals(1234, testPlayerID.GetPlayerId());
 	}
+	
+	/**
+	 * Tests the IsPlayerAdmin Method and SetPlayerIsAdminMethod
+	 * 
+	 */
+	@Test
+	public void testIsPlayerAdminShouldBeFalse() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerIsAdmin(false);
+		assertEquals(false, testPlayerID.GetPlayerIsAdmin());
+	}
+	
+	
+	
+	
 
 }
