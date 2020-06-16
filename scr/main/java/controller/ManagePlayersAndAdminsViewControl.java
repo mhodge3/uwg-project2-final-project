@@ -1,7 +1,6 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
 
 /**
  * Provides the View Control Logic for the Manage Players and Admin View

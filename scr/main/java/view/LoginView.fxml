@@ -11,18 +11,20 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane animated="false" expanded="false" prefHeight="366.0" prefWidth="350.0" text="Server Address and Login">
+      <TitledPane animated="false" prefHeight="366.0" prefWidth="350.0" text="Server Address and Login">
         <content>
           <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="348.0">
                <children>
-                  <VBox layoutX="22.0" layoutY="14.0" prefHeight="200.0" prefWidth="301.0">
+                  <VBox layoutX="22.0" layoutY="14.0" prefHeight="262.0" prefWidth="301.0">
                      <children>
                         <Label prefHeight="19.0" prefWidth="32.0" text="Host: " />
-                        <TextField fx:id="hostTextInput" text="localhost" />
+                        <TextField fx:id="hostTextInput" text="107.189.4.250" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="Username: " />
-                        <TextField fx:id="usernameDBTextInput" text="root" />
+                        <TextField fx:id="usernameDBTextInput" text="hodgesd1_testy_user" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="Password:" />
-                        <TextField fx:id="passwordDBTextInput" text="test1234" />
+                        <TextField fx:id="passwordDBTextInput" text="d3m0D0g!" />
+                        <Label prefHeight="19.0" prefWidth="62.0" text="DB Name:" />
+                        <TextField fx:id="dBNameTextInput" text="hodgesd1_story_mapper_demo" />
                         <Button fx:id="testDBConnectionButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTestServerButtonAction" prefHeight="25.0" prefWidth="347.0" text="Test Connection">
                            <VBox.margin>
                               <Insets top="10.0" />
@@ -35,9 +37,9 @@
             </AnchorPane>
         </content>
       </TitledPane>
-      <HBox id="GameStoryAdminLoginHBox" alignment="TOP_CENTER" prefHeight="284.0" prefWidth="800.0">
+      <HBox id="GameStoryAdminLoginHBox" alignment="TOP_CENTER" prefHeight="172.0" prefWidth="350.0">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="242.0" prefWidth="259.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="157.0" prefWidth="259.0">
                <children>
                   <Label id="AdminNameLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Name:" />
                   <TextField fx:id="adminNameLoginTextBox" />
