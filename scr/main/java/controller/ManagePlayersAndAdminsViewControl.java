@@ -35,6 +35,9 @@ public class ManagePlayersAndAdminsViewControl {
     	updateExistingPlayerAdminList();
     }
     
+	/**
+	 * Binds the ObservableList to the TableView
+	 */
     public void updateExistingPlayerAdminList() {
     	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.GetObservablePlayerList());
     }

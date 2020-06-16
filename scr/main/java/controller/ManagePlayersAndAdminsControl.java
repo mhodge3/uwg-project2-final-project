@@ -34,6 +34,10 @@ public class ManagePlayersAndAdminsControl {
 		observablePlayerList.addAll(existingPlayerAdminArrayList);
 	}
 	
+	/**
+	 * Get the Observable Player List
+	 * @return	the observable list
+	 */
 	public ObservableList<Player> GetObservablePlayerList() {
 		return observablePlayerList;
 	}

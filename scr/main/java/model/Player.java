@@ -21,10 +21,22 @@ public class Player {
 	private StringProperty playerEmail;
 	private String playerPassword;
 	
+	/**
+	 * Default Player constructor. Not currently used, but exists for tests
+	 */
 	public Player () {
 		
 	}
 	
+	/**
+	 * Player Constructor
+	 * @param playerId
+	 * @param playerName
+	 * @param playerIsAdmin
+	 * @param playerCountryCode
+	 * @param playerEmail
+	 * @param playerPassword
+	 */
 	public Player(int playerId, String playerName, Boolean playerIsAdmin, String playerCountryCode, String playerEmail, String playerPassword) {
 		this.playerId = new SimpleIntegerProperty(playerId);
 		this.playerName = new SimpleStringProperty(playerName);
@@ -41,7 +53,11 @@ public class Player {
 	public String GetPlayerName() {
 		return playerName.get();
 	}
-
+	
+	/**
+	 * Gets the player name property
+	 * @return Property for TableView
+	 */
 	public final StringProperty playerNameProperty() {
 	   return playerName;
 	}
@@ -78,6 +94,10 @@ public class Player {
 		return playerId.get();
 	}
 
+	/**
+	 * Gets the playerId property
+	 * @return Property for TableView
+	 */
 	public final IntegerProperty playerIdProperty() {
 	   return playerId;
 	}
@@ -98,6 +118,10 @@ public class Player {
 		return playerCountryCode.get();
 	}
 
+	/**
+	 * Gets the playerCountryCode property
+	 * @return Property for TableView
+	 */
 	public final StringProperty playerCountryCodeProperty() {
 	   return playerCountryCode;
 	}
@@ -118,6 +142,10 @@ public class Player {
 		return playerEmail.get();
 	}
 
+	/**
+	 * Gets the playerEmail property
+	 * @return Property for TableView
+	 */
 	public final StringProperty playerEmailProperty() {
 	   return playerEmail;
 	}
@@ -126,7 +154,6 @@ public class Player {
 	 * Sets the playerEmail
 	 * @param setPlayerEmail
 	 */
-	
 	public void SetPlayerEmail(String setPlayerEmail) {
 		this.playerEmail = new SimpleStringProperty(setPlayerEmail);
 	}
