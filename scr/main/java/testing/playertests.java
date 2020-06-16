@@ -60,7 +60,7 @@ public class playertests {
 	}
 	
 	/**
-	 * Tests the GetPlayerCountryCode Method and SetPlayerCountryCode Method
+	 * Tests the GetPlayerEmail Method and SetPlayerEmail Method
 	 * 
 	 */
 	@Test
@@ -80,6 +80,18 @@ public class playertests {
 		testPlayerID.SetPlayerCountryCode("ABCD");
 		assertEquals("ABCD", testPlayerID.GetPlayerCountryCode());
 	}
+	
+	/**
+	 * Tests the GetPlayerPassword Method and SetPlayerPassword Method
+	 * 
+	 */
+	@Test
+	public void testGetPlayerPasswordShouldBetestpassword() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerPassword("testpassword");
+		assertEquals("testpassword", testPlayerID.GetPlayerPassword());
+	}
+	
 	
 
 }
