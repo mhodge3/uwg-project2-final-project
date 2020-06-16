@@ -60,7 +60,18 @@ public class playertests {
 	}
 	
 	/**
-	 * Tests the GetPlayerName Method and SetPlayerIsName Method
+	 * Tests the GetPlayerCountryCode Method and SetPlayerCountryCode Method
+	 * 
+	 */
+	@Test
+	public void testGetPlayerEmailShouldBeTomAtYahooDotCom() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerEmail("tom@yahoo.com");
+		assertEquals("tom@yahoo.com", testPlayerID.GetPlayerEmail());
+	}
+	
+	/**
+	 * Tests the GetPlayerCountryCode Method and SetPlayerCountryCode Method
 	 * 
 	 */
 	@Test
@@ -69,7 +80,6 @@ public class playertests {
 		testPlayerID.SetPlayerCountryCode("ABCD");
 		assertEquals("ABCD", testPlayerID.GetPlayerCountryCode());
 	}
-	
 	
 
 }
