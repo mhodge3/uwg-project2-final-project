@@ -27,7 +27,7 @@ public class MySQLAccess {
      * Default constructor builds the initial connection string from hard coded values for a test server
      */
     public MySQLAccess() {
-    	BuildConnectionString("localhost", "root", "test1234");
+    	BuildConnectionString("localhost", "root", "Theresa1");
     }
     
     /**
