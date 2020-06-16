@@ -37,6 +37,16 @@ public class playertests {
 		assertEquals(false, testPlayerID.GetPlayerIsAdmin());
 	}
 	
+	/**
+	 * Tests the IsPlayerAdmin Method and SetPlayerIsAdminMethod
+	 * 
+	 */
+	@Test
+	public void testIsPlayerAdminShouldBeTrue() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerIsAdmin(true);
+		assertEquals(true, testPlayerID.GetPlayerIsAdmin());
+	}
 	
 	
 	
