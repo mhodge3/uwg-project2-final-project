@@ -71,6 +71,17 @@ public class CharacterTests {
 		assertEquals(2, testCharacter.GetNpcFaction());
 	}
 	
+	/**
+	 * Tests the GetNpcPosX() Method and SetNpcPosX() Method
+	 * 
+	 */
+	@Test
+	public void testGetNpcPosXPoint1() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcPosX(1.1);
+		assertEquals(1.1, testCharacter.GetNpcPosX());
+	}
+	
 	
 	
 	
