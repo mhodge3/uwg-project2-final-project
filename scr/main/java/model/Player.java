@@ -3,27 +3,34 @@
  */
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * @author Ashley Palmer
  * @date 6/11/2020
  *
  */
 public class Player {
-	private int playerId;
-	private String playerName;
+	private IntegerProperty playerId;
+	private StringProperty playerName;
 	private Boolean playerIsAdmin;
-	private String playerCountryCode;
-	private String playerEmail;
+	private StringProperty playerCountryCode;
+	private StringProperty playerEmail;
 	private String playerPassword;
 	
-	public Player() {}
+	public Player () {
+		
+	}
 	
-	public Player(String playerName, Boolean playerIsAdmin, 
-				String playerCountryCode, String playerEmail, String playerPassword) {
-		this.playerName = playerName;
+	public Player(int playerId, String playerName, Boolean playerIsAdmin, String playerCountryCode, String playerEmail, String playerPassword) {
+		this.playerId = new SimpleIntegerProperty(playerId);
+		this.playerName = new SimpleStringProperty(playerName);
 		this.playerIsAdmin = playerIsAdmin;
-		this.playerCountryCode = playerCountryCode;
-		this.playerEmail = playerEmail;
+		this.playerCountryCode = new SimpleStringProperty(playerCountryCode);
+		this.playerEmail = new SimpleStringProperty(playerEmail);
 		this.playerPassword = playerPassword;
 	}
 	
@@ -32,7 +39,11 @@ public class Player {
 	 * @return playerName
 	 */
 	public String GetPlayerName() {
-		return playerName;
+		return playerName.get();
+	}
+
+	public final StringProperty playerNameProperty() {
+	   return playerName;
 	}
 	
 	/**
@@ -40,7 +51,7 @@ public class Player {
 	 * @param userName
 	 */
 	public void SetPlayerName(String userName) {
-		this.playerName = userName;
+		this.playerName = new SimpleStringProperty(userName);
 	}
 	
 	/**
@@ -64,7 +75,11 @@ public class Player {
 	 * @return playerId
 	 */
 	public int GetPlayerId() {
-		return playerId;
+		return playerId.get();
+	}
+
+	public final IntegerProperty playerIdProperty() {
+	   return playerId;
 	}
 	
 	/**
@@ -72,7 +87,7 @@ public class Player {
 	 * @param playerId
 	 */
 	public void SetPlayerId(int playerId) {
-		this.playerId = playerId;
+		this.playerId = new SimpleIntegerProperty(playerId);
 	}
 	
 	/**
@@ -80,7 +95,11 @@ public class Player {
 	 * @return
 	 */
 	public String GetPlayerCountryCode() {
-		return playerCountryCode;
+		return playerCountryCode.get();
+	}
+
+	public final StringProperty playerCountryCodeProperty() {
+	   return playerCountryCode;
 	}
 	
 	/**
@@ -88,7 +107,7 @@ public class Player {
 	 * @param setPlayerCountryCode
 	 */
 	public void SetPlayerCountryCode(String setPlayerCountryCode) {
-		this.playerCountryCode = setPlayerCountryCode;
+		this.playerCountryCode = new SimpleStringProperty(setPlayerCountryCode);
 	}
 	
 	/**
@@ -96,7 +115,11 @@ public class Player {
 	 * @return playerEmail
 	 */
 	public String GetPlayerEmail() {
-		return playerEmail;
+		return playerEmail.get();
+	}
+
+	public final StringProperty playerEmailProperty() {
+	   return playerEmail;
 	}
 	
 	/**
@@ -105,7 +128,7 @@ public class Player {
 	 */
 	
 	public void SetPlayerEmail(String setPlayerEmail) {
-		this.playerEmail = setPlayerEmail;
+		this.playerEmail = new SimpleStringProperty(setPlayerEmail);
 	}
 	
 	/**

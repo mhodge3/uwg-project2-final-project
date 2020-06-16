@@ -32,7 +32,7 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `rpg_story_mapper_db`.`players`;";
+            String query = "SELECT * FROM `" + sqlAccess.GetTheDBName() + "`.`players`;";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
                 Player thisPlayer = new Player();

@@ -1,11 +1,9 @@
 package controller;
 
-import java.util.ArrayList;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Player;
 
 /**
@@ -15,19 +13,30 @@ import model.Player;
  */
 public class ManagePlayersAndAdminsViewControl {
 	@FXML
-	private ListView<Player> existingUserListView;
+	private TableView<Player> existingUserTableView;
+	@FXML
+	private TableColumn<Player, Integer> userIDTableColumn;
+	@FXML
+	private TableColumn<Player, String> userNameTableColumn;
+	@FXML
+	private TableColumn<Player, String> userEmailTableColumn;
+	@FXML
+	private TableColumn<Player, String> userCountryCodeTableColumn;
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private ManagePlayersAndAdminsControl theManagePlayersAndAdminsControl;
 
 	@FXML
     public void initialize() {
+		userIDTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("playerId"));
+		userNameTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerName"));
+		userEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerEmail"));
+		userCountryCodeTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerCountryCode"));
     	updateExistingPlayerAdminList();
     }
     
     public void updateExistingPlayerAdminList() {
-    	existingUserListView.getItems().addAll(theManagePlayersAndAdminsControl.GetObservablePlayerList());
-    	System.out.println(existingUserListView.toString());
+    	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.GetObservablePlayerList());
     }
     
 	/**
