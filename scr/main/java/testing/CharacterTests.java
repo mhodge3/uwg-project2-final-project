@@ -60,6 +60,17 @@ public class CharacterTests {
 		assertEquals(1, testCharacter.GetNpcType());
 	}
 	
+	/**
+	 * Tests the GetNpcFaction() Method and SetNpcFaction() Method
+	 * 
+	 */
+	@Test
+	public void testGetNpcFactionShouldBe2() {
+		Character testCharacter = new Character();
+		testCharacter.SetNpcFaction(2);
+		assertEquals(2, testCharacter.GetNpcFaction());
+	}
+	
 	
 	
 	
