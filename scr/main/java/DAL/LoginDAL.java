@@ -19,16 +19,13 @@ public class LoginDAL {
     public Player GetPlayer(String playerName, String playerPassword) throws Exception {
     	Player thePlayer = null;
         try {
-            // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             theConnection = theDBConnection.GetDBConnection();
-            // Statements allow to issue SQL queries to the database
             theStatement = theConnection.createStatement();
             String pST = "SELECT * FROM `" + theDBConnection.GetTheDBName() + "`.`players` "
             		+ "WHERE `" + theDBConnection.GetTheDBName() + "`.`players`.`player_name` = \"" + playerName + "\""
             				+ "AND `" + theDBConnection.GetTheDBName() + "`.`players`.`player_password` = \"" + playerPassword + "\";";
-            // Result set get the result of the SQL query
             theResultSet = theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {
                 thePlayer = new Player();
