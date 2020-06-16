@@ -9,7 +9,7 @@ import model.Player;
 class testPlayerDALGetPlayer {
 	
 	Player thePlayer = new Player();
-	PlayerDAL dal = new PlayerDAL();
+	PlayerDAL dal = new PlayerDAL(new MySQLAccess());
 	
 	@Test
 	public void retrievesPlayerWithNameAdminPasswordtest1234() throws Exception {

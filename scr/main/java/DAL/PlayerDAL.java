@@ -1,6 +1,7 @@
 package DAL;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import model.Player;
 /**
@@ -16,9 +17,40 @@ public class PlayerDAL {
 	/**
 	 * Creates a PlayerDAL object to be used by the controllers
 	 */
-	public PlayerDAL() {
-		this.sqlAccess = new MySQLAccess();
+	public PlayerDAL(MySQLAccess theDBConnection) {
+		this.sqlAccess = theDBConnection;
 	}
+	
+	/**
+	 * Retrieves a list of all user (player) accounts
+	 * @return the ArrayList of Users (players)
+	 * @throws SQLException
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<Player> GetPlayers() throws SQLException {
+		ArrayList<Player> thePlayerArrayList = new ArrayList<Player>();
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM `rpg_story_mapper_db`.`players`;";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next() != false) {
+                Player thisPlayer = new Player();
+                thisPlayer.SetPlayerName(results.getString("player_name"));
+                thisPlayer.SetPlayerId(Integer.parseInt(results.getString("player_id")));
+                thisPlayer.SetPlayerPassword(results.getString("player_password"));
+                thisPlayer.SetPlayerEmail(results.getString("player_email"));
+                thisPlayer.SetPlayerCountryCode(results.getNString("player_country_code"));
+                thePlayerArrayList.add(thisPlayer);
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+        return thePlayerArrayList;
+    }
 	
 	/**
 	 * Retrieves a Player with a playername and playerpassword from the DB.

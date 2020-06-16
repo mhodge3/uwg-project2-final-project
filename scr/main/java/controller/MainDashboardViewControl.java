@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import DAL.MySQLAccess;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -102,6 +103,10 @@ public class MainDashboardViewControl {
 	 */
 	public void HideMainDashboardView() {
 		theMainDashboardStage.hide();
+	}
+	
+	public MySQLAccess GetDBConnection() {
+		return theMainDashbaordControl.GetDBConnection();
 	}
 	
 	private void CreateMainDashboardScene() {
