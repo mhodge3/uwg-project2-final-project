@@ -12,11 +12,11 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TitledPane animated="false" prefHeight="310.0" prefWidth="350.0" text="Server Address and Login">
+      <TitledPane animated="false" expanded="false" prefHeight="310.0" prefWidth="350.0" text="Server Address and Login">
         <content>
-          <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="348.0">
+          <AnchorPane id="ServerInformationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="348.0">
                <children>
-                  <VBox layoutX="22.0" layoutY="14.0" prefHeight="262.0" prefWidth="301.0">
+                  <VBox layoutX="22.0" layoutY="14.0" prefHeight="260.0" prefWidth="301.0">
                      <children>
                         <Label prefHeight="19.0" prefWidth="32.0" text="Host: " />
                         <TextField fx:id="hostTextInput" text="107.189.4.250" />
@@ -26,7 +26,7 @@
                         <TextField fx:id="passwordDBTextInput" text="d3m0D0g!" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="DB Name:" />
                         <TextField fx:id="dBNameTextInput" text="hodgesd1_story_mapper_demo" />
-                        <HBox prefHeight="30.0" prefWidth="301.0">
+                        <HBox prefHeight="55.0" prefWidth="301.0">
                            <children>
                               <Button fx:id="testDBConnectionButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTestServerButtonAction" prefHeight="25.0" prefWidth="116.0" text="Test Connection" />
                               <ImageView fx:id="loadingConnectionTestImage" accessibleRole="SPINNER" fitHeight="27.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -34,9 +34,9 @@
                                     <Image url="@../resources/loading_2.gif" />
                                  </image>
                               </ImageView>
+                              <Label id="DBConnectionStatusMessage" fx:id="dBConnectionMessageLabel" alignment="TOP_RIGHT" prefHeight="67.0" prefWidth="159.0" />
                            </children>
                         </HBox>
-                        <Label id="DBConnectionStatusMessage" fx:id="dBConnectionMessageLabel" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="303.0" />
                      </children>
                   </VBox>
                </children>
@@ -59,9 +59,9 @@
                               <Image url="@../resources/loading_2.gif" />
                            </image>
                         </ImageView>
+                        <Label fx:id="adminLoginMessageLabel" alignment="TOP_RIGHT" prefHeight="57.0" prefWidth="189.0" />
                      </children>
                   </HBox>
-                  <Label fx:id="adminLoginMessageLabel" prefHeight="25.0" prefWidth="259.0" />
                </children>
             </VBox>
          </children>

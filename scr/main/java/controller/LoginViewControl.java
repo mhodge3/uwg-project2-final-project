@@ -97,32 +97,56 @@ public class LoginViewControl {
 	private void handleAdminLoginButtonAction(ActionEvent event) throws Exception
 	{
 		loadingLoginImage.setVisible(true);
-		Player thePlayerToLogIn = null;
-		theLoginControl.BuildConnectionString(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText());
-		try {
-			thePlayerToLogIn = theLoginControl.GetPlayer(adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
-		} catch (Exception e) {
-			adminLoginMessageLabel.setText("No account was found");
-			adminLoginMessageLabel.setTextFill(Color.RED);
-		}
-		
-		if (thePlayerToLogIn != null) {
-			if (theLoginControl.IsPlayerAdmin(thePlayerToLogIn)) {
-				thePlayerToLogIn.SetPlayerIsAdmin(true);
-				adminLoginMessageLabel.setText("The Player is an Admin");
-				adminLoginMessageLabel.setTextFill(Color.GREEN);
-				theLoginControl.SetUpMainDashboard(thePlayerToLogIn, theMainDashboardStage);
-				HideLoginStage();
-			}
-			else {
-				adminLoginMessageLabel.setText("The Player is NOT an Admin");
-				adminLoginMessageLabel.setTextFill(Color.RED);
-			}
-		}
-		else {
-			adminLoginMessageLabel.setText("No account was found");
-			adminLoginMessageLabel.setTextFill(Color.RED);
-		}
+		Thread handleAdminLogin = new Thread(new Runnable() {
+		    @Override
+		    public void run(){
+				Player thePlayerToLogIn = theLoginControl.UserLoginPlayer(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText(), adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
+				if (thePlayerToLogIn != null) {
+					Platform.runLater(() -> { 
+						try {
+							if (theLoginControl.IsPlayerAdmin(thePlayerToLogIn)) {
+								thePlayerToLogIn.SetPlayerIsAdmin(true);
+								SetLoginMessageIsAdmin(); 
+								theLoginControl.SetUpMainDashboard(thePlayerToLogIn, theMainDashboardStage);
+								HideLoginStage();
+							}
+							else {
+								SetLoginMessageNotAdmin();;
+							}
+						} catch (Exception e) {
+
+							Platform.runLater(() -> { SetLoginMessageError(e.getMessage()); });
+						}
+					});
+				}
+				else {
+					Platform.runLater(() -> { SetLoginMessageNoAccount(); });
+				}
+		    }
+		});
+		handleAdminLogin.start();
+	}
+	
+	private void SetLoginMessageNoAccount() {
+		adminLoginMessageLabel.setText("No account was found");
+		adminLoginMessageLabel.setTextFill(Color.RED);
+		loadingLoginImage.setVisible(false);
+	}
+	private void SetLoginMessageError(String error) {
+		adminLoginMessageLabel.setText(error);
+		adminLoginMessageLabel.setTextFill(Color.RED);
+	}
+	
+	private void SetLoginMessageNotAdmin() {
+		adminLoginMessageLabel.setText("The Player is NOT an Admin");
+		adminLoginMessageLabel.setTextFill(Color.RED);
+		loadingLoginImage.setVisible(false);
+	}
+	
+	private void SetLoginMessageIsAdmin() {
+		adminLoginMessageLabel.setText("The Player is an Admin");
+		adminLoginMessageLabel.setTextFill(Color.GREEN);
+		loadingLoginImage.setVisible(false);
 	}
 	
 	public ImageView GetLoadingConnectionTestImage() {
@@ -138,7 +162,7 @@ public class LoginViewControl {
 	}
 	
 	/**
-	 * Hidge the Login stage
+	 * Hide the Login stage
 	 */
 	public void HideLoginStage() {
 		this.theLoginStage.hide();

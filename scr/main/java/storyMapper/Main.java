@@ -28,7 +28,7 @@ public class Main extends Application {
         theLoginControl.SetLoginViewControl(theLoginViewControl);
         theLoginStage.setTitle("Story Mapper");
         theLoginStage.setWidth(375);
-        theLoginStage.setHeight(450);
+        theLoginStage.setHeight(480);
         theLoginViewControl.LoadLoginView();
     }
 

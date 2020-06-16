@@ -48,6 +48,15 @@ public class LoginControl {
 		}
 	}
 	
+	public Player UserLoginPlayer(String host, String userName, String password, String dBName, String loginName, String loginPassword) {
+		BuildConnectionString(host, userName, password, dBName);
+		try {
+			return GetPlayer(loginName, loginPassword);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	/**
 	 * Builds the Connection string that the DB will use to access a DDB
 	 * @param hostName 
