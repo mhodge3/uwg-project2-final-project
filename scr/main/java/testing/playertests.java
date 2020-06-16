@@ -48,6 +48,16 @@ public class playertests {
 		assertEquals(true, testPlayerID.GetPlayerIsAdmin());
 	}
 	
+	/**
+	 * Tests the GetPlayerName Method and SetPlayerIsName Method
+	 * 
+	 */
+	@Test
+	public void testIsPlayerAdminShouldBeTom() {
+		Player testPlayerID = new Player();
+		testPlayerID.SetPlayerName("Tom");
+		assertEquals("Tom", testPlayerID.GetPlayerName());
+	}
 	
 	
 
