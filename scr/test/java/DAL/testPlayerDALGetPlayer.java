@@ -37,19 +37,19 @@ class testPlayerDALGetPlayer {
 		assertEquals(this.thePlayer, null);
 	}
 	
-	/*@Test
+	@Test
 	public void addAPlayerToDB() throws Exception {
 		assertTrue(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus,com", "USA"));
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	public void updateAPlayer() throws Exception {
 		Player oldPlayer = this.dal.GetPlayer("bogus", "test1234");
 		Player updatedPlayer = new Player("bogus", false, "USA", "bogus@newemail,com", "newpw");
 		this.dal.UpdatePlayer(oldPlayer, updatedPlayer);
 		oldPlayer = this.dal.GetPlayer("bogus", "newpw");
 		assertEquals(oldPlayer.GetPlayerPassword(), "newpw");
-	}*/
+	}
 	
 	@Test
 	public void deleteAPlayer() throws Exception {
