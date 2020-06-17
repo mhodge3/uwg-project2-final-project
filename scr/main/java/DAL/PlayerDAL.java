@@ -159,5 +159,25 @@ public class PlayerDAL {
         }
 		return success;
 	}
+	
+	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
+    	Boolean isAdmin = false;
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM `" + this.sqlAccess.GetTheDBName() + "`.`admins` "
+            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = \"" + thePlayer.GetPlayerId() + "\";";
+            // Result set get the result of the SQL query
+            ResultSet theResultSet = statement.executeQuery(query);
+            if (theResultSet.next() != false) {
+                isAdmin = true;
+            }
+        } catch (Exception e) {
+        }
+        finally {
+        	conn.close();
+        }
+        return isAdmin;
+    }
 
 }
