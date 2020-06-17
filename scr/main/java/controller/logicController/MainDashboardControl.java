@@ -1,6 +1,7 @@
-package controller;
+package controller.logicController;
 
 import DAL.MySQLAccess;
+import controller.viewController.LoginViewControl;
 import model.Player;
 
 /**

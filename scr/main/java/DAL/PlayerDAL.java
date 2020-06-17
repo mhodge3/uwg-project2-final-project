@@ -28,7 +28,6 @@ public class PlayerDAL {
 	 * @return the ArrayList of Users (players)
 	 * @throws SQLException
 	 */
-	@SuppressWarnings("unchecked")
 	public ArrayList<Player> GetPlayers() throws SQLException {
 		ArrayList<Player> thePlayerArrayList = new ArrayList<Player>();
         try {

@@ -1,8 +1,9 @@
-package controller;
+package controller.viewController;
 
 import java.io.IOException;
 
 import DAL.MySQLAccess;
+import controller.logicController.MainDashboardControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,12 +26,20 @@ public class MainDashboardViewControl {
 	private Stage theMainDashboardStage;
 	private Parent theMainDashboardParentView;
 	private Scene theMainDashboardScene;
+	
     private Parent theManagePlayersAndAdminsParentView;
     private Scene theManagePlayersAndAdminsScene;
+    private Parent theEditPlayersAndAdminsParentView;
+    private Scene theEditPlayersAndAdminsScene;
+    private Parent theCreatePlayersAndAdminsParentView;
+    private Scene theCreatePlayersAndAdminsScene;
+    
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
+    
     private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
+    
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
 	
@@ -42,9 +51,15 @@ public class MainDashboardViewControl {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
 		CreateMainDashboardScene();
+		
 		CreateManagePlayersAndAdminsrScene();
+		CreateEditPlayersAndAdminsrScene();
+		CreateCreatePlayersAndAdminsrScene();
+		
 		CreateManageItemsScene();
+		
 		CreateManageNPCCharactersScene();
+		
 		CreateManageQuestChainsScene();
 	} 
 	
@@ -56,39 +71,34 @@ public class MainDashboardViewControl {
 	}
 	
 	@FXML
-	private void handleManagePlayersAndAdminsButton(ActionEvent event) throws Exception
+	public void handleManagePlayersAndAdminsButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManagePlayersAndAdminsScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("managePlayersAndAdmins");
 	}
 	
 	@FXML
 	private void handleItemsButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageItemsScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageItems");
 	}
 	
 	@FXML
 	private void handleNPCCharactersButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageNPCCharactersScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageNPCCharacters");
 	}
 	
 	@FXML
 	private void handleQuestChainsButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageQuestChainsScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageQuestChains");
 	}
 	
 	/**
 	 * Loads the new MainDashboard when the dashboard is first accessed
 	 */
 	public void LoadMainDashboardView() {
-        theMainDashboardStage.setScene(theMainDashboardScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("mainDashboard");
 	}
 	
 	/**
@@ -105,8 +115,46 @@ public class MainDashboardViewControl {
 		theMainDashboardStage.hide();
 	}
 	
+	/**
+	 * Get the instance of the DB Connection for this run of the program
+	 * @return	The DbConnection instance
+	 */
 	public MySQLAccess GetDBConnection() {
 		return theMainDashbaordControl.GetDBConnection();
+	}
+	
+	/**
+	 * Sets the MainDashboard Stage Scene
+	 * @param theSceneNameToLoad	the String name of the scene to load
+	 */
+	public void SetMainDashboardStage(String theSceneNameToLoad) {
+		Scene theSceneToStage = null;
+		switch (theSceneNameToLoad) {
+			case "mainDashboard":
+				theSceneToStage = theMainDashboardScene;
+				break;
+			case "managePlayersAndAdmins":
+				theSceneToStage = theManagePlayersAndAdminsScene;
+				break;
+			case "editPlayersAndAdmins":
+				theSceneToStage = theEditPlayersAndAdminsScene;
+				break;
+			case "createPlayersAndAdmins":
+				theSceneToStage = theCreatePlayersAndAdminsScene;
+				break;
+			case "manageItems":
+				theSceneToStage = theManageItemsScene;
+				break;
+			case "manageNPCCharacters":
+				theSceneToStage = theManageNPCCharactersScene;
+				break;
+			case "manageQuestChains":
+				theSceneToStage = theManageQuestChainsScene;
+				break;
+			default: break;
+		}
+        theMainDashboardStage.setScene(theSceneToStage);
+        ShowMainDashboardView();
 	}
 	
 	private void CreateMainDashboardScene() {
@@ -120,8 +168,30 @@ public class MainDashboardViewControl {
         }
 	}
 	
+	private void CreateEditPlayersAndAdminsrScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditPlayersAndAdminsView.fxml"));
+        theFxmlLoader.setController(new EditPlayersAndAdminsViewControl(this));
+        try {
+        	theEditPlayersAndAdminsParentView = theFxmlLoader.load();
+        	theEditPlayersAndAdminsScene = new Scene(theEditPlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateCreatePlayersAndAdminsrScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreatePlayersAndAdminsView.fxml"));
+        theFxmlLoader.setController(new CreatePlayersAndAdminsViewControl(this));
+        try {
+        	theCreatePlayersAndAdminsParentView = theFxmlLoader.load();
+        	theCreatePlayersAndAdminsScene = new Scene(theCreatePlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
 	private void CreateManagePlayersAndAdminsrScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManagePlayersAndAdminsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManagePlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new ManagePlayersAndAdminsViewControl(this));
         try {
         	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
@@ -132,7 +202,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageItemsScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageItemsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageItemsView.fxml"));
         theFxmlLoader.setController(new ManageItemsViewControl(this));
         try {
         	theManageItemsParentView = theFxmlLoader.load();
@@ -143,7 +213,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageNPCCharactersScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageNPCCharactersView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageNPCCharactersView.fxml"));
         theFxmlLoader.setController(new ManageNPCCharactersViewControl(this));
         try {
         	theManageNPCCharactersParentView = theFxmlLoader.load();
@@ -154,7 +224,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageQuestChainsScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageQuestChainsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageQuestChainsView.fxml"));
         theFxmlLoader.setController(new ManageQuestChainsViewControl(this));
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();

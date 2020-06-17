@@ -1,4 +1,4 @@
-package controller;
+package controller.logicController;
 
 /**
  * Logic Control for Managing NPC Characters, Communicates between the View and DAL for this feature

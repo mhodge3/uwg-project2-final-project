@@ -1,13 +1,13 @@
-package controller;
+package controller.viewController;
 
 import javafx.fxml.FXML;
 
 /**
- * Provides the View Control Logic for the Manage Items View
+ * Provides the View Control Logic for the Managing Quest Chains View
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageItemsViewControl {
+public class ManageQuestChainsViewControl {
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
     
@@ -15,12 +15,12 @@ public class ManageItemsViewControl {
 	 * Constructor for this View Control
 	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
 	 */
-    public ManageItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    public ManageQuestChainsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     }
 	
 	@FXML
-	private void handleItemsBackButton() {
+	private void handleQuestChainsBackButton() {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
 }

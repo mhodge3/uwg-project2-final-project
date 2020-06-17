@@ -1,5 +1,6 @@
-package controller;
+package controller.viewController;
 
+import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -53,6 +54,16 @@ public class ManagePlayersAndAdminsViewControl {
 	
 	@FXML
 	private void handlePlayerAndAdminBackButton() {
-		theMainDashboardViewControl.LoadMainDashboardView();
+		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
+	}
+	
+	@FXML
+	private void handleEditSelectedUserButton() {
+		theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
+	}
+	
+	@FXML
+	private void handleCreateUserButton() {
+		theMainDashboardViewControl.SetMainDashboardStage("createPlayersAndAdmins");
 	}
 }

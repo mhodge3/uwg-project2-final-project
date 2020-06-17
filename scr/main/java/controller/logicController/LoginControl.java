@@ -1,9 +1,10 @@
-package controller;
+package controller.logicController;
 
 
 import DAL.LoginDAL;
 import DAL.MySQLAccess;
-import javafx.scene.paint.Color;
+import controller.viewController.LoginViewControl;
+import controller.viewController.MainDashboardViewControl;
 import javafx.stage.Stage;
 import model.Player;
 
