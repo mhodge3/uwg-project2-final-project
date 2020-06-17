@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="playerAndAdminVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="managePlayersAndAdminsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Player and Admin Mangagement">
          <font>
@@ -20,12 +20,12 @@
          <children>
             <HBox prefHeight="35.0" prefWidth="800.0">
                <children>
-                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="604.0" text="Existing User Accounts">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="590.0" text="Existing User Accounts">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="createNewUserButton" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Create New Player/Admin">
+                  <Button fx:id="createNewUserButton" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="Create New Player/Admin">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -36,17 +36,17 @@
                </padding>
             </HBox>
             <TableView fx:id="existingUserTableView" prefHeight="535.0" prefWidth="800.0">
-              <columns>
-                <TableColumn fx:id="userIDTableColumn" editable="false" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="userNameTableColumn" editable="false" prefWidth="270.0" text="Username" />
+               <columns>
+                  <TableColumn fx:id="userIDTableColumn" editable="false" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="userNameTableColumn" editable="false" prefWidth="270.0" text="Username" />
                   <TableColumn fx:id="userEmailTableColumn" editable="false" prefWidth="261.0" text="Email" />
                   <TableColumn fx:id="userCountryCodeTableColumn" editable="false" minWidth="0.0" prefWidth="139.0" text="Country Code" />
-              </columns>
+               </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />
                </VBox.margin>
             </TableView>
-            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="823.0">
                <children>
                   <HBox prefHeight="47.0" prefWidth="810.0">
                      <children>
@@ -55,7 +55,7 @@
                               <Insets bottom="20.0" left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="editSelectedUserButoon" mnemonicParsing="false" text="Edit Selected User">
+                        <Button fx:id="editSelectedUserButton" mnemonicParsing="false" onAction="#handleEditSelectedUserButton" text="Edit Selected User">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -73,6 +73,7 @@
                   <Insets right="10.0" />
                </opaqueInsets>
             </HBox>
-         </children></VBox>
+         </children>
+      </VBox>
    </children>
 </VBox>

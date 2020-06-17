@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,6 +54,11 @@ public class ManagePlayersAndAdminsViewControl {
 	
 	@FXML
 	private void handlePlayerAndAdminBackButton() {
-		theMainDashboardViewControl.LoadMainDashboardView();
+		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
+	}
+	
+	@FXML
+	private void handleEditSelectedUserButton() {
+		theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
 	}
 }

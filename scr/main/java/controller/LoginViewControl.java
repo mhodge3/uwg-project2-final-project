@@ -116,6 +116,7 @@ public class LoginViewControl {
 							}
 						} catch (Exception e) {
 
+							System.out.println(e);
 							Platform.runLater(() -> { SetLoginMessageError(e.getMessage()); });
 						}
 					});
