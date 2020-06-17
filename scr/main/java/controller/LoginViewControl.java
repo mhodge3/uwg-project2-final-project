@@ -115,8 +115,6 @@ public class LoginViewControl {
 								SetLoginMessageNotAdmin();;
 							}
 						} catch (Exception e) {
-
-							System.out.println(e);
 							Platform.runLater(() -> { SetLoginMessageError(e.getMessage()); });
 						}
 					});

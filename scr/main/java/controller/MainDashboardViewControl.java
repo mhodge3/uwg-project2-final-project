@@ -67,30 +67,26 @@ public class MainDashboardViewControl {
 	@FXML
 	private void handleItemsButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageItemsScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageItems");
 	}
 	
 	@FXML
 	private void handleNPCCharactersButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageNPCCharactersScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageNPCCharacters");
 	}
 	
 	@FXML
 	private void handleQuestChainsButton(ActionEvent event) throws Exception
 	{
-        theMainDashboardStage.setScene(theManageQuestChainsScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("manageQuestChains");
 	}
 	
 	/**
 	 * Loads the new MainDashboard when the dashboard is first accessed
 	 */
 	public void LoadMainDashboardView() {
-        theMainDashboardStage.setScene(theMainDashboardScene);
-        ShowMainDashboardView();
+		SetMainDashboardStage("mainDashboard");
 	}
 	
 	/**
@@ -122,6 +118,15 @@ public class MainDashboardViewControl {
 				break;
 			case "editPlayersAndAdmins":
 				theSceneToStage = theEditPlayersAndAdminsScene;
+				break;
+			case "manageItems":
+				theSceneToStage = theManageItemsScene;
+				break;
+			case "manageNPCCharacters":
+				theSceneToStage = theManageNPCCharactersScene;
+				break;
+			case "manageQuestChains":
+				theSceneToStage = theManageQuestChainsScene;
 				break;
 			default: break;
 		}
