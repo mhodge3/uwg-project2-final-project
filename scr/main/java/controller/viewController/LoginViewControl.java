@@ -1,8 +1,9 @@
-package controller;
+package controller.viewController;
 
 import java.io.IOException;
 
 import DAL.MySQLAccess;
+import controller.logicController.LoginControl;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

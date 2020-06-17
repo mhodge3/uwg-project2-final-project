@@ -1,4 +1,4 @@
-package controller;
+package controller.logicController;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

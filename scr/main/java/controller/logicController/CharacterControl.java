@@ -1,4 +1,4 @@
-package controller;
+package controller.logicController;
 
 public class CharacterControl {
 

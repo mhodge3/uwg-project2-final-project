@@ -1,5 +1,6 @@
-package controller;
+package controller.viewController;
 
+import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;

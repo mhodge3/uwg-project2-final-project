@@ -1,8 +1,8 @@
 package storyMapper;
 
 import DAL.MySQLAccess;
-import controller.LoginControl;
-import controller.LoginViewControl;
+import controller.logicController.LoginControl;
+import controller.viewController.LoginViewControl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
