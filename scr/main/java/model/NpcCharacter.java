@@ -26,6 +26,13 @@ public class NpcCharacter {
 	private DoubleProperty npcPosZ;
 	
 	/**
+	 * Constructor used for testing.
+	 */
+	public NpcCharacter() {
+		
+	}
+	
+	/**
 	 * Constructions the NpcCharacter
 	 * @param npcId
 	 * @param npcDescription
