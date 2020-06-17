@@ -26,14 +26,20 @@ public class MainDashboardViewControl {
 	private Stage theMainDashboardStage;
 	private Parent theMainDashboardParentView;
 	private Scene theMainDashboardScene;
+	
     private Parent theManagePlayersAndAdminsParentView;
     private Scene theManagePlayersAndAdminsScene;
     private Parent theEditPlayersAndAdminsParentView;
     private Scene theEditPlayersAndAdminsScene;
+    private Parent theCreatePlayersAndAdminsParentView;
+    private Scene theCreatePlayersAndAdminsScene;
+    
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
+    
     private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
+    
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
 	
@@ -45,10 +51,15 @@ public class MainDashboardViewControl {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
 		CreateMainDashboardScene();
+		
 		CreateManagePlayersAndAdminsrScene();
 		CreateEditPlayersAndAdminsrScene();
+		CreateCreatePlayersAndAdminsrScene();
+		
 		CreateManageItemsScene();
+		
 		CreateManageNPCCharactersScene();
+		
 		CreateManageQuestChainsScene();
 	} 
 	
@@ -120,6 +131,9 @@ public class MainDashboardViewControl {
 			case "editPlayersAndAdmins":
 				theSceneToStage = theEditPlayersAndAdminsScene;
 				break;
+			case "createPlayersAndAdmins":
+				theSceneToStage = theCreatePlayersAndAdminsScene;
+				break;
 			case "manageItems":
 				theSceneToStage = theManageItemsScene;
 				break;
@@ -152,6 +166,17 @@ public class MainDashboardViewControl {
         try {
         	theEditPlayersAndAdminsParentView = theFxmlLoader.load();
         	theEditPlayersAndAdminsScene = new Scene(theEditPlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateCreatePlayersAndAdminsrScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/CreatePlayersAndAdminsView.fxml"));
+        theFxmlLoader.setController(new CreatePlayersAndAdminsViewControl(this));
+        try {
+        	theCreatePlayersAndAdminsParentView = theFxmlLoader.load();
+        	theCreatePlayersAndAdminsScene = new Scene(theCreatePlayersAndAdminsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

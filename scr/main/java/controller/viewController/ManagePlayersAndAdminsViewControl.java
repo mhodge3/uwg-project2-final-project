@@ -62,4 +62,9 @@ public class ManagePlayersAndAdminsViewControl {
 	private void handleEditSelectedUserButton() {
 		theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
 	}
+	
+	@FXML
+	private void handleCreateUserButton() {
+		theMainDashboardViewControl.SetMainDashboardStage("createPlayersAndAdmins");
+	}
 }
