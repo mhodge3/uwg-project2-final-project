@@ -29,7 +29,7 @@ CREATE TABLE `admins` (
   `player_id` int NOT NULL,
   PRIMARY KEY (`admin_id`),
   UNIQUE KEY `admin_id_UNIQUE` (`admin_id`),
-  KEY `demo.fk_admin_player_id_idx` (`player_id`)
+  KEY `fk_admin_player_id_idx` (`player_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -60,9 +60,9 @@ CREATE TABLE `characters_npc` (
   `character_npc_pos_y` decimal(10,2) NOT NULL,
   `character_npc_pos_z` decimal(10,2) NOT NULL,
   PRIMARY KEY (`character_npc_id`),
-  UNIQUE KEY `demo.characters_npc_id_UNIQUE` (`character_npc_id`),
-  UNIQUE KEY `demo.characters_npc_name_UNIQUE` (`character_npc_name`),
-  UNIQUE KEY `demo.characters_npc_description_UNIQUE` (`character_npc_description`)
+  UNIQUE KEY `characters_npc_id_UNIQUE` (`character_npc_id`),
+  UNIQUE KEY `characters_npc_name_UNIQUE` (`character_npc_name`),
+  UNIQUE KEY `characters_npc_description_UNIQUE` (`character_npc_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -92,8 +92,8 @@ CREATE TABLE `items` (
   `is_implicit_item` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `item_id_UNIQUE` (`item_id`),
-  UNIQUE KEY `demo.item_name_UNIQUE` (`item_name`),
-  UNIQUE KEY `demo.item_description_UNIQUE` (`item_description`)
+  UNIQUE KEY `item_name_UNIQUE` (`item_name`),
+  UNIQUE KEY `item_description_UNIQUE` (`item_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -121,9 +121,9 @@ CREATE TABLE `players` (
   `player_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `player_country_code` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USA',
   PRIMARY KEY (`player_id`),
-  UNIQUE KEY `demo.players_id_UNIQUE` (`player_id`),
-  UNIQUE KEY `demo.players_name_UNIQUE` (`player_name`),
-  UNIQUE KEY `demo.player_email_UNIQUE` (`player_email`)
+  UNIQUE KEY `players_id_UNIQUE` (`player_id`),
+  UNIQUE KEY `players_name_UNIQUE` (`player_name`),
+  UNIQUE KEY `player_email_UNIQUE` (`player_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
