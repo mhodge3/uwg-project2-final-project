@@ -115,10 +115,18 @@ public class MainDashboardViewControl {
 		theMainDashboardStage.hide();
 	}
 	
+	/**
+	 * Get the instance of the DB Connection for this run of the program
+	 * @return	The DbConnection instance
+	 */
 	public MySQLAccess GetDBConnection() {
 		return theMainDashbaordControl.GetDBConnection();
 	}
 	
+	/**
+	 * Sets the MainDashboard Stage Scene
+	 * @param theSceneNameToLoad	the String name of the scene to load
+	 */
 	public void SetMainDashboardStage(String theSceneNameToLoad) {
 		Scene theSceneToStage = null;
 		switch (theSceneNameToLoad) {

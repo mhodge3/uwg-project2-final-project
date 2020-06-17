@@ -3,6 +3,11 @@ package controller.viewController;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 
+/**
+ * The View Control for the Create Player and Admins scene.
+ * @author Matthew Hodge
+ * @version 6.17.2020
+ */
 public class CreatePlayersAndAdminsViewControl {
 
 	private MainDashboardViewControl theMainDashboardViewControl;

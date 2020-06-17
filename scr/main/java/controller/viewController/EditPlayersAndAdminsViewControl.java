@@ -3,6 +3,11 @@ package controller.viewController;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 
+/**
+ * The View Control for the Edit Players and Admins scene
+ * @author Matthew Hodge
+ * @version 6.17.2020
+ */
 public class EditPlayersAndAdminsViewControl {
 
 	private MainDashboardViewControl theMainDashboardViewControl;
