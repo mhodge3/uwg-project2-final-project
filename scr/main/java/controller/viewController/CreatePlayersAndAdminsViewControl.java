@@ -1,7 +1,12 @@
 package controller.viewController;
 
+import java.sql.SQLException;
+
+import controller.logicController.CreatePlayersAndAdminsControl;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 
 /**
  * The View Control for the Create Player and Admins scene.
@@ -9,9 +14,21 @@ import javafx.fxml.FXML;
  * @version 6.17.2020
  */
 public class CreatePlayersAndAdminsViewControl {
+	@FXML
+	private TextField createPlayerUserNameTextBox;
+	@FXML
+	private TextField createPlayerPasswordTextBox;
+	@FXML
+	private TextField createPlayerPasswordConfirmTextBox;
+	@FXML
+	private TextField createPlayerEmailTextBox;
+	@FXML
+	private TextField createPlayerUserCountryCodeTextBox;
+	@FXML
+	private CheckBox createPlayerAsAdminCheckBox;
 
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private ManagePlayersAndAdminsControl theManagePlayersAndAdminsControl;
+	private CreatePlayersAndAdminsControl theCreatePlayersAndAdminsControl;
     
 	/**
 	 * Constructor for this View Control
@@ -19,11 +36,25 @@ public class CreatePlayersAndAdminsViewControl {
 	 */
     public CreatePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
 	@FXML
-	private void handlePlayerAndAdminEditCanelButton() {
+	private void handlePlayerAndAdminCreateCanelButton() {
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+	}
+    
+	@FXML
+	private void handlePlayerAndAdminCreateButton() throws SQLException {
+		String userCreationError = theCreatePlayersAndAdminsControl.CreatePlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText());
+		if (!userCreationError.isEmpty()) {
+			return;
+		}
+		if (createPlayerAsAdminCheckBox.isSelected()) {
+			userCreationError = null;
+		}
+		if (userCreationError != null) {
+			theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+		}
 	}
 }
