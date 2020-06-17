@@ -161,7 +161,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateEditPlayersAndAdminsrScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/EditPlayersAndAdminsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditPlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new EditPlayersAndAdminsViewControl(this));
         try {
         	theEditPlayersAndAdminsParentView = theFxmlLoader.load();
@@ -172,7 +172,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateCreatePlayersAndAdminsrScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/CreatePlayersAndAdminsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreatePlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new CreatePlayersAndAdminsViewControl(this));
         try {
         	theCreatePlayersAndAdminsParentView = theFxmlLoader.load();
@@ -183,7 +183,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManagePlayersAndAdminsrScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManagePlayersAndAdminsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManagePlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new ManagePlayersAndAdminsViewControl(this));
         try {
         	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
@@ -194,7 +194,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageItemsScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageItemsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageItemsView.fxml"));
         theFxmlLoader.setController(new ManageItemsViewControl(this));
         try {
         	theManageItemsParentView = theFxmlLoader.load();
@@ -205,7 +205,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageNPCCharactersScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageNPCCharactersView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageNPCCharactersView.fxml"));
         theFxmlLoader.setController(new ManageNPCCharactersViewControl(this));
         try {
         	theManageNPCCharactersParentView = theFxmlLoader.load();
@@ -216,7 +216,7 @@ public class MainDashboardViewControl {
 	}
 	
 	private void CreateManageQuestChainsScene() {
-        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageQuestChainsView.fxml"));
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManageQuestChainsView.fxml"));
         theFxmlLoader.setController(new ManageQuestChainsViewControl(this));
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();
