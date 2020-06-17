@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import model.Player;
 
-class testPlayerDALGetPlayer {
+class testPlayerDAL {
 	
 	Player thePlayer = new Player();
 	MySQLAccess access = new MySQLAccess();
@@ -33,15 +33,20 @@ class testPlayerDALGetPlayer {
 	}
 	
 	@Test
-	public void retrievesNonPlayer() throws Exception {
+	public void retrievesNonPlayerShouldBeNull() throws Exception {
 		this.thePlayer = this.dal.GetPlayer("nonPlayer", "test1234");
 		assertEquals(this.thePlayer, null);
 	}
 	
 	@Test
-	public void addAPlayerToDB() throws Exception {
+	public void addAPlayerToDBShouldBeTrueIfAdded() throws Exception {
 		assertTrue(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus,com", "USA"));
 	}
+	
+	/*@Test
+	public void addADuplicatePlayerToDBShouldBefalse() throws Exception {
+		assertFalse(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus,com", "USA"));
+	}*/
 	
 	@Test
 	public void updateAPlayer() throws Exception {
@@ -58,6 +63,14 @@ class testPlayerDALGetPlayer {
 		this.dal.DeletePlayer(thePlayer);
 		this.thePlayer = this.dal.GetPlayer("bogus", "newpw");
 		assertEquals(this.thePlayer, null);
+	}
+	
+	@Test
+	public void isPlayerAnAdmin() throws Exception {
+		Player player = this.dal.GetPlayer("player", "test1234");
+		Player admin = this.dal.GetPlayer("admin", "test1234");
+		assertFalse(this.dal.IsPlayerAdmin(player));
+		assertTrue(this.dal.IsPlayerAdmin(admin));
 	}
 
 }

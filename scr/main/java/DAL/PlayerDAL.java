@@ -169,9 +169,8 @@ public class PlayerDAL {
             Statement statement = this.conn.createStatement();
             String query = "SELECT * FROM `" + this.dataBase + "`.`admins` "
             		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = " + player.GetPlayerId() + "\";";
-            // Result set get the result of the SQL query
             ResultSet results = statement.executeQuery(query);
-            if (results.next() != false) {
+            if (results != null) {
                 isAdmin = true;
             }
         } catch (Exception e) {
@@ -181,5 +180,6 @@ public class PlayerDAL {
         }
         return isAdmin;
     }
+	
 
 }
