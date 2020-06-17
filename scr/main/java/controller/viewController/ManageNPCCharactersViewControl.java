@@ -1,5 +1,7 @@
 package controller.viewController;
 
+import java.sql.SQLException;
+
 import javafx.fxml.FXML;
 
 /**
@@ -20,7 +22,7 @@ public class ManageNPCCharactersViewControl {
     }
 	
 	@FXML
-	private void handleNPCCharacterBackButton() {
+	private void handleNPCCharacterBackButton() throws SQLException {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
 }

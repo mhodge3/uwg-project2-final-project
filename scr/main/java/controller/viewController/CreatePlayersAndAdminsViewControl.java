@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import controller.logicController.CreatePlayersAndAdminsControl;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
@@ -40,21 +42,37 @@ public class CreatePlayersAndAdminsViewControl {
     }
     
 	@FXML
-	private void handlePlayerAndAdminCreateCanelButton() {
+	private void handlePlayerAndAdminCreateCanelButton() throws SQLException {
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
     
 	@FXML
 	private void handlePlayerAndAdminCreateButton() throws SQLException {
 		String userCreationError = theCreatePlayersAndAdminsControl.CreatePlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText());
-		if (!userCreationError.isEmpty()) {
+		if (userCreationError != null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText("Error Creating the new User");
+			alert.setContentText(userCreationError);
+			alert.showAndWait();
 			return;
 		}
 		if (createPlayerAsAdminCheckBox.isSelected()) {
-			userCreationError = null;
+			userCreationError = theCreatePlayersAndAdminsControl.CreateAdmin(theCreatePlayersAndAdminsControl.GetLastInsertedId());
 		}
 		if (userCreationError != null) {
-			theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText("Error Making New User an Admin");
+			alert.setContentText(userCreationError);
+			alert.showAndWait();
+			return;
 		}
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("User Account Creation");
+		alert.setHeaderText("Account Creation Status");
+		alert.setContentText("The User account was successfully created");
+		alert.showAndWait();
+		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
 }
