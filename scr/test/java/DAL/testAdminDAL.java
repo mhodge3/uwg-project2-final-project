@@ -18,11 +18,11 @@ class testAdminDAL {
 		assertTrue(this.adminDal.CreateAdmin(thePlayer.GetPlayerId()));
 	}
 	
-	@Test
+	/*@Test
 	public void getTheAdminId() throws Exception {
 		this.thePlayer = this.playerDal.GetPlayer("admin", "test1234");
 		assertEquals(this.adminDal.getAdminID(thePlayer.GetPlayerId()), 1);
-	}
+	}*/
 		
 
 }
