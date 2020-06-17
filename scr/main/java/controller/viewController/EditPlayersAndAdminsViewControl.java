@@ -1,5 +1,7 @@
 package controller.viewController;
 
+import java.sql.SQLException;
+
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 
@@ -23,7 +25,7 @@ public class EditPlayersAndAdminsViewControl {
     }
     
 	@FXML
-	private void handlePlayerAndAdminEditBackButton() {
+	private void handlePlayerAndAdminEditBackButton() throws SQLException {
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
 }

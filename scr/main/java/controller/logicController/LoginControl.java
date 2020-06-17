@@ -1,6 +1,8 @@
 package controller.logicController;
 
 
+import java.sql.SQLException;
+
 import DAL.LoginDAL;
 import DAL.MySQLAccess;
 import controller.viewController.LoginViewControl;
@@ -98,8 +100,9 @@ public class LoginControl {
 	 * Set's up the initial main dashboard, and show's it if it already exists
 	 * @param theAdminPlayer the validated Admin Player object
 	 * @param theMainDashboardStage
+	 * @throws SQLException 
 	 */
-	public void SetUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) {
+	public void SetUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) throws SQLException {
 		if(theMainDashboardControl == null) {
 			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
 			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, theMainDashboardStage);
