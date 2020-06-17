@@ -9,6 +9,7 @@ import model.Player;
 class testPlayerDALGetPlayer {
 	
 	Player thePlayer = new Player();
+	MySQLAccess access = new MySQLAccess();
 	PlayerDAL dal = new PlayerDAL(new MySQLAccess());
 	
 	@Test
@@ -20,7 +21,7 @@ class testPlayerDALGetPlayer {
 		assertEquals(this.thePlayer.GetPlayerEmail(), "admin@demo.com");
 		assertEquals(this.thePlayer.GetPlayerCountryCode(), "USA");
 	}
-	
+		
 	@Test
 	public void retrievesPlayerWithNamePlayerPasswordtest1234() throws Exception {
 		this.thePlayer = this.dal.GetPlayer("player", "test1234");

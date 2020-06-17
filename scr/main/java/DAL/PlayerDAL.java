@@ -13,12 +13,14 @@ import model.Player;
 public class PlayerDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
+	private String dataBase;
 	
 	/**
 	 * Creates a PlayerDAL object to be used by the controllers
 	 */
 	public PlayerDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
+		this.dataBase = this.sqlAccess.GetTheDBName();
 	}
 	
 	/**
@@ -32,7 +34,7 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + sqlAccess.GetTheDBName() + "`.`players`;";
+            String query = "SELECT * FROM `" + this.dataBase + "`.`players`;";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
                 Player thisPlayer = new Player();
@@ -65,9 +67,9 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `rpg_story_mapper_db`.`players` "
-            		+ "WHERE `rpg_story_mapper_db`.`players`.`player_name` = \"" + playerName + "\""
-            				+ "AND `rpg_story_mapper_db`.`players`.`player_password` = \"" + playerPassword + "\";";
+            String query = "SELECT * FROM " + this.dataBase + ".players "
+            		+ "WHERE " + this.dataBase + ".players.player_name = \"" + playerName + "\""
+            				+ " AND " + this.dataBase + ".players.player_password = \"" + playerPassword + "\";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 player = new Player();
@@ -90,7 +92,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO `rpg_story_mapper_db`.`players`\r\n" + 
+			String query = "INSERT INTO " + this.dataBase + ".`players`" + 
 					"(`player_name`,`player_password`,`player_email`,`player_country_code`)" + 
 					"VALUES (?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -114,7 +116,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE `rpg_story_mapper_db`.`players`" +
+			String query = "UPDATE " + this.dataBase + ".`players`" +
 					"SET " +
 					"`player_name` = ?, " +
 					"`player_password` = ?, " +
@@ -144,7 +146,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM `rpg_story_mapper_db`.`players` " + 
+			String query = "DELETE FROM " + this.dataBase + ".`players` " + 
 					"WHERE `player_id` = ?";
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(player.GetPlayerId()));
@@ -160,16 +162,16 @@ public class PlayerDAL {
 		return success;
 	}
 	
-	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
+	public Boolean IsPlayerAdmin(Player player) throws Exception {
     	Boolean isAdmin = false;
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + this.sqlAccess.GetTheDBName() + "`.`admins` "
-            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = \"" + thePlayer.GetPlayerId() + "\";";
+            String query = "SELECT * FROM `" + this.dataBase + "`.`admins` "
+            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = " + player.GetPlayerId() + "\";";
             // Result set get the result of the SQL query
-            ResultSet theResultSet = statement.executeQuery(query);
-            if (theResultSet.next() != false) {
+            ResultSet results = statement.executeQuery(query);
+            if (results.next() != false) {
                 isAdmin = true;
             }
         } catch (Exception e) {
