@@ -41,8 +41,21 @@ public class CreatePlayersAndAdminsViewControl {
     	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
+    /**
+     * Clear Form for next new Entry
+     */
+    private void ResetCreatePlayerAdminView() {
+    	createPlayerUserNameTextBox.setText("");
+    	createPlayerPasswordTextBox.setText("");
+    	createPlayerPasswordConfirmTextBox.setText("");
+    	createPlayerEmailTextBox.setText("");
+    	createPlayerUserCountryCodeTextBox.setText("");
+    	createPlayerAsAdminCheckBox.setSelected(false);
+    }
+    
 	@FXML
 	private void handlePlayerAndAdminCreateCanelButton() throws SQLException {
+		ResetCreatePlayerAdminView();
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
     
@@ -73,6 +86,7 @@ public class CreatePlayersAndAdminsViewControl {
 		alert.setHeaderText("Account Creation Status");
 		alert.setContentText("The User account was successfully created");
 		alert.showAndWait();
+		ResetCreatePlayerAdminView();
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
 }
