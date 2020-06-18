@@ -20,6 +20,8 @@ public class ManagePlayersAndAdminsViewControl {
 	@FXML
 	private TableColumn<Player, Integer> userIDTableColumn;
 	@FXML
+	private TableColumn<Player, Boolean> userIsAdminTableColumn;
+	@FXML
 	private TableColumn<Player, String> userNameTableColumn;
 	@FXML
 	private TableColumn<Player, String> userEmailTableColumn;
@@ -32,6 +34,7 @@ public class ManagePlayersAndAdminsViewControl {
 	@FXML
     public void initialize() throws SQLException {
 		userIDTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("playerId"));
+		userIsAdminTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("playerIsAdmin"));
 		userNameTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerName"));
 		userEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerEmail"));
 		userCountryCodeTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerCountryCode"));

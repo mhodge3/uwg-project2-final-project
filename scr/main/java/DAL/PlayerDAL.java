@@ -1,5 +1,7 @@
 package DAL;
 
+import static org.junit.Assert.assertFalse;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -44,6 +46,7 @@ public class PlayerDAL {
                 thisPlayer.SetPlayerPassword(results.getString("player_password"));
                 thisPlayer.SetPlayerEmail(results.getString("player_email"));
                 thisPlayer.SetPlayerCountryCode(results.getNString("player_country_code"));
+                thisPlayer.SetPlayerIsAdmin(IsPlayerAdmin(thisPlayer));
                 thePlayerArrayList.add(thisPlayer);
             }
         } catch (Exception e) {
@@ -79,6 +82,7 @@ public class PlayerDAL {
                 player.SetPlayerPassword(results.getString("player_password"));
                 player.SetPlayerEmail(results.getString("player_email"));
                 player.SetPlayerCountryCode(results.getNString("player_country_code"));
+                player.SetPlayerIsAdmin(IsPlayerAdmin(player));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());

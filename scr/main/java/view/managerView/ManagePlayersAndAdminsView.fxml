@@ -38,9 +38,10 @@
             <TableView fx:id="existingUserTableView" prefHeight="535.0" prefWidth="800.0">
                <columns>
                   <TableColumn fx:id="userIDTableColumn" editable="false" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="userNameTableColumn" editable="false" prefWidth="270.0" text="Username" />
-                  <TableColumn fx:id="userEmailTableColumn" editable="false" prefWidth="261.0" text="Email" />
-                  <TableColumn fx:id="userCountryCodeTableColumn" editable="false" minWidth="0.0" prefWidth="139.0" text="Country Code" />
+                  <TableColumn fx:id="userIsAdminTableColumn" editable="false" prefWidth="75.0" text="Is Admin" />
+                  <TableColumn fx:id="userNameTableColumn" editable="false" prefWidth="203.0" text="Username" />
+                  <TableColumn fx:id="userEmailTableColumn" editable="false" prefWidth="258.0" text="Email" />
+                  <TableColumn fx:id="userCountryCodeTableColumn" editable="false" minWidth="0.0" prefWidth="146.0" text="Country Code" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />

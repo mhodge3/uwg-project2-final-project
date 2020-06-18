@@ -3,7 +3,9 @@
  */
 package model;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -16,7 +18,7 @@ import javafx.beans.property.StringProperty;
 public class Player {
 	private IntegerProperty playerId;
 	private StringProperty playerName;
-	private Boolean playerIsAdmin;
+	private BooleanProperty playerIsAdmin;
 	private StringProperty playerCountryCode;
 	private StringProperty playerEmail;
 	private String playerPassword;
@@ -40,7 +42,7 @@ public class Player {
 	public Player(int playerId, String playerName, Boolean playerIsAdmin, String playerCountryCode, String playerEmail, String playerPassword) {
 		this.playerId = new SimpleIntegerProperty(playerId);
 		this.playerName = new SimpleStringProperty(playerName);
-		this.playerIsAdmin = playerIsAdmin;
+		this.playerIsAdmin = new SimpleBooleanProperty(playerIsAdmin);
 		this.playerCountryCode = new SimpleStringProperty(playerCountryCode);
 		this.playerEmail = new SimpleStringProperty(playerEmail);
 		this.playerPassword = playerPassword;
@@ -75,7 +77,7 @@ public class Player {
 	 * @return playerIsAdmin
 	 */
 	public Boolean GetPlayerIsAdmin() {
-		return playerIsAdmin;
+		return playerIsAdmin.getValue();
 	}
 	
 	/**
@@ -83,7 +85,15 @@ public class Player {
 	 * @param playerIsAdmin
 	 */
 	public void SetPlayerIsAdmin(Boolean playerIsAdmin) {
-		this.playerIsAdmin = playerIsAdmin;
+		this.playerIsAdmin = new SimpleBooleanProperty(playerIsAdmin);
+	}
+
+	/**
+	 * Gets the playerIsAdmin property
+	 * @return Property for TableView
+	 */
+	public final BooleanProperty playerIsAdminProperty() {
+	   return playerIsAdmin;
 	}
 	
 	/**
