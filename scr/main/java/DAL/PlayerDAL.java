@@ -14,12 +14,14 @@ public class PlayerDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
 	private String dataBase;
+	private AdminDAL adminDAL;
 	
 	/**
 	 * Creates a PlayerDAL object to be used by the controllers
 	 */
 	public PlayerDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
+		this.adminDAL = new AdminDAL(theDBConnection);
 		this.dataBase = this.sqlAccess.GetTheDBName();
 	}
 	
@@ -87,7 +89,7 @@ public class PlayerDAL {
         return player;
     }
 	
-	public boolean CreatePlayer(String playerName, String playerPassword, String email, String countryCode) throws SQLException {
+	public boolean CreatePlayer(String playerName, String playerPassword, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
@@ -101,6 +103,24 @@ public class PlayerDAL {
 			  preparedStmt.setString (4, countryCode);
 			  
 		      preparedStmt.execute();
+		      if (makeAdmin) {
+		    	  try {
+			    	  query = "SELECT LAST_INSERT_ID();";
+			    	  PreparedStatement getLastInsertId = conn.prepareStatement(query);
+			    	  ResultSet results = getLastInsertId.executeQuery();
+			    	  Integer lastId = 0;
+			    	  if (results.next())
+			    	  {
+			    		  lastId = results.getInt("last_insert_id()");            
+			    	  }
+			    	  if (lastId > 0) {
+			    		  adminDAL.CreateAdmin(lastId);
+			    	  }
+		    	  }
+		    	  catch (Exception e) {
+		          	System.err.println(e.getMessage());
+		    	  }
+		      }
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());

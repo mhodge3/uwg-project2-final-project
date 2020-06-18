@@ -47,14 +47,14 @@ public class AdminDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.dataBase + ".`admins`" + 
+			String query = "INSERT INTO `" + this.dataBase + "`.`admins`" + 
 					"(`player_id`)" + 
 					"VALUES (?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			  preparedStmt.setString (1, String.valueOf(playerId));
+			 preparedStmt.setString (1, String.valueOf(playerId));
 			  			  
-		      preparedStmt.execute();
-		      success = true;
+		     preparedStmt.execute();
+		     success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }

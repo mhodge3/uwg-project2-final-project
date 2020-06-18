@@ -61,22 +61,11 @@ public class CreatePlayersAndAdminsViewControl {
     
 	@FXML
 	private void handlePlayerAndAdminCreateButton() throws SQLException {
-		String userCreationError = theCreatePlayersAndAdminsControl.CreatePlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText());
+		String userCreationError = theCreatePlayersAndAdminsControl.CreatePlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText(), createPlayerAsAdminCheckBox.isSelected());
 		if (userCreationError != null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
 			alert.setHeaderText("Error Creating the new User");
-			alert.setContentText(userCreationError);
-			alert.showAndWait();
-			return;
-		}
-		if (createPlayerAsAdminCheckBox.isSelected()) {
-			userCreationError = theCreatePlayersAndAdminsControl.CreateAdmin(theCreatePlayersAndAdminsControl.GetLastInsertedId());
-		}
-		if (userCreationError != null) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Dialog");
-			alert.setHeaderText("Error Making New User an Admin");
 			alert.setContentText(userCreationError);
 			alert.showAndWait();
 			return;

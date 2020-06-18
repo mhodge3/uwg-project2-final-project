@@ -40,7 +40,7 @@ class testPlayerDAL {
 	
 	@Test
 	public void addAPlayerToDBShouldBeTrueIfAdded() throws Exception {
-		assertTrue(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus.com", "USA"));
+		assertTrue(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus.com", "USA", false));
 		this.thePlayer = this.dal.GetPlayer("bogus", "test1234");
 		assertEquals(this.thePlayer.GetPlayerName(), "bogus");
 		assertEquals(this.thePlayer.GetPlayerPassword(), "test1234");

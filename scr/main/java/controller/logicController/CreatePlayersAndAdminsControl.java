@@ -15,7 +15,7 @@ public class CreatePlayersAndAdminsControl {
 		this.adminDAL = new AdminDAL(theDBConnection);
 	}
 	
-	public String CreatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode) throws SQLException {
+	public String CreatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -32,7 +32,7 @@ public class CreatePlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.CreatePlayer(playerName, playerPassword, email, countryCode)) {
+		if (playerDAL.CreatePlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
 			return null;
 		}
 		else {
