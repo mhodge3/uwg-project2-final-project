@@ -47,7 +47,7 @@ public class NpcCharacter {
 	public NpcCharacter(int npcId, String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ) {
 		this.npcId = new SimpleIntegerProperty(npcId);
 		this.npcDescprition = new SimpleStringProperty(npcDescription);
-		this.npcDescprition = new SimpleStringProperty(npcName);
+		this.npcName = new SimpleStringProperty(npcName);
 		this.npcType = new SimpleIntegerProperty(npcType);
 		this.npcFaction = new SimpleIntegerProperty(npcFaction);
 		this.npcPosX = new SimpleDoubleProperty(npcPosX);
