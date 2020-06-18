@@ -2,6 +2,8 @@ package DAL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import model.NpcCharacter;
@@ -35,6 +37,13 @@ class testNpcCharacterDAL {
 		assertEquals(this.character.GetNpcPosX(), 0);
 		assertEquals(this.character.GetNpcPosY(), 0);
 		assertEquals(this.character.GetNpcPosZ(), 0);
+	}
+	
+	@Test
+	public void retrievesAllNpcCharactersFromDB() throws Exception {
+		ArrayList<NpcCharacter> allNpc = this.dal.GetAllNpc();
+		assertEquals(allNpc.get(0).GetNpcName(), "Sum Guy");
+		assertEquals(allNpc.get(1).GetNpcName(), "Sum Gal");
 	}
 }
 

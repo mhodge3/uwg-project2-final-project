@@ -1,6 +1,7 @@
 package DAL;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import model.Admin;
 import model.NpcCharacter;
@@ -26,16 +27,16 @@ public class NpcCharacterDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT `characters_npc`.`character_npc_id`, " +
-            	    "`characters_npc`.`character_npc_name`, " +
-            	    "`characters_npc`.`character_npc_description`, " +
-            	    "`characters_npc`.`character_npc_type`, " + 
-            	    "`characters_npc`.`character_npc_faction`, " +
-            	    "`characters_npc`.`character_npc_pos_x`, " +
-            	    "`characters_npc`.`character_npc_pos_y`, " +
-            	    "`characters_npc`.`character_npc_pos_z` " +
-            	"FROM `rpg_story_mapper_db`.`characters_npc` " +
-            	"WHERE " + this.dataBase + ".characters_npc.character_npc_id = \"" + String.valueOf(npcId) + "\"";
+            String query = "SELECT characters_npc.character_npc_id, " +
+            	    "characters_npc.character_npc_name, " +
+            	    "characters_npc.character_npc_description, " +
+            	    "characters_npc.character_npc_type, " + 
+            	    "characters_npc.character_npc_faction, " +
+            	    "characters_npc.character_npc_pos_x, " +
+            	    "characters_npc.character_npc_pos_y, " +
+            	    "characters_npc.character_npc_pos_z " +
+            	"FROM " + this.dataBase + ".characters_npc " +
+            	"WHERE " + this.dataBase + ".characters_npc.character_npc_id = " + String.valueOf(npcId);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 npc = new NpcCharacter();
@@ -55,6 +56,43 @@ public class NpcCharacterDAL {
         	conn.close();
         }
         return npc;
+    }
+	
+	public ArrayList<NpcCharacter> GetAllNpc() throws SQLException {
+		
+		ArrayList<NpcCharacter> allNpc = new ArrayList<NpcCharacter>();
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT characters_npc.character_npc_id, " +
+            	    "characters_npc.character_npc_name, " +
+            	    "characters_npc.character_npc_description, " +
+            	    "characters_npc.character_npc_type, " + 
+            	    "characters_npc.character_npc_faction, " +
+            	    "characters_npc.character_npc_pos_x, " +
+            	    "characters_npc.character_npc_pos_y, " +
+            	    "characters_npc.character_npc_pos_z " +
+            	"FROM " + this.dataBase + ".characters_npc ";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next() != false) {
+            	NpcCharacter npc = new NpcCharacter();
+                npc.SetNpcId(Integer.parseInt(results.getString("character_npc_id")));
+                npc.SetNpcName(results.getString("character_npc_name"));
+                npc.SetNpcDescprition(results.getString("character_npc_description"));
+                npc.SetNpcType(Integer.parseInt(results.getString("character_npc_type")));
+                npc.SetNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
+                npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
+                npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
+                npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                allNpc.add(npc);
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+        return allNpc;
     }
 
 }
