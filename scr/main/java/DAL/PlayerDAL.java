@@ -15,7 +15,6 @@ import model.Player;
 public class PlayerDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
-	private String dataBase;
 	private AdminDAL adminDAL;
 	
 	/**
@@ -24,7 +23,6 @@ public class PlayerDAL {
 	public PlayerDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
 		this.adminDAL = new AdminDAL(theDBConnection);
-		this.dataBase = this.sqlAccess.GetTheDBName();
 	}
 	
 	/**
@@ -37,7 +35,7 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + this.dataBase + "`.`players`;";
+            String query = "SELECT * FROM `" + this.sqlAccess.GetTheDBName() + "`.`players`;";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
                 Player thisPlayer = new Player();
@@ -71,9 +69,9 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.dataBase + ".players "
-            		+ "WHERE " + this.dataBase + ".players.player_name = \"" + playerName + "\""
-            				+ " AND " + this.dataBase + ".players.player_password = \"" + playerPassword + "\";";
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".players "
+            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".players.player_name = \"" + playerName + "\""
+            				+ " AND " + this.sqlAccess.GetTheDBName() + ".players.player_password = \"" + playerPassword + "\";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 player = new Player();
@@ -104,8 +102,8 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.dataBase + ".players "
-            		+ "WHERE " + this.dataBase + ".players.player_id = " + playerId + ";";
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".players "
+            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".players.player_id = " + playerId + ";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 player = new Player();
@@ -129,7 +127,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.dataBase + ".`players`" + 
+			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".`players`" + 
 					"(`player_name`,`player_password`,`player_email`,`player_country_code`)" + 
 					"VALUES (?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -173,17 +171,23 @@ public class PlayerDAL {
 	}
 	
 	private void MakeAdmin() {
+		MakeAdmin(0);
+	}
+	
+	private void MakeAdmin(int idToMakeAdmin) {
 		try {
-			String query = "SELECT LAST_INSERT_ID();";
-			PreparedStatement getLastInsertId = conn.prepareStatement(query);
-			ResultSet results = getLastInsertId.executeQuery();
-			Integer lastId = 0;
-			if (results.next())
-			{
-				lastId = results.getInt("last_insert_id()");            
+			Integer theId = idToMakeAdmin;
+			if (theId == 0) {
+				String query = "SELECT LAST_INSERT_ID();";
+				PreparedStatement getLastInsertId = conn.prepareStatement(query);
+				ResultSet results = getLastInsertId.executeQuery();
+				if (results.next())
+				{
+					theId = results.getInt("last_insert_id()");            
+				}
 			}
-			if (lastId > 0) {
-				adminDAL.CreateAdmin(lastId);
+			if (theId > 0) {
+				adminDAL.CreateAdmin(theId);
 			}
 		}
 		catch (Exception e) {
@@ -195,7 +199,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.dataBase + ".`players`" +
+			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".`players`" +
 					"SET " +
 					"player_name = ?, " +
 					"`player_password` = ?, " +
@@ -212,7 +216,7 @@ public class PlayerDAL {
 
 		      preparedStmt.execute();
 			if (makeAdmin) {
-				MakeAdmin();
+				MakeAdmin(oldPlayer.GetPlayerId());
 			}
 		      success = true;
 		} catch (Exception e) {
@@ -228,7 +232,7 @@ public class PlayerDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.dataBase + ".`players` " + 
+			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".`players` " + 
 					"WHERE `player_id` = ?";
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(player.GetPlayerId()));
@@ -249,7 +253,7 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.dataBase + ".admins "
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".admins "
             		+ "WHERE player_id = \"" + player.GetPlayerId() + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next()) {

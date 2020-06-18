@@ -13,11 +13,9 @@ import model.Player;
 public class AdminDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
-	private String dataBase;
 	
 	public AdminDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
-		this.dataBase = this.sqlAccess.GetTheDBName();
 		
 	}
 
@@ -26,7 +24,7 @@ public class AdminDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + this.dataBase + "`.`admins` "
+            String query = "SELECT * FROM `" + this.sqlAccess.GetTheDBName() + "`.`admins` "
             		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = "+ String.valueOf(playerID);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
@@ -47,7 +45,7 @@ public class AdminDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO `" + this.dataBase + "`.`admins`" + 
+			String query = "INSERT INTO `" + this.sqlAccess.GetTheDBName() + "`.`admins`" + 
 					"(`player_id`)" + 
 					"VALUES (?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);

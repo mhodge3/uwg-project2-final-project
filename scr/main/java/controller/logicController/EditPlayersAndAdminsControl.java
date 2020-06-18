@@ -28,7 +28,7 @@ public class EditPlayersAndAdminsControl {
 		return selectedPlayer;
 	}
 	
-	public String UpdatePlayer(int playerId, String playerName, Boolean playerIsAdmin, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
+	public String UpdatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -45,7 +45,7 @@ public class EditPlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.UpdatePlayer(selectedPlayer, new Player(playerId, playerName, playerIsAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
+		if (playerDAL.UpdatePlayer(selectedPlayer, new Player(selectedPlayer.GetPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
 			return null;
 		}
 		else {

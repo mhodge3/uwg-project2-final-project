@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import controller.logicController.EditPlayersAndAdminsControl;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import model.Player;
 
 /**
@@ -55,6 +57,25 @@ public class EditPlayersAndAdminsViewControl {
     
 	@FXML
 	private void handlePlayerAndAdminEditBackButton() throws SQLException {
+		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+	}
+    
+	@FXML
+	private void handlePlayerAndAdminEditSaveButton() throws SQLException {
+		String userCreationError = theEditPlayersAndAdminsControl.UpdatePlayer(editPlayerUserNameTextBox.getText(), editPlayerPasswordTextBox.getText(), editPlayerPasswordConfirmTextBox.getText(), editPlayerEmailTextBox.getText(), editPlayerUserCountryCodeTextBox.getText(), editPlayerAsAdminCheckBox.isSelected());
+		if (userCreationError != null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText("Error Editing the User");
+			alert.setContentText(userCreationError);
+			alert.showAndWait();
+			return;
+		}
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("User Account Edit");
+		alert.setHeaderText("Account Edit Status");
+		alert.setContentText("The User account was successfully modified");
+		alert.showAndWait();
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
 }
