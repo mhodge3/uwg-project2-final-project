@@ -30,6 +30,16 @@ public class ManagePlayersAndAdminsViewControl {
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private ManagePlayersAndAdminsControl theManagePlayersAndAdminsControl;
+    
+	/**
+	 * Constructor for this View Control
+	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
+	 */
+    public ManagePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    	this.theMainDashboardViewControl = theMainDashboardViewControl;
+    	this.theMainDashboardViewControl.SetTheManagePlayersAndAdminsViewControl(this);
+    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    }
 
 	@FXML
     public void initialize() throws SQLException {
@@ -49,16 +59,6 @@ public class ManagePlayersAndAdminsViewControl {
     	existingUserTableView.getItems().clear();
     	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.GetObservablePlayerList());
     }
-    
-	/**
-	 * Constructor for this View Control
-	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
-	 */
-    public ManagePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
-    	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManagePlayersAndAdminsViewControl(this);
-    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
-    }
 	
 	@FXML
 	private void handlePlayerAndAdminBackButton() throws SQLException {
@@ -67,6 +67,7 @@ public class ManagePlayersAndAdminsViewControl {
 	
 	@FXML
 	private void handleEditSelectedUserButton() throws SQLException {
+		theMainDashboardViewControl.SetPlayerToEdit(1);
 		theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
 	}
 	

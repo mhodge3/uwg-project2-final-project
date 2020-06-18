@@ -93,6 +93,38 @@ public class PlayerDAL {
         return player;
     }
 	
+	/**
+	 * Returns player by ID. Used for management of players, not verification for login as player
+	 * @param playerId
+	 * @return The Player looked up
+	 * @throws SQLException
+	 */
+	public Player GetPlayer(int playerId) throws SQLException {
+    	Player player = null;
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM " + this.dataBase + ".players "
+            		+ "WHERE " + this.dataBase + ".players.player_id = " + playerId + ";";
+            ResultSet results = statement.executeQuery(query);
+            if (results.next() != false) {
+                player = new Player();
+                player.SetPlayerName(results.getString("player_name"));
+                player.SetPlayerId(Integer.parseInt(results.getString("player_id")));
+                player.SetPlayerPassword(results.getString("player_password"));
+                player.SetPlayerEmail(results.getString("player_email"));
+                player.SetPlayerCountryCode(results.getNString("player_country_code"));
+                player.SetPlayerIsAdmin(IsPlayerAdmin(player));
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+        return player;
+    }
+	
 	public boolean CreatePlayer(String playerName, String playerPassword, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		Boolean success = false;
 		try {
@@ -108,22 +140,7 @@ public class PlayerDAL {
 			  
 		      preparedStmt.execute();
 		      if (makeAdmin) {
-		    	  try {
-			    	  query = "SELECT LAST_INSERT_ID();";
-			    	  PreparedStatement getLastInsertId = conn.prepareStatement(query);
-			    	  ResultSet results = getLastInsertId.executeQuery();
-			    	  Integer lastId = 0;
-			    	  if (results.next())
-			    	  {
-			    		  lastId = results.getInt("last_insert_id()");            
-			    	  }
-			    	  if (lastId > 0) {
-			    		  adminDAL.CreateAdmin(lastId);
-			    	  }
-		    	  }
-		    	  catch (Exception e) {
-		          	System.err.println(e.getMessage());
-		    	  }
+		    	  MakeAdmin();
 		      }
 		      success = true;
 		} catch (Exception e) {
@@ -155,7 +172,26 @@ public class PlayerDAL {
 		return lastID;
 	}
 	
-	public boolean UpdatePlayer(Player oldPlayer, Player updatedPlayer) throws SQLException {
+	private void MakeAdmin() {
+		try {
+			String query = "SELECT LAST_INSERT_ID();";
+			PreparedStatement getLastInsertId = conn.prepareStatement(query);
+			ResultSet results = getLastInsertId.executeQuery();
+			Integer lastId = 0;
+			if (results.next())
+			{
+				lastId = results.getInt("last_insert_id()");            
+			}
+			if (lastId > 0) {
+				adminDAL.CreateAdmin(lastId);
+			}
+		}
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public boolean UpdatePlayer(Player oldPlayer, Player updatedPlayer, Boolean makeAdmin) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
@@ -173,8 +209,11 @@ public class PlayerDAL {
 		      preparedStmt.setString (3, updatedPlayer.GetPlayerEmail());
 		      preparedStmt.setString (4, updatedPlayer.GetPlayerCountryCode());
 		      preparedStmt.setString (5, String.valueOf(oldPlayer.GetPlayerId()));
-		      
+
 		      preparedStmt.execute();
+			if (makeAdmin) {
+				MakeAdmin();
+			}
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());

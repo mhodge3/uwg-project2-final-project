@@ -57,7 +57,7 @@ class testPlayerDAL {
 	public void updateAPlayer() throws Exception {
 		Player oldPlayer = this.dal.GetPlayer("bogus", "test1234");
 		Player updatedPlayer = new Player(0, "bogus", false, "USA", "bogus@newemail,com", "newpw");
-		this.dal.UpdatePlayer(oldPlayer, updatedPlayer);
+		this.dal.UpdatePlayer(oldPlayer, updatedPlayer, false);
 		oldPlayer = this.dal.GetPlayer("bogus", "newpw");
 		assertEquals(oldPlayer.GetPlayerPassword(), "newpw");
 	}

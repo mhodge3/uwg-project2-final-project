@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import DAL.MySQLAccess;
+import controller.logicController.EditPlayersAndAdminsControl;
 import controller.logicController.MainDashboardControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +45,8 @@ public class MainDashboardViewControl {
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
+
+	private EditPlayersAndAdminsViewControl theEditPlayersAndAdminsViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -54,7 +57,7 @@ public class MainDashboardViewControl {
 		this.theMainDashboardStage = theMainDashboardStage;
 		CreateMainDashboardScene();
 		
-		CreateManagePlayersAndAdminsrScene();
+		CreateManagePlayersAndAdminsScene();
 		CreateEditPlayersAndAdminsrScene();
 		CreateCreatePlayersAndAdminsrScene();
 		
@@ -67,6 +70,11 @@ public class MainDashboardViewControl {
 	
 	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
 		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;
+	}
+	
+	public void SetPlayerToEdit(int playerIdToEdit) {
+		theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().SetSelectedPlayer(playerIdToEdit);
+		theEditPlayersAndAdminsViewControl.SetFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().GetSelectedPlayer());
 	}
 	
 	@FXML
@@ -179,7 +187,8 @@ public class MainDashboardViewControl {
 	
 	private void CreateEditPlayersAndAdminsrScene() {
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditPlayersAndAdminsView.fxml"));
-        theFxmlLoader.setController(new EditPlayersAndAdminsViewControl(this));
+        theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
+        theFxmlLoader.setController(theEditPlayersAndAdminsViewControl);
         try {
         	theEditPlayersAndAdminsParentView = theFxmlLoader.load();
         	theEditPlayersAndAdminsScene = new Scene(theEditPlayersAndAdminsParentView);
@@ -199,7 +208,7 @@ public class MainDashboardViewControl {
         }
 	}
 	
-	private void CreateManagePlayersAndAdminsrScene() {
+	private void CreateManagePlayersAndAdminsScene() {
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/managerView/ManagePlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new ManagePlayersAndAdminsViewControl(this));
         try {
