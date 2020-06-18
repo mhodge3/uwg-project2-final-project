@@ -4,8 +4,10 @@ import java.sql.SQLException;
 
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Player;
 
@@ -67,8 +69,17 @@ public class ManagePlayersAndAdminsViewControl {
 	
 	@FXML
 	private void handleEditSelectedUserButton() throws SQLException {
-		theMainDashboardViewControl.SetPlayerToEdit(1);
-		theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
+		if (existingUserTableView.getSelectionModel().getSelectedItem() != null) {
+			theMainDashboardViewControl.SetPlayerToEdit(existingUserTableView.getSelectionModel().getSelectedItem().GetPlayerId());
+			theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
+		}
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Edit User Issue");
+			alert.setHeaderText("Cannot Edit User");
+			alert.setContentText("A User to edit was not selected. Please select the user you wish to edit");
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML
