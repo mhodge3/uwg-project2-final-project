@@ -45,7 +45,7 @@ public class CreatePlayersAndAdminsControl {
 	}
 	
 	public String CreateAdmin(int thePlayerIdToElevate) throws SQLException {
-		if (adminDAL.CreateAdmin(thePlayerIdToElevate)) {
+		if (adminDAL.CreateAdmin(thePlayerIdToElevate, 1)) {
 			return null;
 		}
 		else {

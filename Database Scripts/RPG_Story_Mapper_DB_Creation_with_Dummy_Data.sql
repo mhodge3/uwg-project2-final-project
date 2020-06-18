@@ -32,6 +32,8 @@ CREATE TABLE `admins` (
   KEY `fk_admin_player_id_idx` (`player_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE `rpg_story_mapper_db`.`admins` 
+ADD COLUMN `is_active` TINYINT NOT NULL DEFAULT 1 AFTER `player_id`;
 
 --
 -- Dumping data for table `admins`

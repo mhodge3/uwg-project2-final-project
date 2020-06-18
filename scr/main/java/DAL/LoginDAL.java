@@ -51,7 +51,7 @@ public class LoginDAL {
             // Statements allow to issue SQL queries to the database
             theStatement = theConnection.createStatement();
             String pST = "SELECT * FROM `" + theDBConnection.GetTheDBName() + "`.`admins` "
-            		+ "WHERE `" + theDBConnection.GetTheDBName() + "`.admins.`player_id` = \"" + thePlayer.GetPlayerId() + "\";";
+            		+ "WHERE `" + theDBConnection.GetTheDBName() + "`.admins.`player_id` = \"" + thePlayer.GetPlayerId() + "\" AND is_active = 1";
             // Result set get the result of the SQL query
             ResultSet theResultSet = theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {

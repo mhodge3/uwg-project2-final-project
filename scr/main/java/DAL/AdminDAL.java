@@ -41,18 +41,59 @@ public class AdminDAL {
 		return admin.GetAdminId();
     }
 	
-	public boolean CreateAdmin(int playerId) throws SQLException {
+	private Boolean doesAdminExist(int playerId) {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO `" + this.sqlAccess.GetTheDBName() + "`.`admins`" + 
-					"(`player_id`)" + 
-					"VALUES (?)";
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			 preparedStmt.setString (1, String.valueOf(playerId));
-			  			  
-		     preparedStmt.execute();
-		     success = true;
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".admins " + "WHERE player_id = \"" + playerId + "\"";
+            ResultSet results = statement.executeQuery(query);
+            if (results.next()) {
+            	success = true;
+            }
+		} catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+		return success;
+	}
+	
+	private Boolean updateAdminActiveStatus(int playerId, int makeActive) {
+		Boolean success = false;
+		try {
+		String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".`admins`" +
+						"SET " +
+						"is_active = ? " +
+						"WHERE `player_id` = ?";
+			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(makeActive));
+			preparedStmt.setString (2, String.valueOf(playerId));
+			preparedStmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	     success = true;
+		return success;
+	}
+	
+	public boolean CreateAdmin(int playerId, int makeActive) throws SQLException {
+		Boolean success = false;
+		try {
+			this.conn = this.sqlAccess.GetDBConnection();
+			if (doesAdminExist(playerId)) {
+				this.updateAdminActiveStatus(playerId, makeActive);
+			}
+			else {
+				String query = "INSERT INTO `" + this.sqlAccess.GetTheDBName() + "`.`admins`" + 
+						"(`player_id`, `is_active`)" + 
+						"VALUES (?, ?)";
+				 PreparedStatement preparedStmt = conn.prepareStatement(query);
+				 preparedStmt.setString (1, String.valueOf(playerId));
+				 preparedStmt.setString (2, String.valueOf(makeActive));
+				  			  
+			     preparedStmt.execute();
+			     success = true;
+			}
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }

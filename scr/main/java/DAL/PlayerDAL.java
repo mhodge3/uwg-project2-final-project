@@ -138,7 +138,7 @@ public class PlayerDAL {
 			  
 		      preparedStmt.execute();
 		      if (makeAdmin) {
-		    	  MakeAdmin();
+		    	  makeAdmin();
 		      }
 		      success = true;
 		} catch (Exception e) {
@@ -170,11 +170,11 @@ public class PlayerDAL {
 		return lastID;
 	}
 	
-	private void MakeAdmin() {
-		MakeAdmin(0);
+	private void makeAdmin() {
+		makeAdmin(0, 1);
 	}
 	
-	private void MakeAdmin(int idToMakeAdmin) {
+	private void makeAdmin(int idToMakeAdmin, int makeActive) {
 		try {
 			Integer theId = idToMakeAdmin;
 			if (theId == 0) {
@@ -187,7 +187,7 @@ public class PlayerDAL {
 				}
 			}
 			if (theId > 0) {
-				adminDAL.CreateAdmin(theId);
+				adminDAL.CreateAdmin(theId, makeActive);
 			}
 		}
 		catch (Exception e) {
@@ -216,7 +216,10 @@ public class PlayerDAL {
 
 		      preparedStmt.execute();
 			if (makeAdmin) {
-				MakeAdmin(oldPlayer.GetPlayerId());
+				makeAdmin(oldPlayer.GetPlayerId(), 1);
+			}
+			else {
+				makeAdmin(oldPlayer.GetPlayerId(), 0);
 			}
 		      success = true;
 		} catch (Exception e) {
@@ -253,11 +256,10 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".admins "
-            		+ "WHERE player_id = \"" + player.GetPlayerId() + "\"";
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".admins " + "WHERE player_id = \"" + player.GetPlayerId() + "\" AND is_active = 1";
             ResultSet results = statement.executeQuery(query);
             if (results.next()) {
-                isAdmin = true;
+            	isAdmin = true;
             }
         } catch (Exception e) {
         }
