@@ -21,16 +21,12 @@ public class ManagePlayersAndAdminsControl {
 	
 	public ManagePlayersAndAdminsControl(MySQLAccess theDBConnection) {
 		this.playerDAL = new PlayerDAL(theDBConnection);
-		try {
-			GetPlayerArrayList();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
-	private void GetPlayerArrayList() throws SQLException {
+	public void UpdatePlayerArrayList() throws SQLException {
+		existingPlayerAdminArrayList = new ArrayList<Player>();
 		existingPlayerAdminArrayList = playerDAL.GetPlayers();
+		observablePlayerList.clear();
 		observablePlayerList.addAll(existingPlayerAdminArrayList);
 	}
 	

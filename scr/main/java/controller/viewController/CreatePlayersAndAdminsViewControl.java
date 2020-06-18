@@ -1,7 +1,14 @@
 package controller.viewController;
 
+import java.sql.SQLException;
+
+import controller.logicController.CreatePlayersAndAdminsControl;
 import controller.logicController.ManagePlayersAndAdminsControl;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 
 /**
  * The View Control for the Create Player and Admins scene.
@@ -9,9 +16,21 @@ import javafx.fxml.FXML;
  * @version 6.17.2020
  */
 public class CreatePlayersAndAdminsViewControl {
+	@FXML
+	private TextField createPlayerUserNameTextBox;
+	@FXML
+	private TextField createPlayerPasswordTextBox;
+	@FXML
+	private TextField createPlayerPasswordConfirmTextBox;
+	@FXML
+	private TextField createPlayerEmailTextBox;
+	@FXML
+	private TextField createPlayerUserCountryCodeTextBox;
+	@FXML
+	private CheckBox createPlayerAsAdminCheckBox;
 
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private ManagePlayersAndAdminsControl theManagePlayersAndAdminsControl;
+	private CreatePlayersAndAdminsControl theCreatePlayersAndAdminsControl;
     
 	/**
 	 * Constructor for this View Control
@@ -19,11 +38,55 @@ public class CreatePlayersAndAdminsViewControl {
 	 */
     public CreatePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    }
+    
+    /**
+     * Clear Form for next new Entry
+     */
+    private void ResetCreatePlayerAdminView() {
+    	createPlayerUserNameTextBox.setText("");
+    	createPlayerPasswordTextBox.setText("");
+    	createPlayerPasswordConfirmTextBox.setText("");
+    	createPlayerEmailTextBox.setText("");
+    	createPlayerUserCountryCodeTextBox.setText("");
+    	createPlayerAsAdminCheckBox.setSelected(false);
     }
     
 	@FXML
-	private void handlePlayerAndAdminEditCanelButton() {
+	private void handlePlayerAndAdminCreateCanelButton() throws SQLException {
+		ResetCreatePlayerAdminView();
+		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+	}
+    
+	@FXML
+	private void handlePlayerAndAdminCreateButton() throws SQLException {
+		String userCreationError = theCreatePlayersAndAdminsControl.CreatePlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText());
+		if (userCreationError != null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText("Error Creating the new User");
+			alert.setContentText(userCreationError);
+			alert.showAndWait();
+			return;
+		}
+		if (createPlayerAsAdminCheckBox.isSelected()) {
+			userCreationError = theCreatePlayersAndAdminsControl.CreateAdmin(theCreatePlayersAndAdminsControl.GetLastInsertedId());
+		}
+		if (userCreationError != null) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText("Error Making New User an Admin");
+			alert.setContentText(userCreationError);
+			alert.showAndWait();
+			return;
+		}
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("User Account Creation");
+		alert.setHeaderText("Account Creation Status");
+		alert.setContentText("The User account was successfully created");
+		alert.showAndWait();
+		ResetCreatePlayerAdminView();
 		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
 	}
 }

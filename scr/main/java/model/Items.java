@@ -3,25 +3,58 @@
  */
 package model;
 
+
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * @author Ashely Palmer
  * @date 6/11/2020
  *
  */
 public class Items {
-	private int itemId;
-	private String itemName;
-	private String itemDescription;
-	private int itemType;
-	private int isQuestItem;
-	private int isImplicitItem;
+	private IntegerProperty itemId;
+	private StringProperty itemName;
+	private StringProperty itemDescription;
+	private IntegerProperty itemType;
+	private IntegerProperty isQuestItem;
+	private IntegerProperty isImplicitItem;
 	
+	
+	/**
+	 * Constructor for testing
+	 */
+	public Items(){
+		
+	}
+	
+	/**
+	 * Constructs Items Object
+	 * @param itemId
+	 * @param itemName
+	 * @param itemDescription
+	 * @param itemType
+	 * @param isQuestItem
+	 * @param isImplicitItem
+	 */
+	
+	public Items(int itemId, String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) {
+		this.itemId = new SimpleIntegerProperty(itemId);
+		this.itemName = new SimpleStringProperty(itemName);
+		this.itemDescription = new SimpleStringProperty(itemDescription);
+		this.itemType = new SimpleIntegerProperty(itemType);
+		this.isQuestItem = new SimpleIntegerProperty(isQuestItem);
+		this.isImplicitItem = new SimpleIntegerProperty(isImplicitItem);
+	}
 	/**
 	 * Gets the Item Id
 	 * @return itemdID
 	 */
 	public int GetItemId() {
-		return itemId;
+		return itemId.get();
 	}
 	
 	/**
@@ -30,7 +63,15 @@ public class Items {
 	 */
 	
 	public void SetItemId(int setItemID) {
-		this.itemId = setItemID;
+		this.itemId = new SimpleIntegerProperty(setItemID);
+	}
+	
+	/**
+	 * Gets the ItemID property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ItemIDProperty() {
+	   return itemId;
 	}
 	
 	/**
@@ -39,7 +80,7 @@ public class Items {
 	 */
 	
 	public String GetItemName() {
-		return itemName;
+		return itemName.get();
 	}
 	
 	/**
@@ -47,7 +88,15 @@ public class Items {
 	 * @param setItemName
 	 */
 	public void SetItemName(String setItemName) {
-		this.itemName = setItemName;
+		this.itemName = new SimpleStringProperty(setItemName);
+	}
+	
+	/**
+	 * Gets the ItemName property
+	 * @return Property for TableView
+	 */
+	public final StringProperty ItemNameProperty() {
+	   return itemName;
 	}
 	
 	/**
@@ -55,7 +104,7 @@ public class Items {
 	 * @return itemDescription
 	 */
 	public String GetItemDescription() {
-		return itemDescription;
+		return itemDescription.get();
 	}
 	
 	/**
@@ -63,7 +112,15 @@ public class Items {
 	 * @param setItemDescription
 	 */
 	public void SetItemDescription(String setItemDescription) {
-		this.itemDescription = setItemDescription;
+		this.itemDescription = new SimpleStringProperty(setItemDescription);
+	}
+	
+	/**
+	 * Gets the ItemDescription property
+	 * @return Property for TableView
+	 */
+	public final StringProperty ItemDescriptionProperty() {
+	   return itemName;
 	}
 	
 	/**
@@ -71,7 +128,7 @@ public class Items {
 	 * @return itemType
 	 */
 	public int GetItemType() {
-		return itemType;
+		return itemType.get();
 	}
 	
 	/**
@@ -79,7 +136,15 @@ public class Items {
 	 * @param setItemType
 	 */
 	public void SetItemType(int setItemType) {
-		this.itemType = setItemType;
+		this.itemType = new SimpleIntegerProperty(setItemType);
+	}
+	
+	/**
+	 * Gets the ItemType property
+	 * @return Property for TableView
+	 */
+	public final StringProperty ItemTypeIDProperty() {
+	   return itemName;
 	}
 	
 	/**
@@ -87,7 +152,7 @@ public class Items {
 	 * @return isQuestItem
 	 */
 	public int GetIsQuestItem() {
-		return isQuestItem;
+		return isQuestItem.get();
 	}
 	
 	/**
@@ -95,7 +160,15 @@ public class Items {
 	 * @param setIsQuestItem
 	 */
 	public void SetIsQuestItem(int setIsQuestItem) {
-		this.isQuestItem = setIsQuestItem;
+		this.isQuestItem = new SimpleIntegerProperty(setIsQuestItem);
+	}
+	
+	/**
+	 * Gets the IsItemQuest property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty IsItemQuestroperty() {
+	   return isQuestItem;
 	}
 	
 	/**
@@ -103,7 +176,7 @@ public class Items {
 	 * @return isImplicitItem
 	 */
 	public int GetIsImplicitItem() {
-		return isImplicitItem;
+		return isImplicitItem.get();
 	}
 	
 	/**
@@ -111,7 +184,15 @@ public class Items {
 	 * @param setIsImplicitItem
 	 */
 	public void SetIsImplicitItem(int setIsImplicitItem) {
-		this.isImplicitItem = setIsImplicitItem;
+		this.isImplicitItem = new SimpleIntegerProperty(setIsImplicitItem);
+	}
+	
+	/**
+	 * Gets the ImplicitItem property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ImplicitItemProperty() {
+	   return isImplicitItem;
 	}
 	
 

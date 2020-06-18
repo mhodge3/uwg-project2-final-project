@@ -1,6 +1,7 @@
 package controller.viewController;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import DAL.MySQLAccess;
 import controller.logicController.MainDashboardControl;
@@ -33,6 +34,7 @@ public class MainDashboardViewControl {
     private Scene theEditPlayersAndAdminsScene;
     private Parent theCreatePlayersAndAdminsParentView;
     private Scene theCreatePlayersAndAdminsScene;
+    private ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl;
     
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
@@ -62,6 +64,10 @@ public class MainDashboardViewControl {
 		
 		CreateManageQuestChainsScene();
 	} 
+	
+	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
+		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;
+	}
 	
 	@FXML
 	private void handleLogoutButtonAction(ActionEvent event) throws Exception
@@ -96,8 +102,9 @@ public class MainDashboardViewControl {
 	
 	/**
 	 * Loads the new MainDashboard when the dashboard is first accessed
+	 * @throws SQLException 
 	 */
-	public void LoadMainDashboardView() {
+	public void LoadMainDashboardView() throws SQLException {
 		SetMainDashboardStage("mainDashboard");
 	}
 	
@@ -126,14 +133,16 @@ public class MainDashboardViewControl {
 	/**
 	 * Sets the MainDashboard Stage Scene
 	 * @param theSceneNameToLoad	the String name of the scene to load
+	 * @throws SQLException 
 	 */
-	public void SetMainDashboardStage(String theSceneNameToLoad) {
+	public void SetMainDashboardStage(String theSceneNameToLoad) throws SQLException {
 		Scene theSceneToStage = null;
 		switch (theSceneNameToLoad) {
 			case "mainDashboard":
 				theSceneToStage = theMainDashboardScene;
 				break;
 			case "managePlayersAndAdmins":
+				theManagePlayersAndAdminsViewControl.updateExistingPlayerAdminList();
 				theSceneToStage = theManagePlayersAndAdminsScene;
 				break;
 			case "editPlayersAndAdmins":

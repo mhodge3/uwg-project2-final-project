@@ -111,6 +111,26 @@ public class PlayerDAL {
 		return success;
 	}
 	
+	public Integer GetLastInsertedID() throws SQLException {
+		Integer lastID = null;
+		try {
+			this.conn = this.sqlAccess.GetDBConnection();
+			String query = "SELECT LAST_INSERT_ID();";
+			PreparedStatement getLastInsertId = conn.prepareStatement(query);
+			ResultSet results = getLastInsertId.executeQuery();
+			if (results.next())
+			{
+				lastID = results.getInt("last_insert_id()");            
+			}
+		} catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+		return lastID;
+	}
+	
 	public boolean UpdatePlayer(Player oldPlayer, Player updatedPlayer) throws SQLException {
 		Boolean success = false;
 		try {
