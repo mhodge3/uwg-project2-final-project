@@ -137,7 +137,7 @@ public class PlayerDAL {
 			this.conn = this.sqlAccess.GetDBConnection();
 			String query = "UPDATE " + this.dataBase + ".`players`" +
 					"SET " +
-					"`player_name` = ?, " +
+					"player_name = ?, " +
 					"`player_password` = ?, " +
 					"`player_email` = ?, " +
 					"`player_country_code` = ? " +
@@ -186,10 +186,10 @@ public class PlayerDAL {
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + this.dataBase + "`.`admins` "
-            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = " + player.GetPlayerId() + "\";";
+            String query = "SELECT * FROM " + this.dataBase + ".admins "
+            		+ "WHERE player_id = \"" + player.GetPlayerId() + "\"";
             ResultSet results = statement.executeQuery(query);
-            if (results != null) {
+            if (results.next()) {
                 isAdmin = true;
             }
         } catch (Exception e) {

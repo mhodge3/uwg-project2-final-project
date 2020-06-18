@@ -12,17 +12,16 @@ class testAdminDAL {
 	AdminDAL adminDal = new AdminDAL(access);
 	PlayerDAL playerDal = new PlayerDAL(access);
 	
-	@Test
+	/*@Test
 	public void createAdmin() throws Exception {
 		this.thePlayer = this.playerDal.GetPlayer("player", "test1234");
 		assertTrue(this.adminDal.CreateAdmin(thePlayer.GetPlayerId()));
-	}
-	
-	/*@Test
-	public void getTheAdminId() throws Exception {
-		this.thePlayer = this.playerDal.GetPlayer("admin", "test1234");
-		assertEquals(this.adminDal.getAdminID(thePlayer.GetPlayerId()), 1);
 	}*/
+	
+	@Test
+	public void getTheAdminId() throws Exception {
+		assertEquals(this.adminDal.getAdminID(1), 1);
+	}
 		
 
 }

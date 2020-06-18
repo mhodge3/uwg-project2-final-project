@@ -27,7 +27,7 @@ public class AdminDAL {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
             String query = "SELECT * FROM `" + this.dataBase + "`.`admins` "
-            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = " + String.valueOf(playerID) + "\";";
+            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = "+ String.valueOf(playerID);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 admin = new Admin();
@@ -40,7 +40,7 @@ public class AdminDAL {
         finally {
         	conn.close();
         }
-		return admin.GetPlayerId();
+		return admin.GetAdminId();
     }
 	
 	public boolean CreateAdmin(int playerId) throws SQLException {
