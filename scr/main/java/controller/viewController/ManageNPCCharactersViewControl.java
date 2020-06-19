@@ -78,4 +78,9 @@ public class ManageNPCCharactersViewControl {
 			alert.showAndWait();
 		}
 	}
+	
+	@FXML
+	private void handleCreateNPCButton() throws SQLException {
+		theMainDashboardViewControl.SetMainDashboardStage("createNPCCharacters");
+	}
 }

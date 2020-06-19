@@ -49,7 +49,7 @@ public class CreatePlayersAndAdminsViewControl {
     	createPlayerPasswordTextBox.setText("");
     	createPlayerPasswordConfirmTextBox.setText("");
     	createPlayerEmailTextBox.setText("");
-    	createPlayerUserCountryCodeTextBox.setText("");
+    	createPlayerUserCountryCodeTextBox.setText("USA");
     	createPlayerAsAdminCheckBox.setSelected(false);
     }
     

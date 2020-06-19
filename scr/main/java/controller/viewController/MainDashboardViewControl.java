@@ -45,6 +45,8 @@ public class MainDashboardViewControl {
     private Scene theManageNPCCharactersScene;
     private Parent theEditNPCCharactersParentView;
     private Scene theEditNPCCharactersScene;
+    private Parent theCreateNPCCharactersParentView;
+    private Scene theCreateNPCCharactersScene;
     private ManageNPCCharactersViewControl theManageNPCCharactersViewControl;
 	private EditNPCCharactersViewControl theEditNPCCharactersViewControl;
     
@@ -62,12 +64,13 @@ public class MainDashboardViewControl {
 		
 		CreateManagePlayersAndAdminsScene();
 		CreateEditPlayersAndAdminsScene();
-		CreateCreatePlayersAndAdminsrScene();
+		CreateCreatePlayersAndAdminsScene();
 		
 		CreateManageItemsScene();
 		
 		CreateManageNPCCharactersScene();
 		CreateEditNPCCharactersScene();
+		CreateCreateNPCScene();
 		
 		CreateManageQuestChainsScene();
 	} 
@@ -182,6 +185,9 @@ public class MainDashboardViewControl {
 			case "editNPCCharacters":
 				theSceneToStage = theEditNPCCharactersScene;
 				break;
+			case "createNPCCharacters":
+				theSceneToStage = theCreateNPCCharactersScene;
+				break;
 			case "manageQuestChains":
 				theSceneToStage = theManageQuestChainsScene;
 				break;
@@ -214,7 +220,7 @@ public class MainDashboardViewControl {
         }
 	}
 	
-	private void CreateCreatePlayersAndAdminsrScene() {
+	private void CreateCreatePlayersAndAdminsScene() {
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreatePlayersAndAdminsView.fxml"));
         theFxmlLoader.setController(new CreatePlayersAndAdminsViewControl(this));
         try {
@@ -265,6 +271,17 @@ public class MainDashboardViewControl {
         try {
         	theEditNPCCharactersParentView = theFxmlLoader.load();
         	theEditNPCCharactersScene = new Scene(theEditNPCCharactersParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateCreateNPCScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreateNPCCharactersView.fxml"));
+        theFxmlLoader.setController(new CreateNPCCharactersViewControl(this));
+        try {
+        	theCreateNPCCharactersParentView = theFxmlLoader.load();
+        	theCreateNPCCharactersScene = new Scene(theCreateNPCCharactersParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
