@@ -2,6 +2,7 @@ package controller.viewController;
 
 import java.sql.SQLException;
 
+import controller.logicController.EditNPCCharactersControl;
 import controller.logicController.EditPlayersAndAdminsControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -17,7 +18,7 @@ public class EditNPCCharactersViewControl {
 	private TextArea editNPCDescriptionTextBox;
 
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private EditPlayersAndAdminsControl theEditPlayersAndAdminsControl;
+	private EditNPCCharactersControl theEditNPCCharactersControl;
     
 	/**
 	 * Constructor for this View Control
@@ -25,11 +26,11 @@ public class EditNPCCharactersViewControl {
 	 */
     public EditNPCCharactersViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theEditPlayersAndAdminsControl = new EditPlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theEditNPCCharactersControl = new EditNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
     }
     
-    public EditPlayersAndAdminsControl GetEditPlayersAndAdminsControl() {
-    	return theEditPlayersAndAdminsControl;
+    public EditNPCCharactersControl GetEditNPCCharactersControl() {
+    	return theEditNPCCharactersControl;
     }
     
     public void SetFormForSelectedNPC(NpcCharacter theNPCToEdit) {
@@ -40,7 +41,7 @@ public class EditNPCCharactersViewControl {
     
 	@FXML
 	private void handleNPCEditBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("managePlayersAndAdmins");
+		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
 	}
     
 	@FXML

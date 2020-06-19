@@ -57,7 +57,7 @@
                   <Insets bottom="20.0" left="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="editSelectedNPCButton" mnemonicParsing="false" text="Edit Selected NPC (Actor)">
+            <Button fx:id="editSelectedNPCButton" mnemonicParsing="false" onAction="#handleEditSelectedNPCButton" text="Edit Selected NPC (Actor)">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

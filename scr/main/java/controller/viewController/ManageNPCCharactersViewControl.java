@@ -67,8 +67,8 @@ public class ManageNPCCharactersViewControl {
 	@FXML
 	private void handleEditSelectedNPCButton() throws SQLException {
 		if (existingNPCTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetPlayerToEdit(existingNPCTableView.getSelectionModel().getSelectedItem().GetNpcId());
-			theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
+			theMainDashboardViewControl.SetNPCToEdit(existingNPCTableView.getSelectionModel().getSelectedItem().GetNpcId());
+			theMainDashboardViewControl.SetMainDashboardStage("editNPCCharacters");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);

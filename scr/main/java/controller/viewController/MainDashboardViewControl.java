@@ -85,6 +85,11 @@ public class MainDashboardViewControl {
 		theEditPlayersAndAdminsViewControl.SetFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().GetSelectedPlayer());
 	}
 	
+	public void SetNPCToEdit(int npcIdToEdit) {
+		theEditNPCCharactersViewControl.GetEditNPCCharactersControl().SetSelectedNPC(npcIdToEdit);
+		theEditNPCCharactersViewControl.SetFormForSelectedNPC(theEditNPCCharactersViewControl.GetEditNPCCharactersControl().GetSelectedNPC());
+	}
+	
 	@FXML
 	private void handleLogoutButtonAction(ActionEvent event) throws Exception
 	{
