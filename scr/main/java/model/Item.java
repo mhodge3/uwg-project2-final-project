@@ -15,7 +15,7 @@ import javafx.beans.property.StringProperty;
  * @date 6/11/2020
  *
  */
-public class Items {
+public class Item {
 	private IntegerProperty itemId;
 	private StringProperty itemName;
 	private StringProperty itemDescription;
@@ -27,7 +27,7 @@ public class Items {
 	/**
 	 * Constructor for testing
 	 */
-	public Items(){
+	public Item(){
 		
 	}
 	
@@ -41,7 +41,7 @@ public class Items {
 	 * @param isImplicitItem
 	 */
 	
-	public Items(int itemId, String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) {
+	public Item(int itemId, String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) {
 		this.itemId = new SimpleIntegerProperty(itemId);
 		this.itemName = new SimpleStringProperty(itemName);
 		this.itemDescription = new SimpleStringProperty(itemDescription);

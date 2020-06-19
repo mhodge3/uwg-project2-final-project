@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import model.Items;
+import model.Item;
 
 /**
  * @author Ashley Palmer
@@ -24,7 +24,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetItemIDShouldBe1234() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetItemId(1234);
 		assertEquals(1234, testItem.GetItemId());
 	}
@@ -35,7 +35,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetItemNameShouldBeTom() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetItemName("Tom");
 		assertEquals("Tom", testItem.GetItemName());
 	}
@@ -46,7 +46,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetItemNameShouldBeASuperCool() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetItemDescription("A Super Cool");
 		assertEquals("A Super Cool", testItem.GetItemDescription());
 	}
@@ -57,7 +57,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetItemTypeShouldBe1234() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetItemType(1234);
 		assertEquals(1234, testItem.GetItemType());
 	}
@@ -68,7 +68,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetIsQuestItemShouldBe1234() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetIsQuestItem(1234);
 		assertEquals(1234, testItem.GetIsQuestItem());
 	}
@@ -79,7 +79,7 @@ public class ItemsTest {
 	 */
 	@Test
 	public void testGetIsImplicitItemShouldBe1234() {
-		Items testItem = new Items();
+		Item testItem = new Item();
 		testItem.SetIsImplicitItem(1234);
 		assertEquals(1234, testItem.GetIsImplicitItem());
 	}
