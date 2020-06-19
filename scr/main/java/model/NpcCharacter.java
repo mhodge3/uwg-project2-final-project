@@ -77,7 +77,7 @@ public class NpcCharacter {
 	 * Gets the NpcID property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty NpcIDProperty() {
+	public final IntegerProperty npcIdProperty() {
 	   return npcId;
 	}
 	
@@ -101,7 +101,7 @@ public class NpcCharacter {
 	 * Gets the NpcDescription property
 	 * @return Property for TableView
 	 */
-	public final StringProperty NpcDescription() {
+	public final StringProperty npcDescriptionProperty() {
 	   return npcDescprition;
 	}
 	
@@ -125,7 +125,7 @@ public class NpcCharacter {
 	 * Gets the NpcName property
 	 * @return Property for TableView
 	 */
-	public final StringProperty NpcName() {
+	public final StringProperty npcNameProperty() {
 	   return npcName;
 	}
 	
@@ -150,7 +150,7 @@ public class NpcCharacter {
 	 * Gets the NpcType property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty NpcType() {
+	public final IntegerProperty npcTypeProperty() {
 	   return npcType;
 	}
 	
@@ -174,7 +174,7 @@ public class NpcCharacter {
 	 * Gets the NpcFaction property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty NpcFaction() {
+	public final IntegerProperty npcFactionProperty() {
 	   return npcFaction;
 	}
 	
@@ -198,7 +198,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosX property
 	 * @return Property for TableView
 	 */
-	public final DoubleProperty NpcPosX() {
+	public final DoubleProperty npcPosXProperty() {
 	   return npcPosX;
 	}
 	
@@ -222,7 +222,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosY property
 	 * @return Property for TableView
 	 */
-	public final DoubleProperty NpcPosY() {
+	public final DoubleProperty npcPosYProperty() {
 	   return npcPosY;
 	}
 	
@@ -246,7 +246,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosZ property
 	 * @return Property for TableView
 	 */
-	public final DoubleProperty NpcPosZ() {
+	public final DoubleProperty npcPosZProperty() {
 	   return npcPosZ;
 	}
 

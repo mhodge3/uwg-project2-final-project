@@ -36,17 +36,20 @@ public class MainDashboardViewControl {
     private Parent theCreatePlayersAndAdminsParentView;
     private Scene theCreatePlayersAndAdminsScene;
     private ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl;
+	private EditPlayersAndAdminsViewControl theEditPlayersAndAdminsViewControl;
     
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
     
     private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
+    private Parent theEditNPCCharactersParentView;
+    private Scene theEditNPCCharactersScene;
+    private ManageNPCCharactersViewControl theManageNPCCharactersViewControl;
+	private EditNPCCharactersViewControl theEditNPCCharactersViewControl;
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
-
-	private EditPlayersAndAdminsViewControl theEditPlayersAndAdminsViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -58,18 +61,23 @@ public class MainDashboardViewControl {
 		CreateMainDashboardScene();
 		
 		CreateManagePlayersAndAdminsScene();
-		CreateEditPlayersAndAdminsrScene();
+		CreateEditPlayersAndAdminsScene();
 		CreateCreatePlayersAndAdminsrScene();
 		
 		CreateManageItemsScene();
 		
 		CreateManageNPCCharactersScene();
+		CreateEditNPCCharactersScene();
 		
 		CreateManageQuestChainsScene();
 	} 
 	
 	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
 		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;
+	}
+	
+	public void SetTheManageNPCCharactersViewControl(ManageNPCCharactersViewControl theManageNPCCharactersViewControl) {
+		this.theManageNPCCharactersViewControl = theManageNPCCharactersViewControl;
 	}
 	
 	public void SetPlayerToEdit(int playerIdToEdit) {
@@ -163,7 +171,11 @@ public class MainDashboardViewControl {
 				theSceneToStage = theManageItemsScene;
 				break;
 			case "manageNPCCharacters":
+				theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
 				theSceneToStage = theManageNPCCharactersScene;
+				break;
+			case "editNPCCharacters":
+				theSceneToStage = theEditNPCCharactersScene;
 				break;
 			case "manageQuestChains":
 				theSceneToStage = theManageQuestChainsScene;
@@ -185,7 +197,7 @@ public class MainDashboardViewControl {
         }
 	}
 	
-	private void CreateEditPlayersAndAdminsrScene() {
+	private void CreateEditPlayersAndAdminsScene() {
         theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditPlayersAndAdminsView.fxml"));
         theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
         theFxmlLoader.setController(theEditPlayersAndAdminsViewControl);
@@ -236,6 +248,18 @@ public class MainDashboardViewControl {
         try {
         	theManageNPCCharactersParentView = theFxmlLoader.load();
         	theManageNPCCharactersScene = new Scene(theManageNPCCharactersParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateEditNPCCharactersScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditNPCCharactersView.fxml"));
+        theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
+        theFxmlLoader.setController(theEditNPCCharactersViewControl);
+        try {
+        	theEditNPCCharactersParentView = theFxmlLoader.load();
+        	theEditNPCCharactersScene = new Scene(theEditNPCCharactersParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

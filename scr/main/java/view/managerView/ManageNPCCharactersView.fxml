@@ -37,11 +37,10 @@
             </HBox>
             <TableView fx:id="existingNPCTableView" prefHeight="453.0" prefWidth="800.0">
                <columns>
-                  <TableColumn fx:id="itemIDTableColumn" editable="false" prefWidth="75.0" text="ID" />
-                  <TableColumn fx:id="itemIsAdminTableColumn" editable="false" prefWidth="75.0" text="Is Admin" />
-                  <TableColumn fx:id="itemNameTableColumn" editable="false" prefWidth="203.0" text="itemname" />
-                  <TableColumn fx:id="itemEmailTableColumn" editable="false" prefWidth="258.0" text="Email" />
-                  <TableColumn fx:id="itemCountryCodeTableColumn" editable="false" minWidth="0.0" prefWidth="146.0" text="Country Code" />
+                  <TableColumn fx:id="npcIDTableColumn" editable="false" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="npcTypeTableColumn" editable="false" prefWidth="75.0" text="Type" />
+                  <TableColumn fx:id="npcNameTableColumn" editable="false" prefWidth="203.0" text="Name" />
+                  <TableColumn fx:id="npcDescriptionTableColumn" editable="false" prefWidth="403.0" text="Description" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />

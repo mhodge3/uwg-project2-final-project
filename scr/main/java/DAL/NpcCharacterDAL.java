@@ -15,11 +15,9 @@ import model.Player;
 public class NpcCharacterDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
-	private String dataBase;
 	
 	public NpcCharacterDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
-		this.dataBase = this.sqlAccess.GetTheDBName();
 	}
 	
 	public NpcCharacter GetNpcById(int npcId) throws SQLException {
@@ -35,7 +33,7 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z  " +
-            	"FROM " + this.dataBase + ".characters_npc " +
+            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
             	"WHERE character_npc_id = " + String.valueOf(npcId);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
@@ -71,7 +69,7 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z  " +
-            	"FROM " + this.dataBase + ".characters_npc " +
+            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
             	"WHERE character_npc_name = \"" + characterName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
@@ -108,7 +106,7 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z  " +
-            	"FROM " + this.dataBase + ".characters_npc ";
+            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	NpcCharacter npc = new NpcCharacter();
@@ -135,7 +133,7 @@ public class NpcCharacterDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.dataBase + ".`characters_npc`" + 
+			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".`characters_npc`" + 
             	    "(characters_npc.character_npc_name, " +
             	    "characters_npc.character_npc_description, " +
             	    "characters_npc.character_npc_type, " + 
@@ -168,7 +166,7 @@ public class NpcCharacterDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.dataBase + ".characters_npc " + 
+			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".characters_npc " + 
 					"SET " +
             	    "character_npc_name = ?, " +
             	    "character_npc_description = ?, " +
@@ -204,7 +202,7 @@ public class NpcCharacterDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.dataBase + ".characters_npc " + 
+			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " + 
 					"WHERE character_npc_id = ?";
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(character.GetNpcId()));
