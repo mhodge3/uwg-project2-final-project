@@ -27,13 +27,12 @@ DROP TABLE IF EXISTS `admins`;
 CREATE TABLE `admins` (
   `admin_id` int unsigned NOT NULL AUTO_INCREMENT,
   `player_id` int NOT NULL,
+  `is_active` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`admin_id`),
   UNIQUE KEY `admin_id_UNIQUE` (`admin_id`),
-  KEY `fk_admin_player_id_idx` (`player_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `demo.fk_admin_player_id_idx` (`player_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-ALTER TABLE `rpg_story_mapper_db`.`admins` 
-ADD COLUMN `is_active` TINYINT NOT NULL DEFAULT 1 AFTER `player_id`;
 
 --
 -- Dumping data for table `admins`
@@ -41,7 +40,7 @@ ADD COLUMN `is_active` TINYINT NOT NULL DEFAULT 1 AFTER `player_id`;
 
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,1);
+INSERT INTO `admins` VALUES (1,1,1),(2,7,0),(3,8,1),(4,10,0),(5,11,1);
 /*!40000 ALTER TABLE `admins` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,9 +61,9 @@ CREATE TABLE `characters_npc` (
   `character_npc_pos_y` decimal(10,2) NOT NULL,
   `character_npc_pos_z` decimal(10,2) NOT NULL,
   PRIMARY KEY (`character_npc_id`),
-  UNIQUE KEY `characters_npc_id_UNIQUE` (`character_npc_id`),
-  UNIQUE KEY `characters_npc_name_UNIQUE` (`character_npc_name`),
-  UNIQUE KEY `characters_npc_description_UNIQUE` (`character_npc_description`)
+  UNIQUE KEY `demo.characters_npc_id_UNIQUE` (`character_npc_id`),
+  UNIQUE KEY `demo.characters_npc_name_UNIQUE` (`character_npc_name`),
+  UNIQUE KEY `demo.characters_npc_description_UNIQUE` (`character_npc_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -94,8 +93,8 @@ CREATE TABLE `items` (
   `is_implicit_item` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`),
   UNIQUE KEY `item_id_UNIQUE` (`item_id`),
-  UNIQUE KEY `item_name_UNIQUE` (`item_name`),
-  UNIQUE KEY `item_description_UNIQUE` (`item_description`)
+  UNIQUE KEY `demo.item_name_UNIQUE` (`item_name`),
+  UNIQUE KEY `demo.item_description_UNIQUE` (`item_description`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -123,10 +122,10 @@ CREATE TABLE `players` (
   `player_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `player_country_code` char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'USA',
   PRIMARY KEY (`player_id`),
-  UNIQUE KEY `players_id_UNIQUE` (`player_id`),
-  UNIQUE KEY `players_name_UNIQUE` (`player_name`),
-  UNIQUE KEY `player_email_UNIQUE` (`player_email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `demo.players_id_UNIQUE` (`player_id`),
+  UNIQUE KEY `demo.players_name_UNIQUE` (`player_name`),
+  UNIQUE KEY `demo.player_email_UNIQUE` (`player_email`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +134,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'admin','test1234','admin@demo.com','USA'),(2,'player','test1234','player@demo.com','USA');
+INSERT INTO `players` VALUES (1,'admin','test1234','admin@demo.com','USA'),(2,'player','test1234','player@demo.com','USA'),(7,'bogus1','newpw','bogus@newemail,com','USA'),(8,'asdf','asdf','asdf','USA'),(10,'roudy guy 13','huh','place@somewhere.com','USA'),(11,'person','1','1','1');
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -148,4 +147,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-11  9:13:22
+-- Dump completed on 2020-06-18 17:54:35
