@@ -37,12 +37,12 @@ public class ItemDAL {
 		try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT  item_id," + 
-            		"    item_name, " + 
-            		"    item_description, " + 
-            		"    item_type, " + 
-            		"    is_quest_item, " + 
-            		"    is_implicit_item " +
+            String query = "SELECT  item_id, " + 
+            		"item_name, " + 
+            		"item_description, " + 
+            		"item_type, " + 
+            		"is_quest_item, " + 
+            		"is_implicit_item " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".items ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
@@ -65,11 +65,11 @@ public class ItemDAL {
 	}
 	
 	/**
-	 * Get Item from the database Items table
+	 * Get Item by itemID from the database Items table
 	 * @return The Item
 	 * @throws SQLException
 	 */
-	public Item GetItem(int itemId) throws SQLException {
+	public Item GetItemById(int itemId) throws SQLException {
 		Item item = null;
 		
 		try {
@@ -102,16 +102,54 @@ public class ItemDAL {
 		return item; 
 	}
 	
-	public Boolean CreateItem(String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) throws SQLException {
-		Boolean success = false;
+	/**
+	 * Get Item by itemName from the database Items table
+	 * @return The Item
+	 * @throws SQLException
+	 */
+	public Item GetItemByName(String itemName) throws SQLException {
+		Item item = null;
+		
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".items" + 
-					"item_name, " + 
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT  item_id," + 
+            		"item_name, " + 
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
             		"is_implicit_item " +
+            	"FROM " + this.sqlAccess.GetTheDBName() + ".items " +
+            		"WHERE item_name = \"" + itemName + "\"";
+            ResultSet results = statement.executeQuery(query);
+            if (results.next() != false) {
+            	item = new Item();
+                item.SetItemId(Integer.parseInt(results.getString("item_id")));
+                item.SetItemName(results.getString("item_name"));
+                item.SetItemDescription(results.getString("item_description"));
+                item.SetItemType(Integer.parseInt(results.getString("item_type")));
+                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")));
+                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")));
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+		return item; 
+	}
+	
+	public Boolean CreateItem(String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) throws SQLException {
+		Boolean success = false;
+		try {
+			this.conn = this.sqlAccess.GetDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".items " + 
+					"(item_name, " + 
+            		"item_description, " + 
+            		"item_type, " + 
+            		"is_quest_item, " + 
+            		"is_implicit_item) " +
 					"VALUES (?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, itemName);
@@ -131,7 +169,7 @@ public class ItemDAL {
 		return success;
 	}
 	
-	public Boolean UpdateNpc(Item oldItem, Item updatedItem) throws SQLException {
+	public Boolean UpdateItem(Item oldItem, Item updatedItem) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();

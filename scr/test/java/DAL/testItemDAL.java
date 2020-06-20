@@ -1,0 +1,80 @@
+package DAL;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.sql.SQLException;
+
+import org.junit.jupiter.api.Test;
+
+import model.Item;
+
+class testItemDAL {
+	MySQLAccess access = new MySQLAccess();
+	ItemDAL dal = new ItemDAL(access);
+	
+	/*0@Test
+	public void retrievesItemWithID() throws Exception {
+		Item item = this.dal.GetItemById(1);
+		assertEquals(item.GetItemId(), 1);
+		assertEquals(item.GetItemName(), "Dagger of Suck");
+		assertEquals(item.GetItemDescription(), "You get what you get and you don't throw a fit.");
+		assertEquals(item.GetItemType(), 0);
+		assertEquals(item.GetIsQuestItem(), 0);
+		assertEquals(item.GetIsImplicitItem(), 0);
+	}
+	
+	@Test
+	public void retrievesItemWithName() throws Exception {
+		Item item = this.dal.GetItemByName("Dagger of Suck");
+		assertEquals(item.GetItemId(), 1);
+		assertEquals(item.GetItemName(), "Dagger of Suck");
+		assertEquals(item.GetItemDescription(), "You get what you get and you don't throw a fit.");
+		assertEquals(item.GetItemType(), 0);
+		assertEquals(item.GetIsQuestItem(), 0);
+		assertEquals(item.GetIsImplicitItem(), 0);
+	}
+	
+	@Test
+	public void retrievesNonItemShouldBeNull() throws Exception {
+		assertEquals(this.dal.GetItemById(0), null);
+	}
+	
+	@Test
+	public void addAItemToDBShouldBeTrueIfAdded() throws Exception {
+		assertTrue(this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, 2, 3));
+		Item item = this.dal.GetItemByName("cloak spell");
+		assertEquals(item.GetItemName(), "cloak spell");
+		assertEquals(item.GetItemDescription(), "Invisibility cloak");
+		assertEquals(item.GetItemType(), 1);
+		assertEquals(item.GetIsQuestItem(), 2);
+		assertEquals(item.GetIsImplicitItem(), 3);
+	}*/
+	
+	@Test
+	public void addADuplicateItemToDBShouldBefalse() {
+		Exception thrown = assertThrows(Exception.class, () -> {
+			this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, 2, 3);
+		    });
+		 assertTrue(thrown.getMessage().contains("Duplicate entry 'cloak spell' for key 'demo.item_name_UNIQUE'"));
+	}
+	
+	/*@Test
+	public void updateAItem() throws Exception {
+		Item oldItem = this.dal.GetItemByName("cloak spell");
+		Item updatedItem = new Item(0,"cloak spell", "Invisibility shield", 4, 5, 6);
+		this.dal.UpdateItem(oldItem, updatedItem);
+		oldItem = this.dal.GetItemByName("cloak spell");
+		assertEquals(oldItem.GetItemDescription(), "Invisibility shield");
+	}
+	
+	Test
+	public void deleteAItem() throws Exception {
+		Item item1 = this.dal.GetItemByName("cloak spell");
+		this.dal.DeleteItem(item1);
+		item1 = this.dal.GetItemByName("cloak spell");
+		assertEquals(item1, null);
+	}*/
+	
+
+
+}
