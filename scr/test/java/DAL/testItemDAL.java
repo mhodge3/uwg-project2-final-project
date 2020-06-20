@@ -2,17 +2,21 @@ package DAL;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.SQLException;
-
 import org.junit.jupiter.api.Test;
 
 import model.Item;
 
+/**
+ * Test the CRUD methods of the ItemDAL
+ * @date 6/20/2020
+ * @author Perry Iler
+ *
+ */
 class testItemDAL {
 	MySQLAccess access = new MySQLAccess();
 	ItemDAL dal = new ItemDAL(access);
 	
-	/*0@Test
+	@Test
 	public void retrievesItemWithID() throws Exception {
 		Item item = this.dal.GetItemById(1);
 		assertEquals(item.GetItemId(), 1);
@@ -48,17 +52,10 @@ class testItemDAL {
 		assertEquals(item.GetItemType(), 1);
 		assertEquals(item.GetIsQuestItem(), 2);
 		assertEquals(item.GetIsImplicitItem(), 3);
-	}*/
-	
-	@Test
-	public void addADuplicateItemToDBShouldBefalse() {
-		Exception thrown = assertThrows(Exception.class, () -> {
-			this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, 2, 3);
-		    });
-		 assertTrue(thrown.getMessage().contains("Duplicate entry 'cloak spell' for key 'demo.item_name_UNIQUE'"));
 	}
 	
-	/*@Test
+	
+	@Test
 	public void updateAItem() throws Exception {
 		Item oldItem = this.dal.GetItemByName("cloak spell");
 		Item updatedItem = new Item(0,"cloak spell", "Invisibility shield", 4, 5, 6);
@@ -67,13 +64,13 @@ class testItemDAL {
 		assertEquals(oldItem.GetItemDescription(), "Invisibility shield");
 	}
 	
-	Test
+	@Test
 	public void deleteAItem() throws Exception {
 		Item item1 = this.dal.GetItemByName("cloak spell");
 		this.dal.DeleteItem(item1);
 		item1 = this.dal.GetItemByName("cloak spell");
 		assertEquals(item1, null);
-	}*/
+	}
 	
 
 
