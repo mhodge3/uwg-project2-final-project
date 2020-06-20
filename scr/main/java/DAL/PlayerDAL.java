@@ -123,6 +123,16 @@ public class PlayerDAL {
         return player;
     }
 	
+	/**
+	 * Creates a Player entry in the database players table
+	 * @param playerName
+	 * @param playerPassword
+	 * @param email
+	 * @param countryCode
+	 * @param makeAdmin
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean CreatePlayer(String playerName, String playerPassword, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		Boolean success = false;
 		try {
@@ -150,6 +160,11 @@ public class PlayerDAL {
 		return success;
 	}
 	
+	/**
+	 * Gets the playerId of the last player inserted into the database players table
+	 * @return
+	 * @throws SQLException
+	 */
 	public Integer GetLastInsertedID() throws SQLException {
 		Integer lastID = null;
 		try {
@@ -195,6 +210,14 @@ public class PlayerDAL {
 		}
 	}
 	
+	/**
+	 * Updates an existing Player entry in the database players table
+	 * @param oldPlayer
+	 * @param updatedPlayer
+	 * @param makeAdmin
+	 * @return 
+	 * @throws SQLException
+	 */
 	public boolean UpdatePlayer(Player oldPlayer, Player updatedPlayer, Boolean makeAdmin) throws SQLException {
 		Boolean success = false;
 		try {
@@ -251,6 +274,12 @@ public class PlayerDAL {
 		return success;
 	}
 	
+	/**
+	 * Returns weather is a player is a admin 
+	 * @param player
+	 * @return True if Admin | False if not Admin
+	 * @throws Exception
+	 */
 	public Boolean IsPlayerAdmin(Player player) throws Exception {
     	Boolean isAdmin = false;
         try {

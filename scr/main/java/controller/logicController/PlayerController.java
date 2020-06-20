@@ -1,7 +1,9 @@
 package controller.logicController;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import DAL.MySQLAccess;
@@ -151,4 +153,14 @@ public class PlayerController {
 	public boolean DeletePlayer(Player player) throws SQLException {
 		return this.playerDAL.DeletePlayer(player);
 	}
+	
+	/**
+	 * Returns weather is a player is a admin 
+	 * @param player
+	 * @return True if Admin | False if not Admin
+	 * @throws Exception
+	 */
+	public Boolean IsPlayerAdmin(Player player) throws Exception {
+    	return this.playerDAL.IsPlayerAdmin(player);
+    }
 }
