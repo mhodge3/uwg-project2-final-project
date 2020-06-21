@@ -139,7 +139,7 @@ public class ItemDAL {
 		return item; 
 	}
 	
-	public Boolean CreateItem(String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) throws SQLException {
+	public Boolean CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
@@ -154,8 +154,10 @@ public class ItemDAL {
 			  preparedStmt.setString (1, itemName);
 			  preparedStmt.setString (2, itemDescription);
 			  preparedStmt.setString (3, String.valueOf(itemType));
-			  preparedStmt.setString (4, String.valueOf(isQuestItem));
-			  preparedStmt.setString (5, String.valueOf(isImplicitItem));
+			  int questBoolToInt = isQuestItem ? 1 : 0;
+			  preparedStmt.setString (4, String.valueOf(questBoolToInt));
+			  int implicitBoolToInt = isImplicitItem ? 1 : 0;
+			  preparedStmt.setString (5, String.valueOf(implicitBoolToInt));
 			  
 		      preparedStmt.execute();
 		      success = true;

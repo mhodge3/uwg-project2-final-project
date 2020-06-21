@@ -84,4 +84,9 @@ public class ManageItemsViewControl {
 			alert.showAndWait();
 		}
 	}
+	
+	@FXML
+	private void handleCreateItemButton() throws SQLException {
+		theMainDashboardViewControl.SetMainDashboardStage("createItems");
+	}
 }

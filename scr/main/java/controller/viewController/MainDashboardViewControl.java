@@ -42,6 +42,8 @@ public class MainDashboardViewControl {
     private Scene theManageItemsScene;
     private Parent theEditItemsParentView;
     private Scene theEditItemsScene;
+    private Parent theCreateItemsParentView;
+    private Scene theCreateItemsScene;
     private ManageItemsViewControl theManageItemsViewControl;
 	private EditItemsViewControl theEditItemsViewControl;
     
@@ -72,6 +74,7 @@ public class MainDashboardViewControl {
 		
 		CreateManageItemsScene();
 		CreateEditItemsScene();
+		CreateCreateItemsScene();
 		
 		CreateManageNPCCharactersScene();
 		CreateEditNPCCharactersScene();
@@ -196,6 +199,9 @@ public class MainDashboardViewControl {
 			case "editItems":
 				theSceneToStage = theEditItemsScene;
 				break;
+			case "createItems":
+				theSceneToStage = theCreateItemsScene;
+				break;
 			case "manageNPCCharacters":
 				theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
 				theSceneToStage = theManageNPCCharactersScene;
@@ -278,6 +284,17 @@ public class MainDashboardViewControl {
         try {
         	theEditItemsParentView = theFxmlLoader.load();
         	theEditItemsScene = new Scene(theEditItemsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateCreateItemsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreateItemsView.fxml"));
+        theFxmlLoader.setController(new CreateItemsViewControl(this));
+        try {
+        	theCreateItemsParentView = theFxmlLoader.load();
+        	theCreateItemsScene = new Scene(theCreateItemsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
