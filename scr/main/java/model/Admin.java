@@ -14,15 +14,17 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Admin extends Player {
 	private IntegerProperty adminId;
 	private IntegerProperty playerId;
+	private IntegerProperty isActive;
 	
 	/**
 	 * Default Player constructor. Not currently used, but exists for tests
 	 */
 	public Admin() {}
 	
-	public Admin(int adminId, int playerId) {
+	public Admin(int adminId, int playerId, int isActive) {
 		this.adminId = new SimpleIntegerProperty(adminId);
 		this.playerId = new SimpleIntegerProperty(playerId);
+		this.isActive = new SimpleIntegerProperty(isActive);
 	}
 	
 	/**
@@ -64,6 +66,22 @@ public class Admin extends Player {
 	 */
 	public void SetPlayerId(int playerId) {
 		this.playerId = new SimpleIntegerProperty(playerId);
+	}
+	
+	/**
+	 * Gets isActive
+	 * @return isActive
+	 */
+	public int GetIsActive() {
+		return isActive.get();
+	}
+	
+	/**
+	 * Sets the isActive
+	 * @param isActive
+	 */
+	public void SetIsActive(int isActive) {
+		this.isActive = new SimpleIntegerProperty(isActive);
 	}
 
 }
