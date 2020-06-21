@@ -16,6 +16,17 @@ import model.Admin;
 public class AdminTests {
 	
 	/**
+	 * Tests Admin model's overloaded constructor
+	 */
+	@Test
+	public void testAdminOverloadedContructor() {
+		Admin testAdmin = new Admin(1, 2, 3);
+		assertEquals(1, testAdmin.GetAdminId());
+		assertEquals(2, testAdmin.GetPlayerId());
+		assertEquals(3, testAdmin.GetIsActive());
+	}
+	
+	/**
 	 * Tests the GetAdminID and SetAdminID Methods
 	 * 
 	 */
@@ -37,5 +48,15 @@ public class AdminTests {
 		assertEquals(1234, testAdmin.GetPlayerId());
 	}
 	
+	/**
+	 * Tests the GetIsActive and SetIsActive Methods
+	 * 
+	 */
+	@Test
+	public void testGetIsActiveShouldBe1234() {
+		Admin testAdmin = new Admin();
+		testAdmin.SetIsActive(1);;
+		assertEquals(1, testAdmin.GetIsActive());
+	}
 
 }
