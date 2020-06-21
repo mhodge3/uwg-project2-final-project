@@ -5,7 +5,9 @@ package model;
 
 
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -20,8 +22,8 @@ public class Item {
 	private StringProperty itemName;
 	private StringProperty itemDescription;
 	private IntegerProperty itemType;
-	private IntegerProperty isQuestItem;
-	private IntegerProperty isImplicitItem;
+	private BooleanProperty isQuestItem;
+	private BooleanProperty isImplicitItem;
 	
 	
 	/**
@@ -41,13 +43,13 @@ public class Item {
 	 * @param isImplicitItem
 	 */
 	
-	public Item(int itemId, String itemName, String itemDescription, int itemType, int isQuestItem, int isImplicitItem) {
+	public Item(int itemId, String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) {
 		this.itemId = new SimpleIntegerProperty(itemId);
 		this.itemName = new SimpleStringProperty(itemName);
 		this.itemDescription = new SimpleStringProperty(itemDescription);
 		this.itemType = new SimpleIntegerProperty(itemType);
-		this.isQuestItem = new SimpleIntegerProperty(isQuestItem);
-		this.isImplicitItem = new SimpleIntegerProperty(isImplicitItem);
+		this.isQuestItem = new SimpleBooleanProperty(isQuestItem);
+		this.isImplicitItem = new SimpleBooleanProperty(isImplicitItem);
 	}
 	/**
 	 * Gets the Item Id
@@ -151,7 +153,7 @@ public class Item {
 	 * Gets the Is Quest Item
 	 * @return isQuestItem
 	 */
-	public int GetIsQuestItem() {
+	public Boolean GetIsQuestItem() {
 		return isQuestItem.get();
 	}
 	
@@ -159,15 +161,15 @@ public class Item {
 	 * Sets the IsQuestItem
 	 * @param setIsQuestItem
 	 */
-	public void SetIsQuestItem(int setIsQuestItem) {
-		this.isQuestItem = new SimpleIntegerProperty(setIsQuestItem);
+	public void SetIsQuestItem(Boolean setIsQuestItem) {
+		this.isQuestItem = new SimpleBooleanProperty(setIsQuestItem);
 	}
 	
 	/**
 	 * Gets the IsItemQuest property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty IsItemQuestroperty() {
+	public final BooleanProperty isQuestItemProperty() {
 	   return isQuestItem;
 	}
 	
@@ -175,7 +177,7 @@ public class Item {
 	 * Gets the isImplicitItem
 	 * @return isImplicitItem
 	 */
-	public int GetIsImplicitItem() {
+	public Boolean GetIsImplicitItem() {
 		return isImplicitItem.get();
 	}
 	
@@ -183,15 +185,15 @@ public class Item {
 	 * Sets the IsImplicitItem
 	 * @param setIsImplicitItem
 	 */
-	public void SetIsImplicitItem(int setIsImplicitItem) {
-		this.isImplicitItem = new SimpleIntegerProperty(setIsImplicitItem);
+	public void SetIsImplicitItem(Boolean setIsImplicitItem) {
+		this.isImplicitItem = new SimpleBooleanProperty(setIsImplicitItem);
 	}
 	
 	/**
 	 * Gets the ImplicitItem property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ImplicitItemProperty() {
+	public final BooleanProperty isImplicitItemProperty() {
 	   return isImplicitItem;
 	}
 	

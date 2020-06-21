@@ -51,8 +51,8 @@ public class ItemDAL {
                 item.SetItemName(results.getString("character_item_name"));
                 item.SetItemDescription(results.getString("character_item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")));
+                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
+                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
                 theItemArrayList.add(item);
             }
         } catch (Exception e) {
@@ -90,8 +90,8 @@ public class ItemDAL {
                 item.SetItemName(results.getString("item_name"));
                 item.SetItemDescription(results.getString("item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")));
+                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
+                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -128,8 +128,8 @@ public class ItemDAL {
                 item.SetItemName(results.getString("item_name"));
                 item.SetItemDescription(results.getString("item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")));
+                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
+                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
