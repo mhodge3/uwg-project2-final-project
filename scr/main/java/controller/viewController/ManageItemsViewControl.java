@@ -73,7 +73,7 @@ public class ManageItemsViewControl {
 	@FXML
 	private void handleEditSelectedItemButton() throws SQLException {
 		if (existingItemTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetNPCToEdit(existingItemTableView.getSelectionModel().getSelectedItem().GetItemId());
+			theMainDashboardViewControl.SetItemToEdit(existingItemTableView.getSelectionModel().getSelectedItem().GetItemId());
 			theMainDashboardViewControl.SetMainDashboardStage("editItems");
 		}
 		else {

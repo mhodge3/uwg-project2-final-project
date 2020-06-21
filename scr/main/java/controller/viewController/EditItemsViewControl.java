@@ -44,7 +44,7 @@ public class EditItemsViewControl {
     	editItemNameTextBox.setText(theItemToEdit.GetItemName());
     	editItemDescriptionTextArea.setText(theItemToEdit.GetItemDescription());
     	editIsItemForQuestCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
-    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
+    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.GetIsImplicitItem());
     }
     
 	@FXML

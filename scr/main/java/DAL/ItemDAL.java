@@ -50,8 +50,8 @@ public class ItemDAL {
                 item.SetItemName(results.getString("item_name"));
                 item.SetItemDescription(results.getString("item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
+                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
+                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
                 theItemArrayList.add(item);
             }
         } catch (Exception e) {
@@ -89,8 +89,8 @@ public class ItemDAL {
                 item.SetItemName(results.getString("item_name"));
                 item.SetItemDescription(results.getString("item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
+                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
+                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -185,8 +185,10 @@ public class ItemDAL {
 			  preparedStmt.setString (1, updatedItem.GetItemName());
 			  preparedStmt.setString (2, updatedItem.GetItemDescription());
 			  preparedStmt.setString (3, String.valueOf(updatedItem.GetItemType()));
-			  preparedStmt.setString (4, String.valueOf(updatedItem.GetIsImplicitItem()));
-			  preparedStmt.setString (5, String.valueOf(updatedItem.GetIsImplicitItem()));
+			  int questBoolToInt = updatedItem.GetIsQuestItem() ? 1 : 0;
+			  preparedStmt.setString (4, String.valueOf(questBoolToInt));
+			  int implicitBoolToInt = updatedItem.GetIsImplicitItem() ? 1 : 0;
+			  preparedStmt.setString (5, String.valueOf(implicitBoolToInt));
 			  preparedStmt.setString (6, String.valueOf(oldItem.GetItemId()));
 		      preparedStmt.execute();
 		      success = true;

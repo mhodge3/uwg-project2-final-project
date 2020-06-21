@@ -102,6 +102,11 @@ public class MainDashboardViewControl {
 		theEditNPCCharactersViewControl.SetFormForSelectedNPC(theEditNPCCharactersViewControl.GetEditNPCCharactersControl().GetSelectedNPC());
 	}
 	
+	public void SetItemToEdit(int itemIdToEdit) {
+		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
+		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
+	}
+	
 	@FXML
 	private void handleLogoutButtonAction(ActionEvent event) throws Exception
 	{

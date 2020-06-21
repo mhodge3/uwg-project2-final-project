@@ -154,7 +154,7 @@ public class Item {
 	 * @return isQuestItem
 	 */
 	public Boolean GetIsQuestItem() {
-		return isQuestItem.get();
+		return this.isQuestItem.get();
 	}
 	
 	/**
@@ -178,7 +178,7 @@ public class Item {
 	 * @return isImplicitItem
 	 */
 	public Boolean GetIsImplicitItem() {
-		return isImplicitItem.get();
+		return this.isImplicitItem.get();
 	}
 	
 	/**
