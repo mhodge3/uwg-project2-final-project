@@ -3,7 +3,6 @@ package controller.viewController;
 import java.sql.SQLException;
 
 import controller.logicController.EditItemsControl;
-import controller.logicController.EditNPCCharactersControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -14,7 +13,7 @@ import model.Item;
 
 public class EditItemsViewControl {
 	@FXML
-	private TextField editItemType;
+	private TextField editItemTypeTextBox;
 	@FXML
 	private TextField editItemNameTextBox;
 	@FXML
@@ -41,7 +40,7 @@ public class EditItemsViewControl {
     }
     
     public void SetFormForSelectedItem(Item theItemToEdit) {
-    	editItemType.setText(String.valueOf(theItemToEdit.GetItemType()));
+    	editItemTypeTextBox.setText(String.valueOf(theItemToEdit.GetItemType()));
     	editItemNameTextBox.setText(theItemToEdit.GetItemName());
     	editItemDescriptionTextArea.setText(theItemToEdit.GetItemDescription());
     	editIsItemForQuestCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
@@ -57,7 +56,7 @@ public class EditItemsViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.UpdateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemType.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
+			itemCreationError = theEditItemsControl.UpdateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
