@@ -23,7 +23,7 @@ public class ManageItemsControl {
 		this.itemDAL = new ItemDAL(theDBConnection);
 	}
 	
-	public void UpdatePlayerArrayList() throws SQLException {
+	public void UpdateItemArrayList() throws SQLException {
 		existingItemAdminArrayList = new ArrayList<Item>();
 		existingItemAdminArrayList = itemDAL.GetItems();
 		observableItemList.clear();

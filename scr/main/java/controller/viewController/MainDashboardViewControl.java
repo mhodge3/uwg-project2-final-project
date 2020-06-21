@@ -40,6 +40,12 @@ public class MainDashboardViewControl {
     
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
+    private Parent theEditItemsParentView;
+    private Scene theEditItemsScene;
+    private Parent theCreateItemsParentView;
+    private Scene theCreateItemsScene;
+    private ManageItemsViewControl theManageItemsViewControl;
+	private EditItemsViewControl theEditItemsViewControl;
     
     private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
@@ -67,6 +73,8 @@ public class MainDashboardViewControl {
 		CreateCreatePlayersAndAdminsScene();
 		
 		CreateManageItemsScene();
+		CreateEditItemsScene();
+		CreateCreateItemsScene();
 		
 		CreateManageNPCCharactersScene();
 		CreateEditNPCCharactersScene();
@@ -83,6 +91,10 @@ public class MainDashboardViewControl {
 		this.theManageNPCCharactersViewControl = theManageNPCCharactersViewControl;
 	}
 	
+	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
+		this.theManageItemsViewControl = theManageItemsViewControl;
+	}
+	
 	public void SetPlayerToEdit(int playerIdToEdit) {
 		theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().SetSelectedPlayer(playerIdToEdit);
 		theEditPlayersAndAdminsViewControl.SetFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().GetSelectedPlayer());
@@ -91,6 +103,11 @@ public class MainDashboardViewControl {
 	public void SetNPCToEdit(int npcIdToEdit) {
 		theEditNPCCharactersViewControl.GetEditNPCCharactersControl().SetSelectedNPC(npcIdToEdit);
 		theEditNPCCharactersViewControl.SetFormForSelectedNPC(theEditNPCCharactersViewControl.GetEditNPCCharactersControl().GetSelectedNPC());
+	}
+	
+	public void SetItemToEdit(int itemIdToEdit) {
+		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
+		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
 	@FXML
@@ -176,7 +193,14 @@ public class MainDashboardViewControl {
 				theSceneToStage = theCreatePlayersAndAdminsScene;
 				break;
 			case "manageItems":
+				theManageItemsViewControl.updateExistingItemsList();
 				theSceneToStage = theManageItemsScene;
+				break;
+			case "editItems":
+				theSceneToStage = theEditItemsScene;
+				break;
+			case "createItems":
+				theSceneToStage = theCreateItemsScene;
 				break;
 			case "manageNPCCharacters":
 				theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
@@ -248,6 +272,29 @@ public class MainDashboardViewControl {
         try {
         	theManageItemsParentView = theFxmlLoader.load();
         	theManageItemsScene = new Scene(theManageItemsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateEditItemsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditItemsView.fxml"));
+        theEditItemsViewControl = new EditItemsViewControl(this);
+        theFxmlLoader.setController(theEditItemsViewControl);
+        try {
+        	theEditItemsParentView = theFxmlLoader.load();
+        	theEditItemsScene = new Scene(theEditItemsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateCreateItemsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/createView/CreateItemsView.fxml"));
+        theFxmlLoader.setController(new CreateItemsViewControl(this));
+        try {
+        	theCreateItemsParentView = theFxmlLoader.load();
+        	theCreateItemsScene = new Scene(theCreateItemsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
