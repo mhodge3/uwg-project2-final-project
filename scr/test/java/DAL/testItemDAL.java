@@ -58,7 +58,7 @@ class testItemDAL {
 	@Test
 	public void updateAItem() throws Exception {
 		Item oldItem = this.dal.GetItemByName("cloak spell");
-		Item updatedItem = new Item(0,"cloak spell", "Invisibility shield", 4, 5, 6);
+		Item updatedItem = new Item(0,"cloak spell", "Invisibility shield", 4, false, false);
 		this.dal.UpdateItem(oldItem, updatedItem);
 		oldItem = this.dal.GetItemByName("cloak spell");
 		assertEquals(oldItem.GetItemDescription(), "Invisibility shield");

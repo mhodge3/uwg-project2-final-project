@@ -40,6 +40,10 @@ public class MainDashboardViewControl {
     
     private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
+    private Parent theEditItemsParentView;
+    private Scene theEditItemsScene;
+    private ManageItemsViewControl theManageItemsViewControl;
+	private EditItemsViewControl theEditItemsViewControl;
     
     private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
@@ -67,6 +71,7 @@ public class MainDashboardViewControl {
 		CreateCreatePlayersAndAdminsScene();
 		
 		CreateManageItemsScene();
+		CreateEditItemsScene();
 		
 		CreateManageNPCCharactersScene();
 		CreateEditNPCCharactersScene();
@@ -81,6 +86,10 @@ public class MainDashboardViewControl {
 	
 	public void SetTheManageNPCCharactersViewControl(ManageNPCCharactersViewControl theManageNPCCharactersViewControl) {
 		this.theManageNPCCharactersViewControl = theManageNPCCharactersViewControl;
+	}
+	
+	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
+		this.theManageItemsViewControl = theManageItemsViewControl;
 	}
 	
 	public void SetPlayerToEdit(int playerIdToEdit) {
@@ -176,7 +185,11 @@ public class MainDashboardViewControl {
 				theSceneToStage = theCreatePlayersAndAdminsScene;
 				break;
 			case "manageItems":
+				theManageItemsViewControl.updateExistingItemsList();
 				theSceneToStage = theManageItemsScene;
+				break;
+			case "editItems":
+				theSceneToStage = theEditItemsScene;
 				break;
 			case "manageNPCCharacters":
 				theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
@@ -248,6 +261,18 @@ public class MainDashboardViewControl {
         try {
         	theManageItemsParentView = theFxmlLoader.load();
         	theManageItemsScene = new Scene(theManageItemsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateEditItemsScene() {
+        theFxmlLoader = new FXMLLoader(getClass().getResource("/view/editView/EditItemsView.fxml"));
+        theEditItemsViewControl = new EditItemsViewControl(this);
+        theFxmlLoader.setController(theEditItemsViewControl);
+        try {
+        	theEditItemsParentView = theFxmlLoader.load();
+        	theEditItemsScene = new Scene(theEditItemsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

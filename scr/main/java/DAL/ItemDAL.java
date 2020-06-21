@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Item;
-import model.NpcCharacter;
 
 /**
  * Data Access Layer for Items
@@ -48,8 +47,8 @@ public class ItemDAL {
             while (results.next() != false) {
             	Item item = new Item();
                 item.SetItemId(Integer.parseInt(results.getString("item_id")));
-                item.SetItemName(results.getString("character_item_name"));
-                item.SetItemDescription(results.getString("character_item_description"));
+                item.SetItemName(results.getString("item_name"));
+                item.SetItemDescription(results.getString("item_description"));
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
                 item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
                 item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));

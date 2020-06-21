@@ -49,7 +49,7 @@ public class EditItemsViewControl {
     
 	@FXML
 	private void handleItemEditBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
 	}
     
 	@FXML

@@ -72,7 +72,7 @@ public class Item {
 	 * Gets the ItemID property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ItemIDProperty() {
+	public final IntegerProperty itemIdProperty() {
 	   return itemId;
 	}
 	
@@ -97,7 +97,7 @@ public class Item {
 	 * Gets the ItemName property
 	 * @return Property for TableView
 	 */
-	public final StringProperty ItemNameProperty() {
+	public final StringProperty itemNameProperty() {
 	   return itemName;
 	}
 	
@@ -121,8 +121,8 @@ public class Item {
 	 * Gets the ItemDescription property
 	 * @return Property for TableView
 	 */
-	public final StringProperty ItemDescriptionProperty() {
-	   return itemName;
+	public final StringProperty itemDescriptionProperty() {
+	   return itemDescription;
 	}
 	
 	/**
@@ -145,8 +145,8 @@ public class Item {
 	 * Gets the ItemType property
 	 * @return Property for TableView
 	 */
-	public final StringProperty ItemTypeIDProperty() {
-	   return itemName;
+	public final IntegerProperty itemTypeProperty() {
+	   return itemType;
 	}
 	
 	/**

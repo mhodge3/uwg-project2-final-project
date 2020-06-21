@@ -69,8 +69,8 @@ public class ItemsTest {
 	@Test
 	public void testGetIsQuestItemShouldBe1234() {
 		Item testItem = new Item();
-		testItem.SetIsQuestItem(1234);
-		assertEquals(1234, testItem.GetIsQuestItem());
+		testItem.SetIsQuestItem(true);
+		assertEquals(true, testItem.GetIsQuestItem());
 	}
 	
 	/**
@@ -80,8 +80,8 @@ public class ItemsTest {
 	@Test
 	public void testGetIsImplicitItemShouldBe1234() {
 		Item testItem = new Item();
-		testItem.SetIsImplicitItem(1234);
-		assertEquals(1234, testItem.GetIsImplicitItem());
+		testItem.SetIsImplicitItem(false);
+		assertEquals(false, testItem.GetIsImplicitItem());
 	}
 
 }
