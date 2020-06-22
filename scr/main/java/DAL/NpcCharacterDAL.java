@@ -134,13 +134,13 @@ public class NpcCharacterDAL {
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
 			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".`characters_npc`" + 
-            	    "(characters_npc.character_npc_name, " +
-            	    "characters_npc.character_npc_description, " +
-            	    "characters_npc.character_npc_type, " + 
-            	    "characters_npc.character_npc_faction, " +
-            	    "characters_npc.character_npc_pos_x, " +
-            	    "characters_npc.character_npc_pos_y, " +
-            	    "characters_npc.character_npc_pos_z )" +
+            	    "(character_npc_name, " +
+            	    "character_npc_description, " +
+            	    "character_npc_type, " + 
+            	    "character_npc_faction, " +
+            	    "character_npc_pos_x, " +
+            	    "character_npc_pos_y, " +
+            	    "character_npc_pos_z )" +
 					"VALUES (?, ?, ?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, npcName);
@@ -187,7 +187,6 @@ public class NpcCharacterDAL {
 			  preparedStmt.setString (7, String.valueOf(updatedCharacter.GetNpcPosZ()));
 			  preparedStmt.setString (8, String.valueOf(oldCharacter.GetNpcId()));
 		      preparedStmt.execute();
-		      System.out.println(updatedCharacter.GetNpcName());
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
