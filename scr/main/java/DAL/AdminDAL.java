@@ -31,6 +31,7 @@ public class AdminDAL {
                 admin = new Admin();
                 admin.SetAdminID(Integer.parseInt(results.getString("admin_id")));
                 admin.SetAdminID(Integer.parseInt(results.getString("player_id")));
+                admin.SetIsActive(Integer.parseInt(results.getString("is_active")));
             }
             
         } catch (Exception e) {
