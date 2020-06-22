@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import DAL.MySQLAccess;
-import controller.logicController.EditPlayersAndAdminsControl;
 import controller.logicController.MainDashboardControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Player;
 
 /**
  * This class is the View Logic for a MainDashboard
@@ -82,6 +82,10 @@ public class MainDashboardViewControl {
 		
 		CreateManageQuestChainsScene();
 	} 
+	
+	public Player GetTheAdminPlayer() {
+		return this.theMainDashbaordControl.GetTheAdminPlayer();
+	}
 	
 	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
 		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import DAL.AdminDAL;
 import DAL.MySQLAccess;
 import DAL.PlayerDAL;
+import model.NpcCharacter;
 import model.Player;
 
 public class EditPlayersAndAdminsControl {
@@ -26,6 +27,20 @@ public class EditPlayersAndAdminsControl {
 	
 	public Player GetSelectedPlayer() {
 		return selectedPlayer;
+	}
+	
+	public String DeletePlayer(Player playerToDelete) {
+		
+		try {
+			if (playerDAL.DeletePlayer(playerToDelete)) {
+				return null;
+			}
+			else {
+				return "There was a problem deleting the Player";
+			}
+		} catch (SQLException e) {
+			return "There was a problem deleting the Player from the database";
+		}
 	}
 	
 	public String UpdatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {

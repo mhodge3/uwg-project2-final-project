@@ -23,6 +23,10 @@ public class MainDashboardControl {
 		this.theLoginViewControl = theLoginViewControl;
 	}
 	
+	public Player GetTheAdminPlayer() {
+		return this.theAdminPlayer;
+	}
+	
 	/**
 	 * Begins the LoginViewControl's process for reseting to the Login View
 	 */
