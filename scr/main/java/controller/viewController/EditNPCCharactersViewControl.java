@@ -74,7 +74,6 @@ public class EditNPCCharactersViewControl {
 			alert.setContentText("The NPC was successfully deleted");
 			alert.showAndWait();
 			theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
-			theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
 		}
 	}
     

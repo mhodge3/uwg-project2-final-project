@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import DAL.ItemDAL;
 import DAL.MySQLAccess;
 import model.Item;
+import model.NpcCharacter;
 
 public class EditItemsControl {
 	private ItemDAL itemDAL;
@@ -25,6 +26,20 @@ public class EditItemsControl {
 	
 	public Item GetSelectedItem() {
 		return selectedItem;
+	}
+	
+	public String DeleteItem(Item itemToDelete) {
+		
+		try {
+			if (itemDAL.DeleteItem(itemToDelete)) {
+				return null;
+			}
+			else {
+				return "There was a problem deleting the Item";
+			}
+		} catch (SQLException e) {
+			return "There was a problem deleting the Item from the database";
+		}
 	}
 	
 	public String UpdateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
