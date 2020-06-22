@@ -1,14 +1,9 @@
 package controller.logicController;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-
 import DAL.MySQLAccess;
 import DAL.PlayerDAL;
-import javafx.collections.ObservableList;
 import model.Player;
 
 /**
@@ -18,7 +13,7 @@ import model.Player;
  *
  */
 public class PlayerController {
-	PlayerDAL playerDAL;
+	private PlayerDAL playerDAL;
 	private Player selectedPlayer;
 	
 	/**
