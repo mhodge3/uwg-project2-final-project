@@ -49,7 +49,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="editSelectedUserDeleteButton" mnemonicParsing="false" text="Delete NPC (Actor)">
+                        <Button fx:id="editSelectedUserDeleteButton" mnemonicParsing="false" onAction="#handleNPCDeleteButton" text="Delete NPC (Actor)">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>

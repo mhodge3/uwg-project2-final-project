@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import model.NpcCharacter;
 
 public class EditNPCCharactersViewControl {
@@ -43,6 +44,38 @@ public class EditNPCCharactersViewControl {
 	@FXML
 	private void handleNPCEditBackButton() throws SQLException {
 		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+	}
+    
+	@FXML
+	private void handleNPCDeleteButton() throws SQLException {
+		String npcDeleteError = null;
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("NPC Edit");
+		alert.setHeaderText("NPC Edit Status");
+		alert.setContentText("Are you sure you want to DELETE " + theEditNPCCharactersControl.GetSelectedNPC().GetNpcName() + "? This operation cannot be undone.");
+		alert.showAndWait();
+		if (alert.getResult() == ButtonType.OK) {
+			try {
+				npcDeleteError = theEditNPCCharactersControl.DeleteNPC(theEditNPCCharactersControl.GetSelectedNPC());
+			} catch (Exception e) {
+				npcDeleteError = e.getMessage();
+			}
+			if (npcDeleteError != null) {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialog");
+				alert.setHeaderText("Error Editing the NPC");
+				alert.setContentText(npcDeleteError);
+				alert.showAndWait();
+				return;
+			}
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("NPC Edit");
+			alert.setHeaderText("NPC Edit Status");
+			alert.setContentText("The NPC was successfully deleted");
+			alert.showAndWait();
+			theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+			theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		}
 	}
     
 	@FXML

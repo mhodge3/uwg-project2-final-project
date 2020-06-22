@@ -29,6 +29,20 @@ public class EditNPCCharactersControl {
 		return selectedNPC;
 	}
 	
+	public String DeleteNPC(NpcCharacter npcToDelete) {
+		
+		try {
+			if (npcDAL.DeleteNpc(npcToDelete)) {
+				return null;
+			}
+			else {
+				return "There was a problem deleting the NPC";
+			}
+		} catch (SQLException e) {
+			return "There was a problem deleting the NPC from the database";
+		}
+	}
+	
 	public String UpdateNpc(int npcId, int npcType, String npcName, String npcDescription) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";
