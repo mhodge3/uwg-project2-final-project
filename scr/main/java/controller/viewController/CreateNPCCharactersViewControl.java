@@ -3,7 +3,6 @@ package controller.viewController;
 import java.sql.SQLException;
 
 import controller.logicController.CreateNPCCharactersControl;
-import controller.logicController.CreatePlayersAndAdminsControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;

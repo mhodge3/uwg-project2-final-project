@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import model.Player;
-
 /**
  * @author Ashley Palmer
  * @date 6/15/2020

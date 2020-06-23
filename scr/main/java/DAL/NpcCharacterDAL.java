@@ -3,9 +3,7 @@ package DAL;
 import java.sql.*;
 import java.util.ArrayList;
 
-import model.Admin;
 import model.NpcCharacter;
-import model.Player;
 /**
  * Data access layer for the Character_npc database table
  * @author Perry Iler

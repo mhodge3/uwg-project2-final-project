@@ -2,10 +2,8 @@ package controller.logicController;
 
 import java.sql.SQLException;
 
-import DAL.AdminDAL;
 import DAL.MySQLAccess;
 import DAL.PlayerDAL;
-import model.NpcCharacter;
 import model.Player;
 
 public class EditPlayersAndAdminsControl {

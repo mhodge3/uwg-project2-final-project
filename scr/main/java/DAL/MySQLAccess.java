@@ -2,7 +2,6 @@ package DAL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +18,6 @@ public class MySQLAccess {
     private Connection theConnection = null;
     private Statement theStatement = null;
     private String theDBName;
-    private PreparedStatement thePreparedStatement = null;
     private ResultSet theResultSet = null;
     private String connectionString;
     private String theDBUserName;
@@ -59,7 +57,6 @@ public class MySQLAccess {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
             theConnection = GetDBConnection();
-        	thePreparedStatement = null;
         	theResultSet = null;
         	connectionSuccess = true;
         } catch (Exception e) {

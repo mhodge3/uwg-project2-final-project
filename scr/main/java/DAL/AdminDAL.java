@@ -3,7 +3,6 @@ package DAL;
 import java.sql.*;
 
 import model.Admin;
-import model.Player;
 /**
  * Data access layer for the Admins database table
  * @author Perry Iler

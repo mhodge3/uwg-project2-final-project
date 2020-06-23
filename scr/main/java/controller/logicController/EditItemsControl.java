@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import DAL.ItemDAL;
 import DAL.MySQLAccess;
 import model.Item;
-import model.NpcCharacter;
 
 public class EditItemsControl {
 	private ItemDAL itemDAL;
