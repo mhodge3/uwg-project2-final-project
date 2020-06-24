@@ -11,6 +11,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import com.cs6920.model.NpcCharacter;
 
+/**
+ * Communicates between the Create Edit NCPCharacters fxml view and the logic control
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class EditNPCCharactersViewControl {
 	@FXML
 	private TextField editNPCType;
@@ -31,10 +36,18 @@ public class EditNPCCharactersViewControl {
     	this.theEditNPCCharactersControl = new EditNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
     }
     
+    /**
+     * Gets the logic control instance for this view
+     * @return  the logic control instance
+     */
     public EditNPCCharactersControl GetEditNPCCharactersControl() {
     	return theEditNPCCharactersControl;
     }
     
+    /**
+     * Sets the form values for the current NPC to edit
+     * @param theNPCToEdit
+     */
     public void SetFormForSelectedNPC(NpcCharacter theNPCToEdit) {
     	editNPCType.setText(String.valueOf(theNPCToEdit.GetNpcType()));
     	editNPCNameTextBox.setText(theNPCToEdit.GetNpcName());

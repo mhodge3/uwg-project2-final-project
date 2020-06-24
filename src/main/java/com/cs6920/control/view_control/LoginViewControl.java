@@ -83,13 +83,13 @@ public class LoginViewControl {
 		handleTestConnection.start();
 	}
 	
-	public void TestMessageSucces() {
+	private void TestMessageSucces() {
 		dBConnectionMessageLabel.setText("Connection successful.");
 	    dBConnectionMessageLabel.setTextFill(Color.GREEN);
 		loadingConnectionTestImage.setVisible(false);
 	}
 	
-	public void TestMessageFail() {
+	private void TestMessageFail() {
 	    dBConnectionMessageLabel.setText("A connection was not established.");
 	    dBConnectionMessageLabel.setTextFill(Color.RED);
 		loadingConnectionTestImage.setVisible(false);
@@ -151,10 +151,18 @@ public class LoginViewControl {
 		loadingLoginImage.setVisible(false);
 	}
 	
+	/**
+	 * Gets the loading image for this view
+	 * @return the ImageView loading graphic
+	 */
 	public ImageView GetLoadingConnectionTestImage() {
 		return this.loadingConnectionTestImage;
 	}
 	
+	/**
+	 * Gets the DBConnection class instance
+	 * @return the DBConnection class instance
+	 */
 	public MySQLAccess GetDBConnection() {
 		return theLoginControl.GetDBConnection();
 	}

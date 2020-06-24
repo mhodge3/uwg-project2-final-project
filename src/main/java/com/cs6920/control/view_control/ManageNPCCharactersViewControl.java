@@ -52,7 +52,7 @@ public class ManageNPCCharactersViewControl {
     }
 
 	@FXML
-    public void initialize() throws SQLException {
+    private void initialize() throws SQLException {
 		npcIDTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcId"));
 		npcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcType"));
 		npcNameTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, String>("npcName"));

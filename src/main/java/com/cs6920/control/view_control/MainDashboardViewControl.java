@@ -83,32 +83,60 @@ public class MainDashboardViewControl {
 		CreateManageQuestChainsScene();
 	} 
 	
+	/**
+	 * Gets the Player object that is logged in as Admin
+	 * @return the Admin Player Object
+	 */
 	public Player GetTheAdminPlayer() {
 		return this.theMainDashbaordControl.GetTheAdminPlayer();
 	}
 	
+	/**
+	 * Sets the view control reference in the logic control the theManagePlayersAndAdminsViewControl
+	 * @param theManagePlayersAndAdminsViewControl
+	 */
 	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
 		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;
 	}
 	
+	/**
+	 * Sets the view control reference in the logic control the theManageNPCCharactersViewControl
+	 * @param theManageNPCCharactersViewControl
+	 */
 	public void SetTheManageNPCCharactersViewControl(ManageNPCCharactersViewControl theManageNPCCharactersViewControl) {
 		this.theManageNPCCharactersViewControl = theManageNPCCharactersViewControl;
 	}
-	
+
+	/**
+	 * Sets the view control reference in the logic control the theManageItemsViewControl
+	 * @param theManageItemsViewControl
+	 */
 	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
 		this.theManageItemsViewControl = theManageItemsViewControl;
 	}
 	
+	/**
+	 * Sets the id of the Player to be edited
+	 * @param playerIdToEdit
+	 */
 	public void SetPlayerToEdit(int playerIdToEdit) {
 		theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().SetSelectedPlayer(playerIdToEdit);
 		theEditPlayersAndAdminsViewControl.SetFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().GetSelectedPlayer());
 	}
-	
+
+	/**
+	 * Sets the id of the NPCCharacter to be edited
+	 * @param npcIdToEdit
+	 */
 	public void SetNPCToEdit(int npcIdToEdit) {
 		theEditNPCCharactersViewControl.GetEditNPCCharactersControl().SetSelectedNPC(npcIdToEdit);
 		theEditNPCCharactersViewControl.SetFormForSelectedNPC(theEditNPCCharactersViewControl.GetEditNPCCharactersControl().GetSelectedNPC());
 	}
-	
+
+	/**
+	 * Sets the id of the Item to be edited
+	 * @param itemIdToEdit
+	 */
 	public void SetItemToEdit(int itemIdToEdit) {
 		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());

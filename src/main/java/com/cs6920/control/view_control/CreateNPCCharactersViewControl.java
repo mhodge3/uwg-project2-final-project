@@ -9,6 +9,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Communicates between the Create NPCCharacters fxml view and the logic control
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class CreateNPCCharactersViewControl {
 
 	@FXML
@@ -30,9 +35,6 @@ public class CreateNPCCharactersViewControl {
     	this.theCreateNPCCharactersControl = new CreateNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
     }
     
-    /**
-     * Clear Form for next new Entry
-     */
     private void ResetCreateNPCCharactersView() {
     	createNPCType.setText("");
     	createNPCNameTextBox.setText("");

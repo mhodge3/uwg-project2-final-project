@@ -44,7 +44,7 @@ public class ManagePlayersAndAdminsViewControl {
     }
 
 	@FXML
-    public void initialize() throws SQLException {
+    private void initialize() throws SQLException {
 		userIDTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("playerId"));
 		userIsAdminTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("playerIsAdmin"));
 		userNameTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerName"));

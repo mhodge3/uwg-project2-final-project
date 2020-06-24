@@ -10,9 +10,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 /**
- * The View Control for the Create Player and Admins scene.
+ * Communicates between the Create PlayersAndAdmins fxml view and the logic control
  * @author Matthew Hodge
- * @version 6.17.2020
+ * @version 6.23.2020
  */
 public class CreatePlayersAndAdminsViewControl {
 	@FXML
@@ -40,9 +40,6 @@ public class CreatePlayersAndAdminsViewControl {
     	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
-    /**
-     * Clear Form for next new Entry
-     */
     private void ResetCreatePlayerAdminView() {
     	createPlayerUserNameTextBox.setText("");
     	createPlayerPasswordTextBox.setText("");

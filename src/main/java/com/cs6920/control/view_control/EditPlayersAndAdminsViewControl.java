@@ -42,6 +42,10 @@ public class EditPlayersAndAdminsViewControl {
     	this.theEditPlayersAndAdminsControl = new EditPlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
+    /**
+     * Gets the logic control for this Edit PlayerAndAdmins view control
+     * @return the logic conrol
+     */
     public EditPlayersAndAdminsControl GetEditPlayersAndAdminsControl() {
     	return theEditPlayersAndAdminsControl;
     }
@@ -92,6 +96,10 @@ public class EditPlayersAndAdminsViewControl {
 		}
 	}
     
+	/**
+	 * Sets form values to those of the Player to edit
+	 * @param thePlayerToEdit
+	 */
     public void SetFormForSelectedPlayer(Player thePlayerToEdit) {
     	editPlayerUserNameTextBox.setText(thePlayerToEdit.GetPlayerName());
     	editPlayerPasswordTextBox.setText(thePlayerToEdit.GetPlayerPassword());

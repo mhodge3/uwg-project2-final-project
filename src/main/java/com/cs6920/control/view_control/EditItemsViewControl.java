@@ -11,7 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import com.cs6920.model.Item;
-
+/**
+ * Communicates between the Create EditItems fxml view and the logic control
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class EditItemsViewControl {
 	@FXML
 	private TextField editItemTypeTextBox;
@@ -36,10 +40,18 @@ public class EditItemsViewControl {
     	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
+    /**
+     * Gets logic control for this Edit Item view control
+     * @return the Item edited
+     */
     public EditItemsControl GetEditItemsControl() {
     	return theEditItemsControl;
     }
     
+    /**
+     * Sets the form values to those of the Item to edit
+     * @param theItemToEdit
+     */
     public void SetFormForSelectedItem(Item theItemToEdit) {
     	editItemTypeTextBox.setText(String.valueOf(theItemToEdit.GetItemType()));
     	editItemNameTextBox.setText(theItemToEdit.GetItemName());

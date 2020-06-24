@@ -56,7 +56,7 @@ public class ManageItemsViewControl {
     }
 
 	@FXML
-    public void initialize() throws SQLException {
+    private void initialize() throws SQLException {
 		itemIDTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemId"));
 		itemTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemType"));
 		itemNameTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemName"));

@@ -10,6 +10,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
+/**
+ * Communicates between the Create Items fxml view and the logic control
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class CreateItemsViewControl {
 	@FXML
 	private TextField createItemTypeTextBox;
@@ -34,9 +39,7 @@ public class CreateItemsViewControl {
     	this.theCreateItemsControl = new CreateItemsControl(theMainDashboardViewControl.GetDBConnection());
     }
     
-    /**
-     * Clear Form for next new Entry
-     */
+    
     private void ResetCreateItemsView() {
     	createItemTypeTextBox.setText("");
     	createItemNameTextBox.setText("");
