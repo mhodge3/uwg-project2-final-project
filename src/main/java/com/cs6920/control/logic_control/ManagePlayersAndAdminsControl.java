@@ -18,11 +18,19 @@ public class ManagePlayersAndAdminsControl {
 	private PlayerDAL playerDAL;
 	private ArrayList<Player> existingPlayerAdminArrayList;
 	private ObservableList<Player> observablePlayerList = FXCollections.observableArrayList();
-	
+
+	/**
+	 * Constructor that sets up the DAL to the current DBConnection class instance
+	 * @param theDBConnection
+	 */
 	public ManagePlayersAndAdminsControl(MySQLAccess theDBConnection) {
 		this.playerDAL = new PlayerDAL(theDBConnection);
 	}
-	
+
+	/**
+	 * Update the observable list of objects for any changes
+	 * @throws SQLException
+	 */
 	public void UpdatePlayerArrayList() throws SQLException {
 		existingPlayerAdminArrayList = new ArrayList<Player>();
 		existingPlayerAdminArrayList = playerDAL.GetPlayers();

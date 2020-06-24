@@ -19,10 +19,18 @@ public class ManageItemsControl {
 	private ArrayList<Item> existingItemAdminArrayList;
 	private ObservableList<Item> observableItemList = FXCollections.observableArrayList();
 	
+	/**
+	 * 
+	 * @param theDBConnection
+	 */
 	public ManageItemsControl(MySQLAccess theDBConnection) {
 		this.itemDAL = new ItemDAL(theDBConnection);
 	}
 	
+	/**
+	 * Updates the observable list for any changes to object list
+	 * @throws SQLException
+	 */
 	public void UpdateItemArrayList() throws SQLException {
 		existingItemAdminArrayList = new ArrayList<Item>();
 		existingItemAdminArrayList = itemDAL.GetItems();

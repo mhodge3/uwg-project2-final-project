@@ -6,14 +6,27 @@ import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.NpcCharacterDAL;
 import com.cs6920.model.NpcCharacter;
 
+/**
+ * Communicates between the create NPCCharacter view and DAL
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class EditNPCCharactersControl {
 	private NpcCharacterDAL npcDAL;
 	private NpcCharacter selectedNPC;
 	
+	/**
+	 * Constructor that sets DAL to the current DBConnection class instance
+	 * @param theDBConnection
+	 */
 	public EditNPCCharactersControl(MySQLAccess theDBConnection) {
 		this.npcDAL = new NpcCharacterDAL(theDBConnection);
 	}
-	
+
+	/**
+	 * Sets an instance of the NPC to that found by id
+	 * @param npcId
+	 */
 	public void SetSelectedNPC(int npcId) {
 		try {
 			selectedNPC = npcDAL.GetNpcById(npcId);
@@ -23,10 +36,19 @@ public class EditNPCCharactersControl {
 		}
 	}
 	
+	/**
+	 * Get the NPC object for editing
+	 * @return the NPCCharacter object to edit
+	 */
 	public NpcCharacter GetSelectedNPC() {
 		return selectedNPC;
 	}
 	
+	/**
+	 * Delete this NPC from the DB
+	 * @param npcToDelete
+	 * @return String, message for user on outcome of operation
+	 */
 	public String DeleteNPC(NpcCharacter npcToDelete) {
 		
 		try {
@@ -41,6 +63,15 @@ public class EditNPCCharactersControl {
 		}
 	}
 	
+	/**
+	 * Update this NPCCharacter in the DB
+	 * @param npcId
+	 * @param npcType
+	 * @param npcName
+	 * @param npcDescription
+	 * @return String, message for user on outcome of operation
+	 * @throws SQLException
+	 */
 	public String UpdateNpc(int npcId, int npcType, String npcName, String npcDescription) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";

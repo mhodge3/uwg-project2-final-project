@@ -24,6 +24,10 @@ public class PlayerController {
 		this.playerDAL = new PlayerDAL(theDBConnection);
 	}
 	
+	/**
+	 * Sets the selected player object from DB by id
+	 * @param playerId
+	 */
 	public void SetSelectedPlayer(int playerId) {
 		try {
 			selectedPlayer = playerDAL.GetPlayer(playerId);
@@ -80,6 +84,10 @@ public class PlayerController {
 		}
 	}
 	
+	/**
+	 * Gets the Player object of the selected Player
+	 * @return The selected Player
+	 */
 	public Player GetSelectedPlayer() {
 		return selectedPlayer;
 	}

@@ -21,6 +21,7 @@ public class LoginControl {
 	private LoginViewControl theLoginViewControl;
 	private MainDashboardControl theMainDashboardControl;
 	private MainDashboardViewControl theMainDashboardViewControl;
+	
 	/**
 	 * Gives this LoginControl a reference to its View control
 	 * @param theLoginViewControl
@@ -51,10 +52,24 @@ public class LoginControl {
 		}
 	}
 	
+	/**
+	 * Gets the DBConnection class instance for this run of the program
+	 * @return  The DBConnection class instance
+	 */
 	public MySQLAccess GetDBConnection() {
 		return  theDBConnection;
 	}
 	
+	/**
+	 * Login that verifies a player exists
+	 * @param host
+	 * @param userName
+	 * @param password
+	 * @param dBName
+	 * @param loginName
+	 * @param loginPassword
+	 * @return Player, the Player found
+	 */
 	public Player UserLoginPlayer(String host, String userName, String password, String dBName, String loginName, String loginPassword) {
 		BuildConnectionString(host, userName, password, dBName);
 		try {

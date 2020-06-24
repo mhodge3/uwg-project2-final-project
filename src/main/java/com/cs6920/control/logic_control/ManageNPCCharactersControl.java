@@ -19,10 +19,18 @@ public class ManageNPCCharactersControl {
 	private ArrayList<NpcCharacter> existingNPCArrayList;
 	private ObservableList<NpcCharacter> observableNPCList = FXCollections.observableArrayList();
 	
+	/**
+	 * Constructor that sets up the DAL to the current DBConnection class instance
+	 * @param theDBConnection
+	 */
 	public ManageNPCCharactersControl(MySQLAccess theDBConnection) {
 		this.nPCCharacterDAL = new NpcCharacterDAL(theDBConnection);
 	}
 	
+	/**
+	 * Update the observable list of objects for any changes
+	 * @throws SQLException
+	 */
 	public void UpdatePlayerArrayList() throws SQLException {
 		existingNPCArrayList = new ArrayList<NpcCharacter>();
 		existingNPCArrayList = nPCCharacterDAL.GetAllNpc();

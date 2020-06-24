@@ -23,6 +23,10 @@ public class MainDashboardControl {
 		this.theLoginViewControl = theLoginViewControl;
 	}
 	
+	/**
+	 * Get the Player object that is an Admin
+	 * @return Player, the Admin Player
+	 */
 	public Player GetTheAdminPlayer() {
 		return this.theAdminPlayer;
 	}
@@ -34,6 +38,10 @@ public class MainDashboardControl {
 		theLoginViewControl.ShowLoginStage();
 	}
 	
+	/**
+	 * Gets the DBDconnection class instance for this run of the program
+	 * @return the DB Connection class
+	 */
 	public MySQLAccess GetDBConnection() {
 		return theLoginViewControl.GetDBConnection();
 	}

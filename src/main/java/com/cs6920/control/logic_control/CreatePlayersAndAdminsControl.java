@@ -2,19 +2,36 @@ package com.cs6920.control.logic_control;
 
 import java.sql.SQLException;
 
-import com.cs6920.DAL.AdminDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.PlayerDAL;
 
+/**
+ * Communicates between the create PlayerAndAdmins view and DAL
+ * @author Matthew Hodge
+ * @version 6.23.2020
+ */
 public class CreatePlayersAndAdminsControl {
 	private PlayerDAL playerDAL;
-	private AdminDAL adminDAL;
 	
+	/**
+	 * Constructor that sets DAL to the current DBConnection class instance
+	 * @param theDBConnection
+	 */
 	public CreatePlayersAndAdminsControl(MySQLAccess theDBConnection) {
 		this.playerDAL = new PlayerDAL(theDBConnection);
-		this.adminDAL = new AdminDAL(theDBConnection);
 	}
 	
+	/**
+	 * Communicates between the create Items view and DAL
+	 * @param playerName
+	 * @param playerPassword
+	 * @param playerPasswordConfirm
+	 * @param email
+	 * @param countryCode
+	 * @param makeAdmin
+	 * @return String, message for user on outcome of operation
+	 * @throws SQLException
+	 */
 	public String CreatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
@@ -37,19 +54,6 @@ public class CreatePlayersAndAdminsControl {
 		}
 		else {
 			return "There was a problem creating the account";
-		}
-	}
-	
-	public Integer GetLastInsertedId() throws SQLException {
-		return playerDAL.GetLastInsertedID();
-	}
-	
-	public String CreateAdmin(int thePlayerIdToElevate) throws SQLException {
-		if (adminDAL.CreateAdmin(thePlayerIdToElevate, 1)) {
-			return null;
-		}
-		else {
-			return "There was an error making this Player User an Admin";
 		}
 	}
 }
