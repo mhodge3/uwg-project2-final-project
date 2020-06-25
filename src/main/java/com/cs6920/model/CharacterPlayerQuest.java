@@ -43,5 +43,30 @@ public class CharacterPlayerQuest {
 		this.characterId = new SimpleIntegerProperty(setCharacterId);
 	}
 	
+	/**
+	 * Gets the questId
+	 * @return questId
+	 */
+	public int GetquestId() {
+		return questId.get();
+	}
+	
+	/**
+	 * Gets the questId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty QuestIdProperty() {
+	   return questId;
+	}
+	
+	
+	/**
+	 * Sets the questId
+	 * @param setQuestId
+	 */
+	public void SetQuestId(int setQuestId) {
+		this.questId = new SimpleIntegerProperty(setQuestId);
+	}
+	
 
 }
