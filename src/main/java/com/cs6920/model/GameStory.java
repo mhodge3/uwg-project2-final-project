@@ -21,7 +21,7 @@ public class GameStory {
 	 * Gets the gameStorn Name
 	 * @return gameStoryName
 	 */
-	public String GetPlayerName() {
+	public String GetGameStoryName() {
 		return gameStoryName.get();
 	}
 	
@@ -29,7 +29,7 @@ public class GameStory {
 	 * Gets the game story name property
 	 * @return Property for TableView
 	 */
-	public final StringProperty playerNameProperty() {
+	public final StringProperty GameStoryNameProperty() {
 	   return gameStoryName;
 	}
 	
@@ -37,7 +37,7 @@ public class GameStory {
 	 * Sets the gameStoryName
 	 * @param gameStoryName
 	 */
-	public void SetPlayerName(String gameStoryName) {
+	public void SetGameStoryName(String gameStoryName) {
 		this.gameStoryName = new SimpleStringProperty(gameStoryName);
 	}
 
