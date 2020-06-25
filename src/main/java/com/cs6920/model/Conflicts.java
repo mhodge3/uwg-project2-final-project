@@ -50,7 +50,7 @@ public class Conflicts {
 	 * Gets the conflictName
 	 * @return conflictName
 	 */
-	public String GetConflictName()) {
+	public String GetConflictName() {
 		return conflictName.get();
 	}
 	
@@ -68,6 +68,31 @@ public class Conflicts {
 	 */
 	public void SetPlayerName(String SetConflictName) {
 		this.conflictName = new SimpleStringProperty(SetConflictName);
+	}
+	
+	/**
+	 * Gets the conflictTemplate
+	 * @return conflictTemplate
+	 */
+	public int GetConflictTemplate() {
+		return conflictTemplate.get();
+	}
+	
+	/**
+	 * Gets the conflictTemplate property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ConflictTemplate() {
+	   return conflictTemplate;
+	}
+	
+	
+	/**
+	 * Sets the conflictTemplate
+	 * @param conflictTemplate
+	 */
+	public void SetConflictTemplate(int setConflictTemplate) {
+		this.conflictTemplate = new SimpleIntegerProperty(setConflictTemplate);
 	}
 	
 
