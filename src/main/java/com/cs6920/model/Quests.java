@@ -46,5 +46,30 @@ public class Quests {
 	public void SetQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
+	
+	/**
+	 * Gets the preReqQuestId
+	 * @return preReqQuestId
+	 */
+	public int GetPreReqQuestId() {
+		return preReqQuestId.get();
+	}
+	
+	/**
+	 * Gets the PreReqQuestId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty QuestPreReqQuestId() {
+	   return preReqQuestId;
+	}
+	
+	
+	/**
+	 * Sets the preReqQuestId
+	 * @param setPreReqQuestId
+	 */
+	public void SetPreReqQuestId(int setPreReqQuestId) {
+		this.preReqQuestId = new SimpleIntegerProperty(setPreReqQuestId);
+	}
 
 }
