@@ -17,6 +17,24 @@ public class CharacterPlayerQuest {
 	private IntegerProperty questId;
 	private IntegerProperty questStatus;
 	
+	/**
+	 * Constructor for testing
+	 */
+	public CharacterPlayerQuest() {
+		
+	}
+	
+	/**
+	 * Constructor for CharacterPlayerQuest
+	 * @param characterId
+	 * @param questId
+	 * @param questStatus
+	 */
+	public CharacterPlayerQuest(int characterId, int questId, int questStatus) {
+		this.characterId = new SimpleIntegerProperty(characterId);
+		this.questId = new SimpleIntegerProperty(questId);
+		this.questStatus = new SimpleIntegerProperty(questStatus);
+	}
 	
 	/**
 	 * Gets the characterId
