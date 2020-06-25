@@ -68,5 +68,30 @@ public class CharacterPlayerQuest {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
 	
+	/**
+	 * Gets the questStatus
+	 * @return questStatus
+	 */
+	public int GetQuestStatus() {
+		return questStatus.get();
+	}
+	
+	/**
+	 * Gets the QuestStatus property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty QuestStatusProperty() {
+	   return questStatus;
+	}
+	
+	
+	/**
+	 * Sets the questStatus
+	 * @param setQuestStatus
+	 */
+	public void QuestStatus(int setQuestStatus) {
+		this.questStatus = new SimpleIntegerProperty(setQuestStatus);
+	}
+	
 
 }
