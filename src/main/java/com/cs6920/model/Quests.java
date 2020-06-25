@@ -146,5 +146,29 @@ public class Quests {
 	public void SetQuestName(String setQuestName) {
 		this.questName = new SimpleStringProperty(setQuestName);
 	}
+	
+	/**
+	 * Gets the questDescription
+	 * @return questDescription
+	 */
+	public String GetquestDescription() {
+		return questDescription.get();
+	}
+	
+	/**
+	 * Gets the questDescription property
+	 * @return Property for TableView
+	 */
+	public final StringProperty QuestDescriptionProperty() {
+	   return questDescription;
+	}
+	
+	/**
+	 * Sets the questDescription
+	 * @param setQuestDescription
+	 */
+	public void SetQuestDescription(String setQuestDescription) {
+		this.questDescription = new SimpleStringProperty(setQuestDescription);
+	}
 
 }
