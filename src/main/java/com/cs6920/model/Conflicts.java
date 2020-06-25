@@ -5,6 +5,7 @@ package com.cs6920.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -43,6 +44,30 @@ public class Conflicts {
 	 */
 	public void SetConflictId(int setConflictId) {
 		this.conflictId = new SimpleIntegerProperty(setConflictId);
+	}
+	
+	/**
+	 * Gets the conflictName
+	 * @return conflictName
+	 */
+	public String GetConflictName()) {
+		return conflictName.get();
+	}
+	
+	/**
+	 * Gets the conflictName property
+	 * @return Property for TableView
+	 */
+	public final StringProperty ConflictNameProperty() {
+	   return conflictName;
+	}
+	
+	/**
+	 * Sets the conflictName
+	 * @param conflictName
+	 */
+	public void SetPlayerName(String SetConflictName) {
+		this.conflictName = new SimpleStringProperty(SetConflictName);
 	}
 	
 
