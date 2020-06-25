@@ -59,7 +59,7 @@ public class Quests {
 	 * Gets the PreReqQuestId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty QuestPreReqQuestId() {
+	public final IntegerProperty PreReqQuestId() {
 	   return preReqQuestId;
 	}
 	
@@ -70,6 +70,31 @@ public class Quests {
 	 */
 	public void SetPreReqQuestId(int setPreReqQuestId) {
 		this.preReqQuestId = new SimpleIntegerProperty(setPreReqQuestId);
+	}
+	
+	/**
+	 * Gets the conflictId
+	 * @return conflictId
+	 */
+	public int GetConflictId() {
+		return conflictId.get();
+	}
+	
+	/**
+	 * Gets the conflictId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ConflictId() {
+	   return conflictId;
+	}
+	
+	
+	/**
+	 * Sets the conflictId
+	 * @param setConflictId
+	 */
+	public void SetConflictId(int setConflictId) {
+		this.conflictId = new SimpleIntegerProperty(setConflictId);
 	}
 
 }
