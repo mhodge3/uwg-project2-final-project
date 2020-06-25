@@ -17,6 +17,19 @@ public class QuestItems {
 	private IntegerProperty itemId;
 	private IntegerProperty itemQuantity;
 	
+	/**
+	 * Constructor for testing.
+	 */
+	public QuestItems() {
+		
+	}
+	
+	public QuestItems(int questID, int itemId, int itemQuantity) {
+		this.questId = new SimpleIntegerProperty(questID);
+		this.itemId = new SimpleIntegerProperty(itemId);
+		this.itemQuantity = new SimpleIntegerProperty(itemQuantity);
+	}
+	
 	
 	/**
 	 * Gets the questId
