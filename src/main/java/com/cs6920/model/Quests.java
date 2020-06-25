@@ -24,6 +24,23 @@ public class Quests {
 	private StringProperty questDescription;
 	
 	/**
+	 * Constructor for testing.
+	 */
+	public Quests() {
+		
+	}
+	
+	public Quests(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription) {
+		this.questId = new SimpleIntegerProperty(questId);
+		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
+		this.conflictId = new SimpleIntegerProperty(conflictId);
+		this.minCharacterLevel = new SimpleIntegerProperty(minCharacterLevel);
+		this.questName = new SimpleStringProperty(questName);
+		this.questDescription = new SimpleStringProperty(questDescription);
+		
+	}
+	
+	/**
 	 * Gets the questId
 	 * @return questId
 	 */
