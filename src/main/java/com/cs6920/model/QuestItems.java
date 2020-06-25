@@ -42,5 +42,30 @@ public class QuestItems {
 	public void SetQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
+	
+	/**
+	 * Gets the itemId
+	 * @return itemId
+	 */
+	public int GetItemId() {
+		return ItemId.get();
+	}
+	
+	/**
+	 * Gets the itemId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ItemIdProperty() {
+	   return itemId;
+	}
+	
+	
+	/**
+	 * Sets the itemId
+	 * @param setItemId
+	 */
+	public void SetItemId(int setItemId) {
+		this.itemId = new SimpleIntegerProperty(setItemId);
+	}
 
 }
