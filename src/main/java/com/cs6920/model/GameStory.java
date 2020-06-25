@@ -18,7 +18,7 @@ public class GameStory {
 	private StringProperty gameStorySummary;
 	
 	/**
-	 * Gets the gameStorn Name
+	 * Gets the gameStory Name
 	 * @return gameStoryName
 	 */
 	public String GetGameStoryName() {
@@ -39,6 +39,30 @@ public class GameStory {
 	 */
 	public void SetGameStoryName(String gameStoryName) {
 		this.gameStoryName = new SimpleStringProperty(gameStoryName);
+	}
+	
+	/**
+	 * Gets the gameStorySummary Name
+	 * @return gameStoryName
+	 */
+	public String GetGameStorySummaryName() {
+		return gameStorySummary.get();
+	}
+	
+	/**
+	 * Gets the gameStorySummary property
+	 * @return Property for TableView
+	 */
+	public final StringProperty GameStorySummaryProperty() {
+	   return gameStorySummary;
+	}
+	
+	/**
+	 * Sets the gameStorySummary
+	 * @param gameStoryName
+	 */
+	public void SetGameStorySummary(String gameStorySummary) {
+		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
 	}
 
 }
