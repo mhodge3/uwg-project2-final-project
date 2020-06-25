@@ -4,6 +4,7 @@
 package com.cs6920.model;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -20,5 +21,30 @@ public class Quests {
 	private IntegerProperty minCharacterLevel;
 	private StringProperty questName;
 	private StringProperty questDescription;
+	
+	/**
+	 * Gets the questId
+	 * @return questId
+	 */
+	public int GetQuestId() {
+		return questId.get();
+	}
+	
+	/**
+	 * Gets the questId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty QuestIdProperty() {
+	   return questId;
+	}
+	
+	
+	/**
+	 * Sets the questId
+	 * @param setQuestId
+	 */
+	public void SetQuestId(int setQuestId) {
+		this.questId = new SimpleIntegerProperty(setQuestId);
+	}
 
 }
