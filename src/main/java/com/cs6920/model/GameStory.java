@@ -18,7 +18,7 @@ public class GameStory {
 	private StringProperty gameStorySummary;
 	
 	/**
-	 * Test Constructor
+	 * Test Constructor not used.
 	 */
 	public GameStory() {
 		
