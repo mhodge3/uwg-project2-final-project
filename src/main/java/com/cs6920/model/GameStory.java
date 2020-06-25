@@ -12,10 +12,27 @@ import javafx.beans.property.StringProperty;
  *
  */
 public class GameStory {
-	
+		
 	
 	private StringProperty gameStoryName;
 	private StringProperty gameStorySummary;
+	
+	/**
+	 * Test Constructor
+	 */
+	public GameStory() {
+		
+	}
+	
+	/**
+	 * Constructor for GameStory
+	 * @param gameStoryName
+	 * @param gameStorySummary
+	 */
+	public GameStory(String gameStoryName, String gameStorySummary) {
+		this.gameStoryName = new SimpleStringProperty(gameStoryName);
+		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
+	}
 	
 	/**
 	 * Gets the gameStory Name
