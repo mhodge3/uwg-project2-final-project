@@ -96,5 +96,30 @@ public class Quests {
 	public void SetConflictId(int setConflictId) {
 		this.conflictId = new SimpleIntegerProperty(setConflictId);
 	}
+	
+	/**
+	 * Gets the minCharacterLevel
+	 * @return minCharacterLevel
+	 */
+	public int GetMinCharacterLevel() {
+		return minCharacterLevel.get();
+	}
+	
+	/**
+	 * Gets the minCharacterLevel property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty MinCharacterLevel() {
+	   return minCharacterLevel;
+	}
+	
+	
+	/**
+	 * Sets the MinCharacterLevel
+	 * @param setMinCharacterLevel
+	 */
+	public void SetMinCharacterLevel(int setMinCharacterLevel) {
+		this.minCharacterLevel = new SimpleIntegerProperty(setMinCharacterLevel);
+	}
 
 }
