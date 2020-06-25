@@ -48,7 +48,7 @@ public class QuestItems {
 	 * @return itemId
 	 */
 	public int GetItemId() {
-		return ItemId.get();
+		return itemId.get();
 	}
 	
 	/**
@@ -66,6 +66,31 @@ public class QuestItems {
 	 */
 	public void SetItemId(int setItemId) {
 		this.itemId = new SimpleIntegerProperty(setItemId);
+	}
+	
+	/**
+	 * Gets the itemQuantity
+	 * @return itemQuantity
+	 */
+	public int GetItemQuantity() {
+		return itemQuantity.get();
+	}
+	
+	/**
+	 * Gets the itemId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty ItemQuantityProperty() {
+	   return itemQuantity;
+	}
+	
+	
+	/**
+	 * Sets the itemQuantity
+	 * @param setItemQuantity
+	 */
+	public void SetItemQuantity(int setItemQuantity) {
+		this.itemQuantity = new SimpleIntegerProperty(setItemQuantity);
 	}
 
 }
