@@ -11,7 +11,7 @@ import javafx.beans.property.SimpleIntegerProperty;
  * @date 6/25/2020
  *
  */
-public class CharacterPlayerQuest {
+public class CharacterPlayerQuestLog {
 	
 	private IntegerProperty characterId;
 	private IntegerProperty questId;
@@ -20,7 +20,7 @@ public class CharacterPlayerQuest {
 	/**
 	 * Constructor for testing
 	 */
-	public CharacterPlayerQuest() {
+	public CharacterPlayerQuestLog() {
 		
 	}
 	
@@ -30,7 +30,7 @@ public class CharacterPlayerQuest {
 	 * @param questId
 	 * @param questStatus
 	 */
-	public CharacterPlayerQuest(int characterId, int questId, int questStatus) {
+	public CharacterPlayerQuestLog(int characterId, int questId, int questStatus) {
 		this.characterId = new SimpleIntegerProperty(characterId);
 		this.questId = new SimpleIntegerProperty(questId);
 		this.questStatus = new SimpleIntegerProperty(questStatus);
