@@ -48,6 +48,31 @@ public class CharactersPlayer {
 		this.characterId = new SimpleIntegerProperty(setCharacterId);
 	}
 	
+	/**
+	 * Gets the characterPlayerId
+	 * @return characterPlayerId
+	 */
+	public int GetCharacterPlayerId() {
+		return characterPlayerId.get();
+	}
+	
+	/**
+	 * Gets the characterPlayerId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty CharacterPlayerIdProperty() {
+	   return characterPlayerId;
+	}
+	
+	
+	/**
+	 * Sets the characterPlayerId
+	 * @param setCharacterPlayerId
+	 */
+	public void SetCharacterPlayerId(int setPlayerCharacterId) {
+		this.characterPlayerId = new SimpleIntegerProperty(setPlayerCharacterId);
+	}
+	
 	
 
 }
