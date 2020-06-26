@@ -20,6 +20,28 @@ public class Conflicts {
 	private StringProperty conflictName;
 	private StringProperty conflictDescription;
 	
+	/**
+	 * Constructor for testing
+	 */
+	public Conflicts() {
+		
+	}
+	
+	
+	/**
+	 * Constructor for Conflicts
+	 * @param conflictId
+	 * @param conflictTemplate
+	 * @param conflictName
+	 * @param conflictDescription
+	 */
+	public Conflicts(int conflictId, int conflictTemplate, String conflictName, String conflictDescription) {
+		this.conflictId = new SimpleIntegerProperty(conflictId);
+		this.conflictTemplate = new SimpleIntegerProperty(conflictTemplate);
+		this.conflictName = new SimpleStringProperty(conflictName);
+		this.conflictDescription = new SimpleStringProperty(conflictDescription);
+	}
+	
 	
 	/**
 	 * Gets the conflictId
