@@ -99,6 +99,30 @@ public class CharactersPlayer {
 		this.characterName = new SimpleStringProperty(setCharacterName);
 	}
 	
+	/**
+	 * Gets the characterType
+	 * @return characterType
+	 */
+	public int GetCharacterType() {
+		return characterType.get();
+	}
+	
+	/**
+	 * Sets the characterType
+	 * @param setCharacterType
+	 */
+	public void SetCharacterType(int setCharacterType) {
+		this.characterType = new SimpleIntegerProperty(setCharacterType);
+	}
+	
+	/**
+	 * Gets the characterType property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty CharacterTypeProperty() {
+	   return characterType;
+	}
+	
 	
 
 }
