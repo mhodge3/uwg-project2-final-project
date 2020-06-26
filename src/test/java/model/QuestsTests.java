@@ -70,6 +70,17 @@ public class QuestsTests {
 		assertEquals("Tom", testItem.GetQuestName());
 	}
 	
+	/**
+	 * Tests the GetQuestDescription and  SetQuestDescription Methods
+	 * 
+	 */
+	@Test
+	public void testGetQuestDescriptionBeTom() {
+		Quests testItem = new Quests();
+		testItem.SetQuestDescription("Tom");
+		assertEquals("Tom", testItem.GetQuestDescription());
+	}
+	
 	
 	
 

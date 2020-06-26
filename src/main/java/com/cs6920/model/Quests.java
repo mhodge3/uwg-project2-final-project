@@ -168,7 +168,7 @@ public class Quests {
 	 * Gets the questDescription
 	 * @return questDescription
 	 */
-	public String GetquestDescription() {
+	public String GetQuestDescription() {
 		return questDescription.get();
 	}
 	
