@@ -33,9 +33,21 @@ public class CharactersPlayerTests {
 	 * 
 	 */
 	@Test
-	public void testGetCharacterPlyaerIdShouldBe1234() {
+	public void testGetCharacterPlayerIdShouldBe1234() {
 		CharactersPlayer testItem = new CharactersPlayer();
 		testItem.SetCharacterPlayerId(1234);
 		assertEquals(1234, testItem.GetCharacterPlayerId());
+	}
+	
+
+	/**
+	 * Tests the GetCharacterName and SetCharacterName Methods
+	 * 
+	 */
+	@Test
+	public void testGetCharacterPlayerIdShouldBeTom() {
+		CharactersPlayer testItem = new CharactersPlayer();
+		testItem.SetCharacterName("Tom");
+		assertEquals("Tom", testItem.GetCharacterName());
 	}
 }

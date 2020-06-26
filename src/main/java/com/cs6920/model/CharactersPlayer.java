@@ -126,7 +126,7 @@ public class CharactersPlayer {
 	 * Sets the characterName
 	 * @param setCharacterName
 	 */
-	public void CharacterName(String setCharacterName) {
+	public void SetCharacterName(String setCharacterName) {
 		this.characterName = new SimpleStringProperty(setCharacterName);
 	}
 	
