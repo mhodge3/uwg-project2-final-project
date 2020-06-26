@@ -49,6 +49,16 @@ public class ConflictsTests {
 		assertEquals("Tom", testItem.GetConflictName());
 	}
 	
+	/**
+	 * Tests the GetConflictDescription and SetConflictDescription Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictDescriptionBeTom() {
+		Conflicts testItem = new Conflicts();
+		testItem.SetConflictDescription("Tom");
+		assertEquals("Tom", testItem.GetConflictDescription());
+	}
 	
 	
 
