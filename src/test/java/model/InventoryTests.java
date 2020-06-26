@@ -21,9 +21,20 @@ public class InventoryTests {
 	 */
 	@Test
 	public void testGetItemIDShouldBe1234() {
-		Item testItem = new Item();
+		Inventory testItem = new Inventory();
 		testItem.SetItemId(1234);
 		assertEquals(1234, testItem.GetItemId());
+	}
+	
+	/**
+	 * Tests the GetItemID and SetItemID Methods
+	 * 
+	 */
+	@Test
+	public void testGetCharacterIdShouldBe1234() {
+		Inventory testItem = new Inventory();
+		testItem.SetCharacterId(1234);
+		assertEquals(1234, testItem.GetCharacterId());
 	}
 	
 	
