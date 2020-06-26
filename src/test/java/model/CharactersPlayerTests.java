@@ -18,14 +18,24 @@ import com.cs6920.model.*;
 public class CharactersPlayerTests {
 	
 	/**
-	 * Tests the GetCharacterD and SetCharacterID Methods
+	 * Tests the GetCharacterID and SetCharacterID Methods
 	 * 
 	 */
 	@Test
-	public void testGetCharacteIDShouldBe1234() {
+	public void testGetCharacterIDShouldBe1234() {
 		CharactersPlayer testItem = new CharactersPlayer();
 		testItem.SetCharacterId(1234);
 		assertEquals(1234, testItem.GetCharacterId());
 	}
 
+	/**
+	 * Tests the GetCharacterPlayerId and SetCharacterPlayerId Methods
+	 * 
+	 */
+	@Test
+	public void testGetCharacterPlyaerIdShouldBe1234() {
+		CharactersPlayer testItem = new CharactersPlayer();
+		testItem.SetCharacterPlayerId(1234);
+		assertEquals(1234, testItem.GetCharacterPlayerId());
+	}
 }
