@@ -50,4 +50,15 @@ public class CharactersPlayerTests {
 		testItem.SetCharacterName("Tom");
 		assertEquals("Tom", testItem.GetCharacterName());
 	}
+	
+	/**
+	 * Tests the GetCharacterFaction and SetCharacterFaction Methods
+	 * 
+	 */
+	@Test
+	public void testGetCharacterFactionShouldBe1234() {
+		CharactersPlayer testItem = new CharactersPlayer();
+		testItem.SetCharacterFaction(1234);
+		assertEquals(1234, testItem.GetCharacterFaction());
+	}
 }
