@@ -26,6 +26,17 @@ public class CharacterPlayerQuestLogsTest {
 		assertEquals(1234, testItem.GetCharacterId());
 	}
 	
+	/**
+	 * Tests the GetCharacterID and SetCharacterID Methods
+	 * 
+	 */
+	@Test
+	public void testGetQuestIdIDShouldBe1234() {
+		CharacterPlayerQuestLog testItem = new CharacterPlayerQuestLog();
+		testItem.SetQuestId(1234);
+		assertEquals(1234, testItem.GetQuestId());
+	}
+	
 	
 
 }

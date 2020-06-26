@@ -65,7 +65,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the questId
 	 * @return questId
 	 */
-	public int GetquestId() {
+	public int GetQuestId() {
 		return questId.get();
 	}
 	
