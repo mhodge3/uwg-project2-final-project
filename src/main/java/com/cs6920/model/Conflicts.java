@@ -88,7 +88,7 @@ public class Conflicts {
 	 * Sets the conflictName
 	 * @param conflictName
 	 */
-	public void SetPlayerName(String SetConflictName) {
+	public void SetConflictName(String SetConflictName) {
 		this.conflictName = new SimpleStringProperty(SetConflictName);
 	}
 	

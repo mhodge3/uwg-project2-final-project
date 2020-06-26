@@ -38,6 +38,17 @@ public class ConflictsTests {
 		assertEquals(1234, testItem.GetConflictTemplate());
 	}
 	
+	/**
+	 * Tests the GetConflictName and SetConflictName Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictNameBeTom() {
+		Conflicts testItem = new Conflicts();
+		testItem.SetConflictName("Tom");
+		assertEquals("Tom", testItem.GetConflictName());
+	}
+	
 	
 	
 
