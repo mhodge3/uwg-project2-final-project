@@ -74,7 +74,7 @@ public class Conflicts {
 	 * Gets the conflictTemplate
 	 * @return conflictTemplate
 	 */
-	public int GetConflictTemplate() {
+	public int GetConflictDescription() {
 		return conflictTemplate.get();
 	}
 	
@@ -93,6 +93,31 @@ public class Conflicts {
 	 */
 	public void SetConflictTemplate(int setConflictTemplate) {
 		this.conflictTemplate = new SimpleIntegerProperty(setConflictTemplate);
+	}
+	
+	/**
+	 * Gets the conflictDescription
+	 * @return conflictDescription
+	 */
+	public String GetConflictTemplate() {
+		return conflictDescription.get();
+	}
+	
+	/**
+	 * Gets the conflictDescription property
+	 * @return Property for TableView
+	 */
+	public final StringProperty ConflictDescription() {
+	   return conflictDescription;
+	}
+	
+	
+	/**
+	 * Sets the conflictTemplate
+	 * @param conflictTemplate
+	 */
+	public void SetConflictDescription(String setConflictDescription) {
+		this.conflictDescription = new SimpleStringProperty(setConflictDescription);
 	}
 	
 
