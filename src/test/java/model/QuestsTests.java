@@ -37,6 +37,17 @@ public class QuestsTests {
 		assertEquals(1234, testItem.GetPreReqQuestId());
 	}
 	
+	/**
+	 * Tests the GetConflictIdand SetConflictId Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictIdShouldBe1234() {
+		Quests testItem = new Quests();
+		testItem.SetConflictId(1234);
+		assertEquals(1234, testItem.GetConflictId());
+	}
+	
 	
 
 }
