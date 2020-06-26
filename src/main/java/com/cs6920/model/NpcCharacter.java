@@ -249,5 +249,7 @@ public class NpcCharacter {
 	public final DoubleProperty npcPosZProperty() {
 	   return npcPosZ;
 	}
+	
+	
 
 }
