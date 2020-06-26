@@ -42,5 +42,30 @@ public class Inventory {
 	   return itemId;
 	}
 	
+	/**
+	 * Gets the characterId
+	 * @return characterId
+	 */
+	public int GetCharacterId() {
+		return characterId.get();
+	}
+	
+	/**
+	 * Gets the characterId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty CharacterIdProperty() {
+	   return characterId;
+	}
+	
+	
+	/**
+	 * Sets the characterId
+	 * @param setCharacterId
+	 */
+	public void SetCharacterId(int setCharacterId) {
+		this.characterId = new SimpleIntegerProperty(setCharacterId);
+	}
+	
 
 }
