@@ -26,6 +26,36 @@ public class CharactersPlayer {
 	private DoubleProperty characterPosZ;
 	
 	/**
+	 * Constructor for testing
+	 */
+	public CharactersPlayer() {
+		
+	}
+	
+	/**
+	 * Constructor for CharactersPlayer
+	 * @param characterId
+	 * @param characterPlayerId
+	 * @param characterName
+	 * @param characterType
+	 * @param characterFaction
+	 * @param characterPosX
+	 * @param characterPosY
+	 * @param characterPosZ
+	 */
+	public CharactersPlayer(int characterId, int characterPlayerId, String characterName, int characterType, int characterFaction, double characterPosX, double characterPosY, double characterPosZ) {
+		this.characterId = new SimpleIntegerProperty(characterId);
+		this.characterPlayerId = new SimpleIntegerProperty(characterPlayerId);
+		this.characterName = new SimpleStringProperty(characterName);
+		this.characterType = new SimpleIntegerProperty(characterType);
+		this.characterFaction = new SimpleIntegerProperty(characterFaction);
+		this.characterPosX = new SimpleDoubleProperty(characterPosX);
+		this.characterPosY = new SimpleDoubleProperty(characterPosY);
+		this.characterPosZ = new SimpleDoubleProperty(characterPosZ);
+		
+	}
+	
+	/**
 	 * Gets the characterId
 	 * @return characterId
 	 */
