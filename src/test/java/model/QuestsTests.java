@@ -38,7 +38,7 @@ public class QuestsTests {
 	}
 	
 	/**
-	 * Tests the GetConflictIdand SetConflictId Methods
+	 * Tests the GetConflictId and SetConflictId Methods
 	 * 
 	 */
 	@Test
@@ -47,6 +47,18 @@ public class QuestsTests {
 		testItem.SetConflictId(1234);
 		assertEquals(1234, testItem.GetConflictId());
 	}
+	
+	/**
+	 * Tests the GetMinCharacterLevel and  SetMinCharacterLevel Methods
+	 * 
+	 */
+	@Test
+	public void testGetMinCharacterLevelShouldBe1234() {
+		Quests testItem = new Quests();
+		testItem.SetMinCharacterLevel(1234);
+		assertEquals(1234, testItem.GetMinCharacterLevel());
+	}
+	
 	
 	
 
