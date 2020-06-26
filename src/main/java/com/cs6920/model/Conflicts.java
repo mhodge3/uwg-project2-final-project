@@ -96,7 +96,7 @@ public class Conflicts {
 	 * Gets the conflictTemplate
 	 * @return conflictTemplate
 	 */
-	public int GetConflictDescription() {
+	public int GetConflictTemplate() {
 		return conflictTemplate.get();
 	}
 	
@@ -121,7 +121,7 @@ public class Conflicts {
 	 * Gets the conflictDescription
 	 * @return conflictDescription
 	 */
-	public String GetConflictTemplate() {
+	public String GetConflictDescription() {
 		return conflictDescription.get();
 	}
 	

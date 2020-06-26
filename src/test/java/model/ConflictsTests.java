@@ -27,5 +27,18 @@ public class ConflictsTests {
 		assertEquals(1234, testItem.GetConflictId());
 	}
 	
+	/**
+	 * Tests the GetConflictTemplate and SetConflictTemplate Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictTemplateBe1234() {
+		Conflicts testItem = new Conflicts();
+		testItem.SetConflictTemplate(1234);
+		assertEquals(1234, testItem.GetConflictTemplate());
+	}
+	
+	
+	
 
 }
