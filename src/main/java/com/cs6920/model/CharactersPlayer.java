@@ -5,6 +5,7 @@ package com.cs6920.model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -20,9 +21,9 @@ public class CharactersPlayer {
 	private StringProperty characterName;
 	private IntegerProperty characterType;
 	private IntegerProperty characterFaction;
-	private DoubleProperty npcPosX;
-	private DoubleProperty npcPosY;
-	private DoubleProperty npcPosZ;
+	private DoubleProperty characterPosX;
+	private DoubleProperty characterPosY;
+	private DoubleProperty characterPosZ;
 	
 	/**
 	 * Gets the characterId
@@ -145,6 +146,78 @@ public class CharactersPlayer {
 	 */
 	public final IntegerProperty CharacterFactionProperty() {
 	   return characterFaction;
+	}
+	
+	/**
+	 * Gets the characterPosX
+	 * @return characterPosX
+	 */
+	public double GetCharacterPosX() {
+		return characterPosX.get();
+	}
+	
+	/**
+	 * Sets the CharacterPosX
+	 * @param setCharacterPosX
+	 */
+	public void SetCharacterPosX(double setCharacterPosX) {
+		this.characterPosX = new SimpleDoubleProperty(setCharacterPosX);
+	}
+	
+	/**
+	 * Gets the CharacterPosX property
+	 * @return Property for TableView
+	 */
+	public final DoubleProperty CharacterPosXProperty() {
+	   return characterPosX;
+	}
+	
+	/**
+	 * Gets the  haracterPosY
+	 * @return CharacterPosY
+	 */
+	public double GetCharacterPosY() {
+		return characterPosY.get();
+	}
+		
+	/**
+	 * Sets the CharacterPosY
+	 * @param setCharacterPosY
+	 */
+	public void SetCharacterPosY(double setCharacterPosY) {
+		this.characterPosY = new SimpleDoubleProperty(setCharacterPosY);
+	}
+	
+	/**
+	 * Gets the CharacterPosY property
+	 * @return Property for TableView
+	 */
+	public final DoubleProperty CharacterPosYProperty() {
+	   return characterPosY;
+	}
+	
+	/**
+	 * Gets the CharacterPosZ
+	 * @return CharacterPosZ
+	 */
+	public double GetCharacterPosZ() {
+		return characterPosZ.get();
+	}
+	
+	/**
+	 * Sets the CharacterPosZ
+	 * @param setCharacterPosZ
+	 */
+	public void SetCharacterPosZ(double setCharacterPosZ) {
+		this.characterPosZ = new SimpleDoubleProperty(setCharacterPosZ);
+	}
+	
+	/**
+	 * Gets the characterPosZ property
+	 * @return Property for TableView
+	 */
+	public final DoubleProperty CharacterPosZProperty() {
+	   return characterPosZ;
 	}
 	
 	
