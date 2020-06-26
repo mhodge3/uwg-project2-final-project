@@ -59,6 +59,17 @@ public class QuestsTests {
 		assertEquals(1234, testItem.GetMinCharacterLevel());
 	}
 	
+	/**
+	 * Tests the GetQuestName and  SetQuestName Methods
+	 * 
+	 */
+	@Test
+	public void testGetQuestNameShouldBeTom() {
+		Quests testItem = new Quests();
+		testItem.SetQuestName("Tom");
+		assertEquals("Tom", testItem.GetQuestName());
+	}
+	
 	
 	
 
