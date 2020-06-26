@@ -15,7 +15,7 @@ import com.cs6920.model.*;
  * @date 6/17/2020
  *
  */
-public class ItemsTest {
+public class ItemsTests {
 	
 	/**
 	 * Tests the GetItemID and SetItemID Methods

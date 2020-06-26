@@ -13,7 +13,7 @@ import com.cs6920.model.*;
  * @date 6/26/2020
  *
  */
-public class CharacterPlayerQuestLogsTest {
+public class CharacterPlayerQuestLogsTests {
 	
 	/**
 	 * Tests the GetCharacterID and SetCharacterID Methods

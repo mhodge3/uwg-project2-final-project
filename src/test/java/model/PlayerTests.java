@@ -12,7 +12,7 @@ import com.cs6920.model.*;
  * @author Ashley Palmer
  * @date 6/15/2020
  */
-public class playertests {
+public class PlayerTests {
 	
 	/**
 	 * Tests the GetPlayerIdand SetPlayerID Methods
