@@ -107,7 +107,7 @@ public class CharacterPlayerQuestLog {
 	 * Sets the questStatus
 	 * @param setQuestStatus
 	 */
-	public void QuestStatus(int setQuestStatus) {
+	public void SetQuestStatus(int setQuestStatus) {
 		this.questStatus = new SimpleIntegerProperty(setQuestStatus);
 	}
 	
