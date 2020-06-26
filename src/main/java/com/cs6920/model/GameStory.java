@@ -62,7 +62,7 @@ public class GameStory {
 	 * Gets the gameStorySummary Name
 	 * @return gameStoryName
 	 */
-	public String GetGameStorySummaryName() {
+	public String GetGameStorySummary() {
 		return gameStorySummary.get();
 	}
 	

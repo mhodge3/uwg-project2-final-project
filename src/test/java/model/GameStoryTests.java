@@ -29,6 +29,17 @@ public class GameStoryTests {
 		testItem.SetGameStoryName("Tom");
 		assertEquals("Tom", testItem.GetGameStoryName());
 	}
+	
+	/**
+	 * Tests the GetGameStorySummary and  SetGameStorySummary Methods
+	 * 
+	 */
+	@Test
+	public void testGetGameStorySummaryBeTom() {
+		GameStory testItem = new GameStory();
+		testItem.SetGameStorySummary("Tom");
+		assertEquals("Tom", testItem.GetGameStorySummary());
+	}
 
 	
 }
