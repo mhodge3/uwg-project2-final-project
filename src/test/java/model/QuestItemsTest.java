@@ -25,5 +25,16 @@ public class QuestItemsTest {
 		testItem.SetItemId(1234);
 		assertEquals(1234, testItem.GetItemId());
 	}
+	
+	/**
+	 * Tests the GetItemID and SetItemID Methods
+	 * 
+	 */
+	@Test
+	public void testGetQuestIDShouldBe1234() {
+		QuestItems testItem = new QuestItems();
+		testItem.SetQuestId(1234);
+		assertEquals(1234, testItem.GetQuestId());
+	}
 
 }
