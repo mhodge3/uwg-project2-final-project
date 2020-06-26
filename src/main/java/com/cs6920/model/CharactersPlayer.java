@@ -123,6 +123,30 @@ public class CharactersPlayer {
 	   return characterType;
 	}
 	
+	/**
+	 * Gets the characterFaction
+	 * @return characterFaction
+	 */
+	public int GetCharacterFaction() {
+		return characterFaction.get();
+	}
+	
+	/**
+	 * Sets the characterFaction
+	 * @param setCharacterFaction
+	 */
+	public void SetCharacterFaction(int setCharacterFaction) {
+		this.characterFaction= new SimpleIntegerProperty(setCharacterFaction);
+	}
+	
+	/**
+	 * Gets the characterFaction property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty CharacterFactionProperty() {
+	   return characterFaction;
+	}
+	
 	
 
 }
