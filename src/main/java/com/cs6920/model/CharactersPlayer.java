@@ -5,6 +5,7 @@ package com.cs6920.model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -21,6 +22,31 @@ public class CharactersPlayer {
 	private DoubleProperty npcPosX;
 	private DoubleProperty npcPosY;
 	private DoubleProperty npcPosZ;
+	
+	/**
+	 * Gets the characterId
+	 * @return characterId
+	 */
+	public int GetCharacterId() {
+		return characterId.get();
+	}
+	
+	/**
+	 * Gets the characterId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty CharacterIdProperty() {
+	   return characterId;
+	}
+	
+	
+	/**
+	 * Sets the characterId
+	 * @param setCharacterId
+	 */
+	public void SetCharacterId(int setCharacterId) {
+		this.characterId = new SimpleIntegerProperty(setCharacterId);
+	}
 	
 	
 
