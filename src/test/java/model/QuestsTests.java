@@ -26,6 +26,17 @@ public class QuestsTests {
 		assertEquals(1234, testItem.GetQuestId());
 	}
 	
+	/**
+	 * Tests the GetPreReqQuestId and SetPreReqQuestId Methods
+	 * 
+	 */
+	@Test
+	public void testGetPreReqQuestIdShouldBe1234() {
+		Quests testItem = new Quests();
+		testItem.SetPreReqQuestId(1234);
+		assertEquals(1234, testItem.GetPreReqQuestId());
+	}
+	
 	
 
 }
