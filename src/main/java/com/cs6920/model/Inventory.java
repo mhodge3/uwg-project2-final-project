@@ -18,6 +18,23 @@ public class Inventory {
 	private IntegerProperty characterId;
 	
 	/**
+	 * Constructor for testing
+	 */
+	public Inventory() {
+		
+	}
+	
+	/**
+	 * Constructor for Inventory
+	 * @param itemId
+	 * @param characterId
+	 */
+	public Inventory(int itemId, int characterId) {
+		this.itemId = new SimpleIntegerProperty(itemId);
+		this.characterId = new SimpleIntegerProperty(characterId);
+	}
+	
+	/**
 	 * Gets the Item Id
 	 * @return itemdID
 	 */
