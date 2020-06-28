@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 /**
- * @author Ashley Palmer
+ * @author Ashley W. Palmer
  * @date 6/28/2020
  *
  */
