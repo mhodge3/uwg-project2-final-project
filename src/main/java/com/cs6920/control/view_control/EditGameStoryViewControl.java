@@ -102,7 +102,7 @@ public class EditGameStoryViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.UpdateItem(editGameStorySummaryTextArea.getText(), Integer.parseInt(editGameStoryNameTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
+			itemCreationError = theEditItemsControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), Integer.parseInt(editGameStoryNameTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
