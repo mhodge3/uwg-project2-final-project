@@ -129,7 +129,7 @@ public class GameStoryDAL {
 			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
 					"(game_story_name, " + 
             		"game_story_summar " + 
-					"VALUES (?, ?, ?, ?, ?)";
+					"VALUES (?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, gameStoryName);
 			  preparedStmt.setString (2, gameStorySummary);
@@ -144,5 +144,7 @@ public class GameStoryDAL {
         }
 		return success;
 	}
+	
+	
 
 }

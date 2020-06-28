@@ -33,7 +33,7 @@ public class CreateGameStoryControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateItem(String gameStoryName, String gameStorySummary) throws SQLException {
+	public String CreateGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
 		if (gameStoryName == null || gameStoryName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
