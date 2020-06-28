@@ -11,7 +11,7 @@
 
 <VBox fx:id="questChainsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Story Conflict (Quest Chain) Mangagement">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Quest - Story Arch Mangagement">
          <font>
             <Font size="24.0" />
          </font>
@@ -24,25 +24,25 @@
                </padding>
                <children>
                   <TreeTableView prefHeight="345.0" prefWidth="576.0">
-                    <columns>
-                      <TreeTableColumn fx:id="minLvlChainTableColumn" prefWidth="48.0" text="Min Lvl" />
-                      <TreeTableColumn fx:id="nameChainTableColumn" prefWidth="167.0" text="Chain Name" />
-                        <TreeTableColumn fx:id="descriptionChainTableColumn" prefWidth="360.0" text="Description" />
-                    </columns>
+                     <columns>
+                        <TreeTableColumn fx:id="minLvlQuestTableColumn" prefWidth="48.0" text="Min Lvl" />
+                        <TreeTableColumn fx:id="nameQuestTableColumn" prefWidth="167.0" text="Quest Name" />
+                        <TreeTableColumn fx:id="descriptionQuestTableColumn" prefWidth="360.0" text="Description" />
+                     </columns>
                   </TreeTableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">
                      <children>
-                        <Button fx:id="createStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Create Story Conflict">
+                        <Button fx:id="createStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Add Obstacle Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="editStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Story Conflict">
+                        <Button fx:id="editStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Obstacle Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="deleteStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Story Conflict" />
+                        <Button fx:id="deleteStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Obstacle Quest" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
@@ -50,10 +50,11 @@
                   </VBox>
                </children>
             </HBox>
-         </children></VBox>
+         </children>
+      </VBox>
       <HBox alignment="BOTTOM_LEFT" prefHeight="78.0" prefWidth="800.0">
          <children>
-            <Button fx:id="questChainsBackButton" mnemonicParsing="false" onAction="#handleQuestChainsBackButton" text="Back">
+            <Button fx:id="questBackButton" mnemonicParsing="false" onAction="#handleQuestChainsBackButton" text="Back">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" />
                </HBox.margin>
