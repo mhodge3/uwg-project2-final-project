@@ -33,9 +33,9 @@ public class GameStoryEditControl {
 	 * Sets an instance of the Item to that found by id
 	 * @param itemId
 	 */
-	public void SetSelectedItem(int itemId) {
+	public void SetSelectedItem(String gameStoryName) {
 		try {
-			selectedGameStory = GameStoryDAL.GetItemById(itemId);
+			selectedGameStory = gameStoryDAL.GetGameStoryByName(gameStoryName);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -51,14 +51,14 @@ public class GameStoryEditControl {
 	}
 	
 	/**
-	 * Delete this item from the DB
-	 * @param itemToDelete
+	 * Delete this GameStory from the DB
+	 * @param gameStoryToDelete
 	 * @return String, message for user on outcome of operation
 	 */
-	public String DeleteItem(Item itemToDelete) {
+	public String DeleteItem(GameStory gameStoryToDelete) {
 		
 		try {
-			if (gameStoryDAL.DeleteItem(itemToDelete)) {
+			if (gameStoryDAL.DeleteGameStory(gameStoryToDelete)) {
 				return null;
 			}
 			else {
@@ -70,15 +70,13 @@ public class GameStoryEditControl {
 	}
 	
 	/**
-	 * Update the current Item in the DB
+	 * Update the current GameStory in the DB
 	 * @param gameStoryName
-	 * @param gameStoryDescription
-	 * @param isQuestItem
-	 * @param isImplicitItem
+	 * @param gameStorySummary
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateGameStory(String gameStoryName, String gameStorySummary, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
+	public String UpdateGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
 		if (gameStoryName == null || gameStoryName.trim().length() == 0) {
 			return "The Game Story cannot be empty";
 		}
@@ -86,7 +84,7 @@ public class GameStoryEditControl {
 			return "The Game Story Summary cannot be empty";
 		}
 		
-		if (gameStoryDAL.UpdateItem(selectedGameStory, new Item(selectedGameStory.GetItemId(), gameStoryName, gameStorySummary, isQuestItem, isImplicitItem))) {
+		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(selectedGameStory.GetGameStoryName(),gameStorySummary))) {
 			return null;
 		}
 		else {

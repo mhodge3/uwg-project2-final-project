@@ -5,7 +5,8 @@ package com.cs6920.control.view_control;
 
 import java.sql.SQLException;
 
-import com.cs6920.control.logic_control.EditItemsControl;
+import com.cs6920.control.logic_control.GameStoryEditControl;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -26,13 +27,10 @@ public class EditGameStoryViewControl {
 	private TextField editGameStoryNameTextBox;
 	@FXML
 	private TextArea editGameStorySummaryTextArea;;
-	@FXML
-	private CheckBox editIsItemForQuestCheckBox;
-	@FXML
-	private CheckBox editIsItemImplicitCheckBox;
+
 
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private EditItemsControl theEditItemsControl;
+	private GameStoryEditControl gameStoryEditControl;
 	
 	/**
 	 * Constructor for this View Control
@@ -40,15 +38,15 @@ public class EditGameStoryViewControl {
 	 */
     public EditGameStoryViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.gameStoryEditControl = new GameStoryEditControl(theMainDashboardViewControl.GetDBConnection());
     }
     
     /**
-     * Gets logic control for this Edit Item view control
+     * Gets logic control for this Edit Game Story view control
      * @return the Item edited
      */
-    public EditItemsControl GetEditItemsControl() {
-    	return theEditItemsControl;
+    public GameStoryEditControl GetGameStoryEditControl() {
+    	return gameStoryEditControl;
     }
     
     /**
@@ -58,8 +56,7 @@ public class EditGameStoryViewControl {
     public void SetFormForSelectedItem(Item theItemToEdit) {
     	editGameStoryNameTextBox.setText(String.valueOf(theItemToEdit.GetItemType()));
     	editGameStorySummaryTextArea.setText(theItemToEdit.GetItemDescription());
-    	editIsItemForQuestCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
-    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.GetIsImplicitItem());
+
     }
     
 	@FXML
@@ -73,11 +70,11 @@ public class EditGameStoryViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Game Story Edit");
 		alert.setHeaderText("Item Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + theEditItemsControl.GetSelectedItem().GetItemName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE " + gameStoryEditControl.GetSelectedItem().GetGameStoryName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				itemDeleteError = theEditItemsControl.DeleteItem(theEditItemsControl.GetSelectedItem());
+				itemDeleteError = gameStoryEditControl.DeleteItem(gameStoryEditControl.GetSelectedItem());
 			} catch (Exception e) {
 				itemDeleteError = e.getMessage();
 			}
@@ -102,7 +99,7 @@ public class EditGameStoryViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), Integer.parseInt(editGameStoryNameTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
+			itemCreationError = gameStoryEditControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), editGameStoryNameTextBox.getText());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
