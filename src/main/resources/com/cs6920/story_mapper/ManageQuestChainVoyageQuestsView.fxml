@@ -11,7 +11,7 @@
 
 <VBox fx:id="questChainsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Defeat the Monster - Story Arch Mangagement">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Voyage and Return - Story Arch Mangagement">
          <font>
             <Font size="24.0" />
          </font>
@@ -32,17 +32,17 @@
                   </TreeTableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">
                      <children>
-                        <Button fx:id="createStoryHenchmanButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Add Henchman Quest">
+                        <Button fx:id="createStoryInsightButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Add Insight Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="editStoryHenchmanButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Henchman Quest">
+                        <Button fx:id="editStoryInsightButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Insight Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="deleteStoryHenchmanButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Henchman Quest" />
+                        <Button fx:id="deleteStoryInsightButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Insight Quest" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
