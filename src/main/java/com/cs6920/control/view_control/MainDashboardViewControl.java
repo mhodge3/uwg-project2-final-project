@@ -58,6 +58,7 @@ public class MainDashboardViewControl {
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
+    private ManageQuestChainsViewControl theManageQuestChainsViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -113,6 +114,14 @@ public class MainDashboardViewControl {
 	 */
 	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
 		this.theManageItemsViewControl = theManageItemsViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
+	 * @param theManageQuestChainsViewControl
+	 */
+	public void SetTheManageQuestChainsViewControl(ManageQuestChainsViewControl theManageQuestChainsViewControl) {
+		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
 	}
 	
 	/**
@@ -245,6 +254,7 @@ public class MainDashboardViewControl {
 				theSceneToStage = theCreateNPCCharactersScene;
 				break;
 			case "manageQuestChains":
+				theManageQuestChainsViewControl.updateExistingConflictList();
 				theSceneToStage = theManageQuestChainsScene;
 				break;
 			default: break;

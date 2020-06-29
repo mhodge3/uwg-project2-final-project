@@ -15,14 +15,15 @@ com\cs6920\model\Item.class
 com\cs6920\control\view_control\CreateNPCCharactersViewControl.class
 com\cs6920\DAL\GameStoryDAL.class
 com\cs6920\control\view_control\LoginViewControl$1.class
+com\cs6920\model\Conflict.class
 com\cs6920\DAL\MySQLAccess.class
 com\cs6920\control\view_control\ManageItemsViewControl.class
+com\cs6920\control\view_control\CreateGameStoryViewControl.class
 com\cs6920\DAL\PlayerDAL.class
 com\cs6920\DAL\NpcCharacterDAL.class
 com\cs6920\model\QuestItems.class
 com\cs6920\control\logic_control\EditNPCCharactersControl.class
 com\cs6920\control\logic_control\PlayerController.class
-com\cs6920\model\Conflicts.class
 com\cs6920\control\logic_control\EditItemsControl.class
 com\cs6920\model\CharactersPlayer.class
 com\cs6920\model\Quests.class
@@ -34,6 +35,7 @@ com\cs6920\DAL\CharactersPlayerDAL.class
 com\cs6920\control\logic_control\CreateNPCCharactersControl.class
 com\cs6920\control\logic_control\CreateItemsControl.class
 module-info.class
+com\cs6920\control\logic_control\CreateGameStoryControl.class
 com\cs6920\model\Player.class
 com\cs6920\control\view_control\EditItemsViewControl.class
 com\cs6920\control\view_control\ManageQuestChainsViewControl.class

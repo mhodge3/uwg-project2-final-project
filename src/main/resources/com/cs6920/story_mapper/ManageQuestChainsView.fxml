@@ -26,7 +26,7 @@
                   <TableView fx:id="conflictChainTableView" prefHeight="463.0" prefWidth="575.0">
                     <columns>
                       <TableColumn fx:id="conflictMinLvlTableColumn" prefWidth="57.0" text="Min Lvl" />
-                      <TableColumn fx:id="conflictTableColumn" prefWidth="37.0" text="ID" />
+                      <TableColumn fx:id="conflictIdTableColumn" prefWidth="37.0" text="ID" />
                         <TableColumn fx:id="conflictNameTableColumn" prefWidth="184.0" text="Name" />
                         <TableColumn fx:id="conflictDescriptionTableColumn" prefWidth="295.0" text="Description" />
                     </columns>

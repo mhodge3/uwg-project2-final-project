@@ -3,10 +3,10 @@ model\QuestItemsTest.class
 model\QuestsTests.class
 DAL\testAdminDAL.class
 DAL\testItemDAL.class
-model\ConflictsTests.class
 model\AdminTests.class
 model\GameStoryTests.class
 DAL\testCharactersPlayerCRUDCycle.class
+model\ConflictTests.class
 model\PlayerTests.class
 model\CharactersPlayerTests.class
 model\NpcCharacterTests.class

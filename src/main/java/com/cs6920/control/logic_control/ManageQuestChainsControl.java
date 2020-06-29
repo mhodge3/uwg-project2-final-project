@@ -31,7 +31,7 @@ public class ManageQuestChainsControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdatePlayerArrayList() throws SQLException {
+	public void UpdateConflictArrayList() throws SQLException {
 		existingConflictArrayList = new ArrayList<Conflict>();
 		//existingConflictArrayList = playerDAL.GetPlayers();
 		existingConflictArrayList = createTempConflictList();
@@ -44,18 +44,22 @@ public class ManageQuestChainsControl {
 		conflict1.SetConflictDescription("Stuff.");
 		conflict1.SetConflictName("name");
 		conflict1.SetConflictTemplate(1);
+		conflict1.SetConflictMinLvl(7);
 		Conflict conflict2 = new Conflict();
 		conflict2.SetConflictDescription("Stuff.");
 		conflict2.SetConflictName("name 2");
 		conflict2.SetConflictTemplate(2);
+		conflict2.SetConflictMinLvl(5);
 		Conflict conflict3 = new Conflict();
 		conflict3.SetConflictDescription("Stuff.");
 		conflict3.SetConflictName("name 3");
 		conflict3.SetConflictTemplate(3);
+		conflict3.SetConflictMinLvl(1);
 		Conflict conflict4 = new Conflict();
 		conflict4.SetConflictDescription("Stuff.");
 		conflict4.SetConflictName("name 4");
 		conflict4.SetConflictTemplate(0);
+		conflict4.SetConflictMinLvl(3);
 		ArrayList<Conflict> tempConflicts = new ArrayList<Conflict>();
 		tempConflicts.add(conflict1);
 		tempConflicts.add(conflict2);

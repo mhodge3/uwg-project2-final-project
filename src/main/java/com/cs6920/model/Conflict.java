@@ -16,6 +16,7 @@ import javafx.beans.property.StringProperty;
 public class Conflict {
 	
 	private IntegerProperty conflictId;
+	private IntegerProperty conflictMinLvl;
 	private IntegerProperty conflictTemplate;
 	private StringProperty conflictName;
 	private StringProperty conflictDescription;
@@ -27,7 +28,6 @@ public class Conflict {
 		
 	}
 	
-	
 	/**
 	 * Constructor for Conflicts
 	 * @param conflictId
@@ -35,13 +35,13 @@ public class Conflict {
 	 * @param conflictName
 	 * @param conflictDescription
 	 */
-	public Conflict(int conflictId, int conflictTemplate, String conflictName, String conflictDescription) {
+	public Conflict(int conflictId, int conflictMinLvl, int conflictTemplate, String conflictName, String conflictDescription) {
 		this.conflictId = new SimpleIntegerProperty(conflictId);
+		this.conflictMinLvl = new SimpleIntegerProperty(conflictMinLvl);
 		this.conflictTemplate = new SimpleIntegerProperty(conflictTemplate);
 		this.conflictName = new SimpleStringProperty(conflictName);
 		this.conflictDescription = new SimpleStringProperty(conflictDescription);
 	}
-	
 	
 	/**
 	 * Gets the conflictId
@@ -55,10 +55,9 @@ public class Conflict {
 	 * Gets the conflictId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ConflictId() {
+	public final IntegerProperty conflictIdProperty() {
 	   return conflictId;
 	}
-	
 	
 	/**
 	 * Sets the conflictId
@@ -66,6 +65,30 @@ public class Conflict {
 	 */
 	public void SetConflictId(int setConflictId) {
 		this.conflictId = new SimpleIntegerProperty(setConflictId);
+	}
+	
+	/**
+	 * Gets the conflictMinLvl
+	 * @return conflictMinLvl
+	 */
+	public int GetConflictMinLvl() {
+		return conflictMinLvl.get();
+	}
+	
+	/**
+	 * Gets the conflictMinLvl property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty conflictMinLvlProperty() {
+	   return conflictMinLvl;
+	}
+	
+	/**
+	 * Sets the conflictMinLvl
+	 * @param setConflictMinLvl
+	 */
+	public void SetConflictMinLvl(int setConflictMinLvl) {
+		this.conflictMinLvl = new SimpleIntegerProperty(setConflictMinLvl);
 	}
 	
 	/**
@@ -80,7 +103,7 @@ public class Conflict {
 	 * Gets the conflictName property
 	 * @return Property for TableView
 	 */
-	public final StringProperty ConflictNameProperty() {
+	public final StringProperty conflictNameProperty() {
 	   return conflictName;
 	}
 	
@@ -104,10 +127,9 @@ public class Conflict {
 	 * Gets the conflictTemplate property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ConflictTemplate() {
+	public final IntegerProperty conflictTemplateProperty() {
 	   return conflictTemplate;
 	}
-	
 	
 	/**
 	 * Sets the conflictTemplate
@@ -129,10 +151,9 @@ public class Conflict {
 	 * Gets the conflictDescription property
 	 * @return Property for TableView
 	 */
-	public final StringProperty ConflictDescription() {
+	public final StringProperty conflictDescriptionProperty() {
 	   return conflictDescription;
 	}
-	
 	
 	/**
 	 * Sets the conflictTemplate
@@ -141,6 +162,4 @@ public class Conflict {
 	public void SetConflictDescription(String setConflictDescription) {
 		this.conflictDescription = new SimpleStringProperty(setConflictDescription);
 	}
-	
-
 }
