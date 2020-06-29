@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  * @date 6/25/2020
  *
  */
-public class Conflicts {
+public class Conflict {
 	
 	private IntegerProperty conflictId;
 	private IntegerProperty conflictTemplate;
@@ -23,7 +23,7 @@ public class Conflicts {
 	/**
 	 * Constructor for testing
 	 */
-	public Conflicts() {
+	public Conflict() {
 		
 	}
 	
@@ -35,7 +35,7 @@ public class Conflicts {
 	 * @param conflictName
 	 * @param conflictDescription
 	 */
-	public Conflicts(int conflictId, int conflictTemplate, String conflictName, String conflictDescription) {
+	public Conflict(int conflictId, int conflictTemplate, String conflictName, String conflictDescription) {
 		this.conflictId = new SimpleIntegerProperty(conflictId);
 		this.conflictTemplate = new SimpleIntegerProperty(conflictTemplate);
 		this.conflictName = new SimpleStringProperty(conflictName);

@@ -14,7 +14,7 @@ import com.cs6920.model.*;
  * @date 6/26/2020
  *
  */
-public class ConflictsTests {
+public class ConflictTests {
 	
 	/**
 	 * Tests the GetConflictId and SetConflictId Methods
@@ -22,7 +22,7 @@ public class ConflictsTests {
 	 */
 	@Test
 	public void testGetConflictIdShouldBe1234() {
-		Conflicts testItem = new Conflicts();
+		Conflict testItem = new Conflict();
 		testItem.SetConflictId(1234);
 		assertEquals(1234, testItem.GetConflictId());
 	}
@@ -33,7 +33,7 @@ public class ConflictsTests {
 	 */
 	@Test
 	public void testGetConflictTemplateBe1234() {
-		Conflicts testItem = new Conflicts();
+		Conflict testItem = new Conflict();
 		testItem.SetConflictTemplate(1234);
 		assertEquals(1234, testItem.GetConflictTemplate());
 	}
@@ -44,7 +44,7 @@ public class ConflictsTests {
 	 */
 	@Test
 	public void testGetConflictNameBeTom() {
-		Conflicts testItem = new Conflicts();
+		Conflict testItem = new Conflict();
 		testItem.SetConflictName("Tom");
 		assertEquals("Tom", testItem.GetConflictName());
 	}
@@ -55,7 +55,7 @@ public class ConflictsTests {
 	 */
 	@Test
 	public void testGetConflictDescriptionBeTom() {
-		Conflicts testItem = new Conflicts();
+		Conflict testItem = new Conflict();
 		testItem.SetConflictDescription("Tom");
 		assertEquals("Tom", testItem.GetConflictDescription());
 	}
