@@ -20,6 +20,7 @@ public class Quest {
 	private IntegerProperty preReqQuestId;
 	private IntegerProperty conflictId;
 	private IntegerProperty minCharacterLevel;
+	private IntegerProperty questArcType;
 	private StringProperty questName;
 	private StringProperty questDescription;
 	
@@ -30,14 +31,14 @@ public class Quest {
 		
 	}
 	
-	public Quest(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription) {
+	public Quest(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, int questArcType) {
 		this.questId = new SimpleIntegerProperty(questId);
 		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
 		this.conflictId = new SimpleIntegerProperty(conflictId);
 		this.minCharacterLevel = new SimpleIntegerProperty(minCharacterLevel);
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
-		
+		this.questArcType = new SimpleIntegerProperty(questArcType);
 	}
 	
 	/**
@@ -63,6 +64,31 @@ public class Quest {
 	 */
 	public void SetQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
+	}
+	
+	/**
+	 * Gets the questArcType
+	 * @return questArcType
+	 */
+	public int GetQuestArcType() {
+		return this.questArcType.get();
+	}
+	
+	/**
+	 * Gets the questArcType property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty questArcTypeProperty() {
+	   return this.questArcType;
+	}
+	
+	
+	/**
+	 * Sets the questArcType
+	 * @param questArcType
+	 */
+	public void SetQuestArcType(int questArcType) {
+		this.questArcType = new SimpleIntegerProperty(questArcType);
 	}
 	
 	/**

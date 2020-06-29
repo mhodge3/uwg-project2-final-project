@@ -3,6 +3,7 @@ package com.cs6920.control.view_control;
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.ManageTemplateTheQuestControl;
+import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
 
 import javafx.fxml.FXML;
@@ -35,7 +36,11 @@ public class ManageTemplateTheQuestViewControl {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theMainDashboardViewControl.SetTheManageTheQuestViewControl(this);
     	this.theManageTemplateTheQuestControl = new ManageTemplateTheQuestControl(theMainDashboardViewControl.GetDBConnection());
+    	
+    }
     
+    public ManageTemplateTheQuestControl GetTheManageTemplateTheQuestControl() {
+    	return this.theManageTemplateTheQuestControl;
     }
 
 	@FXML
@@ -44,7 +49,7 @@ public class ManageTemplateTheQuestViewControl {
 		questIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questId"));
 		questPRIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("preReqQuestId"));
 		questNameTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, String>("questName"));
-		questTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questDescription"));
+		questTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questArcType"));
 	}
     
 	/**

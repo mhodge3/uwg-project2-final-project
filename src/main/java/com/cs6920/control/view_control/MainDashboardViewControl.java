@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import com.cs6920.model.Conflict;
 import com.cs6920.model.Player;
 import com.cs6920.story_mapper.App;
 
@@ -163,6 +165,11 @@ public class MainDashboardViewControl {
 	public void SetItemToEdit(int itemIdToEdit) {
 		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
+	}
+	
+	public void SetConflictToEdit(int conflictIdToEdit) {
+		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictIdToEdit);
+		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
 	@FXML

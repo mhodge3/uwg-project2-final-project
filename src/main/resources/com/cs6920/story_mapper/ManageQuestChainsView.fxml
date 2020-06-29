@@ -59,7 +59,7 @@
                               <Insets bottom="5.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Button fx:id="editStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Story Conflict">
+                        <Button fx:id="editStoryConflictButton" mnemonicParsing="false" onAction="#handleEditQuestChainButton" prefHeight="25.0" prefWidth="186.0" text="Edit Story Conflict">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

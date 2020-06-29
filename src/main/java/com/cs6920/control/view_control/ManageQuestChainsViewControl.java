@@ -6,8 +6,10 @@ import com.cs6920.control.logic_control.ManageQuestChainsControl;
 import com.cs6920.model.Conflict;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -49,6 +51,9 @@ public class ManageQuestChainsViewControl {
 		conflictDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictDescription"));
 	}
     
+	public ManageQuestChainsControl GetManageQuestChainsControl() {
+		return this.theManageQuestChainsControl;
+	}
 	/**
 	 * Binds the ObservableList to the TableView
 	 * @throws SQLException 
@@ -65,6 +70,21 @@ public class ManageQuestChainsViewControl {
 	@FXML
 	private void handleCreateTemplateTheQuestButton() throws SQLException {
 		theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+	}
+	
+	@FXML
+	private void handleEditQuestChainButton() throws SQLException {
+		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
+			theMainDashboardViewControl.SetConflictToEdit(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+			theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+		}
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Edit Story Conflict Issue");
+			alert.setHeaderText("Cannot Edit Story Conflict");
+			alert.setContentText("A Story Conflict to edit was not selected. Please select the Conflict you wish to edit");
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML
