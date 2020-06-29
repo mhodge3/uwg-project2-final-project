@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
  *
  */
 
-public class Quests {
+public class Quest {
 	
 	private IntegerProperty questId;
 	private IntegerProperty preReqQuestId;
@@ -26,11 +26,11 @@ public class Quests {
 	/**
 	 * Constructor for testing.
 	 */
-	public Quests() {
+	public Quest() {
 		
 	}
 	
-	public Quests(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription) {
+	public Quest(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription) {
 		this.questId = new SimpleIntegerProperty(questId);
 		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
 		this.conflictId = new SimpleIntegerProperty(conflictId);

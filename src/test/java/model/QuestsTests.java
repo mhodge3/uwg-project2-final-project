@@ -21,7 +21,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetQuestIDShouldBe1234() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetQuestId(1234);
 		assertEquals(1234, testItem.GetQuestId());
 	}
@@ -32,7 +32,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetPreReqQuestIdShouldBe1234() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetPreReqQuestId(1234);
 		assertEquals(1234, testItem.GetPreReqQuestId());
 	}
@@ -43,7 +43,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetConflictIdShouldBe1234() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetConflictId(1234);
 		assertEquals(1234, testItem.GetConflictId());
 	}
@@ -54,7 +54,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetMinCharacterLevelShouldBe1234() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetMinCharacterLevel(1234);
 		assertEquals(1234, testItem.GetMinCharacterLevel());
 	}
@@ -65,7 +65,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetQuestNameShouldBeTom() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetQuestName("Tom");
 		assertEquals("Tom", testItem.GetQuestName());
 	}
@@ -76,7 +76,7 @@ public class QuestsTests {
 	 */
 	@Test
 	public void testGetQuestDescriptionBeTom() {
-		Quests testItem = new Quests();
+		Quest testItem = new Quest();
 		testItem.SetQuestDescription("Tom");
 		assertEquals("Tom", testItem.GetQuestDescription());
 	}

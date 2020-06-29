@@ -2,10 +2,8 @@ package com.cs6920.control.view_control;
 
 import java.sql.SQLException;
 
-import com.cs6920.control.logic_control.ManagePlayersAndAdminsControl;
 import com.cs6920.control.logic_control.ManageQuestChainsControl;
 import com.cs6920.model.Conflict;
-import com.cs6920.model.Player;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
