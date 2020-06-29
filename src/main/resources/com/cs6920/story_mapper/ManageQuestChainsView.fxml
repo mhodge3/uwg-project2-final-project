@@ -38,7 +38,7 @@
                               <Insets bottom="5.0" />
                            </VBox.margin>
                         </Label>
-                        <Button fx:id="createTheQuestButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;The Quest&quot;">
+                        <Button fx:id="createTheQuestButton" mnemonicParsing="false" onAction="#handleCreateTemplateTheQuestButton" prefHeight="25.0" prefWidth="186.0" text="&quot;The Quest&quot;">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

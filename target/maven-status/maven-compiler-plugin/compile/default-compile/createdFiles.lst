@@ -26,7 +26,6 @@ com\cs6920\control\logic_control\EditNPCCharactersControl.class
 com\cs6920\control\logic_control\PlayerController.class
 com\cs6920\control\logic_control\EditItemsControl.class
 com\cs6920\model\CharactersPlayer.class
-com\cs6920\model\Quests.class
 com\cs6920\model\GameStory.class
 com\cs6920\control\view_control\EditPlayersAndAdminsViewControl.class
 com\cs6920\control\view_control\EditGameStoryViewControl.class
@@ -37,8 +36,11 @@ com\cs6920\control\logic_control\CreateItemsControl.class
 module-info.class
 com\cs6920\control\logic_control\CreateGameStoryControl.class
 com\cs6920\model\Player.class
+com\cs6920\model\Quest.class
 com\cs6920\control\view_control\EditItemsViewControl.class
 com\cs6920\control\view_control\ManageQuestChainsViewControl.class
+com\cs6920\control\logic_control\ManageTemplateTheQuestControl.class
+com\cs6920\control\view_control\ManageTemplateTheQuestViewControl.class
 com\cs6920\control\logic_control\CreatePlayersAndAdminsControl.class
 com\cs6920\model\Admin.class
 com\cs6920\DAL\AdminDAL.class

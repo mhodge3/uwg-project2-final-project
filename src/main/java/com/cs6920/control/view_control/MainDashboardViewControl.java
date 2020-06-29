@@ -59,6 +59,10 @@ public class MainDashboardViewControl {
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
     private ManageQuestChainsViewControl theManageQuestChainsViewControl;
+    
+    private Parent theManageTemplateTheQuestParentView;
+    private Scene theManageTemplateTheQuestScene;
+    private ManageTemplateTheQuestViewControl theManageTheQuestViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -67,21 +71,23 @@ public class MainDashboardViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
-		CreateMainDashboardScene();
+		this.CreateMainDashboardScene();
 		
-		CreateManagePlayersAndAdminsScene();
-		CreateEditPlayersAndAdminsScene();
-		CreateCreatePlayersAndAdminsScene();
+		this.CreateManagePlayersAndAdminsScene();
+		this.CreateEditPlayersAndAdminsScene();
+		this.CreateCreatePlayersAndAdminsScene();
 		
-		CreateManageItemsScene();
-		CreateEditItemsScene();
-		CreateCreateItemsScene();
+		this.CreateManageItemsScene();
+		this.CreateEditItemsScene();
+		this.CreateCreateItemsScene();
 		
-		CreateManageNPCCharactersScene();
-		CreateEditNPCCharactersScene();
-		CreateCreateNPCScene();
+		this.CreateManageNPCCharactersScene();
+		this.CreateEditNPCCharactersScene();
+		this.CreateCreateNPCScene();
 		
-		CreateManageQuestChainsScene();
+		this.CreateManageQuestChainsScene();
+		
+		this.CreateManageTemplateTheQuestScene();
 	} 
 	
 	/**
@@ -122,6 +128,14 @@ public class MainDashboardViewControl {
 	 */
 	public void SetTheManageQuestChainsViewControl(ManageQuestChainsViewControl theManageQuestChainsViewControl) {
 		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
+	 * @param theManageQuestChainsViewControl
+	 */
+	public void SetTheManageTheQuestViewControl(ManageTemplateTheQuestViewControl theManageTheQuestViewControl) {
+		this.theManageTheQuestViewControl = theManageTheQuestViewControl;
 	}
 	
 	/**
@@ -257,6 +271,10 @@ public class MainDashboardViewControl {
 				theManageQuestChainsViewControl.updateExistingConflictList();
 				theSceneToStage = theManageQuestChainsScene;
 				break;
+			case "manageTemplateTheQuest":
+				theManageTheQuestViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateTheQuestScene;
+				break;
 			default: break;
 		}
         theMainDashboardStage.setScene(theSceneToStage);
@@ -383,6 +401,17 @@ public class MainDashboardViewControl {
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();
         	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateTheQuestScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
+        theFxmlLoader.setController(new ManageTemplateTheQuestViewControl(this));
+        try {
+        	theManageTemplateTheQuestParentView = theFxmlLoader.load();
+        	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

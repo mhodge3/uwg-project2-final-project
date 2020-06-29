@@ -52,7 +52,7 @@ public class Quest {
 	 * Gets the questId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty QuestIdProperty() {
+	public final IntegerProperty questIdProperty() {
 	   return questId;
 	}
 	
@@ -77,7 +77,7 @@ public class Quest {
 	 * Gets the PreReqQuestId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty PreReqQuestId() {
+	public final IntegerProperty preReqQuestIdProperty() {
 	   return preReqQuestId;
 	}
 	
@@ -102,7 +102,7 @@ public class Quest {
 	 * Gets the conflictId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ConflictId() {
+	public final IntegerProperty conflictIdProperty() {
 	   return conflictId;
 	}
 	
@@ -127,7 +127,7 @@ public class Quest {
 	 * Gets the minCharacterLevel property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty MinCharacterLevel() {
+	public final IntegerProperty minCharacterLevelProperty() {
 	   return minCharacterLevel;
 	}
 	
@@ -152,7 +152,7 @@ public class Quest {
 	 * Gets the questName property
 	 * @return Property for TableView
 	 */
-	public final StringProperty QuestNameProperty() {
+	public final StringProperty questNameProperty() {
 	   return questName;
 	}
 	
@@ -176,7 +176,7 @@ public class Quest {
 	 * Gets the questDescription property
 	 * @return Property for TableView
 	 */
-	public final StringProperty QuestDescriptionProperty() {
+	public final StringProperty questDescriptionProperty() {
 	   return questDescription;
 	}
 	

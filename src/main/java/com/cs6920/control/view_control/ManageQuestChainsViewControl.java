@@ -63,6 +63,11 @@ public class ManageQuestChainsViewControl {
     }
 	
 	@FXML
+	private void handleCreateTemplateTheQuestButton() throws SQLException {
+		theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+	}
+	
+	@FXML
 	private void handleQuestChainsBackButton() throws SQLException {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}
