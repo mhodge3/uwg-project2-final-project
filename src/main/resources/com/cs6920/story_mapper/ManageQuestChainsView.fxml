@@ -11,7 +11,7 @@
 
 <VBox fx:id="questChainsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Story Conflict (Quest Chain) Mangagement">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Story Conflicts (Quest Chains) Mangagement">
          <font>
             <Font size="24.0" />
          </font>
@@ -32,11 +32,32 @@
                   </TreeTableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">
                      <children>
-                        <Button fx:id="createStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Create Story Conflict">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Create New Story Conflicts">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Button fx:id="createTheQuestButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;The Quest&quot;">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
+                        <Button fx:id="createDefeatTheMonsterButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;Defeat the Monster&quot;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="createVoyageAndReturnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;Voyage and Return&quot;">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="createCustomButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Custom" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Modify Existing Story Conflicts">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
                         <Button fx:id="editStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Story Conflict">
                            <VBox.margin>
                               <Insets bottom="10.0" />
