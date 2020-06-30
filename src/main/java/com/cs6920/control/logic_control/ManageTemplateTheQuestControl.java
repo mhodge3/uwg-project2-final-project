@@ -27,6 +27,10 @@ public class ManageTemplateTheQuestControl {
 	public void SetTheConflictToEdit(int theConflictIdToEdit) {
 		this.theConflictIdToEdit = theConflictIdToEdit;
 	}
+	
+	public ArrayList<Quest> getExistingQuestList() {
+		return this.existingTheQuestArrayList;
+	}
 
 	/**
 	 * Update the observable list of objects for any changes

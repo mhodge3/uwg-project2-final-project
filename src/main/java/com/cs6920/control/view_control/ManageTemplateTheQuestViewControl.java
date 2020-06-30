@@ -84,7 +84,7 @@ public class ManageTemplateTheQuestViewControl {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
-					this.editCallToAdventure(event);
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId());
 					break;
 				default: break;
 			}
@@ -98,10 +98,10 @@ public class ManageTemplateTheQuestViewControl {
 		}
     }
     
-    private void editCallToAdventure(ActionEvent event) throws IOException {
+    private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
-        loader.setController(new QuestEditCallingControl());
+        loader.setController(new QuestEditCallingViewControl(this, questIdToEdit));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");
@@ -122,6 +122,19 @@ public class ManageTemplateTheQuestViewControl {
     	questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
     	questTableView.getSortOrder().add(questPRIDTableColumn);
     	questTableView.sort();
+    }
+    
+    /**
+     * These update methods will be refactored into one when we don't have to build temp data
+     * @throws SQLException 
+     */
+    public void updateQuestList() throws SQLException {
+    	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
+		questTableView.getItems().clear();
+		questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
+		questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
+		questTableView.getSortOrder().add(questPRIDTableColumn);
+		questTableView.sort();
     }
 	
 	@FXML
