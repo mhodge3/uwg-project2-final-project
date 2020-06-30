@@ -47,13 +47,13 @@ INSERT INTO `admins` VALUES (1,2,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `characterplayerqyestplayerlog`
+-- Table structure for table `characterplayerquestlog`
 --
 
-DROP TABLE IF EXISTS `characterplayerqyestplayerlog`;
+DROP TABLE IF EXISTS `characterplayerquestlog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `characterplayerqyestplayerlog` (
+CREATE TABLE `characterplayerquestlog` (
   `quest_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
   `quest_status` int(11) NOT NULL,
@@ -66,12 +66,13 @@ CREATE TABLE `characterplayerqyestplayerlog` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `characterplayerqyestplayerlog`
+-- Dumping data for table `characterplayerquestlog`
 --
 
-LOCK TABLES `characterplayerqyestplayerlog` WRITE;
-/*!40000 ALTER TABLE `characterplayerqyestplayerlog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `characterplayerqyestplayerlog` ENABLE KEYS */;
+LOCK TABLES `characterplayerquestlog` WRITE;
+/*!40000 ALTER TABLE `characterplayerquestlog` DISABLE KEYS */;
+INSERT INTO `characterplayerquestlog` VALUES (1,1,1);
+/*!40000 ALTER TABLE `characterplayerquestlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,7 +129,7 @@ CREATE TABLE `charactersplayer` (
   UNIQUE KEY `character_name_UNIQUE` (`character_name`),
   KEY `fk_charactersPlayer_players1_idx` (`character_player_id`),
   CONSTRAINT `fk_charactersPlayer_players1` FOREIGN KEY (`character_player_id`) REFERENCES `players` (`player_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +138,7 @@ CREATE TABLE `charactersplayer` (
 
 LOCK TABLES `charactersplayer` WRITE;
 /*!40000 ALTER TABLE `charactersplayer` DISABLE KEYS */;
+INSERT INTO `charactersplayer` VALUES (1,1,'sum name',1,1,1.00,2.00,3.00),(2,2,'sum character',2,5,2.10,3.10,4.10);
 /*!40000 ALTER TABLE `charactersplayer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,6 +331,7 @@ CREATE TABLE `quests` (
 
 LOCK TABLES `quests` WRITE;
 /*!40000 ALTER TABLE `quests` DISABLE KEYS */;
+INSERT INTO `quests` VALUES (1,1,1,2,'quest1','first quest');
 /*!40000 ALTER TABLE `quests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,4 +348,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-27  0:12:42
+-- Dump completed on 2020-06-30  6:41:05
