@@ -1,8 +1,0 @@
-DAL\testAdminDAL.class
-DAL\testItemDAL.class
-model\playertests.class
-model\AdminTests.class
-model\CharacterTests.class
-DAL\testNpcCharacterDAL.class
-DAL\testPlayerDAL.class
-model\ItemsTest.class

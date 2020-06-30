@@ -11,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import com.cs6920.model.Conflict;
 import com.cs6920.model.Player;
 import com.cs6920.story_mapper.App;
 
@@ -58,6 +60,11 @@ public class MainDashboardViewControl {
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
+    private ManageQuestChainsViewControl theManageQuestChainsViewControl;
+    
+    private Parent theManageTemplateTheQuestParentView;
+    private Scene theManageTemplateTheQuestScene;
+    private ManageTemplateTheQuestViewControl theManageTheQuestViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -66,21 +73,24 @@ public class MainDashboardViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
-		CreateMainDashboardScene();
+		this.CreateMainDashboardScene();
 		
-		CreateManagePlayersAndAdminsScene();
-		CreateEditPlayersAndAdminsScene();
-		CreateCreatePlayersAndAdminsScene();
+		this.CreateManagePlayersAndAdminsScene();
+		this.CreateEditPlayersAndAdminsScene();
+		this.CreateCreatePlayersAndAdminsScene();
+		this.CreateManageGameStoryScene();
 		
-		CreateManageItemsScene();
-		CreateEditItemsScene();
-		CreateCreateItemsScene();
+		this.CreateManageItemsScene();
+		this.CreateEditItemsScene();
+		this.CreateCreateItemsScene();
 		
-		CreateManageNPCCharactersScene();
-		CreateEditNPCCharactersScene();
-		CreateCreateNPCScene();
+		this.CreateManageNPCCharactersScene();
+		this.CreateEditNPCCharactersScene();
+		this.CreateCreateNPCScene();
 		
-		CreateManageQuestChainsScene();
+		this.CreateManageQuestChainsScene();
+		
+		this.CreateManageTemplateTheQuestScene();
 	} 
 	
 	/**
@@ -114,6 +124,22 @@ public class MainDashboardViewControl {
 	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
 		this.theManageItemsViewControl = theManageItemsViewControl;
 	}
+
+	/**
+	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
+	 * @param theManageQuestChainsViewControl
+	 */
+	public void SetTheManageQuestChainsViewControl(ManageQuestChainsViewControl theManageQuestChainsViewControl) {
+		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
+	 * @param theManageQuestChainsViewControl
+	 */
+	public void SetTheManageTheQuestViewControl(ManageTemplateTheQuestViewControl theManageTheQuestViewControl) {
+		this.theManageTheQuestViewControl = theManageTheQuestViewControl;
+	}
 	
 	/**
 	 * Sets the id of the Player to be edited
@@ -140,6 +166,11 @@ public class MainDashboardViewControl {
 	public void SetItemToEdit(int itemIdToEdit) {
 		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
+	}
+	
+	public void SetConflictToEdit(int conflictIdToEdit) {
+		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictIdToEdit);
+		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
 	@FXML
@@ -245,7 +276,12 @@ public class MainDashboardViewControl {
 				theSceneToStage = theCreateNPCCharactersScene;
 				break;
 			case "manageQuestChains":
+				theManageQuestChainsViewControl.updateExistingConflictList();
 				theSceneToStage = theManageQuestChainsScene;
+				break;
+			case "manageTemplateTheQuest":
+				theManageTheQuestViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateTheQuestScene;
 				break;
 			default: break;
 		}
@@ -294,6 +330,17 @@ public class MainDashboardViewControl {
         try {
         	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
         	theManagePlayersAndAdminsScene = new Scene(theManagePlayersAndAdminsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageGameStoryScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("CreateGameStoryView.fxml"));
+        theFxmlLoader.setController(new ManageItemsViewControl(this));
+        try {
+        	theManageItemsParentView = theFxmlLoader.load();
+        	theManageItemsScene = new Scene(theManageItemsParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -373,6 +420,17 @@ public class MainDashboardViewControl {
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();
         	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateTheQuestScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
+        theFxmlLoader.setController(new ManageTemplateTheQuestViewControl(this));
+        try {
+        	theManageTemplateTheQuestParentView = theFxmlLoader.load();
+        	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

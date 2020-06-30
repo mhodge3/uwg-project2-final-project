@@ -113,5 +113,38 @@ public class GameStoryDAL {
         }
 		return success;
 	}
+	
+	/**
+	 * Creates Game Story
+	 * @param gameStoryName
+	 * @param gameStorySummary
+	 * @return
+	 * @throws SQLException
+	 */
+	
+	public Boolean CreateGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
+		Boolean success = false;
+		try {
+			this.conn = this.sqlAccess.GetDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
+					"(game_story_name, " + 
+            		"game_story_summar " + 
+					"VALUES (?, ?)";
+			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			  preparedStmt.setString (1, gameStoryName);
+			  preparedStmt.setString (2, gameStorySummary);
+			  
+		      preparedStmt.execute();
+		      success = true;
+		} catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+		return success;
+	}
+	
+	
 
 }
