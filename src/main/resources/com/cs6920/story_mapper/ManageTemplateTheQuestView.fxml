@@ -39,7 +39,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="editStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Edit Selected Quest">
+                        <Button fx:id="editStoryObstacleButton" mnemonicParsing="false" onAction="#editQuest" prefHeight="25.0" prefWidth="186.0" text="Edit Selected Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

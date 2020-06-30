@@ -1,15 +1,26 @@
 package com.cs6920.control.view_control;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.ManageTemplateTheQuestControl;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
+import com.cs6920.story_mapper.App;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ManageTemplateTheQuestViewControl {
 	@FXML
@@ -66,6 +77,37 @@ public class ManageTemplateTheQuestViewControl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
+    
+    @FXML
+    private void editQuest(ActionEvent event) throws IOException {
+		if (questTableView.getSelectionModel().getSelectedItem() != null) {
+			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
+				case "calling":
+					this.editCallToAdventure(event);
+					break;
+				default: break;
+			}
+		}
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Edit Conflict Quest Issue");
+			alert.setHeaderText("Cannot Edit Quest");
+			alert.setContentText("A Quest to edit was not selected. Please select the Quest you wish to edit");
+			alert.showAndWait();
+		}
+    }
+    
+    private void editCallToAdventure(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
+        loader.setController(new QuestEditCallingControl());
+        Parent root = loader.load();
+        stage.setScene(new Scene(root));
+        stage.setTitle("My modal window");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
     }
     
 	/**
