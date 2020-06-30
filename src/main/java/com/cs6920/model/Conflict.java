@@ -20,6 +20,7 @@ public class Conflict {
 	private IntegerProperty conflictTemplate;
 	private StringProperty conflictName;
 	private StringProperty conflictDescription;
+	private StringProperty conflictArcType;
 	
 	/**
 	 * Constructor for testing
@@ -35,12 +36,13 @@ public class Conflict {
 	 * @param conflictName
 	 * @param conflictDescription
 	 */
-	public Conflict(int conflictId, int conflictMinLvl, int conflictTemplate, String conflictName, String conflictDescription) {
+	public Conflict(int conflictId, int conflictMinLvl, int conflictTemplate, String conflictName, String conflictDescription, String arcType) {
 		this.conflictId = new SimpleIntegerProperty(conflictId);
 		this.conflictMinLvl = new SimpleIntegerProperty(conflictMinLvl);
 		this.conflictTemplate = new SimpleIntegerProperty(conflictTemplate);
 		this.conflictName = new SimpleStringProperty(conflictName);
 		this.conflictDescription = new SimpleStringProperty(conflictDescription);
+		this.conflictArcType = new SimpleStringProperty(arcType);
 	}
 	
 	/**
@@ -161,5 +163,28 @@ public class Conflict {
 	 */
 	public void SetConflictDescription(String setConflictDescription) {
 		this.conflictDescription = new SimpleStringProperty(setConflictDescription);
+	}
+	/**
+	 * Gets the conflictDescription
+	 * @return conflictDescription
+	 */
+	public String GetConflictArcType() {
+		return this.conflictArcType.get();
+	}
+	
+	/**
+	 * Gets the conflictDescription property
+	 * @return Property for TableView
+	 */
+	public final StringProperty conflictArcTypeProperty() {
+	   return this.conflictArcType;
+	}
+	
+	/**
+	 * Sets the conflictTemplate
+	 * @param conflictTemplate
+	 */
+	public void SetConflictArcType(String arcType) {
+		this.conflictArcType = new SimpleStringProperty(arcType);
 	}
 }

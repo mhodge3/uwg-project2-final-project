@@ -27,7 +27,7 @@ public class ManageQuestChainsViewControl {
 	@FXML
 	private TableColumn<Conflict, String> conflictNameTableColumn;
 	@FXML
-	private TableColumn<Conflict, String> conflictDescriptionTableColumn;
+	private TableColumn<Conflict, String> conflictArcTypeTableColumn;
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private ManageQuestChainsControl theManageQuestChainsControl;
@@ -48,7 +48,7 @@ public class ManageQuestChainsViewControl {
 		conflictMinLvlTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictMinLvl"));
 		conflictIdTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictId"));
 		conflictNameTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictName"));
-		conflictDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictDescription"));
+		conflictArcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictArcType"));
 	}
     
 	public ManageQuestChainsControl GetManageQuestChainsControl() {
