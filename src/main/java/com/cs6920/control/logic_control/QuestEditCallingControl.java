@@ -26,8 +26,16 @@ public class QuestEditCallingControl extends QuestEditAbstractControl {
 		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).SetQuestGiverNpcId(npcId);
 	}
 	
+	public void updateReceiverNPC(int npcId) throws SQLException {
+		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).SetQuestReceiverNpcId(npcId);
+	}
+	
 	public int getQuestGiverNpcId() throws SQLException {
 		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).GetQuestGiverNpcId();
+	}
+	
+	public int getQuestReceiverNpcId() throws SQLException {
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).GetQuestReceiverNpcId();
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {
