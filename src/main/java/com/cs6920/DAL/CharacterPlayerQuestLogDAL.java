@@ -67,7 +67,7 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return The characterPlayerQuestLog looked up
 	 * @throws SQLException
 	 */
-	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByQuestID(int QuestId) throws SQLException {
+	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByQuestId(int QuestId) throws SQLException {
 		CharacterPlayerQuestLog questLog = null;
         try {
             this.conn = this.sqlAccess.GetDBConnection();
