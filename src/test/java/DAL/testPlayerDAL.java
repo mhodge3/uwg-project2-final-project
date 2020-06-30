@@ -88,10 +88,12 @@ class testPlayerDAL {
 	@Order(7)
 	public void deleteAPlayer() throws Exception {
 		Player player = this.dal.GetPlayer("bogus", "newpw");
+		Player admin = this.dal.GetPlayer("joe", "test1234");
 		this.dal.DeletePlayer(player);
 		player = this.dal.GetPlayer("bogus", "newpw");
 		assertNull(player);
 	}
+
 	
 	@Test
 	@Order(7)
@@ -107,6 +109,15 @@ class testPlayerDAL {
 	public void retrievesNonPlayerShouldBeNull() throws Exception {
 		this.thePlayer = this.dal.GetPlayer("joe", "test1234");
 		assertEquals(this.thePlayer, null);
+	}
+	
+	@Test
+	@Order(9)
+	public void deleteAPlayerForCnostraintTesting() throws Exception {
+		Player player = this.dal.GetPlayer("player", "test1234");
+		assertTrue(this.dal.DeletePlayer(player));
+		player = this.dal.GetPlayer("player", "test1234");
+		assertNull(player);
 	}
 
 }

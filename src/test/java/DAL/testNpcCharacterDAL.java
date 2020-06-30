@@ -13,7 +13,7 @@ class testNpcCharacterDAL {
 	NpcCharacterDAL dal = new NpcCharacterDAL(access);
 	NpcCharacter character = new NpcCharacter();
 
-	@Test
+	/*@Test
 	public void retrievesNpcCharacterID1FromDB() throws Exception {
 		this.character = this.dal.GetNpcById(1);
 		assertEquals(this.character.GetNpcId(), 1);
@@ -57,7 +57,7 @@ class testNpcCharacterDAL {
 		ArrayList<NpcCharacter> allNpc = this.dal.GetAllNpc();
 		assertEquals(allNpc.get(0).GetNpcName(), "Sum Guy");
 		assertEquals(allNpc.get(1).GetNpcName(), "Sum Gal");
-	}
+	}*/
 	
 	@Test
 	public void createANpcCharacterInDB() throws Exception {
