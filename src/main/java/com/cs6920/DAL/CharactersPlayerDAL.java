@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.cs6920.model.CharactersPlayer;
-import com.cs6920.model.Player;
 
 /**
  * Data access layer for the CharacterPlayer database table
@@ -27,7 +26,7 @@ public class CharactersPlayerDAL {
 	}
 
 	/**
-	 * Creates a characterPlayer entry in the database players table
+	 * Creates a characterPlayer entry in the database CharacterPlayer table
 	 * @param characterId
 	 * @param characterPlayerId
 	 * @param characterName
