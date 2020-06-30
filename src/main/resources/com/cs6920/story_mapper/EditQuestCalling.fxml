@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -18,18 +19,43 @@
       </Label>
       <VBox prefHeight="544.0" prefWidth="800.0">
          <children>
+            <VBox prefHeight="133.0" prefWidth="800.0">
+               <children>
+                  <Label text="Quest Name" />
+                  <TextField fx:id="editCallingQuestName" />
+                  <Label text="Quest Description" />
+                  <TextArea fx:id="editCallingQuestDescription" prefHeight="81.0" prefWidth="800.0" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </VBox>
             <HBox alignment="CENTER" prefHeight="520.0" prefWidth="800.0">
                <padding>
                   <Insets bottom="10.0" top="10.0" />
                </padding>
                <children>
-                  <VBox prefHeight="201.0" prefWidth="307.0">
+                  <VBox prefHeight="352.0" prefWidth="400.0">
                      <children>
-                        <Label text="Quest Name" />
-                        <TextField fx:id="editCallingQuestName" />
-                        <Label text="Quest Description" />
-                        <TextArea fx:id="editCallingQuestDescription" prefHeight="200.0" prefWidth="200.0" />
+                        <Label text="Herald NCP (Actor)" />
+                        <ComboBox fx:id="questHeraldNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
+                        <Label text="Herald Dialog" />
+                        <TextArea fx:id="editGiverDialogTextArea" prefHeight="200.0" prefWidth="221.0" />
                      </children>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox prefHeight="352.0" prefWidth="392.0">
+                     <children>
+                        <Label text="Mentor NCP (Actor)" />
+                        <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
+                        <Label text="Mentor Dialog" />
+                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </VBox>
                </children>
             </HBox>
@@ -39,7 +65,7 @@
                      <children>
                         <Button fx:id="questEditBackButton" mnemonicParsing="false" onAction="#handleBackButton" text="Back">
                            <HBox.margin>
-                              <Insets bottom="20.0" left="20.0" />
+                              <Insets bottom="20.0" />
                            </HBox.margin>
                         </Button>
                         <Button fx:id="questEditSaveButton" mnemonicParsing="false" onAction="#handleQuestSaveChanges" text="Save Changes">
@@ -61,6 +87,9 @@
                </opaqueInsets>
             </HBox>
          </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
       </VBox>
    </children>
 </VBox>

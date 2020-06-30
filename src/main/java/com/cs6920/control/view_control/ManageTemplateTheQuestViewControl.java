@@ -50,6 +50,10 @@ public class ManageTemplateTheQuestViewControl {
     	
     }
     
+    public MainDashboardViewControl GetTheMainDashboardViewControl() {
+    	return this.theMainDashboardViewControl;
+    }
+    
     public ManageTemplateTheQuestControl GetTheManageTemplateTheQuestControl() {
     	return this.theManageTemplateTheQuestControl;
     }
@@ -80,7 +84,7 @@ public class ManageTemplateTheQuestViewControl {
     }
     
     @FXML
-    private void editQuest(ActionEvent event) throws IOException {
+    private void editQuest(ActionEvent event) throws IOException, SQLException {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
@@ -98,7 +102,7 @@ public class ManageTemplateTheQuestViewControl {
 		}
     }
     
-    private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException {
+    private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
         loader.setController(new QuestEditCallingViewControl(this, questIdToEdit));
