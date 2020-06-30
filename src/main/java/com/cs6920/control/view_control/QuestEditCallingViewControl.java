@@ -51,17 +51,23 @@ public class QuestEditCallingViewControl {
 		questMentorNPCComboBox.getItems().addAll(npcNames);
 		questMentorNPCComboBox.setValue(theQuestEditCallingControl.GetNpcNameFromListById(theQuestEditCallingControl.getQuestReceiverNpcId()));
 	}
+	
+	private void setupTextElements() throws SQLException {
+		editCallingQuestName.setText(theQuestEditCallingControl.getQuestName());
+		editCallingQuestDescription.setText(theQuestEditCallingControl.getQuestDescription());
+	}
 
 	@FXML
     private void initialize() throws SQLException {
 		this.setUpHeraldNPCComboBox();
 		this.setUpMentorNPCComboBox();
+		this.setupTextElements();
 	}
 	
 	@FXML 
 	private void handleQuestSaveChanges() throws SQLException {
 		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
-		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
+		theQuestEditCallingControl.updateQuestDescription(editCallingQuestDescription.getText());
 		theQuestEditCallingControl.updateGiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
 		theQuestEditCallingControl.updateReceiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
 		theQuestEditCallingControl.refreshQuestDisplay();

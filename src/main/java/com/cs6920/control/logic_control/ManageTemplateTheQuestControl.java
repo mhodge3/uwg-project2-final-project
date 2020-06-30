@@ -123,7 +123,7 @@ public class ManageTemplateTheQuestControl {
 		quest4.SetMinCharacterLevel(1);
 		quest4.SetQuestName("test");
 		quest4.SetQuestDescription("testing");
-		quest3.SetQuestDescription("testing");
+		quest4.SetQuestDescription("testing");
 		Quest quest5 = new Quest();
 		quest5.SetQuestArcType("return elixir");
 		quest5.SetPreReqQuestId(4);

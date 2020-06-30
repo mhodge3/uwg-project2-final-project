@@ -38,6 +38,14 @@ public class QuestEditCallingControl extends QuestEditAbstractControl {
 		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).GetQuestReceiverNpcId();
 	}
 	
+	public String getQuestName() throws SQLException {
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).GetQuestName();
+	}
+	
+	public String getQuestDescription() throws SQLException {
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(questIdToEdit - 1).GetQuestDescription();
+	}
+	
 	public void refreshQuestDisplay() throws SQLException {
 		theManageTemplateTheQuestViewControl.updateQuestList();
 	}
