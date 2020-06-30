@@ -32,12 +32,13 @@ public class QuestEditCallingViewControl {
 		theQuestEditCallingControl = new QuestEditCallingControl(theManageTemplateTheQuestViewControl, questIdToEdit);
 	}
 	
-	private void setUpHeraldNPCComboBox() {
+	private void setUpHeraldNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
 		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theQuestEditCallingControl.getTheObservableNPCs()) {
 			npcNames.add(theNPC.GetNpcName());
 		}
 		questHeraldNPCComboBox.getItems().addAll(npcNames);
+		questHeraldNPCComboBox.setValue(theQuestEditCallingControl.GetNpcNameFromListById(theQuestEditCallingControl.getQuestGiverNpcId()));
 	}
 
 	@FXML
@@ -49,6 +50,7 @@ public class QuestEditCallingViewControl {
 	private void handleQuestSaveChanges() throws SQLException {
 		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
 		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
+		theQuestEditCallingControl.updateGiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
 		theQuestEditCallingControl.refreshQuestDisplay();
 		this.handleBackButton();
 	}

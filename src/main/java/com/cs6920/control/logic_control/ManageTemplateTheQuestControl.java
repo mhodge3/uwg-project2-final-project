@@ -84,6 +84,7 @@ public class ManageTemplateTheQuestControl {
 	
 	public void buildTempQuestTemplateList (int conflictId) {
 		Quest quest1 = new Quest();
+		quest1.SetQuestGiverNpcId(0);
 		quest1.SetQuestArcType("calling");
 		quest1.SetPreReqQuestId(0);
 		quest1.SetConflictId(conflictId);
@@ -92,6 +93,7 @@ public class ManageTemplateTheQuestControl {
 		quest1.SetQuestName("test");
 		quest1.SetQuestDescription("testing");
 		Quest quest2 = new Quest();
+		quest2.SetQuestGiverNpcId(0);
 		quest2.SetQuestArcType("leaving");
 		quest2.SetPreReqQuestId(1);
 		quest2.SetConflictId(conflictId);
@@ -100,6 +102,7 @@ public class ManageTemplateTheQuestControl {
 		quest2.SetQuestName("test");
 		quest2.SetQuestDescription("testing");
 		Quest quest3 = new Quest();
+		quest3.SetQuestGiverNpcId(0);
 		quest3.SetQuestArcType("obstacle");
 		quest3.SetPreReqQuestId(2);
 		quest3.SetConflictId(conflictId);
@@ -108,6 +111,7 @@ public class ManageTemplateTheQuestControl {
 		quest3.SetQuestName("test");
 		quest3.SetQuestDescription("testing");
 		Quest quest4 = new Quest();
+		quest4.SetQuestGiverNpcId(0);
 		quest4.SetQuestArcType("obtain elixir");
 		quest4.SetPreReqQuestId(3);
 		quest4.SetConflictId(conflictId);

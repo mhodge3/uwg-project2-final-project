@@ -34,4 +34,22 @@ abstract class QuestEditAbstractControl {
 	public ObservableList<NpcCharacter> getTheObservableNPCs() {
 		return this.observableNPCList;
 	}
+	
+	public String GetNpcNameFromListById(int npcId) {
+		for (NpcCharacter theNPC : existingNPCArrayList) {
+			if (theNPC.GetNpcId() == npcId) {
+				return theNPC.GetNpcName();
+			}
+		}
+		return "none";
+	}
+	
+	public int GetNpcIdFromListByName(String npcName) {
+		for (NpcCharacter theNPC : existingNPCArrayList) {
+			if (theNPC.GetNpcName().contentEquals(npcName)) {
+				return theNPC.GetNpcId();
+			}
+		}
+		return 0;
+	}
 }

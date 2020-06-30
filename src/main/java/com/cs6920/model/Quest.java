@@ -20,6 +20,8 @@ public class Quest {
 	private IntegerProperty preReqQuestId;
 	private IntegerProperty conflictId;
 	private IntegerProperty minCharacterLevel;
+	private IntegerProperty questGiverNpcId;
+	private IntegerProperty questReceiverNpcId;
 	private StringProperty questArcType;
 	private StringProperty questName;
 	private StringProperty questDescription;
@@ -31,7 +33,7 @@ public class Quest {
 		
 	}
 	
-	public Quest(int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType) {
+	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType) {
 		this.questId = new SimpleIntegerProperty(questId);
 		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
 		this.conflictId = new SimpleIntegerProperty(conflictId);
@@ -39,6 +41,58 @@ public class Quest {
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
 		this.questArcType = new SimpleStringProperty(questArcType);
+		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+	}
+	
+	/**
+	 * Gets the questReceiverNpcId
+	 * @return questReceiverNpcId
+	 */
+	public int GetQuestReceiverNpcId() {
+		return questReceiverNpcId.get();
+	}
+	
+	/**
+	 * Gets the questReceiverNpcId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty questReceiverNpcIdProperty() {
+	   return questReceiverNpcId;
+	}
+	
+	
+	/**
+	 * Sets the questReceiverNpcId
+	 * @param questReceiverNpcId
+	 */
+	public void SetQuestReceiverNpcId(int questReceiverNpcId) {
+		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+	}
+	
+	/**
+	 * Gets the questGiverNpcId
+	 * @return questGiverNpcId
+	 */
+	public int GetQuestGiverNpcId() {
+		return questGiverNpcId.get();
+	}
+	
+	/**
+	 * Gets the questGiverNpcId property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty questGiverNpcIdProperty() {
+	   return questGiverNpcId;
+	}
+	
+	
+	/**
+	 * Sets the questGiverNpcId
+	 * @param questGiverNpcId
+	 */
+	public void SetQuestGiverNpcId(int questGiverNpcId) {
+		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 	}
 	
 	/**
