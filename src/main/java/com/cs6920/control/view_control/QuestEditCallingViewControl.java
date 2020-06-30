@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.cs6920.control.logic_control.QuestEditCallingControl;
+import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.Quest;
 
@@ -27,6 +28,10 @@ public class QuestEditCallingViewControl {
 	private ComboBox<String> questHeraldNPCComboBox;
 	@FXML
 	private ComboBox<String> questMentorNPCComboBox;
+	@FXML
+	private ComboBox<String> addQuestItemComboBox;
+	@FXML
+	private ComboBox<String> addRewardItemComboBox;
 	
 	QuestEditCallingControl theQuestEditCallingControl;
 	
@@ -52,6 +57,22 @@ public class QuestEditCallingViewControl {
 		questMentorNPCComboBox.setValue(theQuestEditCallingControl.GetNpcNameFromListById(theQuestEditCallingControl.getQuestReceiverNpcId()));
 	}
 	
+	private void setUpQuestItemComboBox() throws SQLException {
+		ArrayList<String> itemNames = new ArrayList<String>();
+		for (Item theItem : (ObservableList<Item>) theQuestEditCallingControl.getTheObservableQuestItems()) {
+			itemNames.add(theItem.GetItemName());
+		}
+		addQuestItemComboBox.getItems().addAll(itemNames);
+	}
+	
+	private void setUpRewardItemComboBox() throws SQLException {
+		ArrayList<String> itemNames = new ArrayList<String>();
+		for (Item theItem : (ObservableList<Item>) theQuestEditCallingControl.getTheObservableRewardItems()) {
+			itemNames.add(theItem.GetItemName());
+		}
+		addRewardItemComboBox.getItems().addAll(itemNames);
+	}
+	
 	private void setupTextElements() throws SQLException {
 		editCallingQuestName.setText(theQuestEditCallingControl.getQuestName());
 		editCallingQuestDescription.setText(theQuestEditCallingControl.getQuestDescription());
@@ -62,6 +83,8 @@ public class QuestEditCallingViewControl {
 		this.setUpHeraldNPCComboBox();
 		this.setUpMentorNPCComboBox();
 		this.setupTextElements();
+		this.setUpQuestItemComboBox();
+		this.setUpRewardItemComboBox();
 	}
 	
 	@FXML 

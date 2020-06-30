@@ -40,7 +40,18 @@
                         <Label text="Herald NCP (Actor)" />
                         <ComboBox fx:id="questHeraldNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Herald Dialog" />
-                        <TextArea fx:id="editGiverDialogTextArea" prefHeight="200.0" prefWidth="221.0" />
+                        <TextArea fx:id="editGiverDialogTextArea" prefHeight="140.0" prefWidth="369.0" />
+                        <Label text="Items (Props) Needed for Completion" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="addQuestItemComboBox" prefHeight="25.0" prefWidth="308.0" />
+                              <Button fx:id="addQuestItemButton" mnemonicParsing="false" text="Button">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets right="10.0" />
@@ -51,7 +62,18 @@
                         <Label text="Mentor NCP (Actor)" />
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Mentor Dialog" />
-                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="200.0" prefWidth="200.0" />
+                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="142.0" prefWidth="371.0" />
+                        <Label text="Items (Props) Needed for Completion" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <ComboBox fx:id="addRewardItemComboBox" prefHeight="25.0" prefWidth="308.0" />
+                              <Button fx:id="addRewardItemButton" mnemonicParsing="false" text="Button">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />
