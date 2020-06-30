@@ -40,17 +40,17 @@
                <children>
                   <HBox prefHeight="47.0" prefWidth="810.0">
                      <children>
-                        <Button fx:id="GameStoryEditBackButton" mnemonicParsing="false" onAction="#handleGameStoryEditButton" text="Cancel">
+                        <Button fx:id="GameStoryEditBackButton" mnemonicParsing="false" text="Cancel">
                            <HBox.margin>
                               <Insets bottom="20.0" left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="GameStorySaveButoon" mnemonicParsing="false" onAction="#handleGameStorySaveButton" text="Save Changes">
+                        <Button fx:id="GameStorySaveButoon" mnemonicParsing="false" text="Save Changes">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="DeleteSelectedButton" mnemonicParsing="false" onAction="#handleGameStoryDeleteButton" text="Delete Item (Prop)">
+                        <Button fx:id="DeleteSelectedButton" mnemonicParsing="false" text="Delete Item (Prop)">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>

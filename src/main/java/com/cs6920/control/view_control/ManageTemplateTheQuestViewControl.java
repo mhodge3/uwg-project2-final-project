@@ -52,11 +52,28 @@ public class ManageTemplateTheQuestViewControl {
 		questTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questArcType"));
 	}
     
+    @FXML
+    private void addObstacleQuest() {
+    	try {
+			theManageTemplateTheQuestControl.addObstacle();
+	    	questTableView.getItems().clear();
+	    	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
+	    	questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
+	    	questTableView.getSortOrder().add(questPRIDTableColumn);
+	    	questTableView.sort();
+			questTableView.refresh();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
 	/**
 	 * Binds the ObservableList to the TableView
 	 * @throws SQLException 
 	 */
     public void updateExistingTheQuestList() throws SQLException {
+    	theManageTemplateTheQuestControl.buildTempQuestTemplateList(theManageTemplateTheQuestControl.GetConflictIdToEdit());
     	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
     	questTableView.getItems().clear();
     	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());

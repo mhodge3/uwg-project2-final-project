@@ -33,9 +33,8 @@ public class ManageTemplateTheQuestControl {
 	 * @throws SQLException
 	 */
 	public void UpdateTheQuestArrayList() throws SQLException {
-		existingTheQuestArrayList = new ArrayList<Quest>();
+		//existingTheQuestArrayList = new ArrayList<Quest>();
 		//existingConflictArrayList = playerDAL.GetPlayers();
-		existingTheQuestArrayList = this.buildTempQuestTemplateList(this.theConflictIdToEdit);
 		observableTheQuestList.clear();
 		observableTheQuestList.addAll(existingTheQuestArrayList);
 	}
@@ -44,7 +43,42 @@ public class ManageTemplateTheQuestControl {
 		return this.theConflictIdToEdit;
 	}
 	
-	private ArrayList<Quest> buildTempQuestTemplateList (int conflictId) {
+	private int getHighestObstacleId () {
+		int highestObstacleQuest = 3;
+		for (Quest quest : existingTheQuestArrayList) {
+			if (quest.GetQuestArcType().contentEquals("obstacle")) {
+				highestObstacleQuest = quest.GetQuestId();
+			}
+		}
+		return highestObstacleQuest;
+	}
+	
+	private void insertNewObstacleQuest(Quest newObstacleQuest) {
+		Quest finalQuest = existingTheQuestArrayList.get(existingTheQuestArrayList.size() - 1);
+		Quest penultimateQuest = existingTheQuestArrayList.get(existingTheQuestArrayList.size() - 2);
+		existingTheQuestArrayList.set(existingTheQuestArrayList.size() - 2, newObstacleQuest);
+		penultimateQuest.SetPreReqQuestId(penultimateQuest.GetQuestId());
+		penultimateQuest.SetQuestId(penultimateQuest.GetQuestId() + 1);
+		finalQuest.SetPreReqQuestId(penultimateQuest.GetQuestId());
+		finalQuest.SetQuestId(penultimateQuest.GetQuestId() + 1);
+		existingTheQuestArrayList.set(existingTheQuestArrayList.size() - 1, penultimateQuest);
+		existingTheQuestArrayList.add(finalQuest);
+	}
+	
+	public void addObstacle() throws SQLException {
+		int highestObstacleQuestId = this.getHighestObstacleId();
+		Quest obstacleQuest = new Quest(); 
+		obstacleQuest.SetQuestArcType("obstacle");
+		obstacleQuest.SetPreReqQuestId(highestObstacleQuestId);
+		obstacleQuest.SetConflictId(theConflictIdToEdit);
+		obstacleQuest.SetQuestId(highestObstacleQuestId + 1);
+		obstacleQuest.SetMinCharacterLevel(1);
+		obstacleQuest.SetQuestName("test");
+		this.insertNewObstacleQuest(obstacleQuest);
+		this.UpdateTheQuestArrayList();
+	}
+	
+	public void buildTempQuestTemplateList (int conflictId) {
 		Quest quest1 = new Quest();
 		quest1.SetQuestArcType("calling");
 		quest1.SetPreReqQuestId(0);
@@ -86,13 +120,12 @@ public class ManageTemplateTheQuestControl {
 		quest5.SetMinCharacterLevel(1);
 		quest5.SetQuestName("test");
 		quest5.SetQuestDescription("testing");
-		ArrayList<Quest> tempConflicts = new ArrayList<Quest>();
-		tempConflicts.add(quest1);
-		tempConflicts.add(quest2);
-		tempConflicts.add(quest3);
-		tempConflicts.add(quest4);
-		tempConflicts.add(quest5);
-		return tempConflicts;
+		existingTheQuestArrayList = new ArrayList<Quest>();
+		existingTheQuestArrayList.add(quest1);
+		existingTheQuestArrayList.add(quest2);
+		existingTheQuestArrayList.add(quest3);
+		existingTheQuestArrayList.add(quest4);
+		existingTheQuestArrayList.add(quest5);
 	}
 	
 	/**

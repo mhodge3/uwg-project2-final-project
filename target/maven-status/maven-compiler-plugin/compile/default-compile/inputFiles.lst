@@ -20,6 +20,7 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\vi
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\CharacterPlayerQuestLog.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\CreatePlayersAndAdminsControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\view_control\CreatePlayersAndAdminsViewControl.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\CharacterPlayerQuestLogDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\view_control\EditNPCCharactersViewControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\Quest.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\ManageNPCCharactersControl.java
@@ -47,6 +48,7 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\vi
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\PlayerDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\CharactersPlayer.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\Player.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\CharacterPlayerQuestLogController.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\EditNPCCharactersControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\view_control\CreateGameStoryViewControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\story_mapper\Main.java

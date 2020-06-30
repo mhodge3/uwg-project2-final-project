@@ -21,7 +21,7 @@
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <Button minWidth="250.0" mnemonicParsing="false" onAction="#handleGameStory" text="Manage Game Story">
+            <Button minWidth="250.0" mnemonicParsing="false" text="Manage Game Story">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

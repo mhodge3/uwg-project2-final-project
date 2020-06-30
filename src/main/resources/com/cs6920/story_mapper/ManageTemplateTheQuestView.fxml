@@ -34,7 +34,7 @@
                   </TableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">
                      <children>
-                        <Button fx:id="createStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Add Obstacle Quest">
+                        <Button fx:id="createStoryObstacleButton" mnemonicParsing="false" onAction="#addObstacleQuest" prefHeight="25.0" prefWidth="186.0" text="Add Obstacle Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

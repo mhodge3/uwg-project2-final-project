@@ -6,6 +6,7 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\PlayerTests.jav
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\CharactersPlayerTests.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testAdminDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\AdminTests.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testCharacterPlayerQuestLogDALCRUDCycle.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testCharactersPlayerCRUDCycle.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testPlayerDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\CharacterTests.java
