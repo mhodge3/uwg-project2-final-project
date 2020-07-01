@@ -5,6 +5,8 @@ package com.cs6920.model;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * @author Ashley Palmer
@@ -16,6 +18,7 @@ public class QuestItems {
 	private IntegerProperty questId;
 	private IntegerProperty itemId;
 	private IntegerProperty itemQuantity;
+	private StringProperty itemDisplayName;
 	
 	/**
 	 * Constructor for testing.
@@ -24,10 +27,11 @@ public class QuestItems {
 		
 	}
 	
-	public QuestItems(int questID, int itemId, int itemQuantity) {
+	public QuestItems(int questID, int itemId, int itemQuantity, String itemDisplayName) {
 		this.questId = new SimpleIntegerProperty(questID);
 		this.itemId = new SimpleIntegerProperty(itemId);
 		this.itemQuantity = new SimpleIntegerProperty(itemQuantity);
+		this.itemDisplayName = new SimpleStringProperty(itemDisplayName);
 	}
 	
 	
@@ -43,7 +47,7 @@ public class QuestItems {
 	 * Gets the questId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty QuestIdProperty() {
+	public final IntegerProperty questIdProperty() {
 	   return questId;
 	}
 	
@@ -68,7 +72,7 @@ public class QuestItems {
 	 * Gets the itemId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ItemIdProperty() {
+	public final IntegerProperty itemIdProperty() {
 	   return itemId;
 	}
 	
@@ -93,7 +97,7 @@ public class QuestItems {
 	 * Gets the itemId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty ItemQuantityProperty() {
+	public final IntegerProperty itemQuantityProperty() {
 	   return itemQuantity;
 	}
 	
@@ -104,6 +108,31 @@ public class QuestItems {
 	 */
 	public void SetItemQuantity(int setItemQuantity) {
 		this.itemQuantity = new SimpleIntegerProperty(setItemQuantity);
+	}
+	
+	/**
+	 * Gets the itemDisplayName
+	 * @return itemDisplayName
+	 */
+	public String GetItemDisplayName() {
+		return itemDisplayName.get();
+	}
+	
+	/**
+	 * Gets the itemDisplayName property
+	 * @return Property for TableView
+	 */
+	public final StringProperty itemDisplayNameProperty() {
+	   return itemDisplayName;
+	}
+	
+	
+	/**
+	 * Sets the itemDisplayName
+	 * @param itemDisplayName
+	 */
+	public void SetItemDisplayName(String itemDisplayName) {
+		this.itemDisplayName = new SimpleStringProperty(itemDisplayName);
 	}
 
 }

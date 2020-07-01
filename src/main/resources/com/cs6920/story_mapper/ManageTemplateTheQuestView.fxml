@@ -27,11 +27,11 @@
                <children>
                   <TableView fx:id="questTableView" prefHeight="463.0" prefWidth="575.0">
                     <columns>
-                      <TableColumn fx:id="questMinLvlTableColumn" prefWidth="53.0" text="Min Lvl" />
-                        <TableColumn fx:id="questPRIDTableColumn" prefWidth="42.0" text="PR ID" />
-                      <TableColumn fx:id="questIDTableColumn" prefWidth="45.0" text="ID" />
-                        <TableColumn fx:id="questNameTableColumn" prefWidth="328.0" text="Quest Name" />
-                        <TableColumn fx:id="questTypeTableColumn" prefWidth="103.0" text="Arc Role" />
+                      <TableColumn fx:id="questMinLvlTableColumn" prefWidth="53.0" resizable="false" text="Min Lvl" />
+                        <TableColumn fx:id="questPRIDTableColumn" prefWidth="42.0" resizable="false" text="PR ID" />
+                      <TableColumn fx:id="questIDTableColumn" prefWidth="45.0" resizable="false" text="ID" />
+                        <TableColumn fx:id="questNameTableColumn" prefWidth="328.0" resizable="false" text="Quest Name" />
+                        <TableColumn fx:id="questTypeTableColumn" prefWidth="103.0" resizable="false" text="Arc Role" />
                     </columns>
                   </TableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">

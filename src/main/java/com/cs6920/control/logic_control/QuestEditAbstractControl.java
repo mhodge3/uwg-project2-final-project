@@ -8,6 +8,7 @@ import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.NpcCharacterDAL;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
+import com.cs6920.model.QuestItems;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,15 +17,19 @@ abstract class QuestEditAbstractControl {
 	private ArrayList<NpcCharacter> existingNPCArrayList;
 	private NpcCharacterDAL theNpcCharacterDAL;
 	private ObservableList<NpcCharacter> observableNPCList = FXCollections.observableArrayList();
-	
-
+	private ArrayList<QuestItems> theQuestItemsNeededList;
+	private ObservableList<QuestItems> observableTheQuestItemsNeededList = FXCollections.observableArrayList();
+	private ArrayList<QuestItems> theQuestItemsRewardList;
+	private ObservableList<QuestItems> observableTheQuestItemsRewardList = FXCollections.observableArrayList();
 	private ItemDAL theItemDAL;
 	private ArrayList<Item> existingQuestItems;
 	private ArrayList<Item> existingRewardItems;
 	private ObservableList<Item> observableQuestItemsList = FXCollections.observableArrayList();
 	private ObservableList<Item> observableRewardItemsList = FXCollections.observableArrayList();
+	private int questIdToEdit;
 	
-	public QuestEditAbstractControl(MySQLAccess theDBConnection) throws SQLException {
+	public QuestEditAbstractControl(MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+		this.questIdToEdit = questIdToEdit;
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
 		theItemDAL = new ItemDAL(theDBConnection);
 		this.UpdateNPCArrayList();
@@ -39,6 +44,8 @@ abstract class QuestEditAbstractControl {
 				existingRewardItems.add(item);
 			}
 		}
+		theQuestItemsNeededList = new ArrayList<QuestItems>();
+		theQuestItemsRewardList = new ArrayList<QuestItems>();
 		this.UpdateQuestItemsArrayList();
 		this.UpdateRewardItemsArrayList();
 	}
@@ -67,9 +74,46 @@ abstract class QuestEditAbstractControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
+	public void UpdateQuestItemsNeededList() throws SQLException {
+		observableTheQuestItemsNeededList.clear();
+		observableTheQuestItemsNeededList.addAll(theQuestItemsNeededList);
+	}
+	
+	/**
+	 * Update the observable list of objects for any changes
+	 * @throws SQLException
+	 */
 	public void UpdateRewardItemsArrayList() throws SQLException {
 		observableRewardItemsList.clear();
 		observableRewardItemsList.addAll(existingRewardItems);
+	}
+	
+	public void addQuestItemNeeded(String itemName, int quantity) throws SQLException {
+		int itemId = this.getItemIdByName(itemName, existingQuestItems);
+		this.theQuestItemsNeededList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.UpdateQuestItemsNeededList();
+	}
+	
+	private String getItemNameById(int itemId, ArrayList<Item> theItems) {
+		for (Item item : theItems) {
+			if (item.GetItemId() == itemId) {
+				return item.GetItemName();
+			} 
+		}
+		return "unkown item";
+	}
+	
+	private int getItemIdByName(String itemName, ArrayList<Item> theItems) {
+		for (Item item : theItems) {
+			if (item.GetItemName().contentEquals(itemName)) {
+				return item.GetItemId();
+			} 
+		}
+		return 0;
+	}
+	
+	public ObservableList<QuestItems> getObservableQuestItemsNeededList() {
+		return this.observableTheQuestItemsNeededList;
 	}
 	
 	public ObservableList<NpcCharacter> getTheObservableNPCs() {
@@ -82,6 +126,10 @@ abstract class QuestEditAbstractControl {
 	
 	public ObservableList<Item> getTheObservableRewardItems() {
 		return this.observableRewardItemsList;
+	}
+	
+	public int getQuestIdToEdit() {
+		return this.questIdToEdit;
 	}
 	
 	public String GetNpcNameFromListById(int npcId) {
