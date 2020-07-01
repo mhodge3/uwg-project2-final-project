@@ -25,6 +25,8 @@ public class Quest {
 	private StringProperty questArcType;
 	private StringProperty questName;
 	private StringProperty questDescription;
+	private StringProperty questGiverDialog;
+	private StringProperty questReceiverDialog;
 	
 	/**
 	 * Constructor for testing.
@@ -33,7 +35,9 @@ public class Quest {
 		
 	}
 	
-	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType) {
+	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType, String questGiverDialog, String questReceiverDialog) {
+		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 		this.questId = new SimpleIntegerProperty(questId);
 		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
 		this.conflictId = new SimpleIntegerProperty(conflictId);
@@ -41,8 +45,8 @@ public class Quest {
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
 		this.questArcType = new SimpleStringProperty(questArcType);
-		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
-		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
+		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
 	}
 	
 	/**
@@ -266,6 +270,54 @@ public class Quest {
 	 */
 	public void SetQuestDescription(String setQuestDescription) {
 		this.questDescription = new SimpleStringProperty(setQuestDescription);
+	}
+	
+	/**
+	 * Gets the questGiverDialog
+	 * @return questGiverDialog
+	 */
+	public String GetQuesGiverDialog() {
+		return questGiverDialog.get();
+	}
+	
+	/**
+	 * Gets the questGiverDialog property
+	 * @return Property for TableView
+	 */
+	public final StringProperty questGiverDialogProperty() {
+	   return questGiverDialog;
+	}
+	
+	/**
+	 * Sets the questDescription
+	 * @param questGiverDialog
+	 */
+	public void SetQuestGiverDialog(String questGiverDialog) {
+		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
+	}
+	
+	/**
+	 * Gets the questReceiverDialog
+	 * @return questReceiverDialog
+	 */
+	public String GetQuesReceiverDialog() {
+		return questReceiverDialog.get();
+	}
+	
+	/**
+	 * Gets the questReceiverDialog property
+	 * @return Property for TableView
+	 */
+	public final StringProperty questReceiverDialogProperty() {
+	   return questReceiverDialog;
+	}
+	
+	/**
+	 * Sets the questReceiverDialog
+	 * @param questReceiverDialog
+	 */
+	public void SetQuestReceiverDialog(String questReceiverDialog) {
+		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
 	}
 
 }
