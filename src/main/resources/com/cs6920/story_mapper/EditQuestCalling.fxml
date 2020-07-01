@@ -56,15 +56,24 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView fx:id="itemsNeededTableView" prefHeight="99.0" prefWidth="367.0">
-                          <columns>
-                            <TableColumn fx:id="itemNeededNameTableColumn" prefWidth="296.0" resizable="false" text="Item Name" />
-                            <TableColumn fx:id="itemNeededQuantityTableColumn" minWidth="3.0" prefWidth="72.0" resizable="false" text="Quantity" />
-                          </columns>
+                        <HBox prefHeight="108.0" prefWidth="369.0">
+                           <children>
+                              <TableView fx:id="itemsNeededTableView" prefHeight="105.0" prefWidth="300.0">
+                                <columns>
+                                  <TableColumn fx:id="itemNeededNameTableColumn" prefWidth="234.0" resizable="false" text="Item Name" />
+                                  <TableColumn fx:id="itemNeededQuantityTableColumn" minWidth="3.0" prefWidth="65.0" resizable="false" text="Quantity" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="removeItemNeededButton" mnemonicParsing="false" onAction="#removeQuestItemNeeded" text="Remove">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin>
-                        </TableView>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets right="10.0" />
@@ -75,9 +84,9 @@
                         <Label text="Mentor NCP (Actor)" />
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Mentor Dialog" />
-                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="203.0" prefWidth="371.0" />
+                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="149.0" prefWidth="371.0" />
                         <Label text="Items (Props) Given as Reward" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefHeight="17.0" prefWidth="371.0">
                            <children>
                               <ComboBox fx:id="addRewardItemComboBox" prefHeight="25.0" prefWidth="257.0" />
                               <Spinner fx:id="itemsRewardAmountSpinner1" prefHeight="25.0" prefWidth="66.0" />
@@ -88,12 +97,24 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TableView prefHeight="161.0" prefWidth="371.0">
-                           <columns>
-                              <TableColumn fx:id="itemRewardNameColumn" prefWidth="295.0" resizable="false" text="Item Name" />
-                              <TableColumn fx:id="itemRewardQuantityColumn" prefWidth="75.0" resizable="false" text="Quantity" />
-                           </columns>
-                        </TableView>
+                        <HBox prefHeight="118.0" prefWidth="371.0">
+                           <children>
+                              <TableView prefHeight="105.0" prefWidth="302.0">
+                                 <columns>
+                                    <TableColumn fx:id="itemRewardNameColumn" prefWidth="239.0" resizable="false" text="Item Name" />
+                                    <TableColumn fx:id="itemRewardQuantityColumn" prefWidth="62.0" resizable="false" text="Quantity" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="removeItemRewardButton" mnemonicParsing="false" text="Remove">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
                      <HBox.margin>
                         <Insets left="10.0" />

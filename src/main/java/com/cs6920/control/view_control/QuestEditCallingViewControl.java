@@ -126,6 +126,21 @@ public class QuestEditCallingViewControl {
 	}
     
     @FXML
+    private void removeQuestItemNeeded() {
+    	try {
+    		if (itemsNeededTableView.getSelectionModel().getSelectedItem() != null) {
+	    		theQuestEditCallingControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+				itemsNeededTableView.getItems().clear();
+				itemsNeededTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsNeededList());
+				itemsNeededTableView.refresh();
+    		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
     private void addQuestItemNeeded() {
     	try {
     		if (addQuestItemComboBox.getValue() != null) {

@@ -94,6 +94,17 @@ abstract class QuestEditAbstractControl {
 		this.UpdateQuestItemsNeededList();
 	}
 	
+	public void removeQuestItemNeeded(String itemName, int quantity) throws SQLException {
+		int itemId = this.getItemIdByName(itemName, existingQuestItems);
+		for (QuestItems questItemNeeded : theQuestItemsNeededList) {
+			if (questItemNeeded.GetItemId() == itemId && questItemNeeded.GetItemQuantity() == quantity) {
+				theQuestItemsNeededList.remove(questItemNeeded);
+				break;
+			} 
+		}
+		this.UpdateQuestItemsNeededList();
+	}
+	
 	private String getItemNameById(int itemId, ArrayList<Item> theItems) {
 		for (Item item : theItems) {
 			if (item.GetItemId() == itemId) {
