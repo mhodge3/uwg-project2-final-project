@@ -15,7 +15,7 @@ public class ManageTemplateTheQuestControl {
 	private ArrayList<Quest> existingTheQuestArrayList;
 	private ObservableList<Quest> observableTheQuestList = FXCollections.observableArrayList();
 	private int theConflictIdToEdit;
-
+	
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
 	 * @param theDBConnection
