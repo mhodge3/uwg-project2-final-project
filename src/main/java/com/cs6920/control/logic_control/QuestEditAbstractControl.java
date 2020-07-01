@@ -83,6 +83,15 @@ abstract class QuestEditAbstractControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
+	public void UpdateQuestItemsRewardList() throws SQLException {
+		observableTheQuestItemsRewardList.clear();
+		observableTheQuestItemsRewardList.addAll(theQuestItemsRewardList);
+	}
+	
+	/**
+	 * Update the observable list of objects for any changes
+	 * @throws SQLException
+	 */
 	public void UpdateRewardItemsArrayList() throws SQLException {
 		observableRewardItemsList.clear();
 		observableRewardItemsList.addAll(existingRewardItems);
@@ -94,6 +103,12 @@ abstract class QuestEditAbstractControl {
 		this.UpdateQuestItemsNeededList();
 	}
 	
+	public void addQuestItemReward(String itemName, int quantity) throws SQLException {
+		int itemId = this.getItemIdByName(itemName, existingRewardItems);
+		this.theQuestItemsRewardList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.UpdateQuestItemsRewardList();
+	}
+	
 	public void removeQuestItemNeeded(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingQuestItems);
 		for (QuestItems questItemNeeded : theQuestItemsNeededList) {
@@ -103,6 +118,17 @@ abstract class QuestEditAbstractControl {
 			} 
 		}
 		this.UpdateQuestItemsNeededList();
+	}
+	
+	public void removeQuestItemReward(String itemName, int quantity) throws SQLException {
+		int itemId = this.getItemIdByName(itemName, existingRewardItems);
+		for (QuestItems questItemReward : theQuestItemsRewardList) {
+			if (questItemReward.GetItemId() == itemId && questItemReward.GetItemQuantity() == quantity) {
+				theQuestItemsRewardList.remove(questItemReward);
+				break;
+			} 
+		}
+		this.UpdateQuestItemsRewardList();
 	}
 	
 	private String getItemNameById(int itemId, ArrayList<Item> theItems) {
@@ -125,6 +151,10 @@ abstract class QuestEditAbstractControl {
 	
 	public ObservableList<QuestItems> getObservableQuestItemsNeededList() {
 		return this.observableTheQuestItemsNeededList;
+	}
+	
+	public ObservableList<QuestItems> getObservableQuestItemsRewardList() {
+		return this.observableTheQuestItemsRewardList;
 	}
 	
 	public ObservableList<NpcCharacter> getTheObservableNPCs() {

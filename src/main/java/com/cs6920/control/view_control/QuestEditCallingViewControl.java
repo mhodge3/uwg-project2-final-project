@@ -45,6 +45,14 @@ public class QuestEditCallingViewControl {
 	private TableColumn<QuestItems, Integer> itemNeededQuantityTableColumn;
 	@FXML
 	private Spinner<Integer> itemsNeededAmountSpinner;
+	@FXML
+	private TableView<QuestItems> itemsRewardTableView;
+	@FXML
+	private TableColumn<QuestItems, String> itemRewardNameTableColumn;
+	@FXML
+	private TableColumn<QuestItems, Integer> itemRewardQuantityTableColumn;
+	@FXML
+	private Spinner<Integer> itemRewardAmountSpinner;
 	
 	QuestEditCallingControl theQuestEditCallingControl;
 	
@@ -94,11 +102,14 @@ public class QuestEditCallingViewControl {
 	private void setupQuestItemTables() {
 		itemNeededNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
 		itemNeededQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
+		itemRewardNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
+		itemRewardQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
 	}
 
 	@FXML
     private void initialize() throws SQLException {
 		this.itemsNeededAmountSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1));
+		this.itemRewardAmountSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1));
 		this.setUpHeraldNPCComboBox();
 		this.setUpMentorNPCComboBox();
 		this.setupTextElements();
@@ -148,6 +159,36 @@ public class QuestEditCallingViewControl {
 				itemsNeededTableView.getItems().clear();
 				itemsNeededTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsNeededList());
 				itemsNeededTableView.refresh();
+    		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    private void removeQuestItemReward() {
+    	try {
+    		if (itemsRewardTableView.getSelectionModel().getSelectedItem() != null) {
+	    		theQuestEditCallingControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+	    		itemsRewardTableView.getItems().clear();
+	    		itemsRewardTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsRewardList());
+	    		itemsRewardTableView.refresh();
+    		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    private void addQuestItemReward() {
+    	try {
+    		if (addRewardItemComboBox.getValue() != null) {
+	    		theQuestEditCallingControl.addQuestItemReward(addRewardItemComboBox.getValue(), itemRewardAmountSpinner.getValue());
+				itemsRewardTableView.getItems().clear();
+				itemsRewardTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsRewardList());
+				itemsRewardTableView.refresh();
     		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -89,8 +89,8 @@
                         <HBox prefHeight="17.0" prefWidth="371.0">
                            <children>
                               <ComboBox fx:id="addRewardItemComboBox" prefHeight="25.0" prefWidth="257.0" />
-                              <Spinner fx:id="itemsRewardAmountSpinner1" prefHeight="25.0" prefWidth="66.0" />
-                              <Button fx:id="addRewardItemButton" mnemonicParsing="false" text="Add">
+                              <Spinner fx:id="itemRewardAmountSpinner" prefHeight="25.0" prefWidth="66.0" />
+                              <Button fx:id="addRewardItemButton" mnemonicParsing="false" onAction="#addQuestItemReward" text="Add">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
@@ -99,13 +99,13 @@
                         </HBox>
                         <HBox prefHeight="118.0" prefWidth="371.0">
                            <children>
-                              <TableView prefHeight="105.0" prefWidth="302.0">
+                              <TableView fx:id="itemsRewardTableView" prefHeight="105.0" prefWidth="302.0">
                                  <columns>
-                                    <TableColumn fx:id="itemRewardNameColumn" prefWidth="239.0" resizable="false" text="Item Name" />
-                                    <TableColumn fx:id="itemRewardQuantityColumn" prefWidth="62.0" resizable="false" text="Quantity" />
+                                    <TableColumn fx:id="itemRewardNameTableColumn" prefWidth="239.0" resizable="false" text="Item Name" />
+                                    <TableColumn fx:id="itemRewardQuantityTableColumn" prefWidth="62.0" resizable="false" text="Quantity" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="removeItemRewardButton" mnemonicParsing="false" text="Remove">
+                              <Button fx:id="removeItemRewardButton" mnemonicParsing="false" onAction="#removeQuestItemReward" text="Remove">
                                  <HBox.margin>
                                     <Insets left="10.0" />
                                  </HBox.margin>
