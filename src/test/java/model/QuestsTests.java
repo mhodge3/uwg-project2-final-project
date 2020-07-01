@@ -103,6 +103,17 @@ public class QuestsTests {
 		assertEquals(1234, testItem.GetQuestReceiverNpcId());
 	}
 	
+	/**
+	 * Tests the GetQuestArcType and  SetQuestArcType Methods
+	 * 
+	 */
+	@Test
+	public void testQuestArcTypeShouldBeTom() {
+		Quest testItem = new Quest();
+		testItem.SetQuestArcType("Tom");
+		assertEquals("Tom", testItem.GetQuestArcType());
+	}
+	
 	
 	
 
