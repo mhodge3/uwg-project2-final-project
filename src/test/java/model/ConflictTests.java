@@ -61,6 +61,17 @@ public class ConflictTests {
 	}
 	
 	/**
+	 * Tests the GetCconflictArcType and SetConflictArcType Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictArcTypeShouldBeTom() {
+		Conflict testItem = new Conflict();
+		testItem.SetConflictArcType("Tom");
+		assertEquals("Tom", testItem.GetConflictArcType());
+	}
+	
+	/**
 	 * Tests the GetConflictDescription and SetConflictDescription Methods
 	 * 
 	 */
