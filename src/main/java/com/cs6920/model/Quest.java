@@ -348,5 +348,30 @@ public class Quest {
 	public void SetIdInConflict(int idInConflict) {
 		this.idInConflict = new SimpleIntegerProperty(idInConflict);
 	}
+	
+	/**
+	 * Gets the preReqIdInConflict
+	 * @return preReqIdInConflict
+	 */
+	public int GetidPreReqIdConflict() {
+		return this.preReqIdInConflict.get();
+	}
+	
+	/**
+	 * Gets the preReqIdInConflict property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty preReqIdInConflictProperty() {
+	   return preReqIdInConflict;
+	}
+	
+	
+	/**
+	 * Sets the preReqIdInConflict
+	 * @param preReqIdInConflict
+	 */
+	public void SetPreReqIdInConflict(int preReqIdInConflict) {
+		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
+	}
 
 }
