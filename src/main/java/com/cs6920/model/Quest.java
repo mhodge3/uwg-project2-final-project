@@ -19,6 +19,8 @@ public class Quest {
 	private IntegerProperty questId;
 	private IntegerProperty preReqQuestId;
 	private IntegerProperty conflictId;
+	private IntegerProperty idInConflict;
+	private IntegerProperty preReqIdInConflict;
 	private IntegerProperty minCharacterLevel;
 	private IntegerProperty questGiverNpcId;
 	private IntegerProperty questReceiverNpcId;
@@ -35,7 +37,7 @@ public class Quest {
 		
 	}
 	
-	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType, String questGiverDialog, String questReceiverDialog) {
+	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType, String questGiverDialog, String questReceiverDialog, int idInConflict, int preReqIdInConflict) {
 		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
 		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 		this.questId = new SimpleIntegerProperty(questId);
@@ -47,6 +49,8 @@ public class Quest {
 		this.questArcType = new SimpleStringProperty(questArcType);
 		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
 		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
+		this.idInConflict = new SimpleIntegerProperty(idInConflict);
+		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
 	}
 	
 	/**
@@ -318,6 +322,31 @@ public class Quest {
 	 */
 	public void SetQuestReceiverDialog(String questReceiverDialog) {
 		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
+	}
+	
+	/**
+	 * Gets the idInConflict
+	 * @return idInConflict
+	 */
+	public int GetidInConflict() {
+		return this.idInConflict.get();
+	}
+	
+	/**
+	 * Gets the idInConflict property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty idInConflictProperty() {
+	   return idInConflict;
+	}
+	
+	
+	/**
+	 * Sets the idInConflict
+	 * @param idInConflict
+	 */
+	public void SetIdInConflict(int idInConflict) {
+		this.idInConflict = new SimpleIntegerProperty(idInConflict);
 	}
 
 }
