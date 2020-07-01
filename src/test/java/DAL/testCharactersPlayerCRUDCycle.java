@@ -36,7 +36,7 @@ class testCharactersPlayerCRUDCycle {
 	 * Testing foreign key constraints
 	 * @throws Exception 
 	 */
-	/*@Test
+	@Test
 	@Order(2)
 	public void createANonPlayerCharactersPlayerInDB() throws Exception {
 		assertFalse(this.dal.CreateCharacterPlayer(100000, "new charter", 1, 3, 3.1, 4.2, 5.3));
@@ -93,5 +93,5 @@ class testCharactersPlayerCRUDCycle {
 		assertTrue(this.dal.DeleteCharacterPlayer(this.character));
 		this.character = this.dal.GetCharactersPlayerByName("updated character");
 		assertEquals(this.character, null);
-	}*/
+	}
 }
