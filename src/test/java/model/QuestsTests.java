@@ -92,6 +92,17 @@ public class QuestsTests {
 		assertEquals(1234, testItem.GetQuestGiverNpcId());
 	}
 	
+	/**
+	 * Tests the GetQuestReceiverNpcId and  SetQuestReceiverNpcId Methods
+	 * 
+	 */
+	@Test
+	public void testQuestReceiverNpcIdShouldBe1234() {
+		Quest testItem = new Quest();
+		testItem.SetQuestReceiverNpcId(1234);
+		assertEquals(1234, testItem.GetQuestReceiverNpcId());
+	}
+	
 	
 	
 
