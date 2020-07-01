@@ -51,7 +51,7 @@ public class CharactersPlayerDAL {
 					"character_posY, " +
 					"character_posZ) " +
 					"VALUES (?, ?, ?, ?, ?, ?, ?)";
-							
+			 System.out.println(query); 			
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(characterPlayerId));
 			 preparedStmt.setString (2, characterName);
@@ -108,7 +108,7 @@ public class CharactersPlayerDAL {
 	
 	/**
 	 * Returns CharactersPlayer by CharacterName.
-	 * @param Character ID
+	 * @param Character name
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
