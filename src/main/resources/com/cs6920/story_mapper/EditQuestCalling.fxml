@@ -63,7 +63,7 @@
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Mentor Dialog" />
                         <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="142.0" prefWidth="371.0" />
-                        <Label text="Items (Props) Needed for Completion" />
+                        <Label text="Items (Props) Given as Reward" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <ComboBox fx:id="addRewardItemComboBox" prefHeight="25.0" prefWidth="308.0" />
