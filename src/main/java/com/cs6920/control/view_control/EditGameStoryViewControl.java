@@ -13,6 +13,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+
+import com.cs6920.model.GameStory;
 import com.cs6920.model.Item;
 
 /**
@@ -49,23 +51,23 @@ public class EditGameStoryViewControl {
     }
     
     /**
-     * Sets the form values to those of the Item to edit
-     * @param theItemToEdit
+     * Sets the form values to those of the GameStory to edit
+     * @param theGameStoryToEdit
      */
-    public void SetFormForSelectedItem(Item theItemToEdit) {
-    	editGameStoryNameTextBox.setText(String.valueOf(theItemToEdit.GetItemType()));
-    	editGameStorySummaryTextArea.setText(theItemToEdit.GetItemDescription());
+    public void SetFormForSelectedGameStory(GameStory theGameStoryToEdit) {
+    	editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.GetGameStoryName()));
+    	editGameStorySummaryTextArea.setText(theGameStoryToEdit.GetGameStorySummary());
 
     }
     
 	@FXML
-	private void handleItemEditBackButton() throws SQLException {
+	private void handleGameStoryEditCancelButton() throws SQLException {
 		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
 	}
     
 	@FXML
-	private void handleItemDeleteButton() throws SQLException {
-		String itemDeleteError = null;
+	private void handleDeleteSelectedButton() throws SQLException {
+		String GameStoryDeleteError = null;
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Game Story Edit");
 		alert.setHeaderText("Item Edit Status");
@@ -73,15 +75,15 @@ public class EditGameStoryViewControl {
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				itemDeleteError = gameStoryEditControl.DeleteItem(gameStoryEditControl.GetSelectedItem());
+				GameStoryDeleteError = gameStoryEditControl.DeleteItem(gameStoryEditControl.GetSelectedItem());
 			} catch (Exception e) {
-				itemDeleteError = e.getMessage();
+				GameStoryDeleteError = e.getMessage();
 			}
-			if (itemDeleteError != null) {
+			if (GameStoryDeleteError != null) {
 				alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialog");
 				alert.setHeaderText("Error Editing the Game Story");
-				alert.setContentText(itemDeleteError);
+				alert.setContentText(GameStoryDeleteError);
 				alert.showAndWait();
 				return;
 			}
@@ -95,18 +97,18 @@ public class EditGameStoryViewControl {
 	}
     
 	@FXML
-	private void handleItemEditSaveButton() throws SQLException {
-		String itemCreationError = null;
+	private void handleGameStorySaveButton() throws SQLException {
+		String gameStoryCreationError = null;
 		try {
-			itemCreationError = gameStoryEditControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), editGameStoryNameTextBox.getText());
+			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), editGameStoryNameTextBox.getText());
 		} catch (Exception e) {
-			itemCreationError = e.getMessage();
+			gameStoryCreationError = e.getMessage();
 		}
-		if (itemCreationError != null) {
+		if (gameStoryCreationError != null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
 			alert.setHeaderText("Error Editing the Game Story");
-			alert.setContentText(itemCreationError);
+			alert.setContentText(gameStoryCreationError);
 			alert.showAndWait();
 			return;
 		}
