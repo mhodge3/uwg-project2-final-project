@@ -54,6 +54,7 @@ public class ManageQuestChainsViewControl {
 	public ManageQuestChainsControl GetManageQuestChainsControl() {
 		return this.theManageQuestChainsControl;
 	}
+	
 	/**
 	 * Binds the ObservableList to the TableView
 	 * @throws SQLException 
@@ -75,8 +76,13 @@ public class ManageQuestChainsViewControl {
 	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetConflictToEdit(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
-			theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
+				case "The Quest":
+					theMainDashboardViewControl.SetConflictToEdit(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+					break;
+				default: break;
+			}
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
