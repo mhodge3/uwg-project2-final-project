@@ -89,6 +89,9 @@ public class ManageTemplateTheQuestControl {
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestId() == questIdToRemove) {
 				idInConlictofRemovedQuest = quest.GetQuestId();
+				if (!canQuestBeRemoved(quest)) {
+					return;
+				}
 				existingTheQuestArrayList.remove(quest);
 				break;
 			}
@@ -103,6 +106,38 @@ public class ManageTemplateTheQuestControl {
 			this.UpdateTheQuestArrayList();
 		}
 	}
+    
+    private Boolean canQuestBeRemoved(Quest theQuestToCheck) {
+    	if (!theQuestToCheck.GetQuestArcType().matches("custom|insight|obstacle|henchman")) {
+    		return false;
+    	}
+    	if (theQuestToCheck.GetQuestArcType().contentEquals("obstacle")) {
+			if (questArcTypeCount("obstacle") <= 1) {
+				return false;
+			}
+    	}
+    	else if (theQuestToCheck.GetQuestArcType().contentEquals("insight")) {
+			if (questArcTypeCount("insight") <= 1) {
+				return false;
+			}
+    	}
+    	else if (theQuestToCheck.GetQuestArcType().contentEquals("custom")) {
+			if (questArcTypeCount("custom") <= 1) {
+				return false;
+			}
+    	}
+    	return true;
+    }
+    
+    private int questArcTypeCount(String arcTypeName) {
+		int questCount = 0;
+		for (Quest quest : existingTheQuestArrayList) {
+			if (quest.GetQuestArcType().contentEquals(arcTypeName)) {
+				questCount++;
+			}
+		}
+		return questCount;
+    }
 	
 	public void buildTempQuestTemplateList (int conflictId) {
 		Quest quest1 = new Quest();
