@@ -46,14 +46,14 @@ public class ManageQuestChainsControl {
 		conflict1.SetConflictTemplate(1);
 		conflict1.SetConflictMinLvl(7);
 		conflict1.SetConflictId(1);
-		conflict1.SetConflictArcType("The Quest");
+		conflict1.SetConflictArcType("Voyage and Return");
 		Conflict conflict2 = new Conflict();
 		conflict2.SetConflictDescription("Stuff.");
 		conflict2.SetConflictName("name 2");
 		conflict2.SetConflictTemplate(2);
 		conflict2.SetConflictMinLvl(5);
 		conflict2.SetConflictId(2);
-		conflict2.SetConflictArcType("Voyage and Return");
+		conflict2.SetConflictArcType("The Quest");
 		Conflict conflict3 = new Conflict();
 		conflict3.SetConflictDescription("Stuff.");
 		conflict3.SetConflictName("name 3");

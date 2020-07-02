@@ -2,6 +2,7 @@ package com.cs6920.control.logic_control;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.QuestsDAL;
@@ -71,7 +72,7 @@ public class QuestsController {
 		}
 	}
 
-	public String UdateQuest(Quest quest, int questReceiverNpcId, int questGiverNpcId,
+	public String UpdateQuest(Quest quest, int questReceiverNpcId, int questGiverNpcId,
 			int preReqQuestId, int conflictId, int minCharacterLevel, 
 			String questName, String questDescription, String questArcType, 
 			String questGiverDialog, String questReceiverDialog, int idInConflict,
@@ -130,7 +131,17 @@ public class QuestsController {
 	 * @throws SQLException
 	 */
 	public Quest GetQuestByID(int questId) throws SQLException {
-		return this.GetQuestByID(questId);
+		return this.dal.GetQuestByID(questId);
+	}
+	
+	/**
+	 * Returns Quest by conflictId.
+	 * @param Conflict ID
+	 * @return The Quests looked up
+	 * @throws SQLException
+	 */
+	public ArrayList<Quest> GetQuestsByConflictID(int conflictId) throws SQLException {
+		return this.dal.GetQuestByConflictId(conflictId);
 	}
 	
 	/** 
@@ -140,7 +151,7 @@ public class QuestsController {
 	 * @throws SQLException
 	 */
 	public Quest GetQuestByName(String questName) throws SQLException {
-		return this.GetQuestByName(questName);
+		return this.dal.GetQuestByName(questName);
 	}
 	
 	/**
@@ -156,7 +167,7 @@ public class QuestsController {
 	 * @throws SQLException 
 	 */
 	public boolean DeleteQuest(Quest quest) throws SQLException {
-		return this.DeleteQuest(quest);
+		return this.dal.DeleteQuest(quest);
 	}
 
 }

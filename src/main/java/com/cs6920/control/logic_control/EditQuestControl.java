@@ -53,6 +53,10 @@ public class EditQuestControl {
 		this.UpdateRewardItemsArrayList();
 	}
 	
+	public ConflictTemplateTheQuestViewControl getConflictTemplateTheQuestViewControl() {
+		return this.theManageTemplateTheQuestViewControl;
+	}
+	
 	/**
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException

@@ -56,7 +56,7 @@ public class QuestsDAL {
 					"(quest_receiver_npc_id, " +
 					"quest_giver_npc_id, " +
 					"pre_req_quest_id, " +
-					"confict_id, " +
+					"conflict_id, " +
 					"min_chartacter_level, " +
 					"quest_name, " +
 					"quest_description, " +
@@ -106,7 +106,7 @@ public class QuestsDAL {
                 quest.SetQuestGiverNpcId(results.getInt("quest_giver_npc_id"));
                 quest.SetQuestId(results.getInt("quest_id"));
                 quest.SetPreReqQuestId(results.getInt("pre_req_quest_id"));
-                quest.SetConflictId(results.getInt("confict_id"));
+                quest.SetConflictId(results.getInt("conflict_id"));
                 quest.SetMinCharacterLevel(results.getInt("min_chartacter_level"));
                 quest.SetQuestName(results.getString("quest_name"));
                 quest.SetQuestDescription(results.getString("quest_description"));
@@ -146,7 +146,7 @@ public class QuestsDAL {
                 quest.SetQuestGiverNpcId(results.getInt("quest_giver_npc_id"));
                 quest.SetQuestId(results.getInt("quest_id"));
                 quest.SetPreReqQuestId(results.getInt("pre_req_quest_id"));
-                quest.SetConflictId(results.getInt("confict_id"));
+                quest.SetConflictId(results.getInt("conflict_id"));
                 quest.SetMinCharacterLevel(results.getInt("min_chartacter_level"));
                 quest.SetQuestName(results.getString("quest_name"));
                 quest.SetQuestDescription(results.getString("quest_description"));
@@ -163,6 +163,46 @@ public class QuestsDAL {
         	conn.close();
         }
         return quest;
+    }
+	
+	/**
+	 * Returns Quests by conflictId.
+	 * @param conflictId
+	 * @return The Quests looked up
+	 * @throws SQLException
+	 */
+	public ArrayList<Quest> GetQuestByConflictId(int conflictId) throws SQLException {
+    	ArrayList<Quest> quests = new ArrayList<Quest>();
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".quests "
+            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".quests.conflict_id = \"" + conflictId + "\"";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next() != false) {
+            	Quest quest = new Quest();
+            	quest.SetQuestReceiverNpcId(results.getInt("quest_receiver_npc_id"));
+                quest.SetQuestGiverNpcId(results.getInt("quest_giver_npc_id"));
+                quest.SetQuestId(results.getInt("quest_id"));
+                quest.SetPreReqQuestId(results.getInt("pre_req_quest_id"));
+                quest.SetConflictId(results.getInt("conflict_id"));
+                quest.SetMinCharacterLevel(results.getInt("min_chartacter_level"));
+                quest.SetQuestName(results.getString("quest_name"));
+                quest.SetQuestDescription(results.getString("quest_description"));
+                quest.SetQuestArcType(results.getString("quest_arc_type"));
+                quest.SetQuestGiverDialog(results.getString("quest_giver_dialog"));
+                quest.SetQuestReceiverDialog(results.getString("quest_receiver_dialog"));
+                quest.SetIdInConflict(results.getInt("id_in_conflict"));
+                quest.SetPreReqIdInConflict(results.getInt("pre_req_id_in_conflict"));
+                quests.add(quest);
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+        return quests;
     }
 	
 	/**
@@ -185,7 +225,7 @@ public class QuestsDAL {
                 quest.SetQuestGiverNpcId(results.getInt("quest_giver_npc_id"));
                 quest.SetQuestId(results.getInt("quest_id"));
                 quest.SetPreReqQuestId(results.getInt("pre_req_quest_id"));
-                quest.SetConflictId(results.getInt("confict_id"));
+                quest.SetConflictId(results.getInt("conflict_id"));
                 quest.SetMinCharacterLevel(results.getInt("min_chartacter_level"));
                 quest.SetQuestName(results.getString("quest_name"));
                 quest.SetQuestDescription(results.getString("quest_description"));
@@ -224,11 +264,12 @@ public class QuestsDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
+			System.out.println(quest.GetQuestId());
 			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".quests " + 
 					"SET quest_receiver_npc_id = ?, " +
 					"quest_giver_npc_id = ?, " +
 					"pre_req_quest_id = ?, " +
-					"confict_id = ?, " +
+					"conflict_id = ?, " +
 					"min_chartacter_level = ?, " +
 					"quest_name = ?, " +
 					"quest_description = ?, " +
