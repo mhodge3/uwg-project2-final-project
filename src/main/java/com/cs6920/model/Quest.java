@@ -47,15 +47,10 @@ public class Quest {
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
 		this.questArcType = new SimpleStringProperty(questArcType);
-<<<<<<< HEAD
-		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
-		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
-=======
 		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
 		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
 		this.idInConflict = new SimpleIntegerProperty(idInConflict);
 		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
->>>>>>> branch 'iteration_2' of https://github.com/mhodge3/uwg-project2-final-project.git
 	}
 	
 	/**
