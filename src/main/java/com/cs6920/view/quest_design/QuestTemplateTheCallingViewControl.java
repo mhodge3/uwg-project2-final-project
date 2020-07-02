@@ -138,9 +138,7 @@ public class QuestTemplateTheCallingViewControl {
     
 	@FXML
 	private void handleBackButton() throws SQLException {
-	    // get a handle to the stage
 	    Stage stage = (Stage) questEditBackButton.getScene().getWindow();
-	    // do what you have to do
 	    stage.close();
 	}
     

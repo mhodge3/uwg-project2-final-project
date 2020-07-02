@@ -100,6 +100,15 @@ public class ConflictTemplateTheQuestViewControl {
 				case "leaving":
 					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestLeaving");
 					break;
+				case "obstacle":
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestObstacle");
+					break;
+				case "obtain elixir":
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestObtainElixir");
+					break;
+				case "return elixir":
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestReturnWithElixir");
+					break;
 				default: break;
 			}
 		}
