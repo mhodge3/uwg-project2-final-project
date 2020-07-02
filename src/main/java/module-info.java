@@ -3,7 +3,7 @@ module story_mapper {
 	exports com.cs6920.DAL;
 	exports com.cs6920.story_mapper;
 	exports com.cs6920.control.logic_control;
-	exports com.cs6920.control.view_control; 
+	exports com.cs6920.view; 
     requires javafx.baseEmpty;
 
     requires javafx.base;
@@ -22,7 +22,7 @@ module story_mapper {
     
     requires java.sql;
 
-    opens com.cs6920.control.view_control to javafx.fxml;
+    opens com.cs6920.view to javafx.fxml;
     opens com.cs6920.control.logic_control to javafx.fxml;
     opens com.cs6920.story_mapper to javafx.fxml;
     opens com.cs6920.DAL to java.sql;

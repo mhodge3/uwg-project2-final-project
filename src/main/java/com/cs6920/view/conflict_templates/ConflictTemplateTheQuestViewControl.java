@@ -1,4 +1,4 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view.conflict_templates;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -7,6 +7,8 @@ import com.cs6920.control.logic_control.ManageTemplateTheQuestControl;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
 import com.cs6920.story_mapper.App;
+import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.quest_templates.QuestTemplateTheCallingViewControl;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ManageTemplateTheQuestViewControl {
+public class ConflictTemplateTheQuestViewControl {
 	@FXML
 	private TableView<Quest> questTableView;
 	@FXML
@@ -49,7 +51,7 @@ public class ManageTemplateTheQuestViewControl {
 	 * Constructor for this View Control
 	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
 	 */
-    public ManageTemplateTheQuestViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    public ConflictTemplateTheQuestViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theMainDashboardViewControl.SetTheManageTheQuestViewControl(this);
     	this.theManageTemplateTheQuestControl = new ManageTemplateTheQuestControl(theMainDashboardViewControl.GetDBConnection());
@@ -111,7 +113,7 @@ public class ManageTemplateTheQuestViewControl {
     private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
-        loader.setController(new QuestEditCallingViewControl(this, questIdToEdit));
+        loader.setController(new QuestTemplateTheCallingViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");

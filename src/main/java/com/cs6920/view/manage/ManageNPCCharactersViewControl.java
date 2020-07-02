@@ -1,8 +1,9 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view.manage;
 
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.ManageNPCCharactersControl;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -10,6 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.cs6920.model.NpcCharacter;
+import com.cs6920.view.MainDashboardViewControl;
 
 /**
  * Provides the View Control Logic for the Manage NPC Characters View

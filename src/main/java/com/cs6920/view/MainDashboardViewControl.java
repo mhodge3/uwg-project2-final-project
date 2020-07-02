@@ -1,10 +1,11 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.control.logic_control.MainDashboardControl;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,17 @@ import javafx.stage.Stage;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Player;
 import com.cs6920.story_mapper.App;
+import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
+import com.cs6920.view.create.CreateItemsViewControl;
+import com.cs6920.view.create.CreateNPCCharactersViewControl;
+import com.cs6920.view.create.CreatePlayersAndAdminsViewControl;
+import com.cs6920.view.edit.EditItemsViewControl;
+import com.cs6920.view.edit.EditNPCCharactersViewControl;
+import com.cs6920.view.edit.EditPlayersAndAdminsViewControl;
+import com.cs6920.view.manage.ManageItemsViewControl;
+import com.cs6920.view.manage.ManageNPCCharactersViewControl;
+import com.cs6920.view.manage.ManagePlayersAndAdminsViewControl;
+import com.cs6920.view.manage.ManageQuestChainsViewControl;
 
 /**
  * This class is the View Logic for a MainDashboard
@@ -64,7 +76,7 @@ public class MainDashboardViewControl {
     
     private Parent theManageTemplateTheQuestParentView;
     private Scene theManageTemplateTheQuestScene;
-    private ManageTemplateTheQuestViewControl theManageTheQuestViewControl;
+    private ConflictTemplateTheQuestViewControl theManageTheQuestViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -136,7 +148,7 @@ public class MainDashboardViewControl {
 	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
 	 * @param theManageQuestChainsViewControl
 	 */
-	public void SetTheManageTheQuestViewControl(ManageTemplateTheQuestViewControl theManageTheQuestViewControl) {
+	public void SetTheManageTheQuestViewControl(ConflictTemplateTheQuestViewControl theManageTheQuestViewControl) {
 		this.theManageTheQuestViewControl = theManageTheQuestViewControl;
 	}
 	
@@ -415,7 +427,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageTemplateTheQuestScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
-        theFxmlLoader.setController(new ManageTemplateTheQuestViewControl(this));
+        theFxmlLoader.setController(new ConflictTemplateTheQuestViewControl(this));
         try {
         	theManageTemplateTheQuestParentView = theFxmlLoader.load();
         	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);

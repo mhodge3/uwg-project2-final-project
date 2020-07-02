@@ -2,7 +2,8 @@ package com.cs6920.story_mapper;
 
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.control.logic_control.LoginControl;
-import com.cs6920.control.view_control.LoginViewControl;
+import com.cs6920.view.LoginViewControl;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 

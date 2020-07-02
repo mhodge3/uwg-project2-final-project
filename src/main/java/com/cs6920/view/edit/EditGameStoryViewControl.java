@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.cs6920.control.view_control;
+package com.cs6920.view.edit;
 
 import java.sql.SQLException;
 
@@ -16,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 
 import com.cs6920.model.GameStory;
 import com.cs6920.model.Item;
+import com.cs6920.view.MainDashboardViewControl;
 
 /**
  * @author Ashley Palmer

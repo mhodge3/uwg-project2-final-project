@@ -1,11 +1,12 @@
 /**
  * 
  */
-package com.cs6920.control.view_control;
+package com.cs6920.view.create;
 
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.CreateGameStoryControl;
+import com.cs6920.view.MainDashboardViewControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
