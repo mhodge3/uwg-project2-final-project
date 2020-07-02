@@ -1,8 +1,8 @@
 package com.cs6920.control.logic_control;
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.control.view_control.LoginViewControl;
 import com.cs6920.model.Player;
+import com.cs6920.view.LoginViewControl;
 
 /**
  * This Class Controls logic for the MainDashboard

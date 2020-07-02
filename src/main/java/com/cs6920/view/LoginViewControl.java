@@ -1,4 +1,4 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view;
 
 import java.io.IOException;
 

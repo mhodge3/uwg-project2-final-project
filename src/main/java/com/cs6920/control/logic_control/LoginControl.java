@@ -5,10 +5,11 @@ import java.sql.SQLException;
 
 import com.cs6920.DAL.LoginDAL;
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.control.view_control.LoginViewControl;
-import com.cs6920.control.view_control.MainDashboardViewControl;
+
 import javafx.stage.Stage;
 import com.cs6920.model.Player;
+import com.cs6920.view.LoginViewControl;
+import com.cs6920.view.MainDashboardViewControl;
 
 /**
  * Controls the Logic for Login

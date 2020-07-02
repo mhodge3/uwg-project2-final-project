@@ -1,9 +1,10 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view.manage;
 
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.ManageQuestChainsControl;
 import com.cs6920.model.Conflict;
+import com.cs6920.view.MainDashboardViewControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

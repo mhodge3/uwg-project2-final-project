@@ -1,4 +1,4 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view.quest_templates;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import com.cs6920.control.logic_control.EditQuestControl;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.QuestItems;
+import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class QuestEditCallingViewControl {
+public class QuestTemplateTheCallingViewControl {
 	@FXML 
 	private Button questEditBackButton;
 	@FXML
@@ -60,7 +61,7 @@ public class QuestEditCallingViewControl {
 	
 	EditQuestControl theEditQuestControl;
 	
-	public QuestEditCallingViewControl(ManageTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+	public QuestTemplateTheCallingViewControl(ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
 		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit);
 	}
 	

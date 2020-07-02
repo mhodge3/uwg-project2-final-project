@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import com.cs6920.DAL.ItemDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.NpcCharacterDAL;
-import com.cs6920.control.view_control.ManageTemplateTheQuestViewControl;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.QuestItems;
+import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,9 +28,9 @@ public class EditQuestControl {
 	private ObservableList<Item> observableQuestItemsList = FXCollections.observableArrayList();
 	private ObservableList<Item> observableRewardItemsList = FXCollections.observableArrayList();
 	private int questIdToEdit;
-	private ManageTemplateTheQuestViewControl theManageTemplateTheQuestViewControl;
+	private ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl;
 	
-	public EditQuestControl(ManageTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+	public EditQuestControl(ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
 		this.theManageTemplateTheQuestViewControl = theManageTemplateTheQuestViewControl;
 		this.questIdToEdit = questIdToEdit;
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);

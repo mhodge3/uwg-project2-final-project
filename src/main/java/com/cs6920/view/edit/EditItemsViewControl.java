@@ -1,8 +1,9 @@
-package com.cs6920.control.view_control;
+package com.cs6920.view.edit;
 
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.EditItemsControl;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import com.cs6920.model.Item;
+import com.cs6920.view.MainDashboardViewControl;
 /**
  * Communicates between the Create EditItems fxml view and the logic control
  * @author Matthew Hodge
