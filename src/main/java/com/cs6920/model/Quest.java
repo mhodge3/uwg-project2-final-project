@@ -304,7 +304,7 @@ public class Quest {
 	 * Gets the questReceiverDialog
 	 * @return questReceiverDialog
 	 */
-	public String GetQuesReceiverDialog() {
+	public String GetQuestReceiverDialog() {
 		return questReceiverDialog.get();
 	}
 	

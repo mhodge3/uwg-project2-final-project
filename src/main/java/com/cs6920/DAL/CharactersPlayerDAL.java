@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.cs6920.model.CharactersPlayer;
 
@@ -71,6 +72,41 @@ public class CharactersPlayerDAL {
         }
 		return success;
 	}
+	
+	/**
+	 * Returns a list of CharactersPlayers by PlayerID.
+	 * @param Character ID
+	 * @return The CharactersPlayers list looked up
+	 * @throws SQLException
+	 */
+	public ArrayList<CharactersPlayer> GetCharactersPlayers(int playerId) throws SQLException {
+		ArrayList<CharactersPlayer> charactersPlayers = new ArrayList<CharactersPlayer>();
+        try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".charactersplayer "
+            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".charactersplayer.character_player_id = " + playerId + ";";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next() != false) {
+            	CharactersPlayer charactersPlayer = new CharactersPlayer();
+                charactersPlayer.SetCharacterId(results.getInt("character_id"));
+                charactersPlayer.SetCharacterPlayerId(results.getInt("character_player_id"));
+                charactersPlayer.SetCharacterName(results.getString("character_name"));
+                charactersPlayer.SetCharacterType(results.getInt("character_type"));
+                charactersPlayer.SetCharacterFaction(results.getInt("character_faction"));
+                charactersPlayer.SetCharacterPosX(results.getDouble("character_posX"));
+                charactersPlayer.SetCharacterPosY(results.getDouble("character_posY"));
+                charactersPlayer.SetCharacterPosZ(results.getDouble("character_posZ"));
+                charactersPlayers.add(charactersPlayer);
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+        return charactersPlayers;
+    }
 	
 	/**
 	 * Returns CharactersPlayer by ID.

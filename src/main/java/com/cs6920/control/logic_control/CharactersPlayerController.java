@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.cs6920.DAL.CharactersPlayerDAL;
 import com.cs6920.DAL.MySQLAccess;
@@ -77,7 +78,7 @@ public class CharactersPlayerController {
 	}
 	
 	/**
-	 * 
+	 * Calls GetCharactersPlayerByID method from the DAL
 	 * @param Character ID
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
@@ -88,14 +89,24 @@ public class CharactersPlayerController {
     }
 	
 	/**
-	 * Calls GetCharactersPlayerByID method from the DAL
+	 * Calls GetCharactersPlayerByname method from the DAL
 	 * @param Character name
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
 	public CharactersPlayer GetCharactersPlayerByName(String CharacterName) throws SQLException {
-    	return this.GetCharactersPlayerByName(CharacterName);
+    	return this.dal.GetCharactersPlayerByName(CharacterName);
     }
+	
+	/**
+	 * Calls GetCharactersPlayers method from the DAL
+	 * @param playerId
+	 * @return
+	 * @throws SQLException
+	 */
+	public ArrayList<CharactersPlayer> GetCharactersPlayers(int playerId) throws SQLException {
+		return this.GetCharactersPlayers(playerId);
+	}
 	
 	/**
 	 * Calls updateCharactersPlayer method from the DAL
