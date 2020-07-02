@@ -111,7 +111,7 @@ public class ManageTemplateTheQuestViewControl {
     private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
-        loader.setController(new QuestEditCallingViewControl(this, questIdToEdit));
+        loader.setController(new QuestEditCallingViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");

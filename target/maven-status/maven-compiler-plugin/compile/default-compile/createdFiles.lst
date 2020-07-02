@@ -41,7 +41,6 @@ com\cs6920\control\logic_control\CreateItemsControl.class
 module-info.class
 com\cs6920\control\logic_control\CreateGameStoryControl.class
 com\cs6920\model\Player.class
-com\cs6920\control\logic_control\QuestEditCallingControl.class
 com\cs6920\model\Quest.class
 com\cs6920\control\view_control\EditItemsViewControl.class
 com\cs6920\control\view_control\ManageQuestChainsViewControl.class

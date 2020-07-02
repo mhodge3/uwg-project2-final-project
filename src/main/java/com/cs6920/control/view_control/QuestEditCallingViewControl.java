@@ -3,10 +3,10 @@ package com.cs6920.control.view_control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.cs6920.control.logic_control.QuestEditCallingControl;
+import com.cs6920.DAL.MySQLAccess;
+import com.cs6920.control.logic_control.EditQuestControl;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
-import com.cs6920.model.Quest;
 import com.cs6920.model.QuestItems;
 
 import javafx.collections.ObservableList;
@@ -58,33 +58,33 @@ public class QuestEditCallingViewControl {
 	@FXML
 	private Spinner<Integer> itemRewardAmountSpinner;
 	
-	QuestEditCallingControl theQuestEditCallingControl;
+	EditQuestControl theEditQuestControl;
 	
-	public QuestEditCallingViewControl(ManageTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, int questIdToEdit) throws SQLException {
-		theQuestEditCallingControl = new QuestEditCallingControl(theManageTemplateTheQuestViewControl, questIdToEdit);
+	public QuestEditCallingViewControl(ManageTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit);
 	}
 	
 	private void setUpHeraldNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
-		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theQuestEditCallingControl.getTheObservableNPCs()) {
+		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
 			npcNames.add(theNPC.GetNpcName());
 		}
 		questHeraldNPCComboBox.getItems().addAll(npcNames);
-		questHeraldNPCComboBox.setValue(theQuestEditCallingControl.GetNpcNameFromListById(theQuestEditCallingControl.getQuestGiverNpcId()));
+		questHeraldNPCComboBox.setValue(theEditQuestControl.GetNpcNameFromListById(theEditQuestControl.getQuestGiverNpcId()));
 	}
 	
 	private void setUpMentorNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
-		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theQuestEditCallingControl.getTheObservableNPCs()) {
+		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
 			npcNames.add(theNPC.GetNpcName());
 		}
 		questMentorNPCComboBox.getItems().addAll(npcNames);
-		questMentorNPCComboBox.setValue(theQuestEditCallingControl.GetNpcNameFromListById(theQuestEditCallingControl.getQuestReceiverNpcId()));
+		questMentorNPCComboBox.setValue(theEditQuestControl.GetNpcNameFromListById(theEditQuestControl.getQuestReceiverNpcId()));
 	}
 	
 	private void setUpQuestItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
-		for (Item theItem : (ObservableList<Item>) theQuestEditCallingControl.getTheObservableQuestItems()) {
+		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableQuestItems()) {
 			itemNames.add(theItem.GetItemName());
 		}
 		addQuestItemComboBox.getItems().addAll(itemNames);
@@ -92,17 +92,17 @@ public class QuestEditCallingViewControl {
 	
 	private void setUpRewardItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
-		for (Item theItem : (ObservableList<Item>) theQuestEditCallingControl.getTheObservableRewardItems()) {
+		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableRewardItems()) {
 			itemNames.add(theItem.GetItemName());
 		}
 		addRewardItemComboBox.getItems().addAll(itemNames);
 	}
 	
 	private void setupTextElements() throws SQLException {
-		editCallingQuestName.setText(theQuestEditCallingControl.getQuestName());
-		editCallingQuestDescription.setText(theQuestEditCallingControl.getQuestDescription());
-		editGiverDialogTextArea.setText(theQuestEditCallingControl.getGiverDialog());
-		editReceiverDialogTextArea.setText(theQuestEditCallingControl.getReceiverDialog());
+		editCallingQuestName.setText(theEditQuestControl.getQuestName());
+		editCallingQuestDescription.setText(theEditQuestControl.getQuestDescription());
+		editGiverDialogTextArea.setText(theEditQuestControl.getGiverDialog());
+		editReceiverDialogTextArea.setText(theEditQuestControl.getReceiverDialog());
 	}
 	
 	private void setupQuestItemTables() {
@@ -126,13 +126,13 @@ public class QuestEditCallingViewControl {
 	
 	@FXML 
 	private void handleQuestSaveChanges() throws SQLException {
-		theQuestEditCallingControl.updateQuestGiverDialog(editGiverDialogTextArea.getText());
-		theQuestEditCallingControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
-		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
-		theQuestEditCallingControl.updateQuestDescription(editCallingQuestDescription.getText());
-		theQuestEditCallingControl.updateGiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
-		theQuestEditCallingControl.updateReceiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
-		theQuestEditCallingControl.refreshQuestDisplay();
+		theEditQuestControl.updateQuestGiverDialog(editGiverDialogTextArea.getText());
+		theEditQuestControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
+		theEditQuestControl.updateQuestName(editCallingQuestName.getText());
+		theEditQuestControl.updateQuestDescription(editCallingQuestDescription.getText());
+		theEditQuestControl.updateGiverNPC(theEditQuestControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
+		theEditQuestControl.updateReceiverNPC(theEditQuestControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
+		theEditQuestControl.refreshQuestDisplay();
 		this.handleBackButton();
 	}
     
@@ -148,9 +148,9 @@ public class QuestEditCallingViewControl {
     private void removeQuestItemNeeded() {
     	try {
     		if (itemsNeededTableView.getSelectionModel().getSelectedItem() != null) {
-	    		theQuestEditCallingControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+    			theEditQuestControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
 				itemsNeededTableView.getItems().clear();
-				itemsNeededTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsNeededList());
+				itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
 				itemsNeededTableView.refresh();
     		}
 		} catch (SQLException e) {
@@ -163,9 +163,9 @@ public class QuestEditCallingViewControl {
     private void addQuestItemNeeded() {
     	try {
     		if (addQuestItemComboBox.getValue() != null) {
-	    		theQuestEditCallingControl.addQuestItemNeeded(addQuestItemComboBox.getValue(), itemsNeededAmountSpinner.getValue());
+    			theEditQuestControl.addQuestItemNeeded(addQuestItemComboBox.getValue(), itemsNeededAmountSpinner.getValue());
 				itemsNeededTableView.getItems().clear();
-				itemsNeededTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsNeededList());
+				itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
 				itemsNeededTableView.refresh();
     		}
 		} catch (SQLException e) {
@@ -178,9 +178,9 @@ public class QuestEditCallingViewControl {
     private void removeQuestItemReward() {
     	try {
     		if (itemsRewardTableView.getSelectionModel().getSelectedItem() != null) {
-	    		theQuestEditCallingControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+    			theEditQuestControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
 	    		itemsRewardTableView.getItems().clear();
-	    		itemsRewardTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsRewardList());
+	    		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
 	    		itemsRewardTableView.refresh();
     		}
 		} catch (SQLException e) {
@@ -193,9 +193,9 @@ public class QuestEditCallingViewControl {
     private void addQuestItemReward() {
     	try {
     		if (addRewardItemComboBox.getValue() != null) {
-	    		theQuestEditCallingControl.addQuestItemReward(addRewardItemComboBox.getValue(), itemRewardAmountSpinner.getValue());
+    			theEditQuestControl.addQuestItemReward(addRewardItemComboBox.getValue(), itemRewardAmountSpinner.getValue());
 				itemsRewardTableView.getItems().clear();
-				itemsRewardTableView.getItems().addAll(theQuestEditCallingControl.getObservableQuestItemsRewardList());
+				itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
 				itemsRewardTableView.refresh();
     		}
 		} catch (SQLException e) {
