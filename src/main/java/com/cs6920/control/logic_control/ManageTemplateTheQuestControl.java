@@ -4,9 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
-import com.cs6920.model.QuestItems;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,8 +38,8 @@ public class ManageTemplateTheQuestControl {
 	 * @throws SQLException
 	 */
 	public void UpdateTheQuestArrayList() throws SQLException {
-		//existingTheQuestArrayList = new ArrayList<Quest>();
-		//existingConflictArrayList = playerDAL.GetPlayers();
+		this.existingTheQuestArrayList = new ArrayList<Quest>();
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
 		observableTheQuestList.clear();
 		observableTheQuestList.addAll(existingTheQuestArrayList);
 	}
@@ -60,28 +58,40 @@ public class ManageTemplateTheQuestControl {
 		return highestObstacleQuest;
 	}
 	
-	private void insertNewObstacleQuest(Quest newObstacleQuest) {
+	private void insertNewObstacleQuest(Quest newObstacleQuest) throws SQLException {
+		System.out.println(newObstacleQuest.GetQuestArcType());
 		Quest finalQuest = existingTheQuestArrayList.get(existingTheQuestArrayList.size() - 1);
 		Quest penultimateQuest = existingTheQuestArrayList.get(existingTheQuestArrayList.size() - 2);
-		existingTheQuestArrayList.set(existingTheQuestArrayList.size() - 2, newObstacleQuest);
-		penultimateQuest.SetPreReqIdInConflict(penultimateQuest.GetidInConflict());
-		penultimateQuest.SetIdInConflict(penultimateQuest.GetidInConflict() + 1);
-		finalQuest.SetPreReqIdInConflict(penultimateQuest.GetidInConflict());
-		finalQuest.SetIdInConflict(penultimateQuest.GetidInConflict() + 1);
+		int newQuestId = this.theQuestsController.CreateQuest(newObstacleQuest.GetQuestReceiverNpcId(), newObstacleQuest.GetQuestGiverNpcId(), 
+				newObstacleQuest.GetPreReqQuestId(), newObstacleQuest.GetConflictId(), newObstacleQuest.GetMinCharacterLevel(), 
+				newObstacleQuest.GetQuestName(), newObstacleQuest.GetQuestDescription(), newObstacleQuest.GetQuestArcType(), 
+				newObstacleQuest.GetQuesGiverDialog(), newObstacleQuest.GetQuestReceiverDialog(), newObstacleQuest.GetidInConflict(), 
+				newObstacleQuest.GetidPreReqIdConflict());
+		newObstacleQuest.SetQuestId(newQuestId);
 		existingTheQuestArrayList.set(existingTheQuestArrayList.size() - 1, penultimateQuest);
 		existingTheQuestArrayList.add(finalQuest);
+		existingTheQuestArrayList.get(existingTheQuestArrayList.size() - 3).SetQuestId(newQuestId);
 	}
 	
 	public void addObstacle() throws SQLException {
 		int highestObstacleQuestId = this.getHighestObstacleId();
+		System.out.println(highestObstacleQuestId);
 		Quest obstacleQuest = new Quest(); 
 		obstacleQuest.SetQuestArcType("obstacle");
 		obstacleQuest.SetPreReqIdInConflict(highestObstacleQuestId);
-		obstacleQuest.SetConflictId(theConflictIdToEdit);
-		obstacleQuest.SetQuestId(highestObstacleQuestId + 1);
+		System.out.println(highestObstacleQuestId);
 		obstacleQuest.SetIdInConflict(highestObstacleQuestId + 1);
+		System.out.println(highestObstacleQuestId);
+		obstacleQuest.SetConflictId(theConflictIdToEdit);
+		obstacleQuest.SetQuestId(0);
 		obstacleQuest.SetMinCharacterLevel(1);
-		obstacleQuest.SetQuestName("test");
+		obstacleQuest.SetQuestReceiverNpcId(0);
+		obstacleQuest.SetQuestGiverNpcId(0);
+		obstacleQuest.SetPreReqQuestId(2);
+		obstacleQuest.SetQuestName("name - change me");
+		obstacleQuest.SetQuestDescription("description - change me");
+		obstacleQuest.SetQuestGiverDialog("Go");
+		obstacleQuest.SetQuestReceiverDialog("Stop");
 		this.insertNewObstacleQuest(obstacleQuest);
 		this.UpdateTheQuestArrayList();
 	}
@@ -139,6 +149,16 @@ public class ManageTemplateTheQuestControl {
 			}
 		}
 		return questCount;
+    }
+    
+    private void updateAllQuestsInChain(ArrayList<Quest> theQuests) throws SQLException {
+    	for (Quest quest : theQuests) {
+    		this.theQuestsController.UpdateQuest(quest, quest.GetQuestReceiverNpcId(), quest.GetQuestGiverNpcId(), 
+    				quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), 
+    				quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), 
+    				quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(), 
+    				quest.GetidPreReqIdConflict());
+    	}
     }
     
     public void updateQuestTemplateList() throws SQLException {

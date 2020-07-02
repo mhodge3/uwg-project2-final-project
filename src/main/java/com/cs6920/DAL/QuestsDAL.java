@@ -44,12 +44,12 @@ public class QuestsDAL {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public Boolean CreateQuest(int questReceiverNpcId, int questGiverNpcId,
+	public int CreateQuest(int questReceiverNpcId, int questGiverNpcId,
 								int preReqQuestId, int conflictId, int minCharacterLevel, 
 								String questName, String questDescription, String questArcType, 
 								String questGiverDialog, String questReceiverDialog, int idInConflict,
 								int preReqIdInConflict) throws SQLException {
-		Boolean success = false;
+		int questId = 0;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
 			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".quests " + 
@@ -67,7 +67,7 @@ public class QuestsDAL {
 					"pre_req_id_in_conflict) " +  
 					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			 preparedStmt.setString (1, String.valueOf(questReceiverNpcId));
 			 preparedStmt.setString (2, String.valueOf(questGiverNpcId));
 			 preparedStmt.setString (3, String.valueOf(preReqQuestId));
@@ -81,14 +81,17 @@ public class QuestsDAL {
 			 preparedStmt.setString (11, String.valueOf(idInConflict));
 			 preparedStmt.setString (12, String.valueOf(preReqIdInConflict));
 		     preparedStmt.execute();
-		      success = true;
+		     ResultSet result = preparedStmt.getGeneratedKeys();
+		     if (result.next()) {
+		    	 questId = result.getInt(1);
+		    	}
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
         	conn.close();
         }
-		return success;
+		return questId;
 	}
 
 	// Get all method - not sure if needed

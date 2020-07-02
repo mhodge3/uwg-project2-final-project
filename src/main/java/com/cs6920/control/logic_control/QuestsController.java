@@ -28,48 +28,44 @@ public class QuestsController {
 		this.dal = new QuestsDAL(theDBConnection);
 	}
 	
-	public String CreateQuest(int questReceiverNpcId, int questGiverNpcId,
+	public int CreateQuest(int questReceiverNpcId, int questGiverNpcId,
 			int preReqQuestId, int conflictId, int minCharacterLevel, 
 			String questName, String questDescription, String questArcType, 
 			String questGiverDialog, String questReceiverDialog, int idInConflict,
 			int preReqIdInConflict) throws SQLException {
 		if (String.valueOf(questReceiverNpcId) == null) {
-			return "The quest receiver NpcId cannot be empty";
+			System.out.println("The quest receiver NpcId cannot be empty");
 		}
 		else if (String.valueOf(questGiverNpcId) == null) {
-			return "The quest giver NpcId cannot be empty";
+			System.out.println("The quest giver NpcId cannot be empty");
 		}
 		else if (String.valueOf(minCharacterLevel) == null) {
-			return "The min character level cannot be empty";
+			System.out.println("The min character level cannot be empty");
 		}
 		else if (questName == null || questName.trim().length() == 0) {
-			return "The quest name cannot be empty";
+			System.out.println("The quest name cannot be empty");
 		}
 		else if (questDescription == null || questDescription.trim().length() == 0) {
-			return "The quest description cannot be empty";
+			System.out.println("The quest description cannot be empty");
 		}
 		else if (questArcType == null || questArcType.trim().length() == 0) {
-			return "The arc type Code cannot be empty";
+			System.out.println("The arc type Code cannot be empty");
 		}
 		else if (questGiverDialog == null || questGiverDialog.trim().length() == 0) {
-			return "The quest giver dialog cannot be empty";
+			System.out.println("The quest giver dialog cannot be empty");
 		}
 		else if (questReceiverDialog == null || questReceiverDialog.trim().length() == 0) {
-			return "The quest receiver dialog cannot be empty";
+			System.out.println("The quest receiver dialog cannot be empty");
 		}
 		else if (String.valueOf(idInConflict) == null) {
-			return "The ID in the conflict cannot be empty";
+			System.out.println("The ID in the conflict cannot be empty");
 		}
 		else if (String.valueOf(preReqIdInConflict) == null) {
-			return "The preReqId in the conflict cannot be empty";
+			System.out.println("The preReqId in the conflict cannot be empty");
 		}
 		
-		if (this.dal.CreateQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict)) {
-			return null;
-		}
-		else {
-			return "There was a problem creating the quest";
-		}
+		return this.dal.CreateQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict);
+		
 	}
 
 	public String UpdateQuest(Quest quest, int questReceiverNpcId, int questGiverNpcId,
