@@ -30,6 +30,10 @@ public class QuestEditCallingViewControl {
 	@FXML
 	private TextArea editCallingQuestDescription;
 	@FXML
+	private TextArea editGiverDialogTextArea;
+	@FXML
+	private TextArea editReceiverDialogTextArea;
+	@FXML
 	private ComboBox<String> questHeraldNPCComboBox;
 	@FXML
 	private ComboBox<String> questMentorNPCComboBox;
@@ -97,6 +101,8 @@ public class QuestEditCallingViewControl {
 	private void setupTextElements() throws SQLException {
 		editCallingQuestName.setText(theQuestEditCallingControl.getQuestName());
 		editCallingQuestDescription.setText(theQuestEditCallingControl.getQuestDescription());
+		editGiverDialogTextArea.setText(theQuestEditCallingControl.getGiverDialog());
+		editReceiverDialogTextArea.setText(theQuestEditCallingControl.getReceiverDialog());
 	}
 	
 	private void setupQuestItemTables() {
@@ -120,6 +126,8 @@ public class QuestEditCallingViewControl {
 	
 	@FXML 
 	private void handleQuestSaveChanges() throws SQLException {
+		theQuestEditCallingControl.updateQuestGiverDialog(editGiverDialogTextArea.getText());
+		theQuestEditCallingControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
 		theQuestEditCallingControl.updateQuestName(editCallingQuestName.getText());
 		theQuestEditCallingControl.updateQuestDescription(editCallingQuestDescription.getText());
 		theQuestEditCallingControl.updateGiverNPC(theQuestEditCallingControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));

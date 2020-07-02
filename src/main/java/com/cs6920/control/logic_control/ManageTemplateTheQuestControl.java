@@ -94,6 +94,8 @@ public class ManageTemplateTheQuestControl {
 		quest1.SetMinCharacterLevel(1);
 		quest1.SetQuestName("test");
 		quest1.SetQuestDescription("testing");
+		quest1.SetQuestGiverDialog("Go");
+		quest1.SetQuestReceiverDialog("Stop");
 		Quest quest2 = new Quest();
 		quest2.SetQuestReceiverNpcId(0);
 		quest2.SetQuestGiverNpcId(0);
@@ -104,6 +106,8 @@ public class ManageTemplateTheQuestControl {
 		quest2.SetMinCharacterLevel(1);
 		quest2.SetQuestName("test");
 		quest2.SetQuestDescription("testing");
+		quest2.SetQuestGiverDialog("Go");
+		quest2.SetQuestReceiverDialog("Stop");
 		Quest quest3 = new Quest();
 		quest3.SetQuestReceiverNpcId(0);
 		quest3.SetQuestGiverNpcId(0);
@@ -114,6 +118,8 @@ public class ManageTemplateTheQuestControl {
 		quest3.SetMinCharacterLevel(1);
 		quest3.SetQuestName("test");
 		quest3.SetQuestDescription("testing");
+		quest3.SetQuestGiverDialog("Go");
+		quest3.SetQuestReceiverDialog("Stop");
 		Quest quest4 = new Quest();
 		quest4.SetQuestReceiverNpcId(0);
 		quest4.SetQuestGiverNpcId(0);
@@ -124,7 +130,8 @@ public class ManageTemplateTheQuestControl {
 		quest4.SetMinCharacterLevel(1);
 		quest4.SetQuestName("test");
 		quest4.SetQuestDescription("testing");
-		quest4.SetQuestDescription("testing");
+		quest4.SetQuestGiverDialog("Go");
+		quest4.SetQuestReceiverDialog("Stop");
 		Quest quest5 = new Quest();
 		quest5.SetQuestArcType("return elixir");
 		quest5.SetPreReqQuestId(4);
@@ -133,6 +140,8 @@ public class ManageTemplateTheQuestControl {
 		quest5.SetMinCharacterLevel(1);
 		quest5.SetQuestName("test");
 		quest5.SetQuestDescription("testing");
+		quest5.SetQuestGiverDialog("Go");
+		quest5.SetQuestReceiverDialog("Stop");
 		existingTheQuestArrayList = new ArrayList<Quest>();
 		existingTheQuestArrayList.add(quest1);
 		existingTheQuestArrayList.add(quest2);

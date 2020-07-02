@@ -24,6 +24,14 @@ public class QuestEditCallingControl extends QuestEditAbstractControl {
 		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).SetQuestGiverNpcId(npcId);
 	}
 	
+	public void updateQuestGiverDialog(String newQuestGiverDialog) throws SQLException {
+		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).SetQuestGiverDialog(newQuestGiverDialog);
+	}
+	
+	public void updateQuestReceiverDialog(String newQuestReceiverDialog) throws SQLException {
+		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).SetQuestReceiverDialog(newQuestReceiverDialog);
+	}
+	
 	public void updateReceiverNPC(int npcId) throws SQLException {
 		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).SetQuestReceiverNpcId(npcId);
 	}
@@ -42,6 +50,14 @@ public class QuestEditCallingControl extends QuestEditAbstractControl {
 	
 	public String getQuestDescription() throws SQLException {
 		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).GetQuestDescription();
+	}
+	
+	public String getGiverDialog() throws SQLException {
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).GetQuesGiverDialog();
+	}
+	
+	public String getReceiverDialog() throws SQLException {
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(super.getQuestIdToEdit() - 1).GetQuesReceiverDialog();
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {

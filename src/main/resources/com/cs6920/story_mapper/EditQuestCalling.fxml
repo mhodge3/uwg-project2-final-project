@@ -84,7 +84,7 @@
                         <Label text="Mentor NCP (Actor)" />
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Mentor Dialog" />
-                        <TextArea fx:id="editRecieverDialogTextArea1" prefHeight="149.0" prefWidth="371.0" />
+                        <TextArea fx:id="editReceiverDialogTextArea" prefHeight="149.0" prefWidth="371.0" />
                         <Label text="Items (Props) Given as Reward" />
                         <HBox prefHeight="17.0" prefWidth="371.0">
                            <children>
