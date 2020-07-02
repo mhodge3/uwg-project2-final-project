@@ -9,7 +9,7 @@ import com.cs6920.DAL.NpcCharacterDAL;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.QuestItems;
-import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
+import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

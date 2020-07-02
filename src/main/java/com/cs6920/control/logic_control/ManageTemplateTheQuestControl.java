@@ -133,6 +133,8 @@ public class ManageTemplateTheQuestControl {
 		quest4.SetQuestGiverDialog("Go");
 		quest4.SetQuestReceiverDialog("Stop");
 		Quest quest5 = new Quest();
+		quest5.SetQuestReceiverNpcId(0);
+		quest5.SetQuestGiverNpcId(0);
 		quest5.SetQuestArcType("return elixir");
 		quest5.SetPreReqQuestId(4);
 		quest5.SetConflictId(conflictId);

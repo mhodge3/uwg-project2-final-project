@@ -15,7 +15,7 @@
 
 <VBox fx:id="editPlayersAndAdminsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="editPlayerAdminLandingVBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Edit &quot;The Call to Adventure&quot; Quest">
+      <Label fx:id="editPlayerAdminLandingVBox" alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Edit &quot;Obstacle&quot; Quest">
          <font>
             <Font size="24.0" />
          </font>
@@ -40,9 +40,9 @@
                <children>
                   <VBox prefHeight="352.0" prefWidth="400.0">
                      <children>
-                        <Label text="Herald NCP (Actor)" />
+                        <Label text="Choose your NCP (Actor)" />
                         <ComboBox fx:id="questHeraldNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
-                        <Label text="Herald Dialog" />
+                        <Label text="NPC Dialog - Character type is storytellers choice" />
                         <TextArea fx:id="editGiverDialogTextArea" prefHeight="140.0" prefWidth="369.0" />
                         <Label text="Items (Props) Needed for Completion" />
                         <HBox prefHeight="29.0" prefWidth="369.0">
@@ -81,9 +81,9 @@
                   </VBox>
                   <VBox prefHeight="352.0" prefWidth="392.0">
                      <children>
-                        <Label text="Mentor NCP (Actor)" />
+                        <Label text="Choose your NCP (Actor)" />
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
-                        <Label text="Mentor Dialog" />
+                        <Label text="NPC Dialog - Character type is storytellers choice" />
                         <TextArea fx:id="editReceiverDialogTextArea" prefHeight="149.0" prefWidth="371.0" />
                         <Label text="Items (Props) Given as Reward" />
                         <HBox prefHeight="17.0" prefWidth="371.0">

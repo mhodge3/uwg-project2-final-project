@@ -1,4 +1,4 @@
-package com.cs6920.view.quest_templates;
+package com.cs6920.view.quest_design;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,7 +8,6 @@ import com.cs6920.control.logic_control.EditQuestControl;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.QuestItems;
-import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,9 +26,9 @@ public class QuestTemplateTheCallingViewControl {
 	@FXML 
 	private Button questEditBackButton;
 	@FXML
-	private TextField editCallingQuestName;
+	private TextField editQuestName;
 	@FXML
-	private TextArea editCallingQuestDescription;
+	private TextArea editQuestDescription;
 	@FXML
 	private TextArea editGiverDialogTextArea;
 	@FXML
@@ -100,8 +99,8 @@ public class QuestTemplateTheCallingViewControl {
 	}
 	
 	private void setupTextElements() throws SQLException {
-		editCallingQuestName.setText(theEditQuestControl.getQuestName());
-		editCallingQuestDescription.setText(theEditQuestControl.getQuestDescription());
+		editQuestName.setText(theEditQuestControl.getQuestName());
+		editQuestDescription.setText(theEditQuestControl.getQuestDescription());
 		editGiverDialogTextArea.setText(theEditQuestControl.getGiverDialog());
 		editReceiverDialogTextArea.setText(theEditQuestControl.getReceiverDialog());
 	}
@@ -129,8 +128,8 @@ public class QuestTemplateTheCallingViewControl {
 	private void handleQuestSaveChanges() throws SQLException {
 		theEditQuestControl.updateQuestGiverDialog(editGiverDialogTextArea.getText());
 		theEditQuestControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
-		theEditQuestControl.updateQuestName(editCallingQuestName.getText());
-		theEditQuestControl.updateQuestDescription(editCallingQuestDescription.getText());
+		theEditQuestControl.updateQuestName(editQuestName.getText());
+		theEditQuestControl.updateQuestDescription(editQuestDescription.getText());
 		theEditQuestControl.updateGiverNPC(theEditQuestControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
 		theEditQuestControl.updateReceiverNPC(theEditQuestControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
 		theEditQuestControl.refreshQuestDisplay();
@@ -139,9 +138,7 @@ public class QuestTemplateTheCallingViewControl {
     
 	@FXML
 	private void handleBackButton() throws SQLException {
-	    // get a handle to the stage
 	    Stage stage = (Stage) questEditBackButton.getScene().getWindow();
-	    // do what you have to do
 	    stage.close();
 	}
     
