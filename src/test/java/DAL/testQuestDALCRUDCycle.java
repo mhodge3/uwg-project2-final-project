@@ -27,14 +27,14 @@ class testQuestDALCRUDCycle {
 
 	@Test
 	@Order(1)
-	public void createACharactersPlayerInDB() throws Exception {
+	public void createAQuestInDB() throws Exception {
 		assertTrue(this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
 										"arc", "giver dialog", "receiver dialog", 2, 3));
 	}
 	
 	@Test
 	@Order(2)
-	public void createACharactersPlayerDupilicatesInDB() throws Exception {
+	public void createAQuestDupilicatesInDB() throws Exception {
 		assertFalse(this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3));
 		
@@ -102,7 +102,7 @@ class testQuestDALCRUDCycle {
 	
 	@Test
 	@Order(6)
-	public void deleteANpcCharacterInDB() throws Exception {
+	public void deleteAQuestFronDB() throws Exception {
 		this.quest = this.dal.GetQuestByName("updated test1");
 		assertTrue(this.dal.DeleteQuest(quest));
 		this.quest = this.dal.GetQuestByName("updated test1");

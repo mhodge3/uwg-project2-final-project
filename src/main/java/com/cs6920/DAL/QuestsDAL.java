@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.cs6920.model.CharactersPlayer;
 import com.cs6920.model.Quest;
 
 /**
@@ -27,7 +26,7 @@ public class QuestsDAL {
 		this.sqlAccess = theDBConnection;
 	}
 	
-		/**
+	/**
 	 * Creates a quest entry in the database Quests table
 	 * @param questReceiverNpcId
 	 * @param questGiverNpcId
