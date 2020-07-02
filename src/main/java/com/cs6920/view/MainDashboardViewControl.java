@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Player;
 import com.cs6920.story_mapper.App;
-import com.cs6920.view.conflict_templates.ConflictTemplateTheQuestViewControl;
 import com.cs6920.view.create.CreateItemsViewControl;
 import com.cs6920.view.create.CreateNPCCharactersViewControl;
 import com.cs6920.view.create.CreatePlayersAndAdminsViewControl;
@@ -27,6 +26,7 @@ import com.cs6920.view.manage.ManageItemsViewControl;
 import com.cs6920.view.manage.ManageNPCCharactersViewControl;
 import com.cs6920.view.manage.ManagePlayersAndAdminsViewControl;
 import com.cs6920.view.manage.ManageQuestChainsViewControl;
+import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
 
 /**
  * This class is the View Logic for a MainDashboard

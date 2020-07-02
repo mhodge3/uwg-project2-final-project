@@ -1,4 +1,4 @@
-package com.cs6920.view.conflict_templates;
+package com.cs6920.view.quest_design;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,7 +8,6 @@ import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
 import com.cs6920.story_mapper.App;
 import com.cs6920.view.MainDashboardViewControl;
-import com.cs6920.view.quest_templates.QuestTemplateTheCallingViewControl;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,7 +95,10 @@ public class ConflictTemplateTheQuestViewControl {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId());
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestCalling");
+					break;
+				case "leaving":
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestLeaving");
 					break;
 				default: break;
 			}
@@ -110,9 +112,9 @@ public class ConflictTemplateTheQuestViewControl {
 		}
     }
     
-    private void editCallToAdventure(ActionEvent event, int questIdToEdit) throws IOException, SQLException {
+    private void editCallToAdventure(ActionEvent event, int questIdToEdit, String fxmlFileName) throws IOException, SQLException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("EditQuestCalling.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFileName + ".fxml"));
         loader.setController(new QuestTemplateTheCallingViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
