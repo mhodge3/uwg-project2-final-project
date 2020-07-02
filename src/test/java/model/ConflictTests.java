@@ -17,6 +17,17 @@ import com.cs6920.model.*;
 public class ConflictTests {
 	
 	/**
+	 * Tests the GetConflictMinLvl and SetConflictMinLvl Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictMinLvlShouldBe1234() {
+		Conflict testItem = new Conflict();
+		testItem.SetConflictMinLvl(1234);
+		assertEquals(1234, testItem.GetConflictMinLvl());
+	}
+	
+	/**
 	 * Tests the GetConflictId and SetConflictId Methods
 	 * 
 	 */
@@ -47,6 +58,17 @@ public class ConflictTests {
 		Conflict testItem = new Conflict();
 		testItem.SetConflictName("Tom");
 		assertEquals("Tom", testItem.GetConflictName());
+	}
+	
+	/**
+	 * Tests the GetCconflictArcType and SetConflictArcType Methods
+	 * 
+	 */
+	@Test
+	public void testGetConflictArcTypeShouldBeTom() {
+		Conflict testItem = new Conflict();
+		testItem.SetConflictArcType("Tom");
+		assertEquals("Tom", testItem.GetConflictArcType());
 	}
 	
 	/**

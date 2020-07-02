@@ -5,6 +5,7 @@ com\cs6920\control\logic_control\ManageNPCCharactersControl.class
 com\cs6920\control\view_control\EditNPCCharactersViewControl.class
 com\cs6920\model\NpcCharacter.class
 com\cs6920\control\view_control\CreateItemsViewControl.class
+com\cs6920\DAL\QuestsDAL.class
 com\cs6920\control\logic_control\GameStoryEditControl.class
 com\cs6920\control\logic_control\ManagePlayersAndAdminsControl.class
 com\cs6920\control\view_control\ManagePlayersAndAdminsViewControl.class

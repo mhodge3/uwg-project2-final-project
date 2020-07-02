@@ -81,6 +81,39 @@ public class QuestsTests {
 		assertEquals("Tom", testItem.GetQuestDescription());
 	}
 	
+	/**
+	 * Tests the GetquestGiverNpcId and  SetquestGiverNpcId Methods
+	 * 
+	 */
+	@Test
+	public void testGetQuestGiverNpcIdShouldBe1234() {
+		Quest testItem = new Quest();
+		testItem.SetQuestGiverNpcId(1234);
+		assertEquals(1234, testItem.GetQuestGiverNpcId());
+	}
+	
+	/**
+	 * Tests the GetQuestReceiverNpcId and  SetQuestReceiverNpcId Methods
+	 * 
+	 */
+	@Test
+	public void testQuestReceiverNpcIdShouldBe1234() {
+		Quest testItem = new Quest();
+		testItem.SetQuestReceiverNpcId(1234);
+		assertEquals(1234, testItem.GetQuestReceiverNpcId());
+	}
+	
+	/**
+	 * Tests the GetQuestArcType and  SetQuestArcType Methods
+	 * 
+	 */
+	@Test
+	public void testQuestArcTypeShouldBeTom() {
+		Quest testItem = new Quest();
+		testItem.SetQuestArcType("Tom");
+		assertEquals("Tom", testItem.GetQuestArcType());
+	}
+	
 	
 	
 

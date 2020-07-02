@@ -19,12 +19,16 @@ public class Quest {
 	private IntegerProperty questId;
 	private IntegerProperty preReqQuestId;
 	private IntegerProperty conflictId;
+	private IntegerProperty idInConflict;
+	private IntegerProperty preReqIdInConflict;
 	private IntegerProperty minCharacterLevel;
 	private IntegerProperty questGiverNpcId;
 	private IntegerProperty questReceiverNpcId;
 	private StringProperty questArcType;
 	private StringProperty questName;
 	private StringProperty questDescription;
+	private StringProperty questGiverDialog;
+	private StringProperty questReceiverDialog;
 	
 	/**
 	 * Constructor for testing.
@@ -33,7 +37,9 @@ public class Quest {
 		
 	}
 	
-	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType) {
+	public Quest(int questReceiverNpcId, int questGiverNpcId, int questId, int preReqQuestId, int conflictId, int minCharacterLevel, String questName, String questDescription, String questArcType, String questGiverDialog, String questReceiverDialog, int idInConflict, int preReqIdInConflict) {
+		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 		this.questId = new SimpleIntegerProperty(questId);
 		this.preReqQuestId = new SimpleIntegerProperty(preReqQuestId);
 		this.conflictId = new SimpleIntegerProperty(conflictId);
@@ -41,8 +47,15 @@ public class Quest {
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
 		this.questArcType = new SimpleStringProperty(questArcType);
+<<<<<<< HEAD
 		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
 		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
+=======
+		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
+		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
+		this.idInConflict = new SimpleIntegerProperty(idInConflict);
+		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
+>>>>>>> branch 'iteration_2' of https://github.com/mhodge3/uwg-project2-final-project.git
 	}
 	
 	/**
@@ -266,6 +279,104 @@ public class Quest {
 	 */
 	public void SetQuestDescription(String setQuestDescription) {
 		this.questDescription = new SimpleStringProperty(setQuestDescription);
+	}
+	
+	/**
+	 * Gets the questGiverDialog
+	 * @return questGiverDialog
+	 */
+	public String GetQuesGiverDialog() {
+		return questGiverDialog.get();
+	}
+	
+	/**
+	 * Gets the questGiverDialog property
+	 * @return Property for TableView
+	 */
+	public final StringProperty questGiverDialogProperty() {
+	   return questGiverDialog;
+	}
+	
+	/**
+	 * Sets the questDescription
+	 * @param questGiverDialog
+	 */
+	public void SetQuestGiverDialog(String questGiverDialog) {
+		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
+	}
+	
+	/**
+	 * Gets the questReceiverDialog
+	 * @return questReceiverDialog
+	 */
+	public String GetQuesReceiverDialog() {
+		return questReceiverDialog.get();
+	}
+	
+	/**
+	 * Gets the questReceiverDialog property
+	 * @return Property for TableView
+	 */
+	public final StringProperty questReceiverDialogProperty() {
+	   return questReceiverDialog;
+	}
+	
+	/**
+	 * Sets the questReceiverDialog
+	 * @param questReceiverDialog
+	 */
+	public void SetQuestReceiverDialog(String questReceiverDialog) {
+		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
+	}
+	
+	/**
+	 * Gets the idInConflict
+	 * @return idInConflict
+	 */
+	public int GetidInConflict() {
+		return this.idInConflict.get();
+	}
+	
+	/**
+	 * Gets the idInConflict property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty idInConflictProperty() {
+	   return idInConflict;
+	}
+	
+	
+	/**
+	 * Sets the idInConflict
+	 * @param idInConflict
+	 */
+	public void SetIdInConflict(int idInConflict) {
+		this.idInConflict = new SimpleIntegerProperty(idInConflict);
+	}
+	
+	/**
+	 * Gets the preReqIdInConflict
+	 * @return preReqIdInConflict
+	 */
+	public int GetidPreReqIdConflict() {
+		return this.preReqIdInConflict.get();
+	}
+	
+	/**
+	 * Gets the preReqIdInConflict property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty preReqIdInConflictProperty() {
+	   return preReqIdInConflict;
+	}
+	
+	
+	/**
+	 * Sets the preReqIdInConflict
+	 * @param preReqIdInConflict
+	 */
+	public void SetPreReqIdInConflict(int preReqIdInConflict) {
+		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
 	}
 
 }
