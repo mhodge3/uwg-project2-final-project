@@ -239,7 +239,7 @@ public class EditQuestControl {
 	}
 	
 	public String getReceiverDialog() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit - 1).GetQuesReceiverDialog();
+		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit - 1).GetQuestReceiverDialog();
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {
