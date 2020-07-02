@@ -68,8 +68,8 @@ public class ConflictTemplateTheQuestViewControl {
 	@FXML
     private void initialize() throws SQLException {
 		questMinLvlTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("minCharacterLevel"));
-		questIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questId"));
-		questPRIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("preReqQuestId"));
+		questIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("idInConflict"));
+		questPRIDTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("preReqIdInConflict"));
 		questNameTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, String>("questName"));
 		questTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Quest, Integer>("questArcType"));
 	}
@@ -87,6 +87,19 @@ public class ConflictTemplateTheQuestViewControl {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    private void removeObstacleQuest() throws SQLException {
+    	if (questTableView.getSelectionModel().getSelectedItem() != null) {
+			theManageTemplateTheQuestControl.removeQuest(questTableView.getSelectionModel().getSelectedItem().GetQuestId());
+			questTableView.getItems().clear();
+			questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
+			questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
+			questTableView.getSortOrder().add(questPRIDTableColumn);
+			questTableView.sort();
+			questTableView.refresh();
 		}
     }
     

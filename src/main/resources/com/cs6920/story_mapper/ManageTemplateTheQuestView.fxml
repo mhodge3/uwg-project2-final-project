@@ -46,7 +46,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="deleteStoryObstacleButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Obstacle Quest" />
+                        <Button fx:id="deleteStoryObstacleButton" mnemonicParsing="false" onAction="#removeObstacleQuest" prefHeight="25.0" prefWidth="186.0" text="Delete Obstacle Quest" />
                         <Label text="Story Conflict Name">
                            <VBox.margin>
                               <Insets top="10.0" />
