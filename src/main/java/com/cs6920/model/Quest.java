@@ -41,8 +41,8 @@ public class Quest {
 		this.questName = new SimpleStringProperty(questName);
 		this.questDescription = new SimpleStringProperty(questDescription);
 		this.questArcType = new SimpleStringProperty(questArcType);
-		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
-		this.questGiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
+		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 	}
 	
 	/**
