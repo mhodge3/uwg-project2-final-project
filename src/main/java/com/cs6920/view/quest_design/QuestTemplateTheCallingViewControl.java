@@ -134,6 +134,7 @@ public class QuestTemplateTheCallingViewControl {
 		theEditQuestControl.updateReceiverNPC(theEditQuestControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
 		theEditQuestControl.refreshQuestDisplay();
 		this.theEditQuestControl.getConflictTemplateTheQuestViewControl().GetTheManageTemplateTheQuestControl().updateQuestTemplateList();
+		this.theEditQuestControl.getConflictTemplateTheQuestViewControl().GetTheManageTemplateTheQuestControl().clearExistingQuestsToEdit();
 		this.handleBackButton();
 	}
     

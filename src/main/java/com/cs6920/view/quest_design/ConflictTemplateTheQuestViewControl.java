@@ -108,19 +108,19 @@ public class ConflictTemplateTheQuestViewControl {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestCalling");
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestCalling");
 					break;
 				case "leaving":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestLeaving");
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestLeaving");
 					break;
 				case "obstacle":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestObstacle");
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestObstacle");
 					break;
 				case "obtain elixir":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestObtainElixir");
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestObtainElixir");
 					break;
 				case "return elixir":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetQuestId(), "EditQuestReturnWithElixir");
+					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestReturnWithElixir");
 					break;
 				default: break;
 			}
