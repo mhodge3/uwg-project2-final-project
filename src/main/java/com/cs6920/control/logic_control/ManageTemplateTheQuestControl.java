@@ -135,7 +135,7 @@ public class ManageTemplateTheQuestControl {
 		int idInConlictofRemovedQuest = 0;
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestId() == questIdToRemove) {
-				idInConlictofRemovedQuest = quest.GetQuestId();
+				idInConlictofRemovedQuest = quest.GetidInConflict();
 				if (!canQuestBeRemoved(quest)) {
 					return;
 				}
