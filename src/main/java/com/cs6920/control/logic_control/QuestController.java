@@ -1,32 +1,45 @@
 package com.cs6920.control.logic_control;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.DAL.QuestsDAL;
+import com.cs6920.DAL.QuestDAL;
 import com.cs6920.model.Quest;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 /**
- * Controller class that retrieves data from the QuestsDAL
+ * Controller class that retrieves data from the QuestDAL
  * @author Perry Iler
  * @date 7/1/2020
  *
  */
-public class QuestsController {
-	private QuestsDAL dal;
+public class QuestController {
+	private QuestDAL dal;
 	
 	/**
-	 * Constructor for the QuestsController
+	 * Constructor for the QuestController
 	 * @param theDBConnection
 	 */
-	public QuestsController(MySQLAccess theDBConnection) {
-		this.dal = new QuestsDAL(theDBConnection);
+	public QuestController(MySQLAccess theDBConnection) {
+		this.dal = new QuestDAL(theDBConnection);
 	}
 	
+	/**
+	 * Calls the CreateQuest method of the DAL
+	 * @param questReceiverNpcId
+	 * @param questGiverNpcId
+	 * @param preReqQuestId
+	 * @param conflictId
+	 * @param minCharacterLevel
+	 * @param questName
+	 * @param questDescription
+	 * @param questArcType
+	 * @param questGiverDialog
+	 * @param questReceiverDialog
+	 * @param idInConflict
+	 * @param preReqIdInConflict
+	 * @return True if inserted | False if not inserted
+	 * @throws SQLException
+	 */
 	public String CreateQuest(int questReceiverNpcId, int questGiverNpcId,
 			int preReqQuestId, int conflictId, int minCharacterLevel, 
 			String questName, String questDescription, String questArcType, 

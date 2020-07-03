@@ -15,14 +15,14 @@ import com.cs6920.model.Quest;
  * @date 6/29/2020
  *
  */
-public class QuestsDAL {
+public class QuestDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;
 	
 	/**
 	 * Creates a QuestDAL object to be used by the controllers
 	 */
-	public QuestsDAL(MySQLAccess theDBConnection) {
+	public QuestDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
 	}
 	
