@@ -93,11 +93,12 @@ public class ManageTemplateTheQuestControl {
 	private void updateQuestChainInDB() throws SQLException {
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestId() == 0) {
-				this.theQuestsController.CreateQuest(quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), 
+				int questId = this.theQuestsController.CreateQuest(quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), 
 						quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), 
 						quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), 
 						quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(),
 						quest.GetidPreReqIdConflict());
+				quest.SetQuestId(questId);
 			}
 			else {
 				this.theQuestsController.UpdateQuest(quest, quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), 
@@ -105,6 +106,25 @@ public class ManageTemplateTheQuestControl {
 						quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), 
 						quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(),
 						quest.GetidPreReqIdConflict());
+			}
+		}
+		ArrayList<Quest> removedQuests = new ArrayList<Quest>();
+		ArrayList<Quest> existingQuests = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+		for (Quest existingQuest : existingQuests) {
+			Boolean foundQuest = false;
+			for (Quest currentQuest : existingTheQuestArrayList) {
+				if (currentQuest.GetQuestId() == existingQuest.GetQuestId()) {
+					foundQuest = true;
+					break;
+				}
+			}
+			if (!foundQuest) {
+				removedQuests.add(existingQuest);
+			}
+		}
+		if (removedQuests.size() > 0) {
+			for (Quest quest : removedQuests) {
+				this.theQuestsController.DeleteQuest(quest);
 			}
 		}
 		this.createQuestTemplateList(this.theConflictIdToEdit);
@@ -130,8 +150,8 @@ public class ManageTemplateTheQuestControl {
 					quest.SetPreReqIdInConflict(quest.GetidInConflict() - 1);
 				}
 			}
-			this.UpdateTheQuestArrayList();
 		}
+		this.updateQuestChainInDB();
 	}
     
     private Boolean canQuestBeRemoved(Quest theQuestToCheck) {
