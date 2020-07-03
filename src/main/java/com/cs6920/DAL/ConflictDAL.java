@@ -105,13 +105,12 @@ public class ConflictDAL {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public ArrayList<Conflict> GetQuests(int conflictId) throws SQLException {
+	public ArrayList<Conflict> GetQuests() throws SQLException {
 		ArrayList<Conflict> conflicts = new ArrayList<Conflict>();
         try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".conflicts "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".conflicts.conflict_id = \"" + conflictId + "\"";
+            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".conflicts ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	Conflict conflict = new Conflict();
@@ -207,6 +206,12 @@ public class ConflictDAL {
 		return success;
 	}
 	
+	/**
+	 * Deletes an existing conflict entry in the database Conflicts table
+	 * @param conflict
+	 * @return True if deleted | False if not deleted
+	 * @throws SQLException
+	 */
 	public boolean DeleteConflict(Conflict conflict) throws SQLException {
 		Boolean success = false;
 		try {
