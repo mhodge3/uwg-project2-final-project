@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import com.cs6920.DAL.ItemDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.NpcCharacterDAL;
+import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
+import com.cs6920.model.Quest;
 import com.cs6920.model.QuestItems;
 import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
 
@@ -23,6 +25,7 @@ public class EditQuestControl {
 	private ArrayList<QuestItems> theQuestItemsRewardList;
 	private ObservableList<QuestItems> observableTheQuestItemsRewardList = FXCollections.observableArrayList();
 	private ItemDAL theItemDAL;
+	private QuestItemsDAL theQuestItemsDAL;
 	private ArrayList<Item> existingQuestItems;
 	private ArrayList<Item> existingRewardItems;
 	private ObservableList<Item> observableQuestItemsList = FXCollections.observableArrayList();
@@ -35,6 +38,7 @@ public class EditQuestControl {
 		this.questIdToEdit = questIdToEdit;
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
 		theItemDAL = new ItemDAL(theDBConnection);
+		theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
 		this.UpdateNPCArrayList();
 		ArrayList<Item> allItems = theItemDAL.GetItems();
 		existingQuestItems = new ArrayList<Item>();
@@ -106,13 +110,13 @@ public class EditQuestControl {
 	
 	public void addQuestItemNeeded(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingQuestItems);
-		this.theQuestItemsNeededList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.theQuestItemsNeededList.add(new QuestItems(theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
 		this.UpdateQuestItemsNeededList();
 	}
 	
 	public void addQuestItemReward(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingRewardItems);
-		this.theQuestItemsRewardList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.theQuestItemsRewardList.add(new QuestItems(theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
 		this.UpdateQuestItemsRewardList();
 	}
 	
@@ -248,5 +252,15 @@ public class EditQuestControl {
 	
 	public void refreshQuestDisplay() throws SQLException {
 		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().updateQuestChainInDB();
+	}
+	
+	public void updateQuestItemsInDB() throws SQLException {
+		this.theQuestItemsDAL.DeleteQuestItemsByQuestId(theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		for (QuestItems questItem : theQuestItemsNeededList) {
+			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+		}
+		for (QuestItems questItem : theQuestItemsRewardList) {
+			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+		}
 	}
 }
