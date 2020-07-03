@@ -76,7 +76,7 @@ public class QuestController {
 			return "The preReqId in the conflict cannot be empty";
 		}
 		
-		if (this.dal.CreateQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict)) {
+		if (this.dal.CreateQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict) > 0) {
 			return null;
 		}
 		else {

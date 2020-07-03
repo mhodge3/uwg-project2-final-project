@@ -16,6 +16,7 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\edit\
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\CreateNPCCharactersControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\edit\EditGameStoryViewControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\CreateGameStoryControl.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\ConflictDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\EditItemsControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\QuestsDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\quest_design\QuestTemplateTheCallingViewControl.java
@@ -48,7 +49,9 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\Admi
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\PlayerController.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\MySQLAccess.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\QuestsController.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\QuestController.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\EditPlayersAndAdminsControl.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\ConflictController.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\PlayerDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\CharactersPlayer.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\Player.java
@@ -57,5 +60,6 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\lo
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\EditNPCCharactersControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\story_mapper\Main.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\create\CreateGameStoryViewControl.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\QuestDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\ManagePlayersAndAdminsControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\manage\ManageNPCCharactersViewControl.java

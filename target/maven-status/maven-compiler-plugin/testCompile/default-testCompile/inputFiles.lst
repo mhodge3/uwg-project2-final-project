@@ -15,5 +15,6 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\QuestItemsTest.
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testItemDAL.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\QuestsTests.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\ItemsTests.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\DAL\testConflictDALCRUDCycle.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\CharacterPlayerQuestLogsTests.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\test\java\model\GameStoryTests.java
