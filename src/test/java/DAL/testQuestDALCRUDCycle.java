@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Order;
 
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.DAL.QuestsDAL;
+import com.cs6920.DAL.QuestDAL;
 import com.cs6920.model.Quest;
 
 
@@ -22,7 +22,7 @@ import com.cs6920.model.Quest;
 class testQuestDALCRUDCycle {
 
 	MySQLAccess access = new MySQLAccess();
-	QuestsDAL dal = new QuestsDAL(access);
+	QuestDAL dal = new QuestDAL(access);
 	Quest quest = new Quest();
 
 	@Test
@@ -37,7 +37,6 @@ class testQuestDALCRUDCycle {
 	public void createAQuestDupilicatesInDB() throws Exception {
 		assertFalse(this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3));
-		
 	}
 	
 	@Test
