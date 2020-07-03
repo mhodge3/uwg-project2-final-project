@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Order;
 
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.DAL.QuestsDAL;
+import com.cs6920.DAL.QuestDAL;
 import com.cs6920.model.Quest;
 
 
@@ -22,12 +22,12 @@ import com.cs6920.model.Quest;
 class testQuestDALCRUDCycle {
 
 	MySQLAccess access = new MySQLAccess();
-	QuestsDAL dal = new QuestsDAL(access);
+	QuestDAL dal = new QuestDAL(access);
 	Quest quest = new Quest();
 
 	@Test
 	@Order(1)
-	public void createACharactersPlayerInDB() throws Exception {
+	public void createAQuestInDB() throws Exception {
 		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3);
 		assertTrue(newId > 0);
@@ -35,11 +35,10 @@ class testQuestDALCRUDCycle {
 	
 	@Test
 	@Order(2)
-	public void createACharactersPlayerDupilicatesInDB() throws Exception {
+	public void createAQuestDupilicatesInDB() throws Exception {
 		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3);
 		assertFalse(newId > 0);
-		
 	}
 	
 	@Test
@@ -104,7 +103,7 @@ class testQuestDALCRUDCycle {
 	
 	@Test
 	@Order(6)
-	public void deleteANpcCharacterInDB() throws Exception {
+	public void deleteAQuestFronDB() throws Exception {
 		this.quest = this.dal.GetQuestByName("updated test1");
 		assertTrue(this.dal.DeleteQuest(quest));
 		this.quest = this.dal.GetQuestByName("updated test1");
