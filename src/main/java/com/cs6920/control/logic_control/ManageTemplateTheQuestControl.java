@@ -40,8 +40,6 @@ public class ManageTemplateTheQuestControl {
 	 * @throws SQLException
 	 */
 	public void UpdateTheQuestArrayList() throws SQLException {
-		//existingTheQuestArrayList = new ArrayList<Quest>();
-		//existingConflictArrayList = playerDAL.GetPlayers();
 		observableTheQuestList.clear();
 		observableTheQuestList.addAll(existingTheQuestArrayList);
 	}
@@ -90,10 +88,10 @@ public class ManageTemplateTheQuestControl {
 		this.insertNewObstacleQuest(obstacleQuest);
 	}
 	
-	private void updateQuestChainInDB() throws SQLException {
+	public void updateQuestChainInDB() throws SQLException {
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestId() == 0) {
-				int questId = this.theQuestsController.CreateQuest(quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), 
+				int questId = this.theQuestsController.CreateQuest(quest.GetQuestReceiverNpcId(), quest.GetQuestGiverNpcId(), 
 						quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), 
 						quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), 
 						quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(),
@@ -101,7 +99,7 @@ public class ManageTemplateTheQuestControl {
 				quest.SetQuestId(questId);
 			}
 			else {
-				this.theQuestsController.UpdateQuest(quest, quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), 
+				this.theQuestsController.UpdateQuest(quest, quest.GetQuestReceiverNpcId(), quest.GetQuestGiverNpcId(), 
 						quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), 
 						quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), 
 						quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(),
@@ -187,7 +185,7 @@ public class ManageTemplateTheQuestControl {
     }
     
     public void updateQuestTemplateList() throws SQLException {
-    	this.updateQuestChainInDB(existingTheQuestArrayList);
+    	this.updateQuestChainInDB();
     }
 	
 	public void createQuestTemplateList (int conflictId) throws SQLException {
@@ -282,15 +280,6 @@ public class ManageTemplateTheQuestControl {
 	private void createNewQuestChainInDB (ArrayList<Quest> questsToCreate) throws SQLException {
 		for (Quest quest : questsToCreate) {
 			this.theQuestsController.CreateQuest(quest.GetQuestGiverNpcId(), quest.GetQuestGiverNpcId(), quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(), quest.GetidPreReqIdConflict());
-		}
-	}
-	
-	private void updateQuestChainInDB (ArrayList<Quest> questsToUpdate) throws SQLException {
-		for (Quest quest : questsToUpdate) {
-			String outcome = this.theQuestsController.UpdateQuest(quest, quest.GetQuestReceiverNpcId(), quest.GetQuestGiverNpcId(), quest.GetPreReqQuestId(), quest.GetConflictId(), quest.GetMinCharacterLevel(), quest.GetQuestName(), quest.GetQuestDescription(), quest.GetQuestArcType(), quest.GetQuesGiverDialog(), quest.GetQuestReceiverDialog(), quest.GetidInConflict(), quest.GetidPreReqIdConflict());
-			if (outcome != null) {
-				System.out.println(outcome);
-			}
 		}
 	}
 	

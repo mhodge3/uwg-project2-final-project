@@ -247,6 +247,6 @@ public class EditQuestControl {
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {
-		theManageTemplateTheQuestViewControl.updateQuestList();
+		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().updateQuestChainInDB();
 	}
 }

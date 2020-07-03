@@ -78,9 +78,7 @@ public class ConflictTemplateTheQuestViewControl {
     private void addObstacleQuest() {
     	try {
 			theManageTemplateTheQuestControl.addObstacle();
-	    	questTableView.getItems().clear();
-	    	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-			questTableView.refresh();
+	    	this.refreshTheQuestList();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,9 +89,7 @@ public class ConflictTemplateTheQuestViewControl {
     private void removeObstacleQuest() throws SQLException {
     	if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			theManageTemplateTheQuestControl.removeQuest(questTableView.getSelectionModel().getSelectedItem().GetQuestId());
-			questTableView.getItems().clear();
-			questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-			questTableView.refresh();
+			this.refreshTheQuestList();
 		}
     }
     
@@ -147,8 +143,13 @@ public class ConflictTemplateTheQuestViewControl {
     public void updateExistingTheQuestList() throws SQLException {
     	theManageTemplateTheQuestControl.createQuestTemplateList(2);
     	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
-    	questTableView.getItems().clear();
-    	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
+    	this.refreshTheQuestList();
+    }
+    
+    public void refreshTheQuestList() {
+		questTableView.getItems().clear();
+		questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
+		questTableView.refresh();
     }
     
     /**
