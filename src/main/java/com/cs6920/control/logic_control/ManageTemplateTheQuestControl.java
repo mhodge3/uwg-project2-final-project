@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.cs6920.DAL.MySQLAccess;
+import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
 import com.cs6920.model.QuestItems;
@@ -17,6 +18,7 @@ public class ManageTemplateTheQuestControl {
 	private ObservableList<Quest> observableTheQuestList = FXCollections.observableArrayList();
 	private int theConflictIdToEdit;
 	private QuestsController theQuestsController;
+	private QuestItemsDAL theQuestItemsDAL;
 	
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
@@ -25,6 +27,7 @@ public class ManageTemplateTheQuestControl {
 	public ManageTemplateTheQuestControl(MySQLAccess theDBConnection) {
 		//this.playerDAL = new PlayerDAL(theDBConnection);
 		this.theQuestsController = new QuestsController(theDBConnection);
+		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
 	}
 	
 	public void SetTheConflictToEdit(int theConflictIdToEdit) {
@@ -122,6 +125,7 @@ public class ManageTemplateTheQuestControl {
 		}
 		if (removedQuests.size() > 0) {
 			for (Quest quest : removedQuests) {
+				this.theQuestItemsDAL.DeleteQuestItemsByQuestId(quest.GetQuestId());
 				this.theQuestsController.DeleteQuest(quest);
 			}
 		}

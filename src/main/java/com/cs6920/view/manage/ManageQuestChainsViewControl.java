@@ -100,6 +100,21 @@ public class ManageQuestChainsViewControl {
 	}
 	
 	@FXML
+	private void handleDeleteQuestChainButton() throws SQLException {
+		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
+			theManageQuestChainsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+	    	this.updateConflictsTableDisplay();
+		}
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Delete Story Conflict Issue");
+			alert.setHeaderText("Cannot Delete Story Conflict");
+			alert.setContentText("A Story Conflict to Delete was not selected. Please select the Conflict you wish to Delete");
+			alert.showAndWait();
+		}
+	}
+	
+	@FXML
 	private void handleQuestChainsBackButton() throws SQLException {
 		theMainDashboardViewControl.LoadMainDashboardView();
 	}

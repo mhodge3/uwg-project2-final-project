@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import com.cs6920.DAL.ConflictDAL;
 import com.cs6920.DAL.MySQLAccess;
+import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Conflict;
+import com.cs6920.model.Quest;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,12 +22,15 @@ public class ManageQuestChainsControl {
 	private ArrayList<Conflict> existingConflictArrayList;
 	private ObservableList<Conflict> observableConflictList = FXCollections.observableArrayList();
 	private ConflictDAL theConflictDAL;
+	private QuestsController theQuestsController;
+	private QuestItemsDAL theQuestItemsDAL;
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
 	public ManageQuestChainsControl(MySQLAccess theDBConnection) {
 		this.theConflictDAL = new ConflictDAL(theDBConnection);
+		this.theQuestsController = new QuestsController(theDBConnection);
 	}
 
 	/**
@@ -42,6 +47,23 @@ public class ManageQuestChainsControl {
 	
 	public void createTheQuestConflict() throws SQLException {
 		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "The Quest");
+		this.UpdateConflictArrayList();
+	}
+	
+	public void deleteTheQuestConflict(int conflictIdToDelete) throws SQLException {
+		ArrayList<Quest> thisConflictsQuests = this.theQuestsController.GetQuestsByConflictID(conflictIdToDelete);
+		for (Quest conflictQuest : thisConflictsQuests) {
+			if (this.theQuestItemsDAL.GetQuestItemsByQuestId(conflictQuest.GetQuestId()) != null) {
+				this.theQuestItemsDAL.DeleteQuestItemsByQuestId(conflictQuest.GetQuestId());
+			}
+			this.theQuestsController.DeleteQuest(conflictQuest);
+		}
+		for (Conflict conflict : existingConflictArrayList) {
+			if (conflict.GetConflictId() == conflictIdToDelete) {
+				this.theConflictDAL.DeleteConflict(conflict);
+				break;
+			}
+		}
 		this.UpdateConflictArrayList();
 	}
 	

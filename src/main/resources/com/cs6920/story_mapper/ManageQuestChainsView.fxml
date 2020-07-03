@@ -64,7 +64,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="deleteStoryConflictButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Delete Story Conflict" />
+                        <Button fx:id="deleteStoryConflictButton" mnemonicParsing="false" onAction="#handleDeleteQuestChainButton" prefHeight="25.0" prefWidth="186.0" text="Delete Story Conflict" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
