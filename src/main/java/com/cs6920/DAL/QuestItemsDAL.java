@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.cs6920.model.Item;
 import com.cs6920.model.QuestItems;
 
+/**
+ * Data Access Layer for QuestItems
+ * @author Matthew Hodge
+ * @version 7.3.2020
+ */
 public class QuestItemsDAL {
 	private MySQLAccess sqlAccess;
 	private Connection conn;

@@ -110,6 +110,12 @@ public class QuestTemplateTheCallingViewControl {
 		itemNeededQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
 		itemRewardNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
 		itemRewardQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
+		itemsNeededTableView.getItems().clear();
+		itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
+		itemsNeededTableView.refresh();
+		itemsRewardTableView.getItems().clear();
+		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
+		itemsRewardTableView.refresh();
 	}
 
 	@FXML

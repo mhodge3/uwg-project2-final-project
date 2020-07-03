@@ -53,6 +53,18 @@ public class EditQuestControl {
 		}
 		theQuestItemsNeededList = new ArrayList<QuestItems>();
 		theQuestItemsRewardList = new ArrayList<QuestItems>();
+		ArrayList<QuestItems> existingQuestItems = this.theQuestItemsDAL.GetQuestItemsByQuestId(theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		for (QuestItems questItem : existingQuestItems) {
+			Item theItem = this.theItemDAL.GetItemById(questItem.GetItemId());
+			if (theItem.GetIsQuestItem()) {
+				theQuestItemsNeededList.add(questItem);
+			}
+			else {
+				theQuestItemsRewardList.add(questItem);
+			}
+		}
+		this.UpdateQuestItemsNeededList();
+		this.UpdateQuestItemsRewardList();
 		this.UpdateQuestItemsArrayList();
 		this.UpdateRewardItemsArrayList();
 	}
