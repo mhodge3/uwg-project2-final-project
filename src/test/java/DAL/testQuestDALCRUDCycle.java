@@ -28,15 +28,17 @@ class testQuestDALCRUDCycle {
 	@Test
 	@Order(1)
 	public void createACharactersPlayerInDB() throws Exception {
-		assertTrue(this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
-										"arc", "giver dialog", "receiver dialog", 2, 3));
+		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
+				"arc", "giver dialog", "receiver dialog", 2, 3);
+		assertTrue(newId > 0);
 	}
 	
 	@Test
 	@Order(2)
 	public void createACharactersPlayerDupilicatesInDB() throws Exception {
-		assertFalse(this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
-				"arc", "giver dialog", "receiver dialog", 2, 3));
+		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
+				"arc", "giver dialog", "receiver dialog", 2, 3);
+		assertFalse(newId > 0);
 		
 	}
 	

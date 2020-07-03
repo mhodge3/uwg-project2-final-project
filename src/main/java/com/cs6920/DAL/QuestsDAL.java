@@ -180,7 +180,8 @@ public class QuestsDAL {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
             String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".quests "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".quests.conflict_id = \"" + conflictId + "\"";
+            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".quests.conflict_id = \"" + conflictId + "\""
+            				+ " ORDER BY `id_in_conflict` DESC";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	Quest quest = new Quest();

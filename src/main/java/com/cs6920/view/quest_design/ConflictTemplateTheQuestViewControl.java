@@ -80,9 +80,6 @@ public class ConflictTemplateTheQuestViewControl {
 			theManageTemplateTheQuestControl.addObstacle();
 	    	questTableView.getItems().clear();
 	    	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-	    	questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
-	    	questTableView.getSortOrder().add(questPRIDTableColumn);
-	    	questTableView.sort();
 			questTableView.refresh();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -96,9 +93,6 @@ public class ConflictTemplateTheQuestViewControl {
 			theManageTemplateTheQuestControl.removeQuest(questTableView.getSelectionModel().getSelectedItem().GetQuestId());
 			questTableView.getItems().clear();
 			questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-			questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
-			questTableView.getSortOrder().add(questPRIDTableColumn);
-			questTableView.sort();
 			questTableView.refresh();
 		}
     }
@@ -108,19 +102,19 @@ public class ConflictTemplateTheQuestViewControl {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestCalling");
+					this.editCallToAdventure(event, theManageTemplateTheQuestControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestCalling");
 					break;
 				case "leaving":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestLeaving");
+					this.editCallToAdventure(event, theManageTemplateTheQuestControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestLeaving");
 					break;
 				case "obstacle":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestObstacle");
+					this.editCallToAdventure(event, theManageTemplateTheQuestControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObstacle");
 					break;
 				case "obtain elixir":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestObtainElixir");
+					this.editCallToAdventure(event, theManageTemplateTheQuestControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObtainElixir");
 					break;
 				case "return elixir":
-					this.editCallToAdventure(event, questTableView.getSelectionModel().getSelectedItem().GetidInConflict(), "EditQuestReturnWithElixir");
+					this.editCallToAdventure(event, theManageTemplateTheQuestControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithElixir");
 					break;
 				default: break;
 			}
@@ -155,9 +149,6 @@ public class ConflictTemplateTheQuestViewControl {
     	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
     	questTableView.getItems().clear();
     	questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-    	questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
-    	questTableView.getSortOrder().add(questPRIDTableColumn);
-    	questTableView.sort();
     }
     
     /**
@@ -168,9 +159,6 @@ public class ConflictTemplateTheQuestViewControl {
     	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
 		questTableView.getItems().clear();
 		questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
-		questPRIDTableColumn.setSortType(TableColumn.SortType.DESCENDING);
-		questTableView.getSortOrder().add(questPRIDTableColumn);
-		questTableView.sort();
     }
 	
 	@FXML
