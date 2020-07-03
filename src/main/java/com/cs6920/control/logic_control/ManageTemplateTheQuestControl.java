@@ -125,7 +125,7 @@ public class ManageTemplateTheQuestControl {
 				this.theQuestsController.DeleteQuest(quest);
 			}
 		}
-		this.createQuestTemplateList(this.theConflictIdToEdit);
+		this.createQuestTemplateList();
 		this.UpdateTheQuestArrayList();
 	}
 	
@@ -188,7 +188,7 @@ public class ManageTemplateTheQuestControl {
     	this.updateQuestChainInDB();
     }
 	
-	public void createQuestTemplateList (int conflictId) throws SQLException {
+	public void createQuestTemplateList () throws SQLException {
 		existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
 		if (this.existingTheQuestArrayList.size() == 0) {
@@ -199,7 +199,7 @@ public class ManageTemplateTheQuestControl {
 			quest1.SetQuestGiverNpcId(0);
 			quest1.SetQuestArcType("calling");
 			quest1.SetPreReqQuestId(0);
-			quest1.SetConflictId(conflictId);
+			quest1.SetConflictId(theConflictIdToEdit);
 			quest1.SetQuestId(1);
 			quest1.SetMinCharacterLevel(1);
 			quest1.SetQuestName("test 1");
@@ -213,7 +213,7 @@ public class ManageTemplateTheQuestControl {
 			quest2.SetQuestGiverNpcId(0);
 			quest2.SetQuestArcType("leaving");
 			quest2.SetPreReqQuestId(1);
-			quest2.SetConflictId(conflictId);
+			quest2.SetConflictId(theConflictIdToEdit);
 			quest2.SetQuestId(2);
 			quest2.SetMinCharacterLevel(1);
 			quest2.SetQuestName("test 2");
@@ -227,7 +227,7 @@ public class ManageTemplateTheQuestControl {
 			quest3.SetQuestGiverNpcId(0);
 			quest3.SetQuestArcType("obstacle");
 			quest3.SetPreReqQuestId(2);
-			quest3.SetConflictId(conflictId);
+			quest3.SetConflictId(theConflictIdToEdit);
 			quest3.SetQuestId(3);
 			quest3.SetMinCharacterLevel(1);
 			quest3.SetQuestName("test 3");
@@ -241,7 +241,7 @@ public class ManageTemplateTheQuestControl {
 			quest4.SetQuestGiverNpcId(0);
 			quest4.SetQuestArcType("obtain elixir");
 			quest4.SetPreReqQuestId(3);
-			quest4.SetConflictId(conflictId);
+			quest4.SetConflictId(theConflictIdToEdit);
 			quest4.SetQuestId(4);
 			quest4.SetMinCharacterLevel(1);
 			quest4.SetQuestName("test 4");
@@ -255,7 +255,7 @@ public class ManageTemplateTheQuestControl {
 			quest5.SetQuestGiverNpcId(0);
 			quest5.SetQuestArcType("return elixir");
 			quest5.SetPreReqQuestId(4);
-			quest5.SetConflictId(conflictId);
+			quest5.SetConflictId(theConflictIdToEdit);
 			quest5.SetQuestId(5);
 			quest5.SetMinCharacterLevel(1);
 			quest5.SetQuestName("test 5");

@@ -141,7 +141,7 @@ public class ConflictTemplateTheQuestViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingTheQuestList() throws SQLException {
-    	theManageTemplateTheQuestControl.createQuestTemplateList(2);
+    	theManageTemplateTheQuestControl.createQuestTemplateList();
     	theManageTemplateTheQuestControl.UpdateTheQuestArrayList();
     	this.refreshTheQuestList();
     }

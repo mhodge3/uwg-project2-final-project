@@ -70,8 +70,8 @@ public class ConflictController {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public ArrayList<Conflict> GetQuests() throws SQLException {
-		return this.dal.GetQuests();
+	public ArrayList<Conflict> GetConflicts() throws SQLException {
+		return this.dal.GetConflicts();
     }
 	
 	/**

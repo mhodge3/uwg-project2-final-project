@@ -62,6 +62,10 @@ public class ManageQuestChainsViewControl {
 	 */
     public void updateExistingConflictList() throws SQLException {
     	theManageQuestChainsControl.UpdateConflictArrayList();
+    	this.updateConflictsTableDisplay();
+    }
+    
+    private void updateConflictsTableDisplay() {
     	conflictChainTableView.getItems().clear();
     	conflictChainTableView.getItems().addAll(theManageQuestChainsControl.GetObservableConflictList());
     	conflictMinLvlTableColumn.setSortType(TableColumn.SortType.DESCENDING);
@@ -71,7 +75,8 @@ public class ManageQuestChainsViewControl {
 	
 	@FXML
 	private void handleCreateTemplateTheQuestButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+		theManageQuestChainsControl.createTheQuestConflict();
+    	this.updateConflictsTableDisplay();
 	}
 	
 	@FXML

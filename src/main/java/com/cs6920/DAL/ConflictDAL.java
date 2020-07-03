@@ -105,7 +105,7 @@ public class ConflictDAL {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public ArrayList<Conflict> GetQuests() throws SQLException {
+	public ArrayList<Conflict> GetConflicts() throws SQLException {
 		ArrayList<Conflict> conflicts = new ArrayList<Conflict>();
         try {
             this.conn = this.sqlAccess.GetDBConnection();
