@@ -81,6 +81,10 @@ public class MainDashboardViewControl {
     private Parent theManageTemplateVoyageAndReturnParentView;
     private Scene theManageTemplateVoyageAndReturnScene;
     private EditConflictQuestsViewControl theEditConflictVoyageViewControl;
+
+    private Parent theManageTemplateDefeatTheMonsterParentView;
+    private Scene theManageTemplateDefeatTheMonsterScene;
+    private EditConflictQuestsViewControl theEditConflictMonsterViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -149,19 +153,27 @@ public class MainDashboardViewControl {
 	}
 
 	/**
-	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
-	 * @param theManageQuestChainsViewControl
+	 * Sets the view control reference in the logic control the theEditConflictQuestsViewControl
+	 * @param theEditConflictQuestsViewControl
 	 */
 	public void SetTheEditConflictQuestsViewControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl) {
 		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
 	}
 
 	/**
-	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
-	 * @param theManageQuestChainsViewControl
+	 * Sets the view control reference in the logic control the theEditConflictVoyageViewControl
+	 * @param theEditConflictVoyageViewControl
 	 */
 	public void SetTheEditConflictVoyageViewControl(EditConflictQuestsViewControl theEditConflictVoyageViewControl) {
 		this.theEditConflictVoyageViewControl = theEditConflictVoyageViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theEditConflictMonsterViewControl
+	 * @param theEditConflictMonsterViewControl
+	 */
+	public void SetTheEditConflictMonsterViewControl(EditConflictQuestsViewControl theEditConflictMonsterViewControl) {
+		this.theEditConflictMonsterViewControl = theEditConflictMonsterViewControl;
 	}
 	
 	/**
@@ -198,6 +210,9 @@ public class MainDashboardViewControl {
     		break;
     	case "Voyage and Return":
     		this.theEditConflictVoyageViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Defeat the Monster":
+    		this.theEditConflictMonsterViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
     		break;
 		default: break;
 	}
@@ -317,6 +332,10 @@ public class MainDashboardViewControl {
 			case "manageTemplateVoyageAndReturn":
 				theEditConflictVoyageViewControl.updateExistingTheQuestList();
 				theSceneToStage = theManageTemplateVoyageAndReturnScene;
+				break;
+			case "manageTemplateDefeatTheMonster":
+				theEditConflictMonsterViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateDefeatTheMonsterScene;
 				break;
 			default: break;
 		}
@@ -466,6 +485,17 @@ public class MainDashboardViewControl {
         try {
         	theManageTemplateVoyageAndReturnParentView = theFxmlLoader.load();
         	theManageTemplateVoyageAndReturnScene = new Scene(theManageTemplateVoyageAndReturnParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateDefeatTheMonsterScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateMonsterView.fxml"));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Defeat the Monster"));
+        try {
+        	theManageTemplateDefeatTheMonsterParentView = theFxmlLoader.load();
+        	theManageTemplateDefeatTheMonsterScene = new Scene(theManageTemplateDefeatTheMonsterParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
