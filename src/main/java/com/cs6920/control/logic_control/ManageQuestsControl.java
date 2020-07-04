@@ -226,7 +226,7 @@ public class ManageQuestsControl {
 		quest1.SetQuestGiverNpcId(0);
 		quest1.SetQuestArcType("calling");
 		quest1.SetPreReqQuestId(0);
-		quest1.SetConflictId(theConflictIdToEdit);
+		quest1.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest1.SetQuestId(1);
 		quest1.SetMinCharacterLevel(1);
 		quest1.SetQuestName("test 1");
@@ -240,7 +240,7 @@ public class ManageQuestsControl {
 		quest2.SetQuestGiverNpcId(0);
 		quest2.SetQuestArcType("leaving");
 		quest2.SetPreReqQuestId(1);
-		quest2.SetConflictId(theConflictIdToEdit);
+		quest2.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest2.SetQuestId(2);
 		quest2.SetMinCharacterLevel(1);
 		quest2.SetQuestName("test 2");
@@ -254,7 +254,7 @@ public class ManageQuestsControl {
 		quest3.SetQuestGiverNpcId(0);
 		quest3.SetQuestArcType(this.getQuestVariableType());
 		quest3.SetPreReqQuestId(2);
-		quest3.SetConflictId(theConflictIdToEdit);
+		quest3.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest3.SetQuestId(3);
 		quest3.SetMinCharacterLevel(1);
 		quest3.SetQuestName("test 3");
@@ -268,7 +268,7 @@ public class ManageQuestsControl {
 		quest4.SetQuestGiverNpcId(0);
 		quest4.SetQuestArcType("obtain elixir");
 		quest4.SetPreReqQuestId(3);
-		quest4.SetConflictId(theConflictIdToEdit);
+		quest4.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest4.SetQuestId(4);
 		quest4.SetMinCharacterLevel(1);
 		quest4.SetQuestName("test 4");
@@ -282,7 +282,7 @@ public class ManageQuestsControl {
 		quest5.SetQuestGiverNpcId(0);
 		quest5.SetQuestArcType("return elixir");
 		quest5.SetPreReqQuestId(4);
-		quest5.SetConflictId(theConflictIdToEdit);
+		quest5.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest5.SetQuestId(5);
 		quest5.SetMinCharacterLevel(1);
 		quest5.SetQuestName("test 5");
@@ -296,7 +296,7 @@ public class ManageQuestsControl {
 		existingTheQuestArrayList.add(quest5);
 		this.createNewQuestChainInDB(existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
-		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(this.theConflictToEdit.GetConflictId());
     }
     
     private void firstSetupOfVoyage() throws SQLException {
@@ -307,7 +307,7 @@ public class ManageQuestsControl {
 		quest1.SetQuestGiverNpcId(0);
 		quest1.SetQuestArcType("calling");
 		quest1.SetPreReqQuestId(0);
-		quest1.SetConflictId(theConflictIdToEdit);
+		quest1.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest1.SetQuestId(1);
 		quest1.SetMinCharacterLevel(1);
 		quest1.SetQuestName("test 1");
@@ -321,7 +321,7 @@ public class ManageQuestsControl {
 		quest2.SetQuestGiverNpcId(0);
 		quest2.SetQuestArcType("meeting mentor");
 		quest2.SetPreReqQuestId(1);
-		quest2.SetConflictId(theConflictIdToEdit);
+		quest2.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest2.SetQuestId(2);
 		quest2.SetMinCharacterLevel(1);
 		quest2.SetQuestName("test 2");
@@ -335,7 +335,7 @@ public class ManageQuestsControl {
 		quest3.SetQuestGiverNpcId(0);
 		quest3.SetQuestArcType("leaving");
 		quest3.SetPreReqQuestId(2);
-		quest3.SetConflictId(theConflictIdToEdit);
+		quest3.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest3.SetQuestId(3);
 		quest3.SetMinCharacterLevel(1);
 		quest3.SetQuestName("test 3");
@@ -349,7 +349,7 @@ public class ManageQuestsControl {
 		quest4.SetQuestGiverNpcId(0);
 		quest4.SetQuestArcType("insight");
 		quest4.SetPreReqQuestId(3);
-		quest4.SetConflictId(theConflictIdToEdit);
+		quest4.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest4.SetQuestId(4);
 		quest4.SetMinCharacterLevel(1);
 		quest4.SetQuestName("test 4");
@@ -363,7 +363,7 @@ public class ManageQuestsControl {
 		quest5.SetQuestGiverNpcId(0);
 		quest5.SetQuestArcType("return new wisdom");
 		quest5.SetPreReqQuestId(4);
-		quest5.SetConflictId(theConflictIdToEdit);
+		quest5.SetConflictId(this.theConflictToEdit.GetConflictId());
 		quest5.SetQuestId(5);
 		quest5.SetMinCharacterLevel(1);
 		quest5.SetQuestName("test 5");
@@ -377,12 +377,12 @@ public class ManageQuestsControl {
 		existingTheQuestArrayList.add(quest5);
 		this.createNewQuestChainInDB(existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
-		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(this.theConflictToEdit.GetConflictId());
     }
 	
 	public void createQuestTemplateList () throws SQLException {
 		existingTheQuestArrayList = new ArrayList<Quest>();
-		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(this.theConflictToEdit.GetConflictId());
 		if (this.existingTheQuestArrayList.size() == 0) {
 			switch (this.theConflictToEdit.GetConflictArcType()) {
 				case "The Quest":

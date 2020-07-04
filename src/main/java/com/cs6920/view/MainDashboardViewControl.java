@@ -76,10 +76,11 @@ public class MainDashboardViewControl {
     
     private Parent theManageTemplateTheQuestParentView;
     private Scene theManageTemplateTheQuestScene;
+    private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
 
     private Parent theManageTemplateVoyageAndReturnParentView;
     private Scene theManageTemplateVoyageAndReturnScene;
-    private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
+    private EditConflictQuestsViewControl theEditConflictVoyageViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -103,8 +104,8 @@ public class MainDashboardViewControl {
 		this.CreateCreateNPCScene();
 		
 		this.CreateManageQuestChainsScene();
-		this.CreateManageTemplateTheQuestScene();
 		this.CreateManageTemplateVoyageAndReturnScene();
+		this.CreateManageTemplateTheQuestScene();
 	} 
 	
 	/**
@@ -154,6 +155,14 @@ public class MainDashboardViewControl {
 	public void SetTheEditConflictQuestsViewControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl) {
 		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
 	}
+
+	/**
+	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
+	 * @param theManageQuestChainsViewControl
+	 */
+	public void SetTheEditConflictVoyageViewControl(EditConflictQuestsViewControl theEditConflictVoyageViewControl) {
+		this.theEditConflictVoyageViewControl = theEditConflictVoyageViewControl;
+	}
 	
 	/**
 	 * Sets the id of the Player to be edited
@@ -182,8 +191,16 @@ public class MainDashboardViewControl {
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
-	public void SetConflictToEdit(Conflict conflictToEdit) {
-		this.theEditConflictQuestsViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+	public void SetConflictToEdit(Conflict conflictToEdit, String arcType) {
+    	switch(arcType) {
+    	case "The Quest":
+    		this.theEditConflictQuestsViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Voyage and Return":
+    		this.theEditConflictVoyageViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+		default: break;
+	}
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
@@ -298,7 +315,7 @@ public class MainDashboardViewControl {
 				theSceneToStage = theManageTemplateTheQuestScene;
 				break;
 			case "manageTemplateVoyageAndReturn":
-				theEditConflictQuestsViewControl.updateExistingTheQuestList();
+				theEditConflictVoyageViewControl.updateExistingTheQuestList();
 				theSceneToStage = theManageTemplateVoyageAndReturnScene;
 				break;
 			default: break;
@@ -434,7 +451,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageTemplateTheQuestScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "The Quest"));
         try {
         	theManageTemplateTheQuestParentView = theFxmlLoader.load();
         	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);
@@ -445,7 +462,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageTemplateVoyageAndReturnScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateVoyageView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Voyage and Return"));
         try {
         	theManageTemplateVoyageAndReturnParentView = theFxmlLoader.load();
         	theManageTemplateVoyageAndReturnScene = new Scene(theManageTemplateVoyageAndReturnParentView);

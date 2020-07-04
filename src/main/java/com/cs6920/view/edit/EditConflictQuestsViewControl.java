@@ -50,9 +50,17 @@ public class EditConflictQuestsViewControl {
 	 * Constructor for this View Control
 	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
 	 */
-    public EditConflictQuestsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    public EditConflictQuestsViewControl(MainDashboardViewControl theMainDashboardViewControl, String arcType) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheEditConflictQuestsViewControl(this);
+    	switch(arcType) {
+	    	case "The Quest":
+	        	this.theMainDashboardViewControl.SetTheEditConflictQuestsViewControl(this);
+	    		break;
+	    	case "Voyage and Return":
+	        	this.theMainDashboardViewControl.SetTheEditConflictVoyageViewControl(this);
+	    		break;
+    		default: break;
+    	}
     	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.GetDBConnection());
     	
     }

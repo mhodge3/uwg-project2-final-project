@@ -90,11 +90,11 @@ public class ManageConflictsViewControl {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
 			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
+					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
 					break;
 				case "Voyage and Return":
-					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
+					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateVoyageAndReturn");
 					break;
 				default: break;
