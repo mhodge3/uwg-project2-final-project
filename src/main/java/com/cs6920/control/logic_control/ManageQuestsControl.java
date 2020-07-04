@@ -66,6 +66,9 @@ public class ManageQuestsControl {
 	
 	private int getHighestObstacleId () {
 		int highestObstacleQuest = 3;
+		if (this.getQuestVariableType() == "insight") {
+			highestObstacleQuest = 4;
+		}
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestArcType().contentEquals("obstacle")) {
 				highestObstacleQuest = quest.GetidInConflict();
@@ -88,7 +91,7 @@ public class ManageQuestsControl {
 	public void addObstacle() throws SQLException {
 		int highestObstacleQuestId = this.getHighestObstacleId();
 		Quest obstacleQuest = new Quest(); 
-		obstacleQuest.SetQuestArcType("obstacle");
+		obstacleQuest.SetQuestArcType(this.getQuestVariableType());
 		obstacleQuest.SetPreReqIdInConflict(highestObstacleQuestId);
 		obstacleQuest.SetConflictId(theConflictIdToEdit);
 		obstacleQuest.SetQuestId(0);
@@ -204,89 +207,192 @@ public class ManageQuestsControl {
     public void updateQuestTemplateList() throws SQLException {
     	this.updateQuestChainInDB();
     }
+    
+    private String getQuestVariableType() {
+    	switch (this.theConflictToEdit.GetConflictArcType()) {
+	    	case "The Quest":
+	    		return "obstacle";
+	    	case "Voyage and Return":
+	    		return "insight";
+	    	default: return "unkown";
+    	}
+    }
+    
+    private void firstSetupOfTheQuest() throws SQLException {
+		Quest quest1 = new Quest();
+		quest1.SetIdInConflict(1);
+		quest1.SetPreReqIdInConflict(0);
+		quest1.SetQuestReceiverNpcId(0);
+		quest1.SetQuestGiverNpcId(0);
+		quest1.SetQuestArcType("calling");
+		quest1.SetPreReqQuestId(0);
+		quest1.SetConflictId(theConflictIdToEdit);
+		quest1.SetQuestId(1);
+		quest1.SetMinCharacterLevel(1);
+		quest1.SetQuestName("test 1");
+		quest1.SetQuestDescription("testing 1");
+		quest1.SetQuestGiverDialog("Go");
+		quest1.SetQuestReceiverDialog("Stop");
+		Quest quest2 = new Quest();
+		quest2.SetIdInConflict(2);
+		quest2.SetPreReqIdInConflict(1);
+		quest2.SetQuestReceiverNpcId(0);
+		quest2.SetQuestGiverNpcId(0);
+		quest2.SetQuestArcType("leaving");
+		quest2.SetPreReqQuestId(1);
+		quest2.SetConflictId(theConflictIdToEdit);
+		quest2.SetQuestId(2);
+		quest2.SetMinCharacterLevel(1);
+		quest2.SetQuestName("test 2");
+		quest2.SetQuestDescription("testing 2");
+		quest2.SetQuestGiverDialog("Go");
+		quest2.SetQuestReceiverDialog("Stop");
+		Quest quest3 = new Quest();
+		quest3.SetIdInConflict(3);
+		quest3.SetPreReqIdInConflict(2);
+		quest3.SetQuestReceiverNpcId(0);
+		quest3.SetQuestGiverNpcId(0);
+		quest3.SetQuestArcType(this.getQuestVariableType());
+		quest3.SetPreReqQuestId(2);
+		quest3.SetConflictId(theConflictIdToEdit);
+		quest3.SetQuestId(3);
+		quest3.SetMinCharacterLevel(1);
+		quest3.SetQuestName("test 3");
+		quest3.SetQuestDescription("testing 3");
+		quest3.SetQuestGiverDialog("Go");
+		quest3.SetQuestReceiverDialog("Stop");
+		Quest quest4 = new Quest();
+		quest4.SetIdInConflict(4);
+		quest4.SetPreReqIdInConflict(3);
+		quest4.SetQuestReceiverNpcId(0);
+		quest4.SetQuestGiverNpcId(0);
+		quest4.SetQuestArcType("obtain elixir");
+		quest4.SetPreReqQuestId(3);
+		quest4.SetConflictId(theConflictIdToEdit);
+		quest4.SetQuestId(4);
+		quest4.SetMinCharacterLevel(1);
+		quest4.SetQuestName("test 4");
+		quest4.SetQuestDescription("testing 4");
+		quest4.SetQuestGiverDialog("Go");
+		quest4.SetQuestReceiverDialog("Stop");
+		Quest quest5 = new Quest();
+		quest5.SetIdInConflict(5);
+		quest5.SetPreReqIdInConflict(4);
+		quest5.SetQuestReceiverNpcId(0);
+		quest5.SetQuestGiverNpcId(0);
+		quest5.SetQuestArcType("return elixir");
+		quest5.SetPreReqQuestId(4);
+		quest5.SetConflictId(theConflictIdToEdit);
+		quest5.SetQuestId(5);
+		quest5.SetMinCharacterLevel(1);
+		quest5.SetQuestName("test 5");
+		quest5.SetQuestDescription("testing 5");
+		quest5.SetQuestGiverDialog("Go");
+		quest5.SetQuestReceiverDialog("Stop");
+		existingTheQuestArrayList.add(quest1);
+		existingTheQuestArrayList.add(quest2);
+		existingTheQuestArrayList.add(quest3);
+		existingTheQuestArrayList.add(quest4);
+		existingTheQuestArrayList.add(quest5);
+		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList = new ArrayList<Quest>();
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+    }
+    
+    private void firstSetupOfVoyage() throws SQLException {
+		Quest quest1 = new Quest();
+		quest1.SetIdInConflict(1);
+		quest1.SetPreReqIdInConflict(0);
+		quest1.SetQuestReceiverNpcId(0);
+		quest1.SetQuestGiverNpcId(0);
+		quest1.SetQuestArcType("calling");
+		quest1.SetPreReqQuestId(0);
+		quest1.SetConflictId(theConflictIdToEdit);
+		quest1.SetQuestId(1);
+		quest1.SetMinCharacterLevel(1);
+		quest1.SetQuestName("test 1");
+		quest1.SetQuestDescription("testing 1");
+		quest1.SetQuestGiverDialog("Go");
+		quest1.SetQuestReceiverDialog("Stop");
+		Quest quest2 = new Quest();
+		quest2.SetIdInConflict(2);
+		quest2.SetPreReqIdInConflict(1);
+		quest2.SetQuestReceiverNpcId(0);
+		quest2.SetQuestGiverNpcId(0);
+		quest2.SetQuestArcType("meeting mentor");
+		quest2.SetPreReqQuestId(1);
+		quest2.SetConflictId(theConflictIdToEdit);
+		quest2.SetQuestId(2);
+		quest2.SetMinCharacterLevel(1);
+		quest2.SetQuestName("test 2");
+		quest2.SetQuestDescription("testing 2");
+		quest2.SetQuestGiverDialog("Go");
+		quest2.SetQuestReceiverDialog("Stop");
+		Quest quest3 = new Quest();
+		quest3.SetIdInConflict(3);
+		quest3.SetPreReqIdInConflict(2);
+		quest3.SetQuestReceiverNpcId(0);
+		quest3.SetQuestGiverNpcId(0);
+		quest3.SetQuestArcType("leaving");
+		quest3.SetPreReqQuestId(2);
+		quest3.SetConflictId(theConflictIdToEdit);
+		quest3.SetQuestId(3);
+		quest3.SetMinCharacterLevel(1);
+		quest3.SetQuestName("test 3");
+		quest3.SetQuestDescription("testing 3");
+		quest3.SetQuestGiverDialog("Go");
+		quest3.SetQuestReceiverDialog("Stop");
+		Quest quest4 = new Quest();
+		quest4.SetIdInConflict(4);
+		quest4.SetPreReqIdInConflict(3);
+		quest4.SetQuestReceiverNpcId(0);
+		quest4.SetQuestGiverNpcId(0);
+		quest4.SetQuestArcType("insight");
+		quest4.SetPreReqQuestId(3);
+		quest4.SetConflictId(theConflictIdToEdit);
+		quest4.SetQuestId(4);
+		quest4.SetMinCharacterLevel(1);
+		quest4.SetQuestName("test 4");
+		quest4.SetQuestDescription("testing 4");
+		quest4.SetQuestGiverDialog("Go");
+		quest4.SetQuestReceiverDialog("Stop");
+		Quest quest5 = new Quest();
+		quest5.SetIdInConflict(5);
+		quest5.SetPreReqIdInConflict(4);
+		quest5.SetQuestReceiverNpcId(0);
+		quest5.SetQuestGiverNpcId(0);
+		quest5.SetQuestArcType("return new wisdom");
+		quest5.SetPreReqQuestId(4);
+		quest5.SetConflictId(theConflictIdToEdit);
+		quest5.SetQuestId(5);
+		quest5.SetMinCharacterLevel(1);
+		quest5.SetQuestName("test 5");
+		quest5.SetQuestDescription("testing 5");
+		quest5.SetQuestGiverDialog("Go");
+		quest5.SetQuestReceiverDialog("Stop");
+		existingTheQuestArrayList.add(quest1);
+		existingTheQuestArrayList.add(quest2);
+		existingTheQuestArrayList.add(quest3);
+		existingTheQuestArrayList.add(quest4);
+		existingTheQuestArrayList.add(quest5);
+		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList = new ArrayList<Quest>();
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+    }
 	
 	public void createQuestTemplateList () throws SQLException {
 		existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
 		if (this.existingTheQuestArrayList.size() == 0) {
-			Quest quest1 = new Quest();
-			quest1.SetIdInConflict(1);
-			quest1.SetPreReqIdInConflict(0);
-			quest1.SetQuestReceiverNpcId(0);
-			quest1.SetQuestGiverNpcId(0);
-			quest1.SetQuestArcType("calling");
-			quest1.SetPreReqQuestId(0);
-			quest1.SetConflictId(theConflictIdToEdit);
-			quest1.SetQuestId(1);
-			quest1.SetMinCharacterLevel(1);
-			quest1.SetQuestName("test 1");
-			quest1.SetQuestDescription("testing 1");
-			quest1.SetQuestGiverDialog("Go");
-			quest1.SetQuestReceiverDialog("Stop");
-			Quest quest2 = new Quest();
-			quest2.SetIdInConflict(2);
-			quest2.SetPreReqIdInConflict(1);
-			quest2.SetQuestReceiverNpcId(0);
-			quest2.SetQuestGiverNpcId(0);
-			quest2.SetQuestArcType("leaving");
-			quest2.SetPreReqQuestId(1);
-			quest2.SetConflictId(theConflictIdToEdit);
-			quest2.SetQuestId(2);
-			quest2.SetMinCharacterLevel(1);
-			quest2.SetQuestName("test 2");
-			quest2.SetQuestDescription("testing 2");
-			quest2.SetQuestGiverDialog("Go");
-			quest2.SetQuestReceiverDialog("Stop");
-			Quest quest3 = new Quest();
-			quest3.SetIdInConflict(3);
-			quest3.SetPreReqIdInConflict(2);
-			quest3.SetQuestReceiverNpcId(0);
-			quest3.SetQuestGiverNpcId(0);
-			quest3.SetQuestArcType("obstacle");
-			quest3.SetPreReqQuestId(2);
-			quest3.SetConflictId(theConflictIdToEdit);
-			quest3.SetQuestId(3);
-			quest3.SetMinCharacterLevel(1);
-			quest3.SetQuestName("test 3");
-			quest3.SetQuestDescription("testing 3");
-			quest3.SetQuestGiverDialog("Go");
-			quest3.SetQuestReceiverDialog("Stop");
-			Quest quest4 = new Quest();
-			quest4.SetIdInConflict(4);
-			quest4.SetPreReqIdInConflict(3);
-			quest4.SetQuestReceiverNpcId(0);
-			quest4.SetQuestGiverNpcId(0);
-			quest4.SetQuestArcType("obtain elixir");
-			quest4.SetPreReqQuestId(3);
-			quest4.SetConflictId(theConflictIdToEdit);
-			quest4.SetQuestId(4);
-			quest4.SetMinCharacterLevel(1);
-			quest4.SetQuestName("test 4");
-			quest4.SetQuestDescription("testing 4");
-			quest4.SetQuestGiverDialog("Go");
-			quest4.SetQuestReceiverDialog("Stop");
-			Quest quest5 = new Quest();
-			quest5.SetIdInConflict(5);
-			quest5.SetPreReqIdInConflict(4);
-			quest5.SetQuestReceiverNpcId(0);
-			quest5.SetQuestGiverNpcId(0);
-			quest5.SetQuestArcType("return elixir");
-			quest5.SetPreReqQuestId(4);
-			quest5.SetConflictId(theConflictIdToEdit);
-			quest5.SetQuestId(5);
-			quest5.SetMinCharacterLevel(1);
-			quest5.SetQuestName("test 5");
-			quest5.SetQuestDescription("testing 5");
-			quest5.SetQuestGiverDialog("Go");
-			quest5.SetQuestReceiverDialog("Stop");
-			existingTheQuestArrayList.add(quest1);
-			existingTheQuestArrayList.add(quest2);
-			existingTheQuestArrayList.add(quest3);
-			existingTheQuestArrayList.add(quest4);
-			existingTheQuestArrayList.add(quest5);
-			this.createNewQuestChainInDB(existingTheQuestArrayList);
-			this.existingTheQuestArrayList = new ArrayList<Quest>();
-			this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(theConflictIdToEdit);
+			switch (this.theConflictToEdit.GetConflictArcType()) {
+				case "The Quest":
+					this.firstSetupOfTheQuest();
+					break;
+				case "Voyage and Return":
+					this.firstSetupOfVoyage();
+					break;
+				default: break;
+			}
 		}
 	}
 	

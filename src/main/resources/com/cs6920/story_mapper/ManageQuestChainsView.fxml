@@ -48,7 +48,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="createVoyageAndReturnButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;Voyage and Return&quot;">
+                        <Button fx:id="createVoyageAndReturnButton" mnemonicParsing="false" onAction="#handleCreateTemplateVoyageButton" prefHeight="25.0" prefWidth="186.0" text="&quot;Voyage and Return&quot;">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

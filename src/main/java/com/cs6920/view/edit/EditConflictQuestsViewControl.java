@@ -52,7 +52,7 @@ public class EditConflictQuestsViewControl {
 	 */
     public EditConflictQuestsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManageTheQuestViewControl(this);
+    	this.theMainDashboardViewControl.SetTheEditConflictQuestsViewControl(this);
     	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.GetDBConnection());
     	
     }
@@ -118,11 +118,20 @@ public class EditConflictQuestsViewControl {
 				case "obstacle":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObstacle");
 					break;
+				case "insight":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestInsight");
+					break;
+				case "meeting mentor":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestMentor");
+					break;
 				case "obtain elixir":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObtainElixir");
 					break;
 				case "return elixir":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithElixir");
+					break;
+				case "return new wisdom":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithWisdom");
 					break;
 				default: break;
 			}

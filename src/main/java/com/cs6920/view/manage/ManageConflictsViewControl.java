@@ -80,12 +80,22 @@ public class ManageConflictsViewControl {
 	}
 	
 	@FXML
+	private void handleCreateTemplateVoyageButton() throws SQLException {
+		theManageConflictsControl.createVoyageConflict();
+    	this.updateConflictsTableDisplay();
+	}
+	
+	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
 			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
 				case "The Quest":
 					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+					break;
+				case "Voyage and Return":
+					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
+					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateVoyageAndReturn");
 					break;
 				default: break;
 			}
