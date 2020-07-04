@@ -66,6 +66,15 @@ public class ManageQuestChainsControl {
 		this.UpdateConflictArrayList();
 	}
 	
+	public Conflict getConflictById(int conflictId) {
+		for (Conflict conflict : this.existingConflictArrayList) {
+			if (conflict.GetConflictId() == conflictId) {
+				return conflict;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Get the Observable Player List
 	 * @return	the observable list

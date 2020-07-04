@@ -179,8 +179,8 @@ public class MainDashboardViewControl {
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
-	public void SetConflictToEdit(int conflictIdToEdit) {
-		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictIdToEdit);
+	public void SetConflictToEdit(Conflict conflictToEdit) {
+		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictToEdit);
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	

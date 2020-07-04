@@ -19,6 +19,7 @@ public class ManageTemplateTheQuestControl {
 	private int theConflictIdToEdit;
 	private QuestsController theQuestsController;
 	private QuestItemsDAL theQuestItemsDAL;
+	private Conflict theConflictToEdit;
 	
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
@@ -30,8 +31,9 @@ public class ManageTemplateTheQuestControl {
 		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
 	}
 	
-	public void SetTheConflictToEdit(int theConflictIdToEdit) {
-		this.theConflictIdToEdit = theConflictIdToEdit;
+	public void SetTheConflictToEdit(Conflict theConflictToEdit) {
+		this.theConflictIdToEdit = theConflictToEdit.GetConflictId();
+		this.theConflictToEdit = theConflictToEdit;
 	}
 	
 	public ArrayList<Quest> getExistingQuestList() {
@@ -49,6 +51,10 @@ public class ManageTemplateTheQuestControl {
 	
 	public int GetConflictIdToEdit () {
 		return this.theConflictIdToEdit;
+	}
+	
+	public Conflict getConflict() {
+		return this.theConflictToEdit;
 	}
 	
 	private int getHighestObstacleId () {

@@ -84,7 +84,7 @@ public class ManageQuestChainsViewControl {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
 			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.SetConflictToEdit(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+					theMainDashboardViewControl.SetConflictToEdit(theManageQuestChainsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
 					break;
 				default: break;

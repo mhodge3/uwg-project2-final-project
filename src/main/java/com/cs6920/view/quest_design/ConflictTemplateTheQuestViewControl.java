@@ -94,6 +94,12 @@ public class ConflictTemplateTheQuestViewControl {
     }
     
     @FXML
+    private void updateConflictNameDescription() {
+    	this.theManageTemplateTheQuestControl.getConflict().SetConflictName(storyConflictNameTextField.getText());
+    	this.theManageTemplateTheQuestControl.getConflict().SetConflictDescription(storyConflictDescriptionTextArea.getText());
+    }
+    
+    @FXML
     private void editQuest(ActionEvent event) throws IOException, SQLException {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
@@ -147,6 +153,8 @@ public class ConflictTemplateTheQuestViewControl {
     }
     
     public void refreshTheQuestList() {
+		storyConflictNameTextField.setText(this.theManageTemplateTheQuestControl.getConflict().GetConflictName());
+		storyConflictDescriptionTextArea.setText(this.theManageTemplateTheQuestControl.getConflict().GetConflictDescription());
 		questTableView.getItems().clear();
 		questTableView.getItems().addAll(theManageTemplateTheQuestControl.GetObservableTheQuestList());
 		questTableView.refresh();
