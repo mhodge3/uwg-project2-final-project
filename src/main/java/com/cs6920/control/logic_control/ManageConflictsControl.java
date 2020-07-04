@@ -56,6 +56,11 @@ public class ManageConflictsControl {
 		this.UpdateConflictArrayList();
 	}
 	
+	public void createMonsterConflict() throws SQLException {
+		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Defeat the Monster");
+		this.UpdateConflictArrayList();
+	}
+	
 	public void deleteTheQuestConflict(int conflictIdToDelete) throws SQLException {
 		ArrayList<Quest> thisConflictsQuests = this.theQuestsController.GetQuestsByConflictID(conflictIdToDelete);
 		for (Quest conflictQuest : thisConflictsQuests) {

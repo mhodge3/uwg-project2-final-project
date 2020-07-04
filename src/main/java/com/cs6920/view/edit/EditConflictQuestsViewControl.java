@@ -59,6 +59,9 @@ public class EditConflictQuestsViewControl {
 	    	case "Voyage and Return":
 	        	this.theMainDashboardViewControl.SetTheEditConflictVoyageViewControl(this);
 	    		break;
+	    	case "Defeat the Monster":
+	        	this.theMainDashboardViewControl.SetTheEditConflictMonsterViewControl(this);
+	    		break;
     		default: break;
     	}
     	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.GetDBConnection());
@@ -129,6 +132,12 @@ public class EditConflictQuestsViewControl {
 				case "insight":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestInsight");
 					break;
+				case "henchman":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestHenchman");
+					break;
+				case "monster":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestMonster");
+					break;
 				case "meeting mentor":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestMentor");
 					break;
@@ -140,6 +149,9 @@ public class EditConflictQuestsViewControl {
 					break;
 				case "return new wisdom":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithWisdom");
+					break;
+				case "return and reward":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnAndReward");
 					break;
 				default: break;
 			}

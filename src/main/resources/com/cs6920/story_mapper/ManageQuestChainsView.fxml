@@ -43,7 +43,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="createDefeatTheMonsterButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="&quot;Defeat the Monster&quot;">
+                        <Button fx:id="createDefeatTheMonsterButton" mnemonicParsing="false" onAction="#handleCreateTemplateMonsterButton" prefHeight="25.0" prefWidth="186.0" text="&quot;Defeat the Monster&quot;">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>

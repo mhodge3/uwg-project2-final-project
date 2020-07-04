@@ -85,7 +85,7 @@
                         <ComboBox fx:id="questMentorNPCComboBox" prefHeight="25.0" prefWidth="377.0" />
                         <Label text="Benefactor Dialog - An arc type that stands to gain by your success" />
                         <TextArea fx:id="editReceiverDialogTextArea" prefHeight="149.0" prefWidth="371.0" />
-                        <Label text="Items (Props) The highest reward worth having taken &quot;The Quest&quot;" />
+                        <Label text="Items (Props) The highest reward worth the &quot;Voyage and Return&quot;" />
                         <HBox prefHeight="17.0" prefWidth="371.0">
                            <children>
                               <ComboBox fx:id="addRewardItemComboBox" prefHeight="25.0" prefWidth="257.0" />

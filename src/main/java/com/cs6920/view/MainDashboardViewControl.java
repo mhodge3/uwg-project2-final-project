@@ -110,6 +110,7 @@ public class MainDashboardViewControl {
 		this.CreateManageQuestChainsScene();
 		this.CreateManageTemplateVoyageAndReturnScene();
 		this.CreateManageTemplateTheQuestScene();
+		this.CreateManageTemplateDefeatTheMonsterScene();
 	} 
 	
 	/**

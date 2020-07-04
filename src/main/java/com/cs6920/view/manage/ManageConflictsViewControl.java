@@ -86,16 +86,24 @@ public class ManageConflictsViewControl {
 	}
 	
 	@FXML
+	private void handleCreateTemplateMonsterButton() throws SQLException {
+		theManageConflictsControl.createMonsterConflict();
+    	this.updateConflictsTableDisplay();
+	}
+	
+	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
+			theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
 			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
 					break;
 				case "Voyage and Return":
-					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateVoyageAndReturn");
+					break;
+				case "Defeat the Monster":
+					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateDefeatTheMonster");
 					break;
 				default: break;
 			}
