@@ -94,9 +94,15 @@ public class ConflictTemplateTheQuestViewControl {
     }
     
     @FXML
-    private void updateConflictNameDescription() {
+    private void updateConflictNameDescription() throws SQLException {
     	this.theManageTemplateTheQuestControl.getConflict().SetConflictName(storyConflictNameTextField.getText());
     	this.theManageTemplateTheQuestControl.getConflict().SetConflictDescription(storyConflictDescriptionTextArea.getText());
+    	this.theManageTemplateTheQuestControl.updateTheConflict();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Story Conflict Update");
+		alert.setHeaderText("Information update");
+		alert.setContentText("The name and description for story conflict containing these quests has been updated");
+		alert.showAndWait();
     }
     
     @FXML

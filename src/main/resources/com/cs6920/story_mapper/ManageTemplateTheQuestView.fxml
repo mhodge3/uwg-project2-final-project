@@ -54,7 +54,12 @@
                         </Label>
                         <TextField fx:id="storyConflictNameTextField" prefHeight="25.0" prefWidth="145.0" />
                         <Label text="Story Conflict Description" />
-                        <TextArea fx:id="storyConflictDescriptionTextArea" prefHeight="303.0" prefWidth="174.0" />
+                        <TextArea fx:id="storyConflictDescriptionTextArea" prefHeight="264.0" prefWidth="174.0" />
+                        <Button mnemonicParsing="false" onAction="#updateConflictNameDescription" prefHeight="25.0" prefWidth="174.0" text="Update Conflict Information">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="10.0" />

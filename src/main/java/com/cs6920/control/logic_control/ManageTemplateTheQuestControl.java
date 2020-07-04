@@ -3,6 +3,7 @@ package com.cs6920.control.logic_control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.cs6920.DAL.ConflictDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Conflict;
@@ -20,6 +21,7 @@ public class ManageTemplateTheQuestControl {
 	private QuestsController theQuestsController;
 	private QuestItemsDAL theQuestItemsDAL;
 	private Conflict theConflictToEdit;
+	private ConflictDAL theConflictDAL;
 	
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
@@ -29,6 +31,7 @@ public class ManageTemplateTheQuestControl {
 		//this.playerDAL = new PlayerDAL(theDBConnection);
 		this.theQuestsController = new QuestsController(theDBConnection);
 		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
+		this.theConflictDAL = new ConflictDAL(theDBConnection);
 	}
 	
 	public void SetTheConflictToEdit(Conflict theConflictToEdit) {
@@ -55,6 +58,10 @@ public class ManageTemplateTheQuestControl {
 	
 	public Conflict getConflict() {
 		return this.theConflictToEdit;
+	}
+	
+	public void updateTheConflict() throws SQLException {
+		this.theConflictDAL.UpdateConflict(this.theConflictToEdit, this.theConflictToEdit.GetConflictMinLvl(), this.theConflictToEdit.GetConflictTemplate(), this.theConflictToEdit.GetConflictName(), this.theConflictToEdit.GetConflictDescription(), this.theConflictToEdit.GetConflictArcType());
 	}
 	
 	private int getHighestObstacleId () {
