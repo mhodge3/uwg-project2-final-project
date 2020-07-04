@@ -31,6 +31,7 @@ public class ManageQuestChainsControl {
 	public ManageQuestChainsControl(MySQLAccess theDBConnection) {
 		this.theConflictDAL = new ConflictDAL(theDBConnection);
 		this.theQuestsController = new QuestsController(theDBConnection);
+		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
 	}
 
 	/**
@@ -53,9 +54,7 @@ public class ManageQuestChainsControl {
 	public void deleteTheQuestConflict(int conflictIdToDelete) throws SQLException {
 		ArrayList<Quest> thisConflictsQuests = this.theQuestsController.GetQuestsByConflictID(conflictIdToDelete);
 		for (Quest conflictQuest : thisConflictsQuests) {
-			if (this.theQuestItemsDAL.GetQuestItemsByQuestId(conflictQuest.GetQuestId()) != null) {
-				this.theQuestItemsDAL.DeleteQuestItemsByQuestId(conflictQuest.GetQuestId());
-			}
+			this.theQuestItemsDAL.DeleteQuestItemsByQuestId(conflictQuest.GetQuestId());
 			this.theQuestsController.DeleteQuest(conflictQuest);
 		}
 		for (Conflict conflict : existingConflictArrayList) {
