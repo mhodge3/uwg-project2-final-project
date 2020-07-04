@@ -53,7 +53,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="createCustomButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Custom" />
+                        <Button fx:id="createCustomButton" mnemonicParsing="false" onAction="#handleCreateTemplateCustomButton" prefHeight="25.0" prefWidth="186.0" text="Custom" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="175.0" text="Modify Existing Story Conflicts">
                            <VBox.margin>
                               <Insets bottom="5.0" top="10.0" />

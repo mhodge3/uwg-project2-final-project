@@ -64,20 +64,23 @@ public class ManageQuestsControl {
 		this.theConflictDAL.UpdateConflict(this.theConflictToEdit, this.theConflictToEdit.GetConflictMinLvl(), this.theConflictToEdit.GetConflictTemplate(), this.theConflictToEdit.GetConflictName(), this.theConflictToEdit.GetConflictDescription(), this.theConflictToEdit.GetConflictArcType());
 	}
 	
-	private int getHighestObstacleId () {
-		int highestObstacleQuest = 3;
+	private int getHighestVariableQuestId () {
+		int highestVariableQuest = 3;
 		if (this.getQuestVariableType() == "insight") {
-			highestObstacleQuest = 4;
+			highestVariableQuest = 4;
 		}
 		if (this.getQuestVariableType() == "henchman") {
-			highestObstacleQuest = 2;
+			highestVariableQuest = 2;
+		}
+		if (this.getQuestVariableType() == "custom") {
+			highestVariableQuest = 1;
 		}
 		for (Quest quest : existingTheQuestArrayList) {
 			if (quest.GetQuestArcType().contentEquals("obstacle")) {
-				highestObstacleQuest = quest.GetidInConflict();
+				highestVariableQuest = quest.GetidInConflict();
 			}
 		}
-		return highestObstacleQuest;
+		return highestVariableQuest;
 	}
 	
 	private void insertNewObstacleQuest(Quest newObstacleQuest) throws SQLException {
@@ -92,7 +95,7 @@ public class ManageQuestsControl {
 	}
 	
 	public void addObstacle() throws SQLException {
-		int highestObstacleQuestId = this.getHighestObstacleId();
+		int highestObstacleQuestId = this.getHighestVariableQuestId();
 		Quest obstacleQuest = new Quest(); 
 		obstacleQuest.SetQuestArcType(this.getQuestVariableType());
 		obstacleQuest.SetPreReqIdInConflict(highestObstacleQuestId);
@@ -219,6 +222,8 @@ public class ManageQuestsControl {
 	    		return "insight";
 	    	case "Defeat the Monster":
 	    		return "henchman";
+	    	case "Custom":
+	    		return "custom";
 	    	default: return "unkown";
     	}
     }
@@ -450,6 +455,27 @@ public class ManageQuestsControl {
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(this.theConflictToEdit.GetConflictId());
     }
+    
+    private void firstSetupOfCustom() throws SQLException {
+		Quest quest1 = new Quest();
+		quest1.SetIdInConflict(1);
+		quest1.SetPreReqIdInConflict(0);
+		quest1.SetQuestReceiverNpcId(0);
+		quest1.SetQuestGiverNpcId(0);
+		quest1.SetQuestArcType("custom");
+		quest1.SetPreReqQuestId(0);
+		quest1.SetConflictId(this.theConflictToEdit.GetConflictId());
+		quest1.SetQuestId(1);
+		quest1.SetMinCharacterLevel(1);
+		quest1.SetQuestName("test 1");
+		quest1.SetQuestDescription("testing 1");
+		quest1.SetQuestGiverDialog("Go");
+		quest1.SetQuestReceiverDialog("Stop");
+		existingTheQuestArrayList.add(quest1);
+		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList = new ArrayList<Quest>();
+		this.existingTheQuestArrayList = this.theQuestsController.GetQuestsByConflictID(this.theConflictToEdit.GetConflictId());
+    }
 	
 	public void createQuestTemplateList () throws SQLException {
 		existingTheQuestArrayList = new ArrayList<Quest>();
@@ -464,6 +490,9 @@ public class ManageQuestsControl {
 					break;
 				case "Defeat the Monster":
 					this.firstSetupOfMonster();
+					break;
+				case "Custom":
+					this.firstSetupOfCustom();
 					break;
 				default: break;
 			}

@@ -62,6 +62,9 @@ public class EditConflictQuestsViewControl {
 	    	case "Defeat the Monster":
 	        	this.theMainDashboardViewControl.SetTheEditConflictMonsterViewControl(this);
 	    		break;
+	    	case "Custom":
+	        	this.theMainDashboardViewControl.SetTheEditConflictCustomViewControl(this);
+	    		break;
     		default: break;
     	}
     	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.GetDBConnection());
@@ -152,6 +155,9 @@ public class EditConflictQuestsViewControl {
 					break;
 				case "return and reward":
 					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnAndReward");
+					break;
+				case "custom":
+					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestCustom");
 					break;
 				default: break;
 			}

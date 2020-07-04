@@ -24,6 +24,7 @@ public class ManageConflictsControl {
 	private ConflictDAL theConflictDAL;
 	private QuestsController theQuestsController;
 	private QuestItemsDAL theQuestItemsDAL;
+	
 	/**
 	 * Constructor that sets up the DAL to the current DBConnection class instance
 	 * @param theDBConnection
@@ -58,6 +59,11 @@ public class ManageConflictsControl {
 	
 	public void createMonsterConflict() throws SQLException {
 		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Defeat the Monster");
+		this.UpdateConflictArrayList();
+	}
+	
+	public void createCustomConflict() throws SQLException {
+		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Custom");
 		this.UpdateConflictArrayList();
 	}
 	

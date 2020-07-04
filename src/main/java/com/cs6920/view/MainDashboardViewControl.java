@@ -85,6 +85,10 @@ public class MainDashboardViewControl {
     private Parent theManageTemplateDefeatTheMonsterParentView;
     private Scene theManageTemplateDefeatTheMonsterScene;
     private EditConflictQuestsViewControl theEditConflictMonsterViewControl;
+
+    private Parent theManageTemplateCustomParentView;
+    private Scene theManageTemplateCustomScene;
+    private EditConflictQuestsViewControl theEditConflictCustomViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -111,6 +115,7 @@ public class MainDashboardViewControl {
 		this.CreateManageTemplateVoyageAndReturnScene();
 		this.CreateManageTemplateTheQuestScene();
 		this.CreateManageTemplateDefeatTheMonsterScene();
+		this.CreateManageTemplateCustomScene();
 	} 
 	
 	/**
@@ -176,6 +181,14 @@ public class MainDashboardViewControl {
 	public void SetTheEditConflictMonsterViewControl(EditConflictQuestsViewControl theEditConflictMonsterViewControl) {
 		this.theEditConflictMonsterViewControl = theEditConflictMonsterViewControl;
 	}
+
+	/**
+	 * Sets the view control reference in the logic control the theEditConflictCustomViewControl
+	 * @param theEditConflictCustomViewControl
+	 */
+	public void SetTheEditConflictCustomViewControl(EditConflictQuestsViewControl theEditConflictCustomViewControl) {
+		this.theEditConflictCustomViewControl = theEditConflictCustomViewControl;
+	}
 	
 	/**
 	 * Sets the id of the Player to be edited
@@ -214,6 +227,9 @@ public class MainDashboardViewControl {
     		break;
     	case "Defeat the Monster":
     		this.theEditConflictMonsterViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Custom":
+    		this.theEditConflictCustomViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
     		break;
 		default: break;
 	}
@@ -337,6 +353,10 @@ public class MainDashboardViewControl {
 			case "manageTemplateDefeatTheMonster":
 				theEditConflictMonsterViewControl.updateExistingTheQuestList();
 				theSceneToStage = theManageTemplateDefeatTheMonsterScene;
+				break;
+			case "manageTemplateCustom":
+				theEditConflictCustomViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateCustomScene;
 				break;
 			default: break;
 		}
@@ -497,6 +517,17 @@ public class MainDashboardViewControl {
         try {
         	theManageTemplateDefeatTheMonsterParentView = theFxmlLoader.load();
         	theManageTemplateDefeatTheMonsterScene = new Scene(theManageTemplateDefeatTheMonsterParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateCustomScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateCustomView.fxml"));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Custom"));
+        try {
+        	theManageTemplateCustomParentView = theFxmlLoader.load();
+        	theManageTemplateCustomScene = new Scene(theManageTemplateCustomParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

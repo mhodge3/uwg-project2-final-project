@@ -92,6 +92,12 @@ public class ManageConflictsViewControl {
 	}
 	
 	@FXML
+	private void handleCreateTemplateCustomButton() throws SQLException {
+		theManageConflictsControl.createCustomConflict();
+    	this.updateConflictsTableDisplay();
+	}
+	
+	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
 			theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
@@ -104,6 +110,9 @@ public class ManageConflictsViewControl {
 					break;
 				case "Defeat the Monster":
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateDefeatTheMonster");
+					break;
+				case "Custom":
+					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateCustom");
 					break;
 				default: break;
 			}
