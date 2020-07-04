@@ -13,7 +13,7 @@ import com.cs6920.model.QuestItems;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class ManageTemplateTheQuestControl {
+public class ManageQuestsControl {
 	//private PlayerDAL playerDAL;
 	private ArrayList<Quest> existingTheQuestArrayList;
 	private ObservableList<Quest> observableTheQuestList = FXCollections.observableArrayList();
@@ -27,7 +27,7 @@ public class ManageTemplateTheQuestControl {
 	 * Constructor that sets up the DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
-	public ManageTemplateTheQuestControl(MySQLAccess theDBConnection) {
+	public ManageQuestsControl(MySQLAccess theDBConnection) {
 		//this.playerDAL = new PlayerDAL(theDBConnection);
 		this.theQuestsController = new QuestsController(theDBConnection);
 		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);

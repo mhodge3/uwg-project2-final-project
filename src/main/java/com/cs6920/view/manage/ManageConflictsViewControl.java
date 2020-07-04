@@ -2,7 +2,7 @@ package com.cs6920.view.manage;
 
 import java.sql.SQLException;
 
-import com.cs6920.control.logic_control.ManageQuestChainsControl;
+import com.cs6920.control.logic_control.ManageConflictsControl;
 import com.cs6920.model.Conflict;
 import com.cs6920.view.MainDashboardViewControl;
 
@@ -18,7 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageQuestChainsViewControl {
+public class ManageConflictsViewControl {
 	@FXML
 	private TableView<Conflict> conflictChainTableView;
 	@FXML
@@ -31,16 +31,16 @@ public class ManageQuestChainsViewControl {
 	private TableColumn<Conflict, String> conflictArcTypeTableColumn;
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private ManageQuestChainsControl theManageQuestChainsControl;
+	private ManageConflictsControl theManageConflictsControl;
     
 	/**
 	 * Constructor for this View Control
 	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
 	 */
-    public ManageQuestChainsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    public ManageConflictsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theMainDashboardViewControl.SetTheManageQuestChainsViewControl(this);
-    	this.theManageQuestChainsControl = new ManageQuestChainsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theManageConflictsControl = new ManageConflictsControl(theMainDashboardViewControl.GetDBConnection());
     
     }
 
@@ -52,8 +52,8 @@ public class ManageQuestChainsViewControl {
 		conflictArcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictArcType"));
 	}
     
-	public ManageQuestChainsControl GetManageQuestChainsControl() {
-		return this.theManageQuestChainsControl;
+	public ManageConflictsControl GetManageQuestChainsControl() {
+		return this.theManageConflictsControl;
 	}
 	
 	/**
@@ -61,13 +61,13 @@ public class ManageQuestChainsViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingConflictList() throws SQLException {
-    	theManageQuestChainsControl.UpdateConflictArrayList();
+    	theManageConflictsControl.UpdateConflictArrayList();
     	this.updateConflictsTableDisplay();
     }
     
     private void updateConflictsTableDisplay() {
     	conflictChainTableView.getItems().clear();
-    	conflictChainTableView.getItems().addAll(theManageQuestChainsControl.GetObservableConflictList());
+    	conflictChainTableView.getItems().addAll(theManageConflictsControl.GetObservableConflictList());
     	conflictMinLvlTableColumn.setSortType(TableColumn.SortType.DESCENDING);
     	conflictChainTableView.getSortOrder().add(conflictMinLvlTableColumn);
     	conflictChainTableView.sort();
@@ -75,7 +75,7 @@ public class ManageQuestChainsViewControl {
 	
 	@FXML
 	private void handleCreateTemplateTheQuestButton() throws SQLException {
-		theManageQuestChainsControl.createTheQuestConflict();
+		theManageConflictsControl.createTheQuestConflict();
     	this.updateConflictsTableDisplay();
 	}
 	
@@ -84,7 +84,7 @@ public class ManageQuestChainsViewControl {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
 			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.SetConflictToEdit(theManageQuestChainsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
+					theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()));
 					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
 					break;
 				default: break;
@@ -102,7 +102,7 @@ public class ManageQuestChainsViewControl {
 	@FXML
 	private void handleDeleteQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theManageQuestChainsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+			theManageConflictsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
 	    	this.updateConflictsTableDisplay();
 		}
 		else {

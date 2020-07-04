@@ -19,14 +19,14 @@ import com.cs6920.story_mapper.App;
 import com.cs6920.view.create.CreateItemsViewControl;
 import com.cs6920.view.create.CreateNPCCharactersViewControl;
 import com.cs6920.view.create.CreatePlayersAndAdminsViewControl;
+import com.cs6920.view.edit.EditConflictQuestsViewControl;
 import com.cs6920.view.edit.EditItemsViewControl;
 import com.cs6920.view.edit.EditNPCCharactersViewControl;
 import com.cs6920.view.edit.EditPlayersAndAdminsViewControl;
 import com.cs6920.view.manage.ManageItemsViewControl;
 import com.cs6920.view.manage.ManageNPCCharactersViewControl;
 import com.cs6920.view.manage.ManagePlayersAndAdminsViewControl;
-import com.cs6920.view.manage.ManageQuestChainsViewControl;
-import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
+import com.cs6920.view.manage.ManageConflictsViewControl;
 
 /**
  * This class is the View Logic for a MainDashboard
@@ -72,11 +72,11 @@ public class MainDashboardViewControl {
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
-    private ManageQuestChainsViewControl theManageQuestChainsViewControl;
+    private ManageConflictsViewControl theManageQuestChainsViewControl;
     
     private Parent theManageTemplateTheQuestParentView;
     private Scene theManageTemplateTheQuestScene;
-    private ConflictTemplateTheQuestViewControl theManageTheQuestViewControl;
+    private EditConflictQuestsViewControl theManageTheQuestViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -140,7 +140,7 @@ public class MainDashboardViewControl {
 	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
 	 * @param theManageQuestChainsViewControl
 	 */
-	public void SetTheManageQuestChainsViewControl(ManageQuestChainsViewControl theManageQuestChainsViewControl) {
+	public void SetTheManageQuestChainsViewControl(ManageConflictsViewControl theManageQuestChainsViewControl) {
 		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
 	}
 
@@ -148,7 +148,7 @@ public class MainDashboardViewControl {
 	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
 	 * @param theManageQuestChainsViewControl
 	 */
-	public void SetTheManageTheQuestViewControl(ConflictTemplateTheQuestViewControl theManageTheQuestViewControl) {
+	public void SetTheManageTheQuestViewControl(EditConflictQuestsViewControl theManageTheQuestViewControl) {
 		this.theManageTheQuestViewControl = theManageTheQuestViewControl;
 	}
 	
@@ -180,7 +180,7 @@ public class MainDashboardViewControl {
 	}
 	
 	public void SetConflictToEdit(Conflict conflictToEdit) {
-		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictToEdit);
+		this.theManageTheQuestViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
@@ -416,7 +416,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageQuestChainsScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageQuestChainsView.fxml"));
-        theFxmlLoader.setController(new ManageQuestChainsViewControl(this));
+        theFxmlLoader.setController(new ManageConflictsViewControl(this));
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();
         	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
@@ -427,7 +427,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageTemplateTheQuestScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
-        theFxmlLoader.setController(new ConflictTemplateTheQuestViewControl(this));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this));
         try {
         	theManageTemplateTheQuestParentView = theFxmlLoader.load();
         	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);

@@ -17,7 +17,7 @@ import javafx.collections.ObservableList;
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageQuestChainsControl {
+public class ManageConflictsControl {
 	//private PlayerDAL playerDAL;
 	private ArrayList<Conflict> existingConflictArrayList;
 	private ObservableList<Conflict> observableConflictList = FXCollections.observableArrayList();
@@ -28,7 +28,7 @@ public class ManageQuestChainsControl {
 	 * Constructor that sets up the DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
-	public ManageQuestChainsControl(MySQLAccess theDBConnection) {
+	public ManageConflictsControl(MySQLAccess theDBConnection) {
 		this.theConflictDAL = new ConflictDAL(theDBConnection);
 		this.theQuestsController = new QuestsController(theDBConnection);
 		this.theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
