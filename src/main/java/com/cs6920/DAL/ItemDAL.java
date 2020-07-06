@@ -42,7 +42,7 @@ public class ItemDAL {
             		"item_type, " + 
             		"is_quest_item, " + 
             		"is_implicit_item, " +
-            		"is_tropy_item " +
+            		"is_trophy_item " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".items ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
@@ -155,7 +155,7 @@ public class ItemDAL {
             		"item_type, " + 
             		"is_quest_item, " + 
             		"is_implicit_item), " +
-            		"is_tropy_item) " +
+            		"is_trophy_item) " +
 					"VALUES (?, ?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, itemName);
