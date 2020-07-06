@@ -33,13 +33,13 @@ class testQuestDALCRUDCycle {
 		assertTrue(newId > 0);
 	}
 	
-	@Test
+	/*@Test
 	@Order(2)
 	public void createAQuestDupilicatesInDB() throws Exception {
 		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3);
 		assertFalse(newId > 0);
-	}
+	}*/
 	
 	@Test
 	@Order(3)
@@ -49,7 +49,7 @@ class testQuestDALCRUDCycle {
 		assertEquals(this.quest.GetQuestReceiverNpcId(), 10);
 		assertEquals(this.quest.GetQuestGiverNpcId(), 12);
 		assertEquals(this.quest.GetPreReqQuestId(), 2);
-		assertEquals(this.quest.GetConflictId(), 2);
+        assertEquals(this.quest.GetConflictId(), 2);
 		assertEquals(this.quest.GetMinCharacterLevel(), 1);
 		assertEquals(this.quest.GetQuestName(), "test1");
 		assertEquals(this.quest.GetQuestDescription(), "test1 desc");
