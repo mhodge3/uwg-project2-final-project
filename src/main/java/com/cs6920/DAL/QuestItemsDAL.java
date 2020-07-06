@@ -100,16 +100,14 @@ public class QuestItemsDAL {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public Boolean DeleteQuestItemsByQuestId(QuestItems questItem) throws SQLException {
+	public Boolean DeleteQuestItemsByQuestId(int questId) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".questitems " + 
-					"WHERE quest_id = ? AND item_id = ?";
+					"WHERE quest_id = ?";
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString(1, String.valueOf(questItem.GetQuestId()));
-			  preparedStmt.setString(2, String.valueOf(questItem.GetItemId()));
-			
+			preparedStmt.setString(1, String.valueOf(questId));
 			preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
