@@ -154,7 +154,7 @@ public class ItemDAL {
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
-            		"is_implicit_item), " +
+            		"is_implicit_item, " +
             		"is_trophy_item) " +
 					"VALUES (?, ?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
