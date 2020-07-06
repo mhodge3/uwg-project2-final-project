@@ -20,6 +20,7 @@ import com.cs6920.view.create.CreateItemsViewControl;
 import com.cs6920.view.create.CreateNPCCharactersViewControl;
 import com.cs6920.view.create.CreatePlayersAndAdminsViewControl;
 import com.cs6920.view.edit.EditConflictQuestsViewControl;
+import com.cs6920.view.edit.EditGameStoryViewControl;
 import com.cs6920.view.edit.EditItemsViewControl;
 import com.cs6920.view.edit.EditNPCCharactersViewControl;
 import com.cs6920.view.edit.EditPlayersAndAdminsViewControl;
@@ -89,15 +90,21 @@ public class MainDashboardViewControl {
     private Parent theManageTemplateCustomParentView;
     private Scene theManageTemplateCustomScene;
     private EditConflictQuestsViewControl theEditConflictCustomViewControl;
+
+    private Parent theEditGameStoryParentView;
+    private Scene theEditGameStoryScene;
+    private EditGameStoryViewControl theEditGameStoryViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
 	 * @param theMainDashboardControl	the instance of a MainDashboard to communicate with
+	 * @throws SQLException 
 	 */
-	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) {
+	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) throws SQLException {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
 		this.CreateMainDashboardScene();
+		this.CreateEditGameStoryScene();
 		
 		this.CreateManagePlayersAndAdminsScene();
 		this.CreateEditPlayersAndAdminsScene();
@@ -236,6 +243,12 @@ public class MainDashboardViewControl {
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
+
+	@FXML
+	private void handleManageEditGameStory() throws SQLException {
+		SetMainDashboardStage("editGameStory");
+	}
+	
 	@FXML
 	private void handleLogoutButtonAction() throws Exception
 	{
@@ -357,6 +370,9 @@ public class MainDashboardViewControl {
 			case "manageTemplateCustom":
 				theEditConflictCustomViewControl.updateExistingTheQuestList();
 				theSceneToStage = theManageTemplateCustomScene;
+				break;
+			case "editGameStory":
+				theSceneToStage = theEditGameStoryScene;
 				break;
 			default: break;
 		}
@@ -528,6 +544,17 @@ public class MainDashboardViewControl {
         try {
         	theManageTemplateCustomParentView = theFxmlLoader.load();
         	theManageTemplateCustomScene = new Scene(theManageTemplateCustomParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateEditGameStoryScene() throws SQLException {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("EditGameStory.fxml"));
+        theFxmlLoader.setController(new EditGameStoryViewControl(this));
+        try {
+        	theEditGameStoryParentView = theFxmlLoader.load();
+        	theEditGameStoryScene = new Scene(theEditGameStoryParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

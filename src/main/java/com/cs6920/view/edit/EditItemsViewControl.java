@@ -119,7 +119,7 @@ public class EditItemsViewControl {
 		}
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Item Edit");
-		alert.setHeaderText("ItemC Edit Status");
+		alert.setHeaderText("Item Edit Status");
 		alert.setContentText("The Item was successfully modified");
 		alert.showAndWait();
 		theMainDashboardViewControl.SetMainDashboardStage("manageItems");

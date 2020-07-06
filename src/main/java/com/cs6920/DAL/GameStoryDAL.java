@@ -27,6 +27,34 @@ public class GameStoryDAL {
 	}
 	
 	/**
+	 * Get GameStory first (and should be only) GameStory
+	 * @return The Game Story
+	 * @throws SQLException
+	 */
+	public GameStory GetGameStory() throws SQLException {
+		GameStory story = null;
+		
+		try {
+            this.conn = this.sqlAccess.GetDBConnection();
+            Statement statement = this.conn.createStatement();
+            String query = "SELECT  * " + 
+            		"FROM " + this.sqlAccess.GetTheDBName() + ".gamestory;";
+            ResultSet results = statement.executeQuery(query);
+            if (results.next() != false) {
+            	story = new GameStory();
+                story.SetGameStoryName(results.getString("game_story_name"));
+                story.SetGameStorySummary(results.getString("game_story_summary"));
+            }
+        } catch (Exception e) {
+        	System.err.println(e.getMessage());
+        }
+        finally {
+        	conn.close();
+        }
+		return story; 
+	}
+	
+	/**
 	 * Get GameStory by gameStoryName from the database GameStory table
 	 * @return The Game Story
 	 * @throws SQLException

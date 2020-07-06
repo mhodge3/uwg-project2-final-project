@@ -16,7 +16,7 @@ import com.cs6920.model.Item;
  * @date 6/27/2020
  *
  */
-public class GameStoryEditControl {
+public class EditGameStoryControl {
 	
 	private GameStoryDAL gameStoryDAL;
 	private GameStory selectedGameStory;
@@ -24,49 +24,19 @@ public class GameStoryEditControl {
 	/**
 	 * Constructor that sets DAL to the current DBConnection class instance
 	 * @param theDBConnection
+	 * @throws SQLException 
 	 */
-	public GameStoryEditControl(MySQLAccess theDBConnection) {
+	public EditGameStoryControl(MySQLAccess theDBConnection) throws SQLException {
 		this.gameStoryDAL = new GameStoryDAL(theDBConnection);
+		this.getGameStoryFromDB();
 	}
 	
-	/**
-	 * Sets an instance of the Item to that found by id
-	 * @param itemId
-	 */
-	public void SetSelectedItem(String gameStoryName) {
-		try {
-			selectedGameStory = gameStoryDAL.GetGameStoryByName(gameStoryName);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	private void getGameStoryFromDB() throws SQLException {
+		this.selectedGameStory = this.gameStoryDAL.GetGameStory();
 	}
 	
-	/**
-	 * Get the Item object for editing
-	 * @return
-	 */
-	public GameStory GetSelectedItem() {
-		return selectedGameStory;
-	}
-	
-	/**
-	 * Delete this GameStory from the DB
-	 * @param gameStoryToDelete
-	 * @return String, message for user on outcome of operation
-	 */
-	public String DeleteItem(GameStory gameStoryToDelete) {
-		
-		try {
-			if (gameStoryDAL.DeleteGameStory(gameStoryToDelete)) {
-				return null;
-			}
-			else {
-				return "There was a problem deleting the Item";
-			}
-		} catch (SQLException e) {
-			return "There was a problem deleting the Item from the database";
-		}
+	public GameStory getGameStoryToEdit() {
+		return this.selectedGameStory;
 	}
 	
 	/**
@@ -84,7 +54,8 @@ public class GameStoryEditControl {
 			return "The Game Story Summary cannot be empty";
 		}
 		
-		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(selectedGameStory.GetGameStoryName(),gameStorySummary))) {
+		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary))) {
+			this.getGameStoryFromDB();
 			return null;
 		}
 		else {

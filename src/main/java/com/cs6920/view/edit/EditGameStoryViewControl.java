@@ -5,7 +5,7 @@ package com.cs6920.view.edit;
 
 import java.sql.SQLException;
 
-import com.cs6920.control.logic_control.GameStoryEditControl;
+import com.cs6920.control.logic_control.EditGameStoryControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -28,27 +28,33 @@ public class EditGameStoryViewControl {
 	@FXML
 	private TextField editGameStoryNameTextBox;
 	@FXML
-	private TextArea editGameStorySummaryTextArea;;
+	private TextArea editGameStorySummaryTextArea;
 
 
 	private MainDashboardViewControl theMainDashboardViewControl;
-	private GameStoryEditControl gameStoryEditControl;
+	private EditGameStoryControl gameStoryEditControl;
 	
 	/**
 	 * Constructor for this View Control
 	 * @param theMainDashboardViewControl	Reference to the MainDashboard's View Control
+	 * @throws SQLException 
 	 */
-    public EditGameStoryViewControl(MainDashboardViewControl theMainDashboardViewControl) {
+    public EditGameStoryViewControl(MainDashboardViewControl theMainDashboardViewControl) throws SQLException {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.gameStoryEditControl = new GameStoryEditControl(theMainDashboardViewControl.GetDBConnection());
+    	this.gameStoryEditControl = new EditGameStoryControl(theMainDashboardViewControl.GetDBConnection());
     }
     
     /**
      * Gets logic control for this Edit Game Story view control
      * @return the Item edited
      */
-    public GameStoryEditControl GetGameStoryEditControl() {
+    public EditGameStoryControl GetGameStoryEditControl() {
     	return gameStoryEditControl;
+    }
+    
+    @FXML
+    public void initialize() {
+    	this.SetFormForSelectedGameStory(gameStoryEditControl.getGameStoryToEdit());
     }
     
     /**
@@ -58,50 +64,18 @@ public class EditGameStoryViewControl {
     public void SetFormForSelectedGameStory(GameStory theGameStoryToEdit) {
     	editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.GetGameStoryName()));
     	editGameStorySummaryTextArea.setText(theGameStoryToEdit.GetGameStorySummary());
-
     }
     
 	@FXML
 	private void handleGameStoryEditCancelButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
-	}
-    
-	@FXML
-	private void handleDeleteSelectedButton() throws SQLException {
-		String GameStoryDeleteError = null;
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Game Story Edit");
-		alert.setHeaderText("Item Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + gameStoryEditControl.GetSelectedItem().GetGameStoryName() + "? This operation cannot be undone.");
-		alert.showAndWait();
-		if (alert.getResult() == ButtonType.OK) {
-			try {
-				GameStoryDeleteError = gameStoryEditControl.DeleteItem(gameStoryEditControl.GetSelectedItem());
-			} catch (Exception e) {
-				GameStoryDeleteError = e.getMessage();
-			}
-			if (GameStoryDeleteError != null) {
-				alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Dialog");
-				alert.setHeaderText("Error Editing the Game Story");
-				alert.setContentText(GameStoryDeleteError);
-				alert.showAndWait();
-				return;
-			}
-			alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Game Story Edit");
-			alert.setHeaderText("Game Story Edit Status");
-			alert.setContentText("The Game Story was successfully deleted");
-			alert.showAndWait();
-			theMainDashboardViewControl.SetMainDashboardStage("manageItems");
-		}
+		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
 	}
     
 	@FXML
 	private void handleGameStorySaveButton() throws SQLException {
 		String gameStoryCreationError = null;
 		try {
-			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStorySummaryTextArea.getText(), editGameStoryNameTextBox.getText());
+			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText());
 		} catch (Exception e) {
 			gameStoryCreationError = e.getMessage();
 		}
@@ -118,7 +92,7 @@ public class EditGameStoryViewControl {
 		alert.setHeaderText("Game Story Edit Status");
 		alert.setContentText("The Game Story was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
 	}
 
 }

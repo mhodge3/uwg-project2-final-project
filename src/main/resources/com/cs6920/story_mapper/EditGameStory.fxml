@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -27,11 +26,9 @@
                   <VBox prefHeight="201.0" prefWidth="307.0">
                      <children>
                         <Label text="Game Story Name" />
-                        <TextField fx:id="EditGameStoryNameTextBox" />
+                        <TextField fx:id="editGameStoryNameTextBox" />
                         <Label text="Game Story Summary" />
                         <TextArea fx:id="editGameStorySummaryTextArea" prefHeight="200.0" prefWidth="200.0" />
-                        <CheckBox fx:id="editIsItemForQuestCheckBox" mnemonicParsing="false" text="Is Item Implicit? (not tangible, ex. &quot;Discovered Area&quot;)" />
-                        <CheckBox fx:id="editIsItemImplicitCheckBox" mnemonicParsing="false" text="Is Item for Quest Only?" />
                      </children>
                   </VBox>
                </children>
@@ -46,11 +43,6 @@
                            </HBox.margin>
                         </Button>
                         <Button fx:id="gameStorySaveButton" mnemonicParsing="false" onAction="#handleGameStorySaveButton" text="Save Changes">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="deleteSelectedButton" mnemonicParsing="false" onAction="#handleDeleteSelectedButton" text="Delete Game Story">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>

@@ -16,12 +16,12 @@
       </Label>
       <VBox alignment="TOP_CENTER" prefHeight="484.0" prefWidth="800.0">
          <children>
-            <Button fx:id="managePlayersAndAdminsButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="250.0" mnemonicParsing="false" onAction="#handleManagePlayersAndAdminsButton" text="Manage Players &amp; Admins">
+            <Button minWidth="250.0" mnemonicParsing="false" onAction="#handleManageEditGameStory" text="Manage Game Story">
                <VBox.margin>
                   <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </Button>
-            <Button minWidth="250.0" mnemonicParsing="false" text="Manage Game Story">
+            <Button fx:id="managePlayersAndAdminsButton" alignment="TOP_CENTER" contentDisplay="CENTER" minWidth="250.0" mnemonicParsing="false" onAction="#handleManagePlayersAndAdminsButton" text="Manage Players &amp; Admins">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

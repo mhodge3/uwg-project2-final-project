@@ -28,12 +28,12 @@ C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\Charac
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\Quest.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\ManageNPCCharactersControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\DAL\AdminDAL.java
+C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\EditGameStoryControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\edit\EditPlayersAndAdminsViewControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\NpcCharacter.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\manage\ManagePlayersAndAdminsViewControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\GameStory.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\view\manage\ManageConflictsViewControl.java
-C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\GameStoryEditControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\ManageItemsControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\control\logic_control\MainDashboardControl.java
 C:\Users\matthewhodge\git\story-mapper-maven\src\main\java\com\cs6920\model\QuestItems.java
