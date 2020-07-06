@@ -30,8 +30,6 @@
                         <TextField fx:id="EditGameStoryNameTextBox" />
                         <Label text="Game Story Summary" />
                         <TextArea fx:id="editGameStorySummaryTextArea" prefHeight="200.0" prefWidth="200.0" />
-                        <CheckBox fx:id="editIsItemForQuestCheckBox" mnemonicParsing="false" text="Is Item Implicit? (not tangible, ex. &quot;Discovered Area&quot;)" />
-                        <CheckBox fx:id="editIsItemImplicitCheckBox" mnemonicParsing="false" text="Is Item for Quest Only?" />
                      </children>
                   </VBox>
                </children>
