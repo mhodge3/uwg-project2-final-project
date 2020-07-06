@@ -24,6 +24,7 @@ public class Item {
 	private IntegerProperty itemType;
 	private BooleanProperty isQuestItem;
 	private BooleanProperty isImplicitItem;
+	private BooleanProperty isTrophy;
 	
 	
 	/**
@@ -51,6 +52,31 @@ public class Item {
 		this.isQuestItem = new SimpleBooleanProperty(isQuestItem);
 		this.isImplicitItem = new SimpleBooleanProperty(isImplicitItem);
 	}
+	
+	/**
+	 * Gets isTrophy
+	 * @return isTrophy
+	 */
+	public boolean getIstrophy() {
+		return isTrophy.get();
+	}
+	
+	/**
+	 * Sets the isTrophy
+	 * @param setIsTrophy
+	 */
+	public void setIsTrophy(Boolean setIsTrophy) {
+		this.isTrophy = new SimpleBooleanProperty(setIsTrophy);
+	}
+	
+	/**
+	 * Gets the IsTrophy property
+	 * @return Property for TableView
+	 */
+	public final BooleanProperty isTrophyProperty() {
+	   return isQuestItem;
+	}
+	
 	/**
 	 * Gets the Item Id
 	 * @return itemdID

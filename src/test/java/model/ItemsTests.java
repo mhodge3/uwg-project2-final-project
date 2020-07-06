@@ -66,7 +66,18 @@ public class ItemsTests {
 	 * 
 	 */
 	@Test
-	public void testGetIsQuestItemShouldBe1234() {
+	public void testGetIsQuestItemShouldBeTrue() {
+		Item testItem = new Item();
+		testItem.SetIsQuestItem(true);
+		assertEquals(true, testItem.GetIsQuestItem());
+	}
+	
+	/**
+	 * Tests the GetIsTrophyand SetIsTrophy Methods
+	 * 
+	 */
+	@Test
+	public void testGetIsTrophyShouldBeTrue() {
 		Item testItem = new Item();
 		testItem.SetIsQuestItem(true);
 		assertEquals(true, testItem.GetIsQuestItem());
