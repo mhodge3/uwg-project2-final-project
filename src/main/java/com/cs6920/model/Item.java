@@ -75,7 +75,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final BooleanProperty isTrophyProperty() {
-	   return isQuestItem;
+	   return this.isTrophy;
 	}
 	
 	/**

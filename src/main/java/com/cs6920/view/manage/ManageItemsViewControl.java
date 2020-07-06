@@ -32,9 +32,9 @@ public class ManageItemsViewControl {
 	@FXML
 	private TableColumn<Item, Boolean> itemIsImplicitTableColumn;
 	@FXML
-	private TableColumn<Item, Boolean> itemIsTrophyTableColumn;
-	@FXML
 	private TableColumn<Item, Boolean> itemIsForQuestTableColumn;
+	@FXML
+	private TableColumn<Item, Boolean> itemIsTrophyTableColumn;
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private ManageItemsControl theManageItemsControl;
