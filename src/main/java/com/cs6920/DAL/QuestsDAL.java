@@ -268,7 +268,6 @@ public class QuestsDAL {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
-			System.out.println(quest.GetQuestId());
 			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".quests " + 
 					"SET quest_receiver_npc_id = ?, " +
 					"quest_giver_npc_id = ?, " +

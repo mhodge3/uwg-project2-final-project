@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import com.cs6920.DAL.ItemDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.NpcCharacterDAL;
+import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
+import com.cs6920.model.Quest;
 import com.cs6920.model.QuestItems;
-import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
+import com.cs6920.view.edit.EditConflictQuestsViewControl;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,18 +25,20 @@ public class EditQuestControl {
 	private ArrayList<QuestItems> theQuestItemsRewardList;
 	private ObservableList<QuestItems> observableTheQuestItemsRewardList = FXCollections.observableArrayList();
 	private ItemDAL theItemDAL;
+	private QuestItemsDAL theQuestItemsDAL;
 	private ArrayList<Item> existingQuestItems;
 	private ArrayList<Item> existingRewardItems;
 	private ObservableList<Item> observableQuestItemsList = FXCollections.observableArrayList();
 	private ObservableList<Item> observableRewardItemsList = FXCollections.observableArrayList();
 	private int questIdToEdit;
-	private ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl;
+	private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
 	
-	public EditQuestControl(ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
-		this.theManageTemplateTheQuestViewControl = theManageTemplateTheQuestViewControl;
+	public EditQuestControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
 		this.questIdToEdit = questIdToEdit;
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
 		theItemDAL = new ItemDAL(theDBConnection);
+		theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
 		this.UpdateNPCArrayList();
 		ArrayList<Item> allItems = theItemDAL.GetItems();
 		existingQuestItems = new ArrayList<Item>();
@@ -49,12 +53,24 @@ public class EditQuestControl {
 		}
 		theQuestItemsNeededList = new ArrayList<QuestItems>();
 		theQuestItemsRewardList = new ArrayList<QuestItems>();
+		ArrayList<QuestItems> existingQuestItems = this.theQuestItemsDAL.GetQuestItemsByQuestId(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		for (QuestItems questItem : existingQuestItems) {
+			Item theItem = this.theItemDAL.GetItemById(questItem.GetItemId());
+			if (theItem.GetIsQuestItem()) {
+				theQuestItemsNeededList.add(questItem);
+			}
+			else {
+				theQuestItemsRewardList.add(questItem);
+			}
+		}
+		this.UpdateQuestItemsNeededList();
+		this.UpdateQuestItemsRewardList();
 		this.UpdateQuestItemsArrayList();
 		this.UpdateRewardItemsArrayList();
 	}
 	
-	public ConflictTemplateTheQuestViewControl getConflictTemplateTheQuestViewControl() {
-		return this.theManageTemplateTheQuestViewControl;
+	public EditConflictQuestsViewControl getConflictTemplateTheQuestViewControl() {
+		return this.theEditConflictQuestsViewControl;
 	}
 	
 	/**
@@ -106,13 +122,13 @@ public class EditQuestControl {
 	
 	public void addQuestItemNeeded(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingQuestItems);
-		this.theQuestItemsNeededList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.theQuestItemsNeededList.add(new QuestItems(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
 		this.UpdateQuestItemsNeededList();
 	}
 	
 	public void addQuestItemReward(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingRewardItems);
-		this.theQuestItemsRewardList.add(new QuestItems(questIdToEdit, itemId, quantity, itemName));
+		this.theQuestItemsRewardList.add(new QuestItems(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
 		this.UpdateQuestItemsRewardList();
 	}
 	
@@ -199,54 +215,64 @@ public class EditQuestControl {
 	}
 	
 	public void updateQuestName(String newQuestName) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestName(newQuestName);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestName(newQuestName);
 	}
 	
 	public void updateQuestDescription(String newQuestDescription) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestDescription(newQuestDescription);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestDescription(newQuestDescription);
 	}
 	
 	public void updateGiverNPC(int npcId) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverNpcId(npcId);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverNpcId(npcId);
 	}
 	
 	public void updateQuestGiverDialog(String newQuestGiverDialog) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverDialog(newQuestGiverDialog);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverDialog(newQuestGiverDialog);
 	}
 	
 	public void updateQuestReceiverDialog(String newQuestReceiverDialog) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverDialog(newQuestReceiverDialog);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverDialog(newQuestReceiverDialog);
 	}
 	
 	public void updateReceiverNPC(int npcId) throws SQLException {
-		theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverNpcId(npcId);
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverNpcId(npcId);
 	}
 	
 	public int getQuestGiverNpcId() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestGiverNpcId();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestGiverNpcId();
 	}
 	
 	public int getQuestReceiverNpcId() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverNpcId();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverNpcId();
 	}
 	
 	public String getQuestName() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestName();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestName();
 	}
 	
 	public String getQuestDescription() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestDescription();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestDescription();
 	}
 	
 	public String getGiverDialog() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuesGiverDialog();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuesGiverDialog();
 	}
 	
 	public String getReceiverDialog() throws SQLException {
-		return theManageTemplateTheQuestViewControl.GetTheManageTemplateTheQuestControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverDialog();
+		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverDialog();
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {
-		theManageTemplateTheQuestViewControl.updateQuestList();
+		theEditConflictQuestsViewControl.GetTheManageQuestsControl().updateQuestChainInDB();
+	}
+	
+	public void updateQuestItemsInDB() throws SQLException {
+		this.theQuestItemsDAL.DeleteQuestItemsByQuestId(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		for (QuestItems questItem : theQuestItemsNeededList) {
+			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+		}
+		for (QuestItems questItem : theQuestItemsRewardList) {
+			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+		}
 	}
 }

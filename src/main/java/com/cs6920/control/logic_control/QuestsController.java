@@ -1,6 +1,5 @@
 package com.cs6920.control.logic_control;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -8,8 +7,6 @@ import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.QuestsDAL;
 import com.cs6920.model.Quest;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 /**
  * Controller class that retrieves data from the QuestsDAL

@@ -13,7 +13,7 @@
 
 <VBox fx:id="questChainsVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Quest - Story Arch Mangagement">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Custom - Story Arch Mangagement">
          <font>
             <Font size="24.0" />
          </font>
@@ -36,7 +36,7 @@
                   </TableView>
                   <VBox prefHeight="463.0" prefWidth="184.0">
                      <children>
-                        <Button fx:id="createStoryObstacleButton" mnemonicParsing="false" onAction="#addVariableQuest" prefHeight="25.0" prefWidth="186.0" text="Add Obstacle Quest">
+                        <Button fx:id="createStoryObstacleButton" mnemonicParsing="false" onAction="#addVariableQuest" prefHeight="25.0" prefWidth="186.0" text="Add Custom Quest">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
@@ -46,7 +46,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="deleteStoryObstacleButton" mnemonicParsing="false" onAction="#removeVariableQuest" prefHeight="25.0" prefWidth="186.0" text="Delete Obstacle Quest" />
+                        <Button fx:id="deleteStoryObstacleButton" mnemonicParsing="false" onAction="#removeVariableQuest" prefHeight="25.0" prefWidth="186.0" text="Delete Custom Quest" />
                         <Label text="Story Conflict Name">
                            <VBox.margin>
                               <Insets top="10.0" />

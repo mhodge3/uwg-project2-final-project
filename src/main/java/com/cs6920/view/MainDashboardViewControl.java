@@ -19,14 +19,14 @@ import com.cs6920.story_mapper.App;
 import com.cs6920.view.create.CreateItemsViewControl;
 import com.cs6920.view.create.CreateNPCCharactersViewControl;
 import com.cs6920.view.create.CreatePlayersAndAdminsViewControl;
+import com.cs6920.view.edit.EditConflictQuestsViewControl;
 import com.cs6920.view.edit.EditItemsViewControl;
 import com.cs6920.view.edit.EditNPCCharactersViewControl;
 import com.cs6920.view.edit.EditPlayersAndAdminsViewControl;
 import com.cs6920.view.manage.ManageItemsViewControl;
 import com.cs6920.view.manage.ManageNPCCharactersViewControl;
 import com.cs6920.view.manage.ManagePlayersAndAdminsViewControl;
-import com.cs6920.view.manage.ManageQuestChainsViewControl;
-import com.cs6920.view.quest_design.ConflictTemplateTheQuestViewControl;
+import com.cs6920.view.manage.ManageConflictsViewControl;
 
 /**
  * This class is the View Logic for a MainDashboard
@@ -72,11 +72,23 @@ public class MainDashboardViewControl {
     
     private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
-    private ManageQuestChainsViewControl theManageQuestChainsViewControl;
+    private ManageConflictsViewControl theManageQuestChainsViewControl;
     
     private Parent theManageTemplateTheQuestParentView;
     private Scene theManageTemplateTheQuestScene;
-    private ConflictTemplateTheQuestViewControl theManageTheQuestViewControl;
+    private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
+
+    private Parent theManageTemplateVoyageAndReturnParentView;
+    private Scene theManageTemplateVoyageAndReturnScene;
+    private EditConflictQuestsViewControl theEditConflictVoyageViewControl;
+
+    private Parent theManageTemplateDefeatTheMonsterParentView;
+    private Scene theManageTemplateDefeatTheMonsterScene;
+    private EditConflictQuestsViewControl theEditConflictMonsterViewControl;
+
+    private Parent theManageTemplateCustomParentView;
+    private Scene theManageTemplateCustomScene;
+    private EditConflictQuestsViewControl theEditConflictCustomViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -100,8 +112,10 @@ public class MainDashboardViewControl {
 		this.CreateCreateNPCScene();
 		
 		this.CreateManageQuestChainsScene();
-		
+		this.CreateManageTemplateVoyageAndReturnScene();
 		this.CreateManageTemplateTheQuestScene();
+		this.CreateManageTemplateDefeatTheMonsterScene();
+		this.CreateManageTemplateCustomScene();
 	} 
 	
 	/**
@@ -140,16 +154,40 @@ public class MainDashboardViewControl {
 	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
 	 * @param theManageQuestChainsViewControl
 	 */
-	public void SetTheManageQuestChainsViewControl(ManageQuestChainsViewControl theManageQuestChainsViewControl) {
+	public void SetTheManageQuestChainsViewControl(ManageConflictsViewControl theManageQuestChainsViewControl) {
 		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
 	}
 
 	/**
-	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
-	 * @param theManageQuestChainsViewControl
+	 * Sets the view control reference in the logic control the theEditConflictQuestsViewControl
+	 * @param theEditConflictQuestsViewControl
 	 */
-	public void SetTheManageTheQuestViewControl(ConflictTemplateTheQuestViewControl theManageTheQuestViewControl) {
-		this.theManageTheQuestViewControl = theManageTheQuestViewControl;
+	public void SetTheEditConflictQuestsViewControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl) {
+		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theEditConflictVoyageViewControl
+	 * @param theEditConflictVoyageViewControl
+	 */
+	public void SetTheEditConflictVoyageViewControl(EditConflictQuestsViewControl theEditConflictVoyageViewControl) {
+		this.theEditConflictVoyageViewControl = theEditConflictVoyageViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theEditConflictMonsterViewControl
+	 * @param theEditConflictMonsterViewControl
+	 */
+	public void SetTheEditConflictMonsterViewControl(EditConflictQuestsViewControl theEditConflictMonsterViewControl) {
+		this.theEditConflictMonsterViewControl = theEditConflictMonsterViewControl;
+	}
+
+	/**
+	 * Sets the view control reference in the logic control the theEditConflictCustomViewControl
+	 * @param theEditConflictCustomViewControl
+	 */
+	public void SetTheEditConflictCustomViewControl(EditConflictQuestsViewControl theEditConflictCustomViewControl) {
+		this.theEditConflictCustomViewControl = theEditConflictCustomViewControl;
 	}
 	
 	/**
@@ -179,8 +217,22 @@ public class MainDashboardViewControl {
 		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
-	public void SetConflictToEdit(int conflictIdToEdit) {
-		this.theManageTheQuestViewControl.GetTheManageTemplateTheQuestControl().SetTheConflictToEdit(conflictIdToEdit);
+	public void SetConflictToEdit(Conflict conflictToEdit, String arcType) {
+    	switch(arcType) {
+    	case "The Quest":
+    		this.theEditConflictQuestsViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Voyage and Return":
+    		this.theEditConflictVoyageViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Defeat the Monster":
+    		this.theEditConflictMonsterViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+    	case "Custom":
+    		this.theEditConflictCustomViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		break;
+		default: break;
+	}
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
@@ -291,8 +343,20 @@ public class MainDashboardViewControl {
 				theSceneToStage = theManageQuestChainsScene;
 				break;
 			case "manageTemplateTheQuest":
-				theManageTheQuestViewControl.updateExistingTheQuestList();
+				theEditConflictQuestsViewControl.updateExistingTheQuestList();
 				theSceneToStage = theManageTemplateTheQuestScene;
+				break;
+			case "manageTemplateVoyageAndReturn":
+				theEditConflictVoyageViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateVoyageAndReturnScene;
+				break;
+			case "manageTemplateDefeatTheMonster":
+				theEditConflictMonsterViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateDefeatTheMonsterScene;
+				break;
+			case "manageTemplateCustom":
+				theEditConflictCustomViewControl.updateExistingTheQuestList();
+				theSceneToStage = theManageTemplateCustomScene;
 				break;
 			default: break;
 		}
@@ -416,7 +480,7 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageQuestChainsScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageQuestChainsView.fxml"));
-        theFxmlLoader.setController(new ManageQuestChainsViewControl(this));
+        theFxmlLoader.setController(new ManageConflictsViewControl(this));
         try {
         	theManageQuestChainsParentView = theFxmlLoader.load();
         	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
@@ -427,10 +491,43 @@ public class MainDashboardViewControl {
 	
 	private void CreateManageTemplateTheQuestScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
-        theFxmlLoader.setController(new ConflictTemplateTheQuestViewControl(this));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "The Quest"));
         try {
         	theManageTemplateTheQuestParentView = theFxmlLoader.load();
         	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateVoyageAndReturnScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateVoyageView.fxml"));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Voyage and Return"));
+        try {
+        	theManageTemplateVoyageAndReturnParentView = theFxmlLoader.load();
+        	theManageTemplateVoyageAndReturnScene = new Scene(theManageTemplateVoyageAndReturnParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateDefeatTheMonsterScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateMonsterView.fxml"));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Defeat the Monster"));
+        try {
+        	theManageTemplateDefeatTheMonsterParentView = theFxmlLoader.load();
+        	theManageTemplateDefeatTheMonsterScene = new Scene(theManageTemplateDefeatTheMonsterParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
+	private void CreateManageTemplateCustomScene() {
+        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateCustomView.fxml"));
+        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Custom"));
+        try {
+        	theManageTemplateCustomParentView = theFxmlLoader.load();
+        	theManageTemplateCustomScene = new Scene(theManageTemplateCustomParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

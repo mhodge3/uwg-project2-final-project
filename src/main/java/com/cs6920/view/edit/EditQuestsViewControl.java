@@ -1,4 +1,4 @@
-package com.cs6920.view.quest_design;
+package com.cs6920.view.edit;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class QuestTemplateTheCallingViewControl {
+public class EditQuestsViewControl {
 	@FXML 
 	private Button questEditBackButton;
 	@FXML
@@ -60,7 +60,7 @@ public class QuestTemplateTheCallingViewControl {
 	
 	EditQuestControl theEditQuestControl;
 	
-	public QuestTemplateTheCallingViewControl(ConflictTemplateTheQuestViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+	public EditQuestsViewControl(EditConflictQuestsViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
 		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit);
 	}
 	
@@ -110,6 +110,12 @@ public class QuestTemplateTheCallingViewControl {
 		itemNeededQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
 		itemRewardNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
 		itemRewardQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
+		itemsNeededTableView.getItems().clear();
+		itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
+		itemsNeededTableView.refresh();
+		itemsRewardTableView.getItems().clear();
+		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
+		itemsRewardTableView.refresh();
 	}
 
 	@FXML
@@ -133,8 +139,8 @@ public class QuestTemplateTheCallingViewControl {
 		theEditQuestControl.updateGiverNPC(theEditQuestControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
 		theEditQuestControl.updateReceiverNPC(theEditQuestControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
 		theEditQuestControl.refreshQuestDisplay();
-		this.theEditQuestControl.getConflictTemplateTheQuestViewControl().GetTheManageTemplateTheQuestControl().updateQuestTemplateList();
-		this.theEditQuestControl.getConflictTemplateTheQuestViewControl().GetTheManageTemplateTheQuestControl().clearExistingQuestsToEdit();
+		theEditQuestControl.getConflictTemplateTheQuestViewControl().refreshTheQuestList();
+		theEditQuestControl.updateQuestItemsInDB();
 		this.handleBackButton();
 	}
     
