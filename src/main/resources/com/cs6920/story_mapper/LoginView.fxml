@@ -19,13 +19,13 @@
                   <VBox layoutX="22.0" layoutY="14.0" prefHeight="260.0" prefWidth="301.0">
                      <children>
                         <Label prefHeight="19.0" prefWidth="32.0" text="Host: " />
-                        <TextField fx:id="hostTextInput" text="localhost" />
+                        <TextField fx:id="hostTextInput" text="107.189.4.250:3306" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="Username: " />
-                        <TextField fx:id="usernameDBTextInput" text="root" />
+                        <TextField fx:id="usernameDBTextInput" text="hodgesd1_tempguy" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="Password:" />
-                        <TextField fx:id="passwordDBTextInput" text="test1234" />
+                        <TextField fx:id="passwordDBTextInput" text="1mD1ffrent!" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="DB Name:" />
-                        <TextField fx:id="dBNameTextInput" text="rpg_story_mapper_db" />
+                        <TextField fx:id="dBNameTextInput" text="hodgesd1_rpg_story_mapper_db" />
                         <HBox prefHeight="55.0" prefWidth="301.0">
                            <children>
                               <Button fx:id="testDBConnectionButton" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleTestServerButtonAction" prefHeight="25.0" prefWidth="116.0" text="Test Connection" />
