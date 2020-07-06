@@ -60,8 +60,8 @@ public class EditQuestsViewControl {
 	
 	EditQuestControl theEditQuestControl;
 	
-	public EditQuestsViewControl(EditConflictQuestsViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
-		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit);
+	public EditQuestsViewControl(EditConflictQuestsViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit, String questArcRole) throws SQLException {
+		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit, questArcRole);
 	}
 	
 	private void setUpHeraldNPCComboBox() throws SQLException {

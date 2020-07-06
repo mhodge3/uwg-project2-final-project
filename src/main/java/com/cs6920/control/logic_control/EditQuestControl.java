@@ -33,7 +33,7 @@ public class EditQuestControl {
 	private int questIdToEdit;
 	private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
 	
-	public EditQuestControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl, MySQLAccess theDBConnection, int questIdToEdit) throws SQLException {
+	public EditQuestControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl, MySQLAccess theDBConnection, int questIdToEdit, String questArcRole) throws SQLException {
 		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
 		this.questIdToEdit = questIdToEdit;
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
@@ -45,7 +45,18 @@ public class EditQuestControl {
 		existingRewardItems = new ArrayList<Item>();
 		for (Item item : allItems) {
 			if (item.GetIsQuestItem()) {
-				existingQuestItems.add(item);
+				if (questArcRole.contentEquals("insight") && item.GetIsImplicitItem()) {
+					existingQuestItems.add(item);
+				}
+				else if ((questArcRole.contentEquals("henchman") || questArcRole.contentEquals("monster") || questArcRole.contentEquals("return and reward")) && item.getIstrophy()) {
+					existingQuestItems.add(item);
+				}
+				else if (questArcRole.contentEquals("return new wisdom") && (item.GetIsImplicitItem() || item.getIstrophy())) {
+					existingQuestItems.add(item);
+				}
+				else if (!questArcRole.contentEquals("insight") && !questArcRole.contentEquals("return and reward") && !questArcRole.contentEquals("return new wisdom") && !questArcRole.contentEquals("monster") && !questArcRole.contentEquals("henchman") && !item.GetIsImplicitItem() && !item.getIstrophy()){
+					existingQuestItems.add(item);
+				}
 			} 
 			else {
 				existingRewardItems.add(item);

@@ -122,42 +122,44 @@ public class EditConflictQuestsViewControl {
     @FXML
     private void editQuest(ActionEvent event) throws IOException, SQLException {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
+			int theSelectedItemIndex = theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem());
+			String theSelectedItemArcRole = theManageQuestsControl.getExistingQuestList().get(theSelectedItemIndex).GetQuestArcType();
 			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
 				case "calling":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestCalling");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestCalling", theSelectedItemArcRole);
 					break;
 				case "leaving":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestLeaving");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestLeaving", theSelectedItemArcRole);
 					break;
 				case "obstacle":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObstacle");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestObstacle", theSelectedItemArcRole);
 					break;
 				case "insight":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestInsight");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestInsight", theSelectedItemArcRole);
 					break;
 				case "henchman":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestHenchman");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestHenchman", theSelectedItemArcRole);
 					break;
 				case "monster":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestMonster");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestMonster", theSelectedItemArcRole);
 					break;
 				case "meeting mentor":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestMentor");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestMentor", theSelectedItemArcRole);
 					break;
 				case "obtain elixir":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestObtainElixir");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestObtainElixir", theSelectedItemArcRole);
 					break;
 				case "return elixir":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithElixir");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestReturnWithElixir", theSelectedItemArcRole);
 					break;
 				case "return new wisdom":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnWithWisdom");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestReturnWithWisdom", theSelectedItemArcRole);
 					break;
 				case "return and reward":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestReturnAndReward");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestReturnAndReward", theSelectedItemArcRole);
 					break;
 				case "custom":
-					this.editCallToAdventure(event, theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem()), "EditQuestCustom");
+					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestCustom", theSelectedItemArcRole);
 					break;
 				default: break;
 			}
@@ -171,10 +173,10 @@ public class EditConflictQuestsViewControl {
 		}
     }
     
-    private void editCallToAdventure(ActionEvent event, int questIdToEdit, String fxmlFileName) throws IOException, SQLException {
+    private void createEditQuestWindow(ActionEvent event, int questIdToEdit, String fxmlFileName, String questArcRole) throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFileName + ".fxml"));
-        loader.setController(new EditQuestsViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit));
+        loader.setController(new EditQuestsViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit, questArcRole));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");
