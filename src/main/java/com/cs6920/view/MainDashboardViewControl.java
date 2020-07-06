@@ -93,7 +93,6 @@ public class MainDashboardViewControl {
 
     private Parent theEditGameStoryParentView;
     private Scene theEditGameStoryScene;
-    private EditGameStoryViewControl theEditGameStoryViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument

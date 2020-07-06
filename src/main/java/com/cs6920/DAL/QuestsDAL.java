@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.cs6920.model.CharactersPlayer;
 import com.cs6920.model.Quest;
 
 /**

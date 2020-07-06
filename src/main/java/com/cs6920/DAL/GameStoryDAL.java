@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.cs6920.model.GameStory;
-import com.cs6920.model.Item;
 
 /**
  * @author Ashley Palmer

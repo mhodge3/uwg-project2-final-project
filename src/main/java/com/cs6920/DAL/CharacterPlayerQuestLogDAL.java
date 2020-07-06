@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.cs6920.model.CharacterPlayerQuestLog;
-import com.cs6920.model.CharactersPlayer;
 
 /**
  * Data access layer for the characterplayerquestlog database table

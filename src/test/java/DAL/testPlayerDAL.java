@@ -88,7 +88,6 @@ class testPlayerDAL {
 	@Order(7)
 	public void deleteAPlayer() throws Exception {
 		Player player = this.dal.GetPlayer("bogus", "newpw");
-		Player admin = this.dal.GetPlayer("joe", "test1234");
 		this.dal.DeletePlayer(player);
 		player = this.dal.GetPlayer("bogus", "newpw");
 		assertNull(player);

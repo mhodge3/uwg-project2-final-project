@@ -6,10 +6,8 @@ package com.cs6920.control.logic_control;
 import java.sql.SQLException;
 
 import com.cs6920.DAL.GameStoryDAL;
-import com.cs6920.DAL.ItemDAL;
 import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.model.GameStory;
-import com.cs6920.model.Item;
 
 /**
  * @author Ashley Palmer

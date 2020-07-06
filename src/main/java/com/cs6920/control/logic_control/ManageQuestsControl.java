@@ -8,7 +8,6 @@ import com.cs6920.DAL.MySQLAccess;
 import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
-import com.cs6920.model.QuestItems;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

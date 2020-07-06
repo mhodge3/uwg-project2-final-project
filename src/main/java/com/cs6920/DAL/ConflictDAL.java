@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.cs6920.model.Conflict;
-import com.cs6920.model.Quest;
 
 /**
  * Data access layer for the Contflicts database table

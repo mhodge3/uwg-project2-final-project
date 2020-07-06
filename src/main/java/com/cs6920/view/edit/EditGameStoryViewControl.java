@@ -9,13 +9,11 @@ import com.cs6920.control.logic_control.EditGameStoryControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
 import com.cs6920.model.GameStory;
-import com.cs6920.model.Item;
 import com.cs6920.view.MainDashboardViewControl;
 
 /**

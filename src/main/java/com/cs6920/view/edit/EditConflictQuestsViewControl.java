@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.ManageQuestsControl;
-import com.cs6920.model.Conflict;
 import com.cs6920.model.Quest;
 import com.cs6920.story_mapper.App;
 import com.cs6920.view.MainDashboardViewControl;

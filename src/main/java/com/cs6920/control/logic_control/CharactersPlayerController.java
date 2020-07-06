@@ -1,9 +1,6 @@
 package com.cs6920.control.logic_control;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.cs6920.DAL.CharactersPlayerDAL;

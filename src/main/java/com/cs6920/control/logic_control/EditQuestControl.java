@@ -9,7 +9,6 @@ import com.cs6920.DAL.NpcCharacterDAL;
 import com.cs6920.DAL.QuestItemsDAL;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
-import com.cs6920.model.Quest;
 import com.cs6920.model.QuestItems;
 import com.cs6920.view.edit.EditConflictQuestsViewControl;
 
@@ -163,15 +162,6 @@ public class EditQuestControl {
 			} 
 		}
 		this.UpdateQuestItemsRewardList();
-	}
-	
-	private String getItemNameById(int itemId, ArrayList<Item> theItems) {
-		for (Item item : theItems) {
-			if (item.GetItemId() == itemId) {
-				return item.GetItemName();
-			} 
-		}
-		return "unkown item";
 	}
 	
 	private int getItemIdByName(String itemName, ArrayList<Item> theItems) {
