@@ -40,9 +40,10 @@
                   <TableColumn fx:id="itemIDTableColumn" editable="false" prefWidth="37.0" text="ID" />
                   <TableColumn fx:id="itemTypeTableColumn" editable="false" prefWidth="47.0" text="Type" />
                   <TableColumn fx:id="itemNameTableColumn" editable="false" prefWidth="206.0" text="Name" />
-                  <TableColumn fx:id="itemDescriptionTableColumn" editable="false" prefWidth="330.0" text="Description" />
-                  <TableColumn fx:id="itemIsForQuestTableColumn" editable="false" minWidth="0.0" prefWidth="64.0" text="For Quest" />
-                  <TableColumn fx:id="itemIsImplicitTableColumn" editable="false" minWidth="0.0" prefWidth="67.0" text="Implicit" />
+                  <TableColumn fx:id="itemDescriptionTableColumn" editable="false" prefWidth="293.0" text="Description" />
+                  <TableColumn fx:id="itemIsForQuestTableColumn" editable="false" minWidth="0.0" prefWidth="63.0" text="For Quest" />
+                  <TableColumn fx:id="itemIsImplicitTableColumn" editable="false" minWidth="0.0" prefWidth="53.0" text="Implicit" />
+                  <TableColumn fx:id="itemIsTrophyTableColumn" prefWidth="59.0" text="Trophy" />
                </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" />

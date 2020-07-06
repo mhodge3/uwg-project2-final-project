@@ -31,7 +31,7 @@ public class CreateItemsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
+	public String CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		if (itemName == null || itemName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
@@ -39,7 +39,7 @@ public class CreateItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (itemDAL.CreateItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem)) {
+		if (itemDAL.CreateItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem)) {
 			return null;
 		}
 		else {

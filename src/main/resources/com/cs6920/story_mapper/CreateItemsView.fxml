@@ -33,6 +33,7 @@
                         <Label text="Item Description" />
                         <TextArea fx:id="createItemDescriptionTextArea" prefHeight="200.0" prefWidth="200.0" />
                         <CheckBox fx:id="createIsItemForQuestCheckBox" mnemonicParsing="false" text="Is Item Implicit? (not tangible, ex. &quot;Discovered Area&quot;)" />
+                        <CheckBox fx:id="createIsItemTrophyCheckBox" mnemonicParsing="false" prefHeight="60.0" prefWidth="307.0" text="Is Item a Trophy? (representing an action/event/status ex. &quot;Tooth of Dragon&quot;, &quot;Head of Bad Guy&quot; or &quot;Certificate of Thievery&quot; )" wrapText="true" />
                         <CheckBox fx:id="createIsItemImplicitCheckBox" mnemonicParsing="false" text="Is Item for Quest Only?" />
                      </children>
                   </VBox>

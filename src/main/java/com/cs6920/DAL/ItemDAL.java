@@ -41,7 +41,8 @@ public class ItemDAL {
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
-            		"is_implicit_item " +
+            		"is_implicit_item, " +
+            		"is_tropy_item " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".items ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
@@ -52,6 +53,7 @@ public class ItemDAL {
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
                 item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
                 item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
+                item.setIsTrophy(Integer.parseInt(results.getString("is_trophy_item")) > 0 ? true : false);
                 theItemArrayList.add(item);
             }
         } catch (Exception e) {
@@ -79,7 +81,8 @@ public class ItemDAL {
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
-            		"is_implicit_item " +
+            		"is_implicit_item, " +
+            		"is_trophy_item " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".items " +
             		"WHERE item_id = \"" + itemId + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -91,6 +94,7 @@ public class ItemDAL {
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
                 item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
                 item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
+                item.setIsTrophy(Integer.parseInt(results.getString("is_trophy_item")) > 0 ? true : false);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -117,7 +121,8 @@ public class ItemDAL {
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
-            		"is_implicit_item " +
+            		"is_implicit_item, " +
+            		"is_trophy_item " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".items " +
             		"WHERE item_name = \"" + itemName + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -129,6 +134,7 @@ public class ItemDAL {
                 item.SetItemType(Integer.parseInt(results.getString("item_type")));
                 item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
                 item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
+                item.setIsTrophy(Boolean.parseBoolean(results.getString("is_trophy_item")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -139,7 +145,7 @@ public class ItemDAL {
 		return item; 
 	}
 	
-	public Boolean CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
+	public Boolean CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
@@ -148,8 +154,9 @@ public class ItemDAL {
             		"item_description, " + 
             		"item_type, " + 
             		"is_quest_item, " + 
-            		"is_implicit_item) " +
-					"VALUES (?, ?, ?, ?, ?)";
+            		"is_implicit_item), " +
+            		"is_tropy_item) " +
+					"VALUES (?, ?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, itemName);
 			  preparedStmt.setString (2, itemDescription);
@@ -158,7 +165,8 @@ public class ItemDAL {
 			  preparedStmt.setString (4, String.valueOf(questBoolToInt));
 			  int implicitBoolToInt = isImplicitItem ? 1 : 0;
 			  preparedStmt.setString (5, String.valueOf(implicitBoolToInt));
-			  
+			  int trophyBoolToInt = isTrophyItem ? 1 : 0;
+			  preparedStmt.setString (6, String.valueOf(trophyBoolToInt));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
@@ -180,7 +188,8 @@ public class ItemDAL {
             		"item_description = ?, " + 
             		"item_type = ?, " + 
             		"is_quest_item = ?, " + 
-            		"is_implicit_item = ? " +
+            		"is_implicit_item = ?, " +
+            		"is_trophy_item = ? " +
             	    "WHERE item_id = ?";
 		
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -191,7 +200,9 @@ public class ItemDAL {
 			  preparedStmt.setString (4, String.valueOf(questBoolToInt));
 			  int implicitBoolToInt = updatedItem.GetIsImplicitItem() ? 1 : 0;
 			  preparedStmt.setString (5, String.valueOf(implicitBoolToInt));
-			  preparedStmt.setString (6, String.valueOf(oldItem.GetItemId()));
+			  int trophyBoolToInt = updatedItem.getIstrophy() ? 1 : 0;
+			  preparedStmt.setString (6, String.valueOf(trophyBoolToInt));
+			  preparedStmt.setString (7, String.valueOf(oldItem.GetItemId()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {

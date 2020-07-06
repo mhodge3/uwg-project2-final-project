@@ -45,7 +45,7 @@ class testItemDAL {
 	
 	@Test
 	public void addAItemToDBShouldBeTrueIfAdded() throws Exception {
-		assertTrue(this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, false, true));
+		assertTrue(this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, false, true, false));
 		Item item = this.dal.GetItemByName("cloak spell");
 		assertEquals(item.GetItemName(), "cloak spell");
 		assertEquals(item.GetItemDescription(), "Invisibility cloak");

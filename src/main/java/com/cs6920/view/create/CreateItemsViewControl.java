@@ -28,6 +28,8 @@ public class CreateItemsViewControl {
 	private CheckBox createIsItemForQuestCheckBox;
 	@FXML
 	private CheckBox createIsItemImplicitCheckBox;
+	@FXML 
+	private CheckBox createIsItemTrophyCheckBox;
 
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private CreateItemsControl theCreateItemsControl;
@@ -60,7 +62,7 @@ public class CreateItemsViewControl {
 	private void handleItemCreateButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theCreateItemsControl.CreateItem(createItemNameTextBox.getText(), createItemDescriptionTextArea.getText(), Integer.parseInt(createItemTypeTextBox.getText()), createIsItemForQuestCheckBox.isSelected(), createIsItemImplicitCheckBox.isSelected());
+			itemCreationError = theCreateItemsControl.CreateItem(createItemNameTextBox.getText(), createItemDescriptionTextArea.getText(), Integer.parseInt(createItemTypeTextBox.getText()), createIsItemForQuestCheckBox.isSelected(), createIsItemImplicitCheckBox.isSelected(), createIsItemTrophyCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}

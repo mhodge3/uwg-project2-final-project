@@ -32,6 +32,8 @@ public class ManageItemsViewControl {
 	@FXML
 	private TableColumn<Item, Boolean> itemIsImplicitTableColumn;
 	@FXML
+	private TableColumn<Item, Boolean> itemIsTrophyTableColumn;
+	@FXML
 	private TableColumn<Item, Boolean> itemIsForQuestTableColumn;
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
@@ -64,6 +66,7 @@ public class ManageItemsViewControl {
 		itemNameTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemName"));
 		itemDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemDescription"));
 		itemIsImplicitTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isImplicitItem"));
+		itemIsTrophyTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isTrophy"));
 		itemIsForQuestTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isQuestItem"));
     }
 	
