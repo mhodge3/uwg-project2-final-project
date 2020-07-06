@@ -44,13 +44,14 @@ public class Item {
 	 * @param isImplicitItem
 	 */
 	
-	public Item(int itemId, String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) {
+	public Item(int itemId, String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophy) {
 		this.itemId = new SimpleIntegerProperty(itemId);
 		this.itemName = new SimpleStringProperty(itemName);
 		this.itemDescription = new SimpleStringProperty(itemDescription);
 		this.itemType = new SimpleIntegerProperty(itemType);
 		this.isQuestItem = new SimpleBooleanProperty(isQuestItem);
 		this.isImplicitItem = new SimpleBooleanProperty(isImplicitItem);
+		this.isTrophy = new SimpleBooleanProperty(isTrophy);
 	}
 	
 	/**

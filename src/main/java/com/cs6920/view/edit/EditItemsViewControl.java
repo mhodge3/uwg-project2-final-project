@@ -29,6 +29,8 @@ public class EditItemsViewControl {
 	private CheckBox editIsItemForQuestCheckBox;
 	@FXML
 	private CheckBox editIsItemImplicitCheckBox;
+	@FXML
+	private CheckBox editIsItemTrophyCheckBox;
 
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private EditItemsControl theEditItemsControl;
@@ -60,6 +62,7 @@ public class EditItemsViewControl {
     	editItemDescriptionTextArea.setText(theItemToEdit.GetItemDescription());
     	editIsItemForQuestCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
     	editIsItemImplicitCheckBox.setSelected(theItemToEdit.GetIsImplicitItem());
+    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIstrophy());
     }
     
 	@FXML
@@ -102,7 +105,7 @@ public class EditItemsViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.UpdateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected());
+			itemCreationError = theEditItemsControl.UpdateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected(), editIsItemTrophyCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}

@@ -73,7 +73,7 @@ public class EditItemsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem) throws SQLException {
+	public String UpdateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		if (itemName == null || itemName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
@@ -81,7 +81,7 @@ public class EditItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (itemDAL.UpdateItem(selectedItem, new Item(selectedItem.GetItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem))) {
+		if (itemDAL.UpdateItem(selectedItem, new Item(selectedItem.GetItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem))) {
 			return null;
 		}
 		else {
