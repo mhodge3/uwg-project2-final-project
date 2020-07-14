@@ -106,6 +106,7 @@ public class MainDashboardViewControl {
 		this.CreateEditGameStoryScene();
 		
 		this.CreateManagePlayersAndAdminsScene();
+		this.CreateScene("EditPlayersAndAdminsView", this.theCreatePlayersAndAdminsParentView, this.theCreatePlayersAndAdminsScene);
 		this.CreateEditPlayersAndAdminsScene();
 		this.CreateCreatePlayersAndAdminsScene();
 		
@@ -377,6 +378,18 @@ public class MainDashboardViewControl {
 		}
         theMainDashboardStage.setScene(theSceneToStage);
         ShowMainDashboardView();
+	}
+	
+	private void CreateScene(String sceneFXMLFileName, Parent theParentView, Scene theSceneToSetUp) {
+        try {
+            theFxmlLoader = new FXMLLoader(App.class.getResource(sceneFXMLFileName + ".fxml"));
+            theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
+            theFxmlLoader.setController(theEditPlayersAndAdminsViewControl);
+            theParentView = theFxmlLoader.load();
+            theSceneToSetUp = new Scene(theParentView);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
 	}
 	
 	private void CreateMainDashboardScene() {
