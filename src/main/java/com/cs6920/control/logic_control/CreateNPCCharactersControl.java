@@ -29,7 +29,7 @@ public class CreateNPCCharactersControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateNpc(int npcType, String npcDescription, String npcName) throws SQLException {
+	public String CreateNpc(int npcType, String npcName, String npcDescription) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";
 		}
