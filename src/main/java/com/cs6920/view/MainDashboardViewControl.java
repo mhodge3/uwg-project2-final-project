@@ -103,6 +103,7 @@ public class MainDashboardViewControl {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
 		this.CreateMainDashboardScene();
+		this.CreateEditViewControls();
 		this.CreateEditGameStoryScene();
 		
 		this.CreateManagePlayersAndAdminsScene();
@@ -379,6 +380,12 @@ public class MainDashboardViewControl {
         ShowMainDashboardView();
 	}
 	
+	private void CreateEditViewControls() {
+        theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
+        theEditItemsViewControl = new EditItemsViewControl(this);
+        theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
+	}
+	
 	private void CreateMainDashboardScene() {
         try {
             theFxmlLoader = new FXMLLoader(getClass().getResource("MainDashboardView.fxml"));
@@ -394,7 +401,6 @@ public class MainDashboardViewControl {
 	private void CreateEditPlayersAndAdminsScene() {
         try {
             theFxmlLoader = new FXMLLoader(App.class.getResource("EditPlayersAndAdminsView.fxml"));
-            theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
             theFxmlLoader.setController(theEditPlayersAndAdminsViewControl);
             theEditPlayersAndAdminsParentView = theFxmlLoader.load();
             theEditPlayersAndAdminsScene = new Scene(theEditPlayersAndAdminsParentView);
@@ -438,7 +444,6 @@ public class MainDashboardViewControl {
 	
 	private void CreateEditItemsScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("EditItemsView.fxml"));
-        theEditItemsViewControl = new EditItemsViewControl(this);
         theFxmlLoader.setController(theEditItemsViewControl);
         try {
         	theEditItemsParentView = theFxmlLoader.load();
@@ -472,7 +477,6 @@ public class MainDashboardViewControl {
 	
 	private void CreateEditNPCCharactersScene() {
         theFxmlLoader = new FXMLLoader(App.class.getResource("EditNPCCharactersView.fxml"));
-        theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
         theFxmlLoader.setController(theEditNPCCharactersViewControl);
         try {
         	theEditNPCCharactersParentView = theFxmlLoader.load();
