@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.CreatePlayersAndAdminsControl;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,7 +17,7 @@ import javafx.scene.control.TextField;
  * @author Matthew Hodge
  * @version 6.23.2020
  */
-public class CreatePlayersAndAdminsViewControl {
+public class CreatePlayersAndAdminsViewControl extends ViewControl {
 	@FXML
 	private TextField createPlayerUserNameTextBox;
 	@FXML
@@ -40,6 +41,7 @@ public class CreatePlayersAndAdminsViewControl {
     public CreatePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.setConcreteViewControl(this);
     }
     
     private void ResetCreatePlayerAdminView() {

@@ -12,13 +12,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import com.cs6920.model.Player;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * The View Control for the Edit Players and Admins scene
  * @author Matthew Hodge
  * @version 6.17.2020
  */
-public class EditPlayersAndAdminsViewControl {
+public class EditPlayersAndAdminsViewControl extends ViewControl {
 	@FXML
 	private TextField editPlayerUserNameTextBox;
 	@FXML
@@ -42,6 +43,7 @@ public class EditPlayersAndAdminsViewControl {
     public EditPlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theEditPlayersAndAdminsControl = new EditPlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.setConcreteViewControl(this);
     }
     
     /**

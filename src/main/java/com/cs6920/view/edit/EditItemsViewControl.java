@@ -13,12 +13,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckBox;
 import com.cs6920.model.Item;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 /**
  * Communicates between the Create EditItems fxml view and the logic control
  * @author Matthew Hodge
  * @version 6.23.2020
  */
-public class EditItemsViewControl {
+public class EditItemsViewControl extends ViewControl {
 	@FXML
 	private TextField editItemTypeTextBox;
 	@FXML
@@ -42,6 +43,7 @@ public class EditItemsViewControl {
     public EditItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.setConcreteViewControl(this);
     }
     
     /**

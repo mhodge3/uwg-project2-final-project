@@ -102,13 +102,13 @@ public class MainDashboardViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) throws SQLException {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
-		this.CreateMainDashboardScene();
 		this.CreateEditViewControls();
+		this.CreateMainDashboardScene();
 		this.CreateEditGameStoryScene();
 		
 		this.CreateManagePlayersAndAdminsScene();
-		this.CreateEditPlayersAndAdminsScene();
-		this.CreateCreatePlayersAndAdminsScene();
+		this.theEditPlayersAndAdminsScene = this.CreateViews("EditPlayersAndAdminsView", theEditPlayersAndAdminsViewControl);
+		this.theCreatePlayersAndAdminsScene = this.CreateViews("CreatePlayersAndAdminsView", new CreatePlayersAndAdminsViewControl(this));
 		
 		this.CreateManageItemsScene();
 		this.CreateEditItemsScene();
@@ -386,35 +386,24 @@ public class MainDashboardViewControl {
         theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
 	}
 	
+	private Scene CreateViews(String viewFXMLFilename, ViewControl theViewControl) {
+        try {
+            theFxmlLoader = new FXMLLoader(App.class.getResource(viewFXMLFilename + ".fxml"));
+            theFxmlLoader.setController(theViewControl);
+            Parent theParent = theFxmlLoader.load();
+            return new Scene(theParent);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+	}
+	
 	private void CreateMainDashboardScene() {
         try {
             theFxmlLoader = new FXMLLoader(getClass().getResource("MainDashboardView.fxml"));
             theFxmlLoader.setController(this);
             theFxmlLoader.setLocation(App.class.getResource("MainDashboardView.fxml"));
-            theMainDashboardParentView = theFxmlLoader.load();
-            theMainDashboardScene = new Scene(theMainDashboardParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateEditPlayersAndAdminsScene() {
-        try {
-            theFxmlLoader = new FXMLLoader(App.class.getResource("EditPlayersAndAdminsView.fxml"));
-            theFxmlLoader.setController(theEditPlayersAndAdminsViewControl);
-            theEditPlayersAndAdminsParentView = theFxmlLoader.load();
-            theEditPlayersAndAdminsScene = new Scene(theEditPlayersAndAdminsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateCreatePlayersAndAdminsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("CreatePlayersAndAdminsView.fxml"));
-        theFxmlLoader.setController(new CreatePlayersAndAdminsViewControl(this));
-        try {
-        	theCreatePlayersAndAdminsParentView = theFxmlLoader.load();
-        	theCreatePlayersAndAdminsScene = new Scene(theCreatePlayersAndAdminsParentView);
+            Parent theParent = theFxmlLoader.load();
+            theMainDashboardScene = new Scene(theParent);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
