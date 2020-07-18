@@ -43,7 +43,6 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
     public EditPlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theEditPlayersAndAdminsControl = new EditPlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
-    	this.setConcreteViewControl(this);
     }
     
     /**

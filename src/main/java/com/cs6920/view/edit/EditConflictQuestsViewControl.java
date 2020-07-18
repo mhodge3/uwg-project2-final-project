@@ -7,6 +7,7 @@ import com.cs6920.control.logic_control.ManageQuestsControl;
 import com.cs6920.model.Quest;
 import com.cs6920.story_mapper.App;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class EditConflictQuestsViewControl {
+public class EditConflictQuestsViewControl extends ViewControl {
 	@FXML
 	private TableView<Quest> questTableView;
 	@FXML

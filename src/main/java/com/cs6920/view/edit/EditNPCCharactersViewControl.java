@@ -12,13 +12,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * Communicates between the Create Edit NCPCharacters fxml view and the logic control
  * @author Matthew Hodge
  * @version 6.23.2020
  */
-public class EditNPCCharactersViewControl {
+public class EditNPCCharactersViewControl extends ViewControl {
 	@FXML
 	private TextField editNPCType;
 	@FXML

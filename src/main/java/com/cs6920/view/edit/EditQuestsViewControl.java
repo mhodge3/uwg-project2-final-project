@@ -8,6 +8,7 @@ import com.cs6920.control.logic_control.EditQuestControl;
 import com.cs6920.model.Item;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.model.QuestItems;
+import com.cs6920.view.ViewControl;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class EditQuestsViewControl {
+public class EditQuestsViewControl extends ViewControl {
 	@FXML 
 	private Button questEditBackButton;
 	@FXML

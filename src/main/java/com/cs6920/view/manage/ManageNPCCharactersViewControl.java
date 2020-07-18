@@ -12,13 +12,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * Provides the View Control Logic for the Manage NPC Characters View
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageNPCCharactersViewControl {
+public class ManageNPCCharactersViewControl extends ViewControl {
 	@FXML
 	private TableView<NpcCharacter> existingNPCTableView;
 	@FXML

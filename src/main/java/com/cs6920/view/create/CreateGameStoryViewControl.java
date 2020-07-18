@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.cs6920.control.logic_control.CreateGameStoryControl;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ import javafx.scene.control.Alert.AlertType;
  * @date 6/28/2020
  *
  */
-public class CreateGameStoryViewControl {
+public class CreateGameStoryViewControl extends ViewControl {
 	
 	@FXML
 	private TextField createGameStoryTextBox;

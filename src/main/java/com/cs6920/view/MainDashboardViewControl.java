@@ -34,64 +34,39 @@ import com.cs6920.view.manage.ManageConflictsViewControl;
  * @author Matthew Hodge
  * @version 6.12.2020
  */
-public class MainDashboardViewControl {
+public class MainDashboardViewControl extends ViewControl {
 	@FXML
     private VBox mainDashboardVBox;
 	
 	private FXMLLoader theFxmlLoader;
 	private MainDashboardControl theMainDashbaordControl;
 	private Stage theMainDashboardStage;
-	private Parent theMainDashboardParentView;
 	private Scene theMainDashboardScene;
-	
-    private Parent theManagePlayersAndAdminsParentView;
     private Scene theManagePlayersAndAdminsScene;
-    private Parent theEditPlayersAndAdminsParentView;
     private Scene theEditPlayersAndAdminsScene;
-    private Parent theCreatePlayersAndAdminsParentView;
     private Scene theCreatePlayersAndAdminsScene;
     private ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl;
 	private EditPlayersAndAdminsViewControl theEditPlayersAndAdminsViewControl;
-    
-    private Parent theManageItemsParentView;
     private Scene theManageItemsScene;
-    private Parent theEditItemsParentView;
     private Scene theEditItemsScene;
-    private Parent theCreateItemsParentView;
     private Scene theCreateItemsScene;
     private ManageItemsViewControl theManageItemsViewControl;
 	private EditItemsViewControl theEditItemsViewControl;
-    
-    private Parent theManageNPCCharactersParentView;
     private Scene theManageNPCCharactersScene;
-    private Parent theEditNPCCharactersParentView;
     private Scene theEditNPCCharactersScene;
-    private Parent theCreateNPCCharactersParentView;
     private Scene theCreateNPCCharactersScene;
     private ManageNPCCharactersViewControl theManageNPCCharactersViewControl;
 	private EditNPCCharactersViewControl theEditNPCCharactersViewControl;
-    
-    private Parent theManageQuestChainsParentView;
     private Scene theManageQuestChainsScene;
     private ManageConflictsViewControl theManageQuestChainsViewControl;
-    
-    private Parent theManageTemplateTheQuestParentView;
     private Scene theManageTemplateTheQuestScene;
     private EditConflictQuestsViewControl theEditConflictQuestsViewControl;
-
-    private Parent theManageTemplateVoyageAndReturnParentView;
     private Scene theManageTemplateVoyageAndReturnScene;
     private EditConflictQuestsViewControl theEditConflictVoyageViewControl;
-
-    private Parent theManageTemplateDefeatTheMonsterParentView;
     private Scene theManageTemplateDefeatTheMonsterScene;
     private EditConflictQuestsViewControl theEditConflictMonsterViewControl;
-
-    private Parent theManageTemplateCustomParentView;
     private Scene theManageTemplateCustomScene;
     private EditConflictQuestsViewControl theEditConflictCustomViewControl;
-
-    private Parent theEditGameStoryParentView;
     private Scene theEditGameStoryScene;
 	
 	/**
@@ -103,26 +78,26 @@ public class MainDashboardViewControl {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
 		this.CreateEditViewControls();
-		this.CreateMainDashboardScene();
-		this.CreateEditGameStoryScene();
+		this.theMainDashboardScene = this.CreateScene("MainDashboardView", this);
+		this.theEditGameStoryScene = this.CreateScene("EditGameStory", new EditGameStoryViewControl(this));
 		
-		this.CreateManagePlayersAndAdminsScene();
-		this.theEditPlayersAndAdminsScene = this.CreateViews("EditPlayersAndAdminsView", theEditPlayersAndAdminsViewControl);
-		this.theCreatePlayersAndAdminsScene = this.CreateViews("CreatePlayersAndAdminsView", new CreatePlayersAndAdminsViewControl(this));
+		this.theManagePlayersAndAdminsScene = this.CreateScene("ManagePlayersAndAdminsView", new ManagePlayersAndAdminsViewControl(this));
+		this.theEditPlayersAndAdminsScene = this.CreateScene("EditPlayersAndAdminsView", this.theEditPlayersAndAdminsViewControl);
+		this.theCreatePlayersAndAdminsScene = this.CreateScene("CreatePlayersAndAdminsView", new CreatePlayersAndAdminsViewControl(this));
 		
-		this.CreateManageItemsScene();
-		this.CreateEditItemsScene();
-		this.CreateCreateItemsScene();
+		this.theManageItemsScene = this.CreateScene("ManageItemsView", new ManageItemsViewControl(this));
+		this.theEditItemsScene = this.CreateScene("EditItemsView", this.theEditItemsViewControl);
+		this.theCreateItemsScene = this.CreateScene("CreateItemsView", new CreateItemsViewControl(this));
 		
-		this.CreateManageNPCCharactersScene();
-		this.CreateEditNPCCharactersScene();
-		this.CreateCreateNPCScene();
+		this.theManageNPCCharactersScene = this.CreateScene("ManageNPCCharactersView", new ManageNPCCharactersViewControl(this));
+		this.theEditNPCCharactersScene = this.CreateScene("EditNPCCharactersView", this.theEditNPCCharactersViewControl);
+		this.theCreateNPCCharactersScene = this.CreateScene("CreateNPCCharactersView", new CreateNPCCharactersViewControl(this));
 		
-		this.CreateManageQuestChainsScene();
-		this.CreateManageTemplateVoyageAndReturnScene();
-		this.CreateManageTemplateTheQuestScene();
-		this.CreateManageTemplateDefeatTheMonsterScene();
-		this.CreateManageTemplateCustomScene();
+		this.theManageQuestChainsScene = this.CreateScene("ManageQuestChainsView", new ManageConflictsViewControl(this));
+		this.theManageTemplateVoyageAndReturnScene = this.CreateScene("ManageTemplateVoyageView", new EditConflictQuestsViewControl(this, "Voyage and Return"));
+		this.theManageTemplateTheQuestScene = this.CreateScene("ManageTemplateTheQuestView", new EditConflictQuestsViewControl(this, "The Quest"));
+		this.theManageTemplateDefeatTheMonsterScene = this.CreateScene("ManageTemplateMonsterView", new EditConflictQuestsViewControl(this, "Defeat the Monster"));
+		this.theManageTemplateCustomScene = this.CreateScene("ManageTemplateCustomView", new EditConflictQuestsViewControl(this, "Custom"));
 	} 
 	
 	/**
@@ -386,167 +361,12 @@ public class MainDashboardViewControl {
         theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
 	}
 	
-	private Scene CreateViews(String viewFXMLFilename, ViewControl theViewControl) {
+	private Scene CreateScene(String viewFXMLFilename, ViewControl theViewControl) {
         try {
             theFxmlLoader = new FXMLLoader(App.class.getResource(viewFXMLFilename + ".fxml"));
             theFxmlLoader.setController(theViewControl);
             Parent theParent = theFxmlLoader.load();
             return new Scene(theParent);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateMainDashboardScene() {
-        try {
-            theFxmlLoader = new FXMLLoader(getClass().getResource("MainDashboardView.fxml"));
-            theFxmlLoader.setController(this);
-            theFxmlLoader.setLocation(App.class.getResource("MainDashboardView.fxml"));
-            Parent theParent = theFxmlLoader.load();
-            theMainDashboardScene = new Scene(theParent);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManagePlayersAndAdminsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManagePlayersAndAdminsView.fxml"));
-        theFxmlLoader.setController(new ManagePlayersAndAdminsViewControl(this));
-        try {
-        	theManagePlayersAndAdminsParentView = theFxmlLoader.load();
-        	theManagePlayersAndAdminsScene = new Scene(theManagePlayersAndAdminsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageItemsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageItemsView.fxml"));
-        theFxmlLoader.setController(new ManageItemsViewControl(this));
-        try {
-        	theManageItemsParentView = theFxmlLoader.load();
-        	theManageItemsScene = new Scene(theManageItemsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateEditItemsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("EditItemsView.fxml"));
-        theFxmlLoader.setController(theEditItemsViewControl);
-        try {
-        	theEditItemsParentView = theFxmlLoader.load();
-        	theEditItemsScene = new Scene(theEditItemsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateCreateItemsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("CreateItemsView.fxml"));
-        theFxmlLoader.setController(new CreateItemsViewControl(this));
-        try {
-        	theCreateItemsParentView = theFxmlLoader.load();
-        	theCreateItemsScene = new Scene(theCreateItemsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageNPCCharactersScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageNPCCharactersView.fxml"));
-        theFxmlLoader.setController(new ManageNPCCharactersViewControl(this));
-        try {
-        	theManageNPCCharactersParentView = theFxmlLoader.load();
-        	theManageNPCCharactersScene = new Scene(theManageNPCCharactersParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateEditNPCCharactersScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("EditNPCCharactersView.fxml"));
-        theFxmlLoader.setController(theEditNPCCharactersViewControl);
-        try {
-        	theEditNPCCharactersParentView = theFxmlLoader.load();
-        	theEditNPCCharactersScene = new Scene(theEditNPCCharactersParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateCreateNPCScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("CreateNPCCharactersView.fxml"));
-        theFxmlLoader.setController(new CreateNPCCharactersViewControl(this));
-        try {
-        	theCreateNPCCharactersParentView = theFxmlLoader.load();
-        	theCreateNPCCharactersScene = new Scene(theCreateNPCCharactersParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageQuestChainsScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageQuestChainsView.fxml"));
-        theFxmlLoader.setController(new ManageConflictsViewControl(this));
-        try {
-        	theManageQuestChainsParentView = theFxmlLoader.load();
-        	theManageQuestChainsScene = new Scene(theManageQuestChainsParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageTemplateTheQuestScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateTheQuestView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "The Quest"));
-        try {
-        	theManageTemplateTheQuestParentView = theFxmlLoader.load();
-        	theManageTemplateTheQuestScene = new Scene(theManageTemplateTheQuestParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageTemplateVoyageAndReturnScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateVoyageView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Voyage and Return"));
-        try {
-        	theManageTemplateVoyageAndReturnParentView = theFxmlLoader.load();
-        	theManageTemplateVoyageAndReturnScene = new Scene(theManageTemplateVoyageAndReturnParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageTemplateDefeatTheMonsterScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateMonsterView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Defeat the Monster"));
-        try {
-        	theManageTemplateDefeatTheMonsterParentView = theFxmlLoader.load();
-        	theManageTemplateDefeatTheMonsterScene = new Scene(theManageTemplateDefeatTheMonsterParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateManageTemplateCustomScene() {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("ManageTemplateCustomView.fxml"));
-        theFxmlLoader.setController(new EditConflictQuestsViewControl(this, "Custom"));
-        try {
-        	theManageTemplateCustomParentView = theFxmlLoader.load();
-        	theManageTemplateCustomScene = new Scene(theManageTemplateCustomParentView);
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-	}
-	
-	private void CreateEditGameStoryScene() throws SQLException {
-        theFxmlLoader = new FXMLLoader(App.class.getResource("EditGameStory.fxml"));
-        theFxmlLoader.setController(new EditGameStoryViewControl(this));
-        try {
-        	theEditGameStoryParentView = theFxmlLoader.load();
-        	theEditGameStoryScene = new Scene(theEditGameStoryParentView);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

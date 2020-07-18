@@ -41,7 +41,6 @@ public class CreatePlayersAndAdminsViewControl extends ViewControl {
     public CreatePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theCreatePlayersAndAdminsControl = new CreatePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
-    	this.setConcreteViewControl(this);
     }
     
     private void ResetCreatePlayerAdminView() {

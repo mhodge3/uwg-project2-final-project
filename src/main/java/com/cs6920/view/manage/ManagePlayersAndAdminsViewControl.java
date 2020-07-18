@@ -12,13 +12,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.cs6920.model.Player;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * Provides the View Control Logic for the Manage Players and Admin View
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManagePlayersAndAdminsViewControl {
+public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	@FXML
 	private TableView<Player> existingUserTableView;
 	@FXML

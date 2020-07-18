@@ -43,7 +43,6 @@ public class EditItemsViewControl extends ViewControl {
     public EditItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.GetDBConnection());
-    	this.setConcreteViewControl(this);
     }
     
     /**

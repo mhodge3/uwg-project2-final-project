@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import com.cs6920.control.logic_control.ManageConflictsControl;
 import com.cs6920.model.Conflict;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,7 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageConflictsViewControl {
+public class ManageConflictsViewControl extends ViewControl {
 	@FXML
 	private TableView<Conflict> conflictChainTableView;
 	@FXML

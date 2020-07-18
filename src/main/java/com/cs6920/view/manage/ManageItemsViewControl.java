@@ -12,13 +12,14 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import com.cs6920.model.Item;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * Provides the View Control Logic for the Manage Items View
  * @author Matthew Hodge
  * @version 6.13.2020
  */
-public class ManageItemsViewControl {
+public class ManageItemsViewControl extends ViewControl {
 	@FXML
 	private TableView<Item> existingItemTableView;
 	@FXML

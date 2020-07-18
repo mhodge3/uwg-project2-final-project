@@ -15,13 +15,14 @@ import javafx.scene.control.Alert.AlertType;
 
 import com.cs6920.model.GameStory;
 import com.cs6920.view.MainDashboardViewControl;
+import com.cs6920.view.ViewControl;
 
 /**
  * @author Ashley Palmer
  * @date 6/27/2020
  *
  */
-public class EditGameStoryViewControl {
+public class EditGameStoryViewControl extends ViewControl {
 	
 	@FXML
 	private TextField editGameStoryNameTextBox;
