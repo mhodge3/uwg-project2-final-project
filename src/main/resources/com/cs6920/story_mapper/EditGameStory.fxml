@@ -29,6 +29,17 @@
                         <TextField fx:id="editGameStoryNameTextBox" />
                         <Label text="Game Story Summary" />
                         <TextArea fx:id="editGameStorySummaryTextArea" prefHeight="200.0" prefWidth="200.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Player Level Cap: " />
+                              <TextField fx:id="playerLevelCapTextField" prefHeight="25.0" prefWidth="54.0" />
+                              <Label text="  NPC Level Cap: " />
+                              <TextField fx:id="npcLevelCapTextField" prefHeight="25.0" prefWidth="53.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
                   </VBox>
                </children>

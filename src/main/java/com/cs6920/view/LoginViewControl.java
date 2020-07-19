@@ -23,7 +23,7 @@ import com.cs6920.story_mapper.App;
  * @version 6.12.2020
  */
 
-public class LoginViewControl {
+public class LoginViewControl extends ViewControl {
 	@FXML
     private TextField hostTextInput;
 	@FXML

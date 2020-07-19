@@ -43,6 +43,7 @@ public class GameStoryDAL {
             	story = new GameStory();
                 story.SetGameStoryName(results.getString("game_story_name"));
                 story.SetGameStorySummary(results.getString("game_story_summary"));
+                story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -64,8 +65,7 @@ public class GameStoryDAL {
 		try {
             this.conn = this.sqlAccess.GetDBConnection();
             Statement statement = this.conn.createStatement();
-            String query = "SELECT  game_story_name," + 
-            		"game_story_summary " + 
+            String query = "SELECT  * " +  
             		"FROM " + this.sqlAccess.GetTheDBName() + ".gamestory " +
             		"WHERE game_story_name = \"" + gameStoryName + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -73,6 +73,7 @@ public class GameStoryDAL {
             	story = new GameStory();
                 story.SetGameStoryName(results.getString("game_story_name"));
                 story.SetGameStoryName(results.getString("game_story_summary"));
+                story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -123,13 +124,15 @@ public class GameStoryDAL {
 			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
 					"SET " +
 					"game_story_name = ?, " + 
-            		"game_story_summary = ? " + 
+            		"game_story_summary = ?, " + 
+            		"player_character_level_cap = ? " + 
             	    "WHERE game_story_name = ?";
 		
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, updatedGameStory.GetGameStoryName());
 			  preparedStmt.setString (2, updatedGameStory.GetGameStorySummary());
-			  preparedStmt.setString (3, String.valueOf(oldGameStory.GetGameStoryName()));
+			  preparedStmt.setString (3, String.valueOf(updatedGameStory.GetPlayerLevelCap()));
+			  preparedStmt.setString (4, String.valueOf(oldGameStory.GetGameStoryName()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {

@@ -3,6 +3,8 @@
  */
 package com.cs6920.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -16,6 +18,7 @@ public class GameStory {
 	
 	private StringProperty gameStoryName;
 	private StringProperty gameStorySummary;
+	private IntegerProperty playerLevelCap;
 	
 	/**
 	 * Test Constructor not used.
@@ -29,9 +32,10 @@ public class GameStory {
 	 * @param gameStoryName
 	 * @param gameStorySummary
 	 */
-	public GameStory(String gameStoryName, String gameStorySummary) {
+	public GameStory(String gameStoryName, String gameStorySummary, int playerLevelCap) {
 		this.gameStoryName = new SimpleStringProperty(gameStoryName);
 		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
+		this.playerLevelCap = new SimpleIntegerProperty(playerLevelCap);
 	}
 	
 	/**
@@ -80,6 +84,30 @@ public class GameStory {
 	 */
 	public void SetGameStorySummary(String gameStorySummary) {
 		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
+	}
+	
+	/**
+	 * Gets the playerLevelCap Name
+	 * @return playerLevelCap
+	 */
+	public int GetPlayerLevelCap() {
+		return this.playerLevelCap.get();
+	}
+	
+	/**
+	 * Gets the playerLevelCap property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty playerLevelCapProperty() {
+	   return this.playerLevelCap;
+	}
+	
+	/**
+	 * Sets the playerLevelCap
+	 * @param playerLevelCap
+	 */
+	public void SetPlayerLevelCap(int playerLevelCap) {
+		this.playerLevelCap = new SimpleIntegerProperty(playerLevelCap);
 	}
 
 }
