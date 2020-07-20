@@ -59,7 +59,7 @@ class testNpcCharacterDAL {
 	
 	@Test
 	public void createANpcCharacterInDB() throws Exception {
-		assertTrue(this.dal.CreateNpc("the character", "Max", 1, 2, 2.1, 3.0, 4.0));
+		assertTrue(this.dal.CreateNpc("the character", "Max", 1, 2, 2.1, 3.0, 4.0, 2));
 		this.character = this.dal.GetNpcByName("Max");
 		assertEquals(this.character.GetNpcName(),"Max");
 		assertEquals(this.character.GetNpcDescprition(),"the character");
@@ -73,7 +73,7 @@ class testNpcCharacterDAL {
 	@Test
 	public void updateANpcCharacterInDB() throws Exception {
 		this.character = this.dal.GetNpcByName("Max");
-		NpcCharacter updatedCharacter = new NpcCharacter(0, "the good guy", "Max", 3, 7, 14.1, 337.5, 4.5);
+		NpcCharacter updatedCharacter = new NpcCharacter(0, "the good guy", "Max", 3, 7, 14.1, 337.5, 4.5, 1);
 		assertTrue(this.dal.UpdateNpc(this.character, updatedCharacter));
 		this.character = this.dal.GetNpcByName("Max");
 		assertEquals(this.character.GetNpcName(),"Max");

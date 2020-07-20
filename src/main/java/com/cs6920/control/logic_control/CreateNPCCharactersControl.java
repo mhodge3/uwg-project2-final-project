@@ -29,7 +29,7 @@ public class CreateNPCCharactersControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateNpc(int npcType, String npcName, String npcDescription) throws SQLException {
+	public String CreateNpc(int npcType, String npcName, String npcDescription, Double npcPosX, Double npcPosY, Double npcPosZ, int npcLevel) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";
 		}
@@ -37,7 +37,7 @@ public class CreateNPCCharactersControl {
 			return "The NPC Description cannot be empty";
 		}
 		
-		if (npcDAL.CreateNpc(npcDescription, npcName, npcType, 0, 0, 0, 0)) {
+		if (npcDAL.CreateNpc(npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel)) {
 			return null;
 		}
 		else {

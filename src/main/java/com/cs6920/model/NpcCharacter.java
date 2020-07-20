@@ -20,6 +20,7 @@ public class NpcCharacter {
 	private StringProperty npcDescprition;
 	private StringProperty npcName;
 	private IntegerProperty npcType;
+	private IntegerProperty npcLevel;
 	private IntegerProperty npcFaction;
 	private DoubleProperty npcPosX;
 	private DoubleProperty npcPosY;
@@ -44,7 +45,7 @@ public class NpcCharacter {
 	 * @param npcPosZ
 	 */
 	
-	public NpcCharacter(int npcId, String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ) {
+	public NpcCharacter(int npcId, String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ, int npcLevel) {
 		this.npcId = new SimpleIntegerProperty(npcId);
 		this.npcDescprition = new SimpleStringProperty(npcDescription);
 		this.npcName = new SimpleStringProperty(npcName);
@@ -53,7 +54,7 @@ public class NpcCharacter {
 		this.npcPosX = new SimpleDoubleProperty(npcPosX);
 		this.npcPosY = new SimpleDoubleProperty(npcPosY);
 		this.npcPosZ = new SimpleDoubleProperty(npcPosZ);
-		
+		this.npcLevel = new SimpleIntegerProperty(npcLevel);
 		
 	}
 	
@@ -79,6 +80,30 @@ public class NpcCharacter {
 	 */
 	public final IntegerProperty npcIdProperty() {
 	   return npcId;
+	}
+	
+	/**
+	 * Gets the npcLevel
+	 * @return npcId
+	 */
+	public int GetNpcLevel() {
+		return this.npcLevel.get();
+	}
+	
+	/**
+	 * Sets the npcLevel
+	 * @param setNpcId
+	 */
+	public void SetNpcLevel(int npcLevel) {
+		this.npcLevel = new SimpleIntegerProperty(npcLevel);
+	}
+	
+	/**
+	 * Gets the npcLevel property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty npcLevelProperty() {
+	   return npcLevel;
 	}
 	
 	/**

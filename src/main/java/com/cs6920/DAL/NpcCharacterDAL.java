@@ -30,7 +30,8 @@ public class NpcCharacterDAL {
             	    "character_npc_faction, " + 
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
-            	    "character_npc_pos_z  " +
+            	    "character_npc_pos_z,  " +
+            	    "character_level  " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
             	"WHERE character_npc_id = " + String.valueOf(npcId);
             ResultSet results = statement.executeQuery(query);
@@ -44,6 +45,7 @@ public class NpcCharacterDAL {
                 npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
                 npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
                 npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -66,7 +68,8 @@ public class NpcCharacterDAL {
             	    "character_npc_faction, " + 
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
-            	    "character_npc_pos_z  " +
+            	    "character_npc_pos_z,  " +
+            	    "character_level  " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
             	"WHERE character_npc_name = \"" + characterName + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -80,6 +83,7 @@ public class NpcCharacterDAL {
                 npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
                 npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
                 npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -103,7 +107,8 @@ public class NpcCharacterDAL {
             	    "character_npc_faction, " + 
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
-            	    "character_npc_pos_z  " +
+            	    "character_npc_pos_z,  " +
+            	    "character_level  " +
             	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
@@ -116,6 +121,7 @@ public class NpcCharacterDAL {
                 npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
                 npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
                 npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
                 allNpc.add(npc);
             }
         } catch (Exception e) {
@@ -127,7 +133,7 @@ public class NpcCharacterDAL {
         return allNpc;
     }
 	
-	public Boolean CreateNpc(String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ) throws SQLException {
+	public Boolean CreateNpc(String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ, int npcLevel) throws SQLException {
 		Boolean success = false;
 		try {
 			this.conn = this.sqlAccess.GetDBConnection();
@@ -138,8 +144,9 @@ public class NpcCharacterDAL {
             	    "character_npc_faction, " +
             	    "character_npc_pos_x, " +
             	    "character_npc_pos_y, " +
-            	    "character_npc_pos_z )" +
-					"VALUES (?, ?, ?, ?, ?, ?, ?)";
+            	    "character_npc_pos_z, " +
+            	    "character_level )" +
+					"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, npcName);
 			  preparedStmt.setString (2, npcDescription);
@@ -148,6 +155,7 @@ public class NpcCharacterDAL {
 			  preparedStmt.setString (5, String.valueOf(npcPosX));
 			  preparedStmt.setString (6, String.valueOf(npcPosY));
 			  preparedStmt.setString (7, String.valueOf(npcPosZ));
+			  preparedStmt.setString (8, String.valueOf(npcLevel));
 			  
 		      preparedStmt.execute();
 		      success = true;
@@ -172,7 +180,8 @@ public class NpcCharacterDAL {
             	    "character_npc_faction = ?, " +
             	    "character_npc_pos_x = ?, " +
             	    "character_npc_pos_y = ?, " +
-            	    "character_npc_pos_z = ?" +
+            	    "character_npc_pos_z = ?, " +
+            	    "character_level = ? " +
             	    "WHERE character_npc_id = ?";
 		
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -183,7 +192,8 @@ public class NpcCharacterDAL {
 			  preparedStmt.setString (5, String.valueOf(updatedCharacter.GetNpcPosX()));
 			  preparedStmt.setString (6, String.valueOf(updatedCharacter.GetNpcPosY()));
 			  preparedStmt.setString (7, String.valueOf(updatedCharacter.GetNpcPosZ()));
-			  preparedStmt.setString (8, String.valueOf(oldCharacter.GetNpcId()));
+			  preparedStmt.setString (8, String.valueOf(updatedCharacter.GetNpcLevel()));
+			  preparedStmt.setString (9, String.valueOf(oldCharacter.GetNpcId()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {

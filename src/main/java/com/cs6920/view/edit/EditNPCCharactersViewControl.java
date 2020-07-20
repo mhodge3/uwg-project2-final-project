@@ -10,6 +10,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+
 import com.cs6920.model.NpcCharacter;
 import com.cs6920.view.MainDashboardViewControl;
 import com.cs6920.view.ViewControl;
@@ -22,6 +25,14 @@ import com.cs6920.view.ViewControl;
 public class EditNPCCharactersViewControl extends ViewControl {
 	@FXML
 	private TextField editNPCType;
+	@FXML
+	private TextField editNPCPosX;
+	@FXML
+	private TextField editNPCPosY;
+	@FXML
+	private TextField editNPCPosZ;
+	@FXML
+	private Spinner<Integer> editNPCLevelSpinner;
 	@FXML
 	private TextField editNPCNameTextBox;
 	@FXML
@@ -52,9 +63,13 @@ public class EditNPCCharactersViewControl extends ViewControl {
      * @param theNPCToEdit
      */
     public void SetFormForSelectedNPC(NpcCharacter theNPCToEdit) {
-    	editNPCType.setText(String.valueOf(theNPCToEdit.GetNpcType()));
-    	editNPCNameTextBox.setText(theNPCToEdit.GetNpcName());
-    	editNPCDescriptionTextBox.setText(theNPCToEdit.GetNpcDescprition());
+    	this.editNPCType.setText(String.valueOf(theNPCToEdit.GetNpcType()));
+    	this.editNPCNameTextBox.setText(theNPCToEdit.GetNpcName());
+    	this.editNPCDescriptionTextBox.setText(theNPCToEdit.GetNpcDescprition());
+    	this.editNPCPosX.setText(Double.toString(theNPCToEdit.GetNpcPosX()));
+    	this.editNPCPosY.setText(Double.toString(theNPCToEdit.GetNpcPosY()));
+    	this.editNPCPosZ.setText(Double.toString(theNPCToEdit.GetNpcPosZ()));
+		this.editNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, theNPCToEdit.GetNpcLevel()));
     }
     
 	@FXML
@@ -97,7 +112,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
 	private void handleNPCEditSaveButton() throws SQLException {
 		String npcCreationError = null;
 		try {
-			npcCreationError = theEditNPCCharactersControl.UpdateNpc(theEditNPCCharactersControl.GetSelectedNPC().GetNpcId(), Integer.parseInt(editNPCType.getText()), editNPCNameTextBox.getText(), editNPCDescriptionTextBox.getText());
+			npcCreationError = theEditNPCCharactersControl.UpdateNpc(theEditNPCCharactersControl.GetSelectedNPC().GetNpcId(), Integer.parseInt(editNPCType.getText()), editNPCNameTextBox.getText(), editNPCDescriptionTextBox.getText(), Double.parseDouble(editNPCPosX.getText()), Double.parseDouble(editNPCPosY.getText()), Double.parseDouble(editNPCPosZ.getText()), this.editNPCLevelSpinner.getValue());
 		} catch (Exception e) {
 			npcCreationError = e.getMessage();
 		}
