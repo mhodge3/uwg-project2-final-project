@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cs6920.DAL.MySQLAccess;
+import com.cs6920.control.logic_control.EditGameStoryControl;
 import com.cs6920.control.logic_control.MainDashboardControl;
 
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import com.cs6920.model.Conflict;
+import com.cs6920.model.GameStory;
 import com.cs6920.model.Player;
 import com.cs6920.story_mapper.App;
 import com.cs6920.view.create.CreateItemsViewControl;
@@ -68,6 +70,7 @@ public class MainDashboardViewControl extends ViewControl {
     private Scene theManageTemplateCustomScene;
     private EditConflictQuestsViewControl theEditConflictCustomViewControl;
     private Scene theEditGameStoryScene;
+	private EditGameStoryViewControl theEditGameStoryViewControl;
 	
 	/**
 	 * Constructor for the MainDashbaordView Control with 1 argument
@@ -79,7 +82,7 @@ public class MainDashboardViewControl extends ViewControl {
 		this.theMainDashboardStage = theMainDashboardStage;
 		this.CreateEditViewControls();
 		this.theMainDashboardScene = this.CreateScene("MainDashboardView", this);
-		this.theEditGameStoryScene = this.CreateScene("EditGameStory", new EditGameStoryViewControl(this));
+		this.theEditGameStoryScene = this.CreateScene("EditGameStory", this.theEditGameStoryViewControl);
 		
 		this.theManagePlayersAndAdminsScene = this.CreateScene("ManagePlayersAndAdminsView", new ManagePlayersAndAdminsViewControl(this));
 		this.theEditPlayersAndAdminsScene = this.CreateScene("EditPlayersAndAdminsView", this.theEditPlayersAndAdminsViewControl);
@@ -99,6 +102,10 @@ public class MainDashboardViewControl extends ViewControl {
 		this.theManageTemplateDefeatTheMonsterScene = this.CreateScene("ManageTemplateMonsterView", new EditConflictQuestsViewControl(this, "Defeat the Monster"));
 		this.theManageTemplateCustomScene = this.CreateScene("ManageTemplateCustomView", new EditConflictQuestsViewControl(this, "Custom"));
 	} 
+	
+	public GameStory getTheGameStory() {
+		return this.theEditGameStoryViewControl.GetGameStoryEditControl().getGameStoryToEdit();
+	}
 	
 	/**
 	 * Gets the Player object that is logged in as Admin
@@ -355,10 +362,11 @@ public class MainDashboardViewControl extends ViewControl {
         ShowMainDashboardView();
 	}
 	
-	private void CreateEditViewControls() {
+	private void CreateEditViewControls() throws SQLException {
         theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
         theEditItemsViewControl = new EditItemsViewControl(this);
         theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
+        theEditGameStoryViewControl = new EditGameStoryViewControl(this);
 	}
 	
 	private Scene CreateScene(String viewFXMLFilename, ViewControl theViewControl) {
