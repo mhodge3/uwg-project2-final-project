@@ -9,7 +9,7 @@
 
 <VBox fx:id="mainDashboardVBox" alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Game Story Management Dashboard">
+      <Label fx:id="gameStoryDashboardLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="800.0" style="-fx-background-color: #CCCCCC;" text="Game Story Management Dashboard">
          <font>
             <Font size="24.0" />
          </font>

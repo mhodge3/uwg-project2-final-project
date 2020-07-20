@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -39,6 +40,8 @@ import com.cs6920.view.manage.ManageConflictsViewControl;
 public class MainDashboardViewControl extends ViewControl {
 	@FXML
     private VBox mainDashboardVBox;
+	@FXML
+	private Label gameStoryDashboardLabel;
 	
 	private FXMLLoader theFxmlLoader;
 	private MainDashboardControl theMainDashbaordControl;
@@ -225,6 +228,10 @@ public class MainDashboardViewControl extends ViewControl {
 		//theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
 	}
 	
+	@FXML
+	private void initialize() {
+		this.gameStoryDashboardLabel.setText(this.getTheGameStory().GetGameStoryName() + " Management Dashboard");
+	}
 
 	@FXML
 	private void handleManageEditGameStory() throws SQLException {
@@ -301,6 +308,7 @@ public class MainDashboardViewControl extends ViewControl {
 		Scene theSceneToStage = null;
 		switch (theSceneNameToLoad) {
 			case "mainDashboard":
+				this.gameStoryDashboardLabel.setText(this.getTheGameStory().GetGameStoryName() + " Management Dashboard");
 				theSceneToStage = theMainDashboardScene;
 				break;
 			case "managePlayersAndAdmins":
