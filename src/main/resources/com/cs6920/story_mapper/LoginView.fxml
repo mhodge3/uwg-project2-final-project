@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -23,7 +24,7 @@
                         <Label prefHeight="19.0" prefWidth="62.0" text="Username: " />
                         <TextField fx:id="usernameDBTextInput" text="hodgesd1_tempguy" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="Password:" />
-                        <TextField fx:id="passwordDBTextInput" text="1mD1ffrent!" />
+                        <PasswordField fx:id="passwordDBPasswordField" text="1mD1ffrent!" />
                         <Label prefHeight="19.0" prefWidth="62.0" text="DB Name:" />
                         <TextField fx:id="dBNameTextInput" text="hodgesd1_rpg_story_mapper_db" />
                         <HBox prefHeight="55.0" prefWidth="301.0">
@@ -50,7 +51,7 @@
                   <Label id="AdminNameLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Name:" />
                   <TextField fx:id="adminNameLoginTextBox" />
                   <Label id="AdminPasswordLoginLabel" prefHeight="17.0" prefWidth="126.0" text="Admin Password" />
-                  <TextField fx:id="adminPasswordLoginTextBox" />
+                  <PasswordField fx:id="adminPasswordLoginPasswordField" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button id="AdminLoginButton" fx:id="adminLoginButton" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleAdminLoginButtonAction" text="Login" />

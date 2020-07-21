@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -31,13 +32,13 @@ public class LoginViewControl extends ViewControl {
 	@FXML
     private TextField usernameDBTextInput;
 	@FXML
-    private TextField passwordDBTextInput;
+    private PasswordField passwordDBPasswordField;
 	@FXML
     private Label dBConnectionMessageLabel;
 	@FXML
     private TextField adminNameLoginTextBox;
 	@FXML
-    private TextField adminPasswordLoginTextBox;
+    private PasswordField adminPasswordLoginPasswordField;
 	@FXML
 	private Label adminLoginMessageLabel;
 	@FXML
@@ -72,7 +73,7 @@ public class LoginViewControl extends ViewControl {
 		Thread handleTestConnection = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
-				if (theLoginControl.testDBConnection(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText())) {
+				if (theLoginControl.testDBConnection(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBPasswordField.getText(), dBNameTextInput.getText())) {
 					Platform.runLater(() -> { testMessageSucces(); });
 				}
 				else {
@@ -102,7 +103,7 @@ public class LoginViewControl extends ViewControl {
 		Thread handleAdminLogin = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
-				Player thePlayerToLogIn = theLoginControl.userLoginPlayer(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText(), adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
+				Player thePlayerToLogIn = theLoginControl.userLoginPlayer(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBPasswordField.getText(), dBNameTextInput.getText(), adminNameLoginTextBox.getText(), adminPasswordLoginPasswordField.getText());
 				if (thePlayerToLogIn != null) {
 					Platform.runLater(() -> { 
 						try {
@@ -201,7 +202,7 @@ public class LoginViewControl extends ViewControl {
 	private void resetAdminLoginFields() {
 		this.adminLoginMessageLabel.setText("");
 		this.adminNameLoginTextBox.setText("");
-		this.adminPasswordLoginTextBox.setText("");
+		this.adminPasswordLoginPasswordField.setText("");
 		this.dBConnectionMessageLabel.setText("");
 	}
 	
