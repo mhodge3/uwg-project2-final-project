@@ -114,11 +114,19 @@ public class GameStory {
 	}
 	
 	/**
-	 * Gets the npcCharacterLevelCap Name
+	 * Gets the npcCharacterLevelCap
 	 * @return npcCharacterLevelCap
 	 */
 	public int GetNpcCharacterLevelCap() {
 		return this.npcCharacterLevelCap.get();
+	}
+	
+	/**
+	 * Gets the playerLevelCap property
+	 * @return Property for TableView
+	 */
+	public final IntegerProperty NpcCharacterLevelCapProperty() {
+	   return this.npcCharacterLevelCap;
 	}
 
 }
