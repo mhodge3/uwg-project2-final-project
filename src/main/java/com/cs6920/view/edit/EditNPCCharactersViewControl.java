@@ -69,7 +69,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
     	this.editNPCPosX.setText(Double.toString(theNPCToEdit.GetNpcPosX()));
     	this.editNPCPosY.setText(Double.toString(theNPCToEdit.GetNpcPosY()));
     	this.editNPCPosZ.setText(Double.toString(theNPCToEdit.GetNpcPosZ()));
-		this.editNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetPlayerLevelCap(), theNPCToEdit.GetNpcLevel()));
+		this.editNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), theNPCToEdit.GetNpcLevel()));
     }
     
 	@FXML

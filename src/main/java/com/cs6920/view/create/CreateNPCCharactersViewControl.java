@@ -55,12 +55,12 @@ public class CreateNPCCharactersViewControl extends ViewControl {
     	this.createNPCPosX.setText("");
     	this.createNPCPosY.setText("");
     	this.createNPCPosZ.setText("");
-		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetPlayerLevelCap(), 1));
+		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), 1));
     }
     
     @FXML
     private void initialize()  {
-		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetPlayerLevelCap(), 1));
+		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), 1));
     }
     
 	@FXML
