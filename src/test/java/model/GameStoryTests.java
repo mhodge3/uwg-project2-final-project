@@ -51,6 +51,17 @@ public class GameStoryTests {
 		testItem.SetPlayerLevelCap(1234);
 		assertEquals(1234, testItem.GetPlayerLevelCap());
 	}
+	
+	/**
+	 * Tests the npcCharacterLevelCap and npcCharacterLevelCap Methods
+	 * 
+	 */
+	@Test
+	public void testGetNpcCharacterLevelCapCapShouldBe1234() {
+		GameStory testItem = new GameStory();
+		testItem.SetNpcCharacterLevelCap(1234);
+		assertEquals(1234, testItem.GetNpcCharacterLevelCap());
+	}
 
 	
 }
