@@ -45,6 +45,7 @@ public class EditConflictQuestsViewControl extends ViewControl {
 	
 	private MainDashboardViewControl theMainDashboardViewControl;
 	private ManageQuestsControl theManageQuestsControl;
+	private Scene theCurrentScene;
     
 	/**
 	 * Constructor for this View Control
@@ -174,15 +175,20 @@ public class EditConflictQuestsViewControl extends ViewControl {
     }
     
     private void createEditQuestWindow(ActionEvent event, int questIdToEdit, String fxmlFileName, String questArcRole) throws IOException, SQLException {
-        Stage stage = new Stage();
+    	this.theCurrentScene = this.theMainDashboardViewControl.getTheMainDashboardStage().getScene();
         FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFileName + ".fxml"));
         loader.setController(new EditQuestsViewControl(this, this.theMainDashboardViewControl.getDBConnection(), questIdToEdit, questArcRole));
         Parent root = loader.load();
-        stage.setScene(new Scene(root));
-        stage.setTitle("My modal window");
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
-        stage.show();
+        this.theMainDashboardViewControl.getTheMainDashboardStage().setScene(new Scene(root));
+        this.theMainDashboardViewControl.getTheMainDashboardStage().show();
+    }
+    
+    /**
+     * Redisplay the Quests Management View
+     */
+    public void displayQuestManagementView() {
+        this.theMainDashboardViewControl.getTheMainDashboardStage().setScene(this.theCurrentScene);
+        this.theMainDashboardViewControl.getTheMainDashboardStage().show();
     }
     
 	/**

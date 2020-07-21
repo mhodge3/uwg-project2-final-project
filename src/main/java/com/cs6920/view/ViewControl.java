@@ -6,6 +6,4 @@ package com.cs6920.view;
  * @version 7.20.20
  */
 
-public abstract class ViewControl {
-	
-}
+public abstract class ViewControl {}

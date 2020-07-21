@@ -147,8 +147,7 @@ public class EditQuestsViewControl extends ViewControl {
     
 	@FXML
 	private void handleBackButton() throws SQLException {
-	    Stage stage = (Stage) this.questEditBackButton.getScene().getWindow();
-	    stage.close();
+	    this.theEditQuestControl.getConflictTemplateTheQuestViewControl().displayQuestManagementView();
 	}
     
     @FXML

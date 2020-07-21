@@ -269,6 +269,14 @@ public class MainDashboardViewControl extends ViewControl {
 	}
 	
 	/**
+	 * Get a reference to the MainDashboard Stage
+	 * @return the MainDashboard Stage
+	 */
+	public Stage getTheMainDashboardStage() {
+		return this.theMainDashboardStage;
+	}
+	
+	/**
 	 * Loads the new MainDashboard when the dashboard is first accessed
 	 * @throws SQLException 
 	 */
