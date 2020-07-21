@@ -40,6 +40,17 @@ public class GameStoryTests {
 		testItem.SetGameStorySummary("Tom");
 		assertEquals("Tom", testItem.GetGameStorySummary());
 	}
+	
+	/**
+	 * Tests the GetPlayerLevelCap and  SetPlayerLevelCap Methods
+	 * 
+	 */
+	@Test
+	public void testGetPlayerLevelCapShouldBe1234() {
+		GameStory testItem = new GameStory();
+		testItem.SetPlayerLevelCap(1234);
+		assertEquals(1234, testItem.GetPlayerLevelCap());
+	}
 
 	
 }
