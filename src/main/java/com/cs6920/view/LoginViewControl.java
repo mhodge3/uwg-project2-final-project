@@ -194,6 +194,7 @@ public class LoginViewControl extends ViewControl {
             throw new RuntimeException(exception);
         }
         this.theLoginStage.setScene(new Scene(theLoginParentView));
+        this.theLoginStage.setResizable(false);
         this.loadingConnectionTestImage.setVisible(false);
         this.loadingLoginImage.setVisible(false);
         this.showLoginStage();

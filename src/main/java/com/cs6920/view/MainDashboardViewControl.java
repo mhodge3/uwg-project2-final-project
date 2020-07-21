@@ -82,6 +82,7 @@ public class MainDashboardViewControl extends ViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) throws SQLException {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
+		this.theMainDashboardStage.setResizable(false);
 		this.createEditViewControls();
 		this.theMainDashboardScene = this.createScene("MainDashboardView", this);
 		this.theEditGameStoryScene = this.createScene("EditGameStory", this.theEditGameStoryViewControl);
