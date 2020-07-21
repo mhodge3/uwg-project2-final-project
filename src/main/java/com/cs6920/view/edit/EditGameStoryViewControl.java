@@ -30,6 +30,8 @@ public class EditGameStoryViewControl extends ViewControl {
 	private TextArea editGameStorySummaryTextArea;
 	@FXML
 	private TextField playerLevelCapTextField;
+	@FXML
+	private TextField npcLevelCapTextField;
 
 
 	private MainDashboardViewControl theMainDashboardViewControl;
@@ -77,7 +79,7 @@ public class EditGameStoryViewControl extends ViewControl {
 	private void handleGameStorySaveButton() throws SQLException {
 		String gameStoryCreationError = null;
 		try {
-			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText(), Integer.parseInt(playerLevelCapTextField.getText()));
+			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText(), Integer.parseInt(playerLevelCapTextField.getText()), Integer.parseInt(npcLevelCapTextField.getText()));
 		} catch (Exception e) {
 			gameStoryCreationError = e.getMessage();
 		}
