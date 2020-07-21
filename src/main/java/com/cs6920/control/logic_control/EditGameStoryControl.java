@@ -44,7 +44,7 @@ public class EditGameStoryControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateGameStory(String gameStoryName, String gameStorySummary, int playerLevelCap) throws SQLException {
+	public String UpdateGameStory(String gameStoryName, String gameStorySummary, int playerLevelCap, int npcCharacterLevelCap) throws SQLException {
 		if (gameStoryName == null || gameStoryName.trim().length() == 0) {
 			return "The Game Story cannot be empty";
 		}
@@ -52,7 +52,7 @@ public class EditGameStoryControl {
 			return "The Game Story Summary cannot be empty";
 		}
 		
-		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap))) {
+		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap, npcCharacterLevelCap))) {
 			this.getGameStoryFromDB();
 			return null;
 		}

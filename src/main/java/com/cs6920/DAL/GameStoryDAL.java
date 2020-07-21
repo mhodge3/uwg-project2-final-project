@@ -44,6 +44,7 @@ public class GameStoryDAL {
                 story.SetGameStoryName(results.getString("game_story_name"));
                 story.SetGameStorySummary(results.getString("game_story_summary"));
                 story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
+                story.SetNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
@@ -74,6 +75,7 @@ public class GameStoryDAL {
                 story.SetGameStoryName(results.getString("game_story_name"));
                 story.SetGameStoryName(results.getString("game_story_summary"));
                 story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
+                story.SetNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
