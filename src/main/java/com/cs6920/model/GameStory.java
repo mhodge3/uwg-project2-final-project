@@ -19,6 +19,7 @@ public class GameStory {
 	private StringProperty gameStoryName;
 	private StringProperty gameStorySummary;
 	private IntegerProperty playerLevelCap;
+	private IntegerProperty npcCharacterLevelCap;
 	
 	/**
 	 * Test Constructor not used.
@@ -32,10 +33,12 @@ public class GameStory {
 	 * @param gameStoryName
 	 * @param gameStorySummary
 	 */
-	public GameStory(String gameStoryName, String gameStorySummary, int playerLevelCap) {
+	public GameStory(String gameStoryName, String gameStorySummary, int playerLevelCap, int npcCharacterLevelCap) {
 		this.gameStoryName = new SimpleStringProperty(gameStoryName);
 		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
 		this.playerLevelCap = new SimpleIntegerProperty(playerLevelCap);
+		this.npcCharacterLevelCap = new SimpleIntegerProperty(npcCharacterLevelCap);
+		
 	}
 	
 	/**
@@ -108,6 +111,14 @@ public class GameStory {
 	 */
 	public void SetPlayerLevelCap(int playerLevelCap) {
 		this.playerLevelCap = new SimpleIntegerProperty(playerLevelCap);
+	}
+	
+	/**
+	 * Gets the npcCharacterLevelCap Name
+	 * @return npcCharacterLevelCap
+	 */
+	public int GetNpcCharacterLevelCap() {
+		return this.npcCharacterLevelCap.get();
 	}
 
 }
