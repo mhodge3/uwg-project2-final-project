@@ -128,7 +128,7 @@ public class GameStoryDAL {
 					"game_story_name = ?, " + 
             		"game_story_summary = ?, " + 
             		"player_character_level_cap = ?, " + 
-            		"npcr_character_level_cap = ? " + 
+            		"npc_character_level_cap = ? " + 
             	    "WHERE game_story_name = ?";
 		
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
