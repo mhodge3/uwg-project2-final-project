@@ -17,7 +17,7 @@ import com.cs6920.model.Quest;
  */
 public class QuestsDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	/**
 	 * Creates a QuestDAL object to be used by the controllers
@@ -50,7 +50,7 @@ public class QuestsDAL {
 								int preReqIdInConflict) throws SQLException {
 		int questId = 0;
 		try {
-			this.conn = this.sqlAccess.getDBConnection();
+			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".quests " + 
 					"(quest_receiver_npc_id, " +
 					"quest_giver_npc_id, " +
@@ -66,7 +66,7 @@ public class QuestsDAL {
 					"pre_req_id_in_conflict) " +  
 					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			 preparedStmt.setString (1, String.valueOf(questReceiverNpcId));
 			 preparedStmt.setString (2, String.valueOf(questGiverNpcId));
 			 preparedStmt.setString (3, String.valueOf(preReqQuestId));
@@ -88,7 +88,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
 		return questId;
 	}
@@ -102,8 +102,8 @@ public class QuestsDAL {
 	public Quest getQuestByID(int questId) throws SQLException {
 		Quest quest = null;
         try {
-            this.conn = this.sqlAccess.getDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".quests "
             		+ "WHERE " + this.sqlAccess.getTheDBName() + ".quests.quest_id = \"" + questId + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -127,7 +127,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
         return quest;
     }
@@ -141,8 +141,8 @@ public class QuestsDAL {
 	public ArrayList<Quest> getQuestByConflictId(int conflictId) throws SQLException {
     	ArrayList<Quest> quests = new ArrayList<Quest>();
         try {
-            this.conn = this.sqlAccess.getDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".quests "
             		+ "WHERE " + this.sqlAccess.getTheDBName() + ".quests.conflict_id = \"" + conflictId + "\""
             				+ " ORDER BY `id_in_conflict` DESC";
@@ -168,7 +168,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
         return quests;
     }
@@ -182,8 +182,8 @@ public class QuestsDAL {
 	public Quest getQuestByName(String questName) throws SQLException {
     	Quest quest = null;
         try {
-            this.conn = this.sqlAccess.getDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".quests "
             		+ "WHERE " + this.sqlAccess.getTheDBName() + ".quests.quest_name = \"" + questName + "\"";
             ResultSet results = statement.executeQuery(query);
@@ -207,7 +207,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
         return quest;
     }
@@ -231,7 +231,7 @@ public class QuestsDAL {
 							int preReqIdInConflict) throws SQLException {	
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.getDBConnection();
+			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".quests " + 
 					"SET quest_receiver_npc_id = ?, " +
 					"quest_giver_npc_id = ?, " +
@@ -247,7 +247,7 @@ public class QuestsDAL {
 					"pre_req_id_in_conflict = ? " +  
 					"WHERE quest_id = ?";		
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(questReceiverNpcId));
 			 preparedStmt.setString (2, String.valueOf(questGiverNpcId));
 			 preparedStmt.setString (3, String.valueOf(preReqQuestId));
@@ -267,7 +267,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -287,10 +287,10 @@ public class QuestsDAL {
 	public boolean deleteQuest(Quest quest) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.getDBConnection();
+			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".quests " + 
 					"WHERE quest_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(quest.getQuestId()));
 			
 			preparedStmt.execute();
@@ -299,7 +299,7 @@ public class QuestsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

@@ -62,61 +62,61 @@ public class EditQuestsViewControl extends ViewControl {
 	EditQuestControl theEditQuestControl;
 	
 	public EditQuestsViewControl(EditConflictQuestsViewControl theManageTemplateTheQuestViewControl, MySQLAccess theDBConnection, int questIdToEdit, String questArcRole) throws SQLException {
-		theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit, questArcRole);
+		this.theEditQuestControl = new EditQuestControl(theManageTemplateTheQuestViewControl, theDBConnection, questIdToEdit, questArcRole);
 	}
 	
 	private void setUpHeraldNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
-		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
+		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) this.theEditQuestControl.getTheObservableNPCs()) {
 			npcNames.add(theNPC.getNpcName());
 		}
-		questHeraldNPCComboBox.getItems().addAll(npcNames);
-		questHeraldNPCComboBox.setValue(theEditQuestControl.getNpcNameFromListById(theEditQuestControl.getQuestGiverNpcId()));
+		this.questHeraldNPCComboBox.getItems().addAll(npcNames);
+		this.questHeraldNPCComboBox.setValue(this.theEditQuestControl.getNpcNameFromListById(this.theEditQuestControl.getQuestGiverNpcId()));
 	}
 	
 	private void setUpMentorNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
-		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
+		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) this.theEditQuestControl.getTheObservableNPCs()) {
 			npcNames.add(theNPC.getNpcName());
 		}
-		questMentorNPCComboBox.getItems().addAll(npcNames);
-		questMentorNPCComboBox.setValue(theEditQuestControl.getNpcNameFromListById(theEditQuestControl.getQuestReceiverNpcId()));
+		this.questMentorNPCComboBox.getItems().addAll(npcNames);
+		this.questMentorNPCComboBox.setValue(this.theEditQuestControl.getNpcNameFromListById(this.theEditQuestControl.getQuestReceiverNpcId()));
 	}
 	
 	private void setUpQuestItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
-		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableQuestItems()) {
+		for (Item theItem : (ObservableList<Item>) this.theEditQuestControl.getTheObservableQuestItems()) {
 			itemNames.add(theItem.getItemName());
 		}
-		addQuestItemComboBox.getItems().addAll(itemNames);
+		this.addQuestItemComboBox.getItems().addAll(itemNames);
 	}
 	
 	private void setUpRewardItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
-		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableRewardItems()) {
+		for (Item theItem : (ObservableList<Item>) this.theEditQuestControl.getTheObservableRewardItems()) {
 			itemNames.add(theItem.getItemName());
 		}
-		addRewardItemComboBox.getItems().addAll(itemNames);
+		this.addRewardItemComboBox.getItems().addAll(itemNames);
 	}
 	
 	private void setupTextElements() throws SQLException {
-		editQuestName.setText(theEditQuestControl.getQuestName());
-		editQuestDescription.setText(theEditQuestControl.getQuestDescription());
-		editGiverDialogTextArea.setText(theEditQuestControl.getGiverDialog());
-		editReceiverDialogTextArea.setText(theEditQuestControl.getReceiverDialog());
+		this.editQuestName.setText(this.theEditQuestControl.getQuestName());
+		this.editQuestDescription.setText(this.theEditQuestControl.getQuestDescription());
+		this.editGiverDialogTextArea.setText(this.theEditQuestControl.getGiverDialog());
+		this.editReceiverDialogTextArea.setText(this.theEditQuestControl.getReceiverDialog());
 	}
 	
 	private void setupQuestItemTables() {
-		itemNeededNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
-		itemNeededQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
-		itemRewardNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
-		itemRewardQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
-		itemsNeededTableView.getItems().clear();
-		itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
-		itemsNeededTableView.refresh();
-		itemsRewardTableView.getItems().clear();
-		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
-		itemsRewardTableView.refresh();
+		this.itemNeededNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
+		this.itemNeededQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
+		this.itemRewardNameTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, String>("itemDisplayName"));
+		this.itemRewardQuantityTableColumn.setCellValueFactory(new PropertyValueFactory<QuestItems, Integer>("itemQuantity"));
+		this.itemsNeededTableView.getItems().clear();
+		this.itemsNeededTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsNeededList());
+		this.itemsNeededTableView.refresh();
+		this.itemsRewardTableView.getItems().clear();
+		this.itemsRewardTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsRewardList());
+		this.itemsRewardTableView.refresh();
 	}
 
 	@FXML
@@ -133,32 +133,32 @@ public class EditQuestsViewControl extends ViewControl {
 	
 	@FXML 
 	private void handleQuestSaveChanges() throws SQLException {
-		theEditQuestControl.updateQuestGiverDialog(editGiverDialogTextArea.getText());
-		theEditQuestControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
-		theEditQuestControl.updateQuestName(editQuestName.getText());
-		theEditQuestControl.updateQuestDescription(editQuestDescription.getText());
-		theEditQuestControl.updateGiverNPC(theEditQuestControl.getNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
-		theEditQuestControl.updateReceiverNPC(theEditQuestControl.getNpcIdFromListByName(questMentorNPCComboBox.getValue()));
-		theEditQuestControl.refreshQuestDisplay();
-		theEditQuestControl.getConflictTemplateTheQuestViewControl().refreshTheQuestList();
-		theEditQuestControl.updateQuestItemsInDB();
+		this.theEditQuestControl.updateQuestGiverDialog(this.editGiverDialogTextArea.getText());
+		this.theEditQuestControl.updateQuestReceiverDialog(this.editReceiverDialogTextArea.getText());
+		this.theEditQuestControl.updateQuestName(this.editQuestName.getText());
+		this.theEditQuestControl.updateQuestDescription(this.editQuestDescription.getText());
+		this.theEditQuestControl.updateGiverNPC(this.theEditQuestControl.getNpcIdFromListByName(this.questHeraldNPCComboBox.getValue()));
+		this.theEditQuestControl.updateReceiverNPC(this.theEditQuestControl.getNpcIdFromListByName(this.questMentorNPCComboBox.getValue()));
+		this.theEditQuestControl.refreshQuestDisplay();
+		this.theEditQuestControl.getConflictTemplateTheQuestViewControl().refreshTheQuestList();
+		this.theEditQuestControl.updateQuestItemsInDB();
 		this.handleBackButton();
 	}
     
 	@FXML
 	private void handleBackButton() throws SQLException {
-	    Stage stage = (Stage) questEditBackButton.getScene().getWindow();
+	    Stage stage = (Stage) this.questEditBackButton.getScene().getWindow();
 	    stage.close();
 	}
     
     @FXML
     private void removeQuestItemNeeded() {
     	try {
-    		if (itemsNeededTableView.getSelectionModel().getSelectedItem() != null) {
-    			theEditQuestControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().getItemQuantity());
-				itemsNeededTableView.getItems().clear();
-				itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
-				itemsNeededTableView.refresh();
+    		if (this.itemsNeededTableView.getSelectionModel().getSelectedItem() != null) {
+    			this.theEditQuestControl.removeQuestItemNeeded(this.itemsNeededTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), this.itemsNeededTableView.getSelectionModel().getSelectedItem().getItemQuantity());
+    			this.itemsNeededTableView.getItems().clear();
+    			this.itemsNeededTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsNeededList());
+    			this.itemsNeededTableView.refresh();
     		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -169,11 +169,11 @@ public class EditQuestsViewControl extends ViewControl {
     @FXML
     private void addQuestItemNeeded() {
     	try {
-    		if (addQuestItemComboBox.getValue() != null) {
-    			theEditQuestControl.addQuestItemNeeded(addQuestItemComboBox.getValue(), itemsNeededAmountSpinner.getValue());
-				itemsNeededTableView.getItems().clear();
-				itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
-				itemsNeededTableView.refresh();
+    		if (this.addQuestItemComboBox.getValue() != null) {
+    			this.theEditQuestControl.addQuestItemNeeded(this.addQuestItemComboBox.getValue(), this.itemsNeededAmountSpinner.getValue());
+    			this.itemsNeededTableView.getItems().clear();
+    			this.itemsNeededTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsNeededList());
+    			this.itemsNeededTableView.refresh();
     		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -184,11 +184,11 @@ public class EditQuestsViewControl extends ViewControl {
     @FXML
     private void removeQuestItemReward() {
     	try {
-    		if (itemsRewardTableView.getSelectionModel().getSelectedItem() != null) {
-    			theEditQuestControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().getItemQuantity());
-	    		itemsRewardTableView.getItems().clear();
-	    		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
-	    		itemsRewardTableView.refresh();
+    		if (this.itemsRewardTableView.getSelectionModel().getSelectedItem() != null) {
+    			this.theEditQuestControl.removeQuestItemReward(this.itemsRewardTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), this.itemsRewardTableView.getSelectionModel().getSelectedItem().getItemQuantity());
+    			this.itemsRewardTableView.getItems().clear();
+    			this.itemsRewardTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsRewardList());
+    			this.itemsRewardTableView.refresh();
     		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -199,11 +199,11 @@ public class EditQuestsViewControl extends ViewControl {
     @FXML
     private void addQuestItemReward() {
     	try {
-    		if (addRewardItemComboBox.getValue() != null) {
-    			theEditQuestControl.addQuestItemReward(addRewardItemComboBox.getValue(), itemRewardAmountSpinner.getValue());
-				itemsRewardTableView.getItems().clear();
-				itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
-				itemsRewardTableView.refresh();
+    		if (this.addRewardItemComboBox.getValue() != null) {
+    			this.theEditQuestControl.addQuestItemReward(this.addRewardItemComboBox.getValue(), this.itemRewardAmountSpinner.getValue());
+    			this.itemsRewardTableView.getItems().clear();
+    			this.itemsRewardTableView.getItems().addAll(this.theEditQuestControl.getObservableQuestItemsRewardList());
+    			this.itemsRewardTableView.refresh();
     		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

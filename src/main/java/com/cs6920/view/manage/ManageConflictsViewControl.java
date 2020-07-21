@@ -47,10 +47,10 @@ public class ManageConflictsViewControl extends ViewControl {
 
 	@FXML
     private void initialize() throws SQLException {
-		conflictMinLvlTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictMinLvl"));
-		conflictIdTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictId"));
-		conflictNameTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictName"));
-		conflictArcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictArcType"));
+		this.conflictMinLvlTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictMinLvl"));
+		this.conflictIdTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, Integer>("conflictId"));
+		this.conflictNameTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictName"));
+		this.conflictArcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Conflict, String>("conflictArcType"));
 	}
     
 	public ManageConflictsControl GetManageQuestChainsControl() {
@@ -62,58 +62,58 @@ public class ManageConflictsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingConflictList() throws SQLException {
-    	theManageConflictsControl.updateConflictArrayList();
+    	this.theManageConflictsControl.updateConflictArrayList();
     	this.updateConflictsTableDisplay();
     }
     
     private void updateConflictsTableDisplay() {
-    	conflictChainTableView.getItems().clear();
-    	conflictChainTableView.getItems().addAll(theManageConflictsControl.GetObservableConflictList());
-    	conflictMinLvlTableColumn.setSortType(TableColumn.SortType.DESCENDING);
-    	conflictChainTableView.getSortOrder().add(conflictMinLvlTableColumn);
-    	conflictChainTableView.sort();
+    	this.conflictChainTableView.getItems().clear();
+    	this.conflictChainTableView.getItems().addAll(this.theManageConflictsControl.GetObservableConflictList());
+    	this.conflictMinLvlTableColumn.setSortType(TableColumn.SortType.DESCENDING);
+    	this.conflictChainTableView.getSortOrder().add(this.conflictMinLvlTableColumn);
+    	this.conflictChainTableView.sort();
     }
 	
 	@FXML
 	private void handleCreateTemplateTheQuestButton() throws SQLException {
-		theManageConflictsControl.createTheQuestConflict();
+		this.theManageConflictsControl.createTheQuestConflict();
     	this.updateConflictsTableDisplay();
 	}
 	
 	@FXML
 	private void handleCreateTemplateVoyageButton() throws SQLException {
-		theManageConflictsControl.createVoyageConflict();
+		this.theManageConflictsControl.createVoyageConflict();
     	this.updateConflictsTableDisplay();
 	}
 	
 	@FXML
 	private void handleCreateTemplateMonsterButton() throws SQLException {
-		theManageConflictsControl.createMonsterConflict();
+		this.theManageConflictsControl.createMonsterConflict();
     	this.updateConflictsTableDisplay();
 	}
 	
 	@FXML
 	private void handleCreateTemplateCustomButton() throws SQLException {
-		theManageConflictsControl.createCustomConflict();
+		this.theManageConflictsControl.createCustomConflict();
     	this.updateConflictsTableDisplay();
 	}
 	
 	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
-		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.setConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType());
-			switch(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType()) {
+		if (this.conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
+			this.theMainDashboardViewControl.setConflictToEdit(this.theManageConflictsControl.getConflictById(this.conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId()), this.conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType());
+			switch(this.conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.setMainDashboardStage("manageTemplateTheQuest");
+					this.theMainDashboardViewControl.setMainDashboardStage("manageTemplateTheQuest");
 					break;
 				case "Voyage and Return":
-					theMainDashboardViewControl.setMainDashboardStage("manageTemplateVoyageAndReturn");
+					this.theMainDashboardViewControl.setMainDashboardStage("manageTemplateVoyageAndReturn");
 					break;
 				case "Defeat the Monster":
-					theMainDashboardViewControl.setMainDashboardStage("manageTemplateDefeatTheMonster");
+					this.theMainDashboardViewControl.setMainDashboardStage("manageTemplateDefeatTheMonster");
 					break;
 				case "Custom":
-					theMainDashboardViewControl.setMainDashboardStage("manageTemplateCustom");
+					this.theMainDashboardViewControl.setMainDashboardStage("manageTemplateCustom");
 					break;
 				default: break;
 			}
@@ -129,8 +129,8 @@ public class ManageConflictsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleDeleteQuestChainButton() throws SQLException {
-		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theManageConflictsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId());
+		if (this.conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
+			this.theManageConflictsControl.deleteTheQuestConflict(this.conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId());
 	    	this.updateConflictsTableDisplay();
 		}
 		else {
@@ -144,6 +144,6 @@ public class ManageConflictsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleQuestChainsBackButton() throws SQLException {
-		theMainDashboardViewControl.loadMainDashboardView();
+		this.theMainDashboardViewControl.loadMainDashboardView();
 	}
 }

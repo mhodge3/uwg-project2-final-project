@@ -29,7 +29,7 @@ public class EditNPCCharactersControl {
 	 */
 	public void setSelectedNPC(int npcId) {
 		try {
-			selectedNPC = theNpcCharacterDAL.getNpcById(npcId);
+			this.selectedNPC = this.theNpcCharacterDAL.getNpcById(npcId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class EditNPCCharactersControl {
 	 * @return the NPCCharacter object to edit
 	 */
 	public NpcCharacter GetSelectedNPC() {
-		return selectedNPC;
+		return this.selectedNPC;
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class EditNPCCharactersControl {
 	public String deleteNPC(NpcCharacter npcToDelete) {
 		
 		try {
-			if (theNpcCharacterDAL.deleteNpc(npcToDelete)) {
+			if (this.theNpcCharacterDAL.deleteNpc(npcToDelete)) {
 				return null;
 			}
 			else {
@@ -84,7 +84,7 @@ public class EditNPCCharactersControl {
 			return "The NPC Description cannot be empty";
 		}
 		
-		if (theNpcCharacterDAL.updateNpc(selectedNPC, new NpcCharacter(selectedNPC.getNpcId(), npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel))) {
+		if (this.theNpcCharacterDAL.updateNpc(this.selectedNPC, new NpcCharacter(this.selectedNPC.getNpcId(), npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel))) {
 			return null;
 		}
 		else {

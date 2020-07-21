@@ -49,7 +49,7 @@ public class ConflictDAL {
 					"conflict_arc_type) " +
 					"VALUES (?, ?, ?, ?, ?)";		
 							
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(conflictMinLvl));
 			 preparedStmt.setString (2, String.valueOf(conflictTemplate));
 			 preparedStmt.setString (3, conflictName);
@@ -61,7 +61,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -93,7 +93,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return conflict;
     }
@@ -125,7 +125,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return conflicts;
     }
@@ -157,7 +157,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return conflict;
     }
@@ -187,7 +187,7 @@ public class ConflictDAL {
 					"conflict_arc_type = ? " +
 					"WHERE conflict_id = ?";		
 
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(conflictMinLvl));
 			preparedStmt.setString (2, String.valueOf(conflictTemplate));
 			preparedStmt.setString (3, conflictName);
@@ -200,7 +200,7 @@ public class ConflictDAL {
 			System.err.println(e.getMessage());
 		}
 		finally {
-			theConnection.close();
+			this.theConnection.close();
 		}
 		return success;
 	}
@@ -217,7 +217,7 @@ public class ConflictDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".conflicts " + 
 					"WHERE conflict_id = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(conflict.getConflictId()));
 			
 			preparedStmt.execute();
@@ -226,7 +226,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

@@ -48,11 +48,11 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 
 	@FXML
     private void initialize() throws SQLException {
-		userIDTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("playerId"));
-		userIsAdminTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("playerIsAdmin"));
-		userNameTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerName"));
-		userEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerEmail"));
-		userCountryCodeTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerCountryCode"));
+		this.userIDTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Integer>("playerId"));
+		this.userIsAdminTableColumn.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("playerIsAdmin"));
+		this.userNameTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerName"));
+		this.userEmailTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerEmail"));
+		this.userCountryCodeTableColumn.setCellValueFactory(new PropertyValueFactory<Player, String>("playerCountryCode"));
     }
     
 	/**
@@ -60,21 +60,21 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingPlayerAdminList() throws SQLException {
-    	theManagePlayersAndAdminsControl.updatePlayerArrayList();
-    	existingUserTableView.getItems().clear();
-    	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.getObservablePlayerList());
+    	this.theManagePlayersAndAdminsControl.updatePlayerArrayList();
+    	this.existingUserTableView.getItems().clear();
+    	this.existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.getObservablePlayerList());
     }
 	
 	@FXML
 	private void handlePlayerAndAdminBackButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
+		this.theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
 	
 	@FXML
 	private void handleEditSelectedUserButton() throws SQLException {
-		if (existingUserTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.setPlayerToEdit(existingUserTableView.getSelectionModel().getSelectedItem().getPlayerId());
-			theMainDashboardViewControl.setMainDashboardStage("editPlayersAndAdmins");
+		if (this.existingUserTableView.getSelectionModel().getSelectedItem() != null) {
+			this.theMainDashboardViewControl.setPlayerToEdit(this.existingUserTableView.getSelectionModel().getSelectedItem().getPlayerId());
+			this.theMainDashboardViewControl.setMainDashboardStage("editPlayersAndAdmins");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -87,6 +87,6 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateUserButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("createPlayersAndAdmins");
+		this.theMainDashboardViewControl.setMainDashboardStage("createPlayersAndAdmins");
 	}
 }

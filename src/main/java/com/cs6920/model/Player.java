@@ -53,7 +53,7 @@ public class Player {
 	 * @return playerName
 	 */
 	public String getPlayerName() {
-		return playerName.get();
+		return this.playerName.get();
 	}
 	
 	/**
@@ -61,7 +61,7 @@ public class Player {
 	 * @return Property for TableView
 	 */
 	public final StringProperty playerNameProperty() {
-	   return playerName;
+	   return this.playerName;
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class Player {
 	 * @return playerIsAdmin
 	 */
 	public Boolean getPlayerIsAdmin() {
-		return playerIsAdmin.getValue();
+		return this.playerIsAdmin.getValue();
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class Player {
 	 * @return Property for TableView
 	 */
 	public final BooleanProperty playerIsAdminProperty() {
-	   return playerIsAdmin;
+	   return this.playerIsAdmin;
 	}
 	
 	/**
@@ -101,7 +101,7 @@ public class Player {
 	 * @return playerId
 	 */
 	public int getPlayerId() {
-		return playerId.get();
+		return this.playerId.get();
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class Player {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty playerIdProperty() {
-	   return playerId;
+	   return this.playerId;
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class Player {
 	 * @return
 	 */
 	public String getPlayerCountryCode() {
-		return playerCountryCode.get();
+		return this.playerCountryCode.get();
 	}
 
 	/**
@@ -133,7 +133,7 @@ public class Player {
 	 * @return Property for TableView
 	 */
 	public final StringProperty playerCountryCodeProperty() {
-	   return playerCountryCode;
+	   return this.playerCountryCode;
 	}
 	
 	/**
@@ -157,7 +157,7 @@ public class Player {
 	 * @return Property for TableView
 	 */
 	public final StringProperty playerEmailProperty() {
-	   return playerEmail;
+	   return this.playerEmail;
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class Player {
 	 * @return playerPassword
 	 */
 	public String getPlayerPassword() {
-		return playerPassword;
+		return this.playerPassword;
 	}
 	
 	/**

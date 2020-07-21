@@ -52,12 +52,12 @@ public class EditGameStoryViewControl extends ViewControl {
      * @return the Item edited
      */
     public EditGameStoryControl getGameStoryEditControl() {
-    	return gameStoryEditControl;
+    	return this.gameStoryEditControl;
     }
     
     @FXML
     public void initialize() {
-    	this.setFormForSelectedGameStory(gameStoryEditControl.getGameStoryToEdit());
+    	this.setFormForSelectedGameStory(this.gameStoryEditControl.getGameStoryToEdit());
     }
     
     /**
@@ -65,21 +65,21 @@ public class EditGameStoryViewControl extends ViewControl {
      * @param theGameStoryToEdit
      */
     public void setFormForSelectedGameStory(GameStory theGameStoryToEdit) {
-    	editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.getGameStoryName()));
-    	editGameStorySummaryTextArea.setText(theGameStoryToEdit.getGameStorySummary());
-    	playerLevelCapTextField.setText(String.valueOf(theGameStoryToEdit.getPlayerLevelCap()));
+    	this.editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.getGameStoryName()));
+    	this.editGameStorySummaryTextArea.setText(theGameStoryToEdit.getGameStorySummary());
+    	this.playerLevelCapTextField.setText(String.valueOf(theGameStoryToEdit.getPlayerLevelCap()));
     }
     
 	@FXML
 	private void handleGameStoryEditCancelButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
+		this.theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
     
 	@FXML
 	private void handleGameStorySaveButton() throws SQLException {
 		String gameStoryCreationError = null;
 		try {
-			gameStoryCreationError = gameStoryEditControl.updateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText(), Integer.parseInt(playerLevelCapTextField.getText()), Integer.parseInt(npcLevelCapTextField.getText()));
+			gameStoryCreationError = this.gameStoryEditControl.updateGameStory(this.editGameStoryNameTextBox.getText(), this.editGameStorySummaryTextArea.getText(), Integer.parseInt(this.playerLevelCapTextField.getText()), Integer.parseInt(this.npcLevelCapTextField.getText()));
 		} catch (Exception e) {
 			gameStoryCreationError = e.getMessage();
 		}
@@ -96,7 +96,7 @@ public class EditGameStoryViewControl extends ViewControl {
 		alert.setHeaderText("Game Story Edit Status");
 		alert.setContentText("The Game Story was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
+		this.theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
 
 }

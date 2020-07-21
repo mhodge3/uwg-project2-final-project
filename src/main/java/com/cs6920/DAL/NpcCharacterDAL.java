@@ -51,7 +51,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return npc;
     }
@@ -89,7 +89,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return npc;
     }
@@ -128,7 +128,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return allNpc;
     }
@@ -147,7 +147,7 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_z, " +
             	    "character_level )" +
 					"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, npcName);
 			  preparedStmt.setString (2, npcDescription);
 			  preparedStmt.setString (3, String.valueOf(npcType));
@@ -163,7 +163,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -184,7 +184,7 @@ public class NpcCharacterDAL {
             	    "character_level = ? " +
             	    "WHERE character_npc_id = ?";
 		
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, updatedCharacter.getNpcName());
 			  preparedStmt.setString (2, updatedCharacter.getNpcDescprition());
 			  preparedStmt.setString (3, String.valueOf(updatedCharacter.getNpcType()));
@@ -200,7 +200,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

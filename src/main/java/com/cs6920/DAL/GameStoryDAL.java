@@ -50,7 +50,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return story; 
 	}
@@ -81,7 +81,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return story; 
 	}
@@ -98,7 +98,7 @@ public class GameStoryDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".gamestory " + 
 					"WHERE game_story_name = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(story.getGameStoryName()));
 			
 			preparedStmt.execute();
@@ -107,7 +107,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -131,7 +131,7 @@ public class GameStoryDAL {
             		"npc_character_level_cap = ? " + 
             	    "WHERE game_story_name = ?";
 		
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, updatedGameStory.getGameStoryName());
 			  preparedStmt.setString (2, updatedGameStory.getGameStorySummary());
 			  preparedStmt.setString (3, String.valueOf(updatedGameStory.getPlayerLevelCap()));
@@ -143,7 +143,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -164,7 +164,7 @@ public class GameStoryDAL {
 					"(game_story_name, " + 
             		"game_story_summar " + 
 					"VALUES (?, ?)";
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, gameStoryName);
 			  preparedStmt.setString (2, gameStorySummary);
 			  
@@ -174,7 +174,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

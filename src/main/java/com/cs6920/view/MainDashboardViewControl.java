@@ -187,8 +187,8 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @param playerIdToEdit
 	 */
 	public void setPlayerToEdit(int playerIdToEdit) {
-		theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().setSelectedPlayer(playerIdToEdit);
-		theEditPlayersAndAdminsViewControl.setFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().getSelectedPlayer());
+		this.theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().setSelectedPlayer(playerIdToEdit);
+		this.theEditPlayersAndAdminsViewControl.setFormForSelectedPlayer(this.theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().getSelectedPlayer());
 	}
 
 	/**
@@ -196,8 +196,8 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @param npcIdToEdit
 	 */
 	public void setNPCToEdit(int npcIdToEdit) {
-		theEditNPCCharactersViewControl.getEditNPCCharactersControl().setSelectedNPC(npcIdToEdit);
-		theEditNPCCharactersViewControl.setFormForSelectedNPC(theEditNPCCharactersViewControl.getEditNPCCharactersControl().GetSelectedNPC());
+		this.theEditNPCCharactersViewControl.getEditNPCCharactersControl().setSelectedNPC(npcIdToEdit);
+		this.theEditNPCCharactersViewControl.setFormForSelectedNPC(this.theEditNPCCharactersViewControl.getEditNPCCharactersControl().GetSelectedNPC());
 	}
 
 	/**
@@ -205,8 +205,8 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @param itemIdToEdit
 	 */
 	public void setItemToEdit(int itemIdToEdit) {
-		theEditItemsViewControl.getEditItemsControl().setSelectedItem(itemIdToEdit);
-		theEditItemsViewControl.setFormForSelectedItem(theEditItemsViewControl.getEditItemsControl().getSelectedItem());
+		this.theEditItemsViewControl.getEditItemsControl().setSelectedItem(itemIdToEdit);
+		this.theEditItemsViewControl.setFormForSelectedItem(this.theEditItemsViewControl.getEditItemsControl().getSelectedItem());
 	}
 	
 	public void setConflictToEdit(Conflict conflictToEdit, String arcType) {
@@ -235,38 +235,38 @@ public class MainDashboardViewControl extends ViewControl {
 
 	@FXML
 	private void handleManageEditGameStory() throws SQLException {
-		setMainDashboardStage("editGameStory");
+		this.setMainDashboardStage("editGameStory");
 	}
 	
 	@FXML
 	private void handleLogoutButtonAction() throws Exception
 	{
-		theMainDashbaordControl.resetLoginView();
-		HideMainDashboardView();
+		this.theMainDashbaordControl.resetLoginView();
+		this.hideMainDashboardView();
 	}
 	
 	@FXML
 	public void handleManagePlayersAndAdminsButton() throws Exception
 	{
-		setMainDashboardStage("managePlayersAndAdmins");
+		this.setMainDashboardStage("managePlayersAndAdmins");
 	}
 	
 	@FXML
 	private void handleItemsButton() throws Exception
 	{
-		setMainDashboardStage("manageItems");
+		this.setMainDashboardStage("manageItems");
 	}
 	
 	@FXML
 	private void handleNPCCharactersButton() throws Exception
 	{
-		setMainDashboardStage("manageNPCCharacters");
+		this.setMainDashboardStage("manageNPCCharacters");
 	}
 	
 	@FXML
 	private void handleQuestChainsButton() throws Exception
 	{
-		setMainDashboardStage("manageQuestChains");
+		this.setMainDashboardStage("manageQuestChains");
 	}
 	
 	/**
@@ -274,21 +274,21 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
 	public void loadMainDashboardView() throws SQLException {
-		setMainDashboardStage("mainDashboard");
+		this.setMainDashboardStage("mainDashboard");
 	}
 	
 	/**
 	 * Enabiles the view of the MainDashboard
 	 */
 	public void showMainDashboardView() {
-		theMainDashboardStage.show();
+		this.theMainDashboardStage.show();
 	}
 	
 	/**
 	 * Hidge the view of the MainDashboard
 	 */
-	public void HideMainDashboardView() {
-		theMainDashboardStage.hide();
+	public void hideMainDashboardView() {
+		this.theMainDashboardStage.hide();
 	}
 	
 	/**
@@ -296,7 +296,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @return	The DbConnection instance
 	 */
 	public MySQLAccess getDBConnection() {
-		return theMainDashbaordControl.getDBConnection();
+		return this.theMainDashbaordControl.getDBConnection();
 	}
 	
 	/**
@@ -309,79 +309,79 @@ public class MainDashboardViewControl extends ViewControl {
 		switch (theSceneNameToLoad) {
 			case "mainDashboard":
 				this.gameStoryDashboardLabel.setText(this.getTheGameStory().getGameStoryName() + " Management Dashboard");
-				theSceneToStage = theMainDashboardScene;
+				theSceneToStage = this.theMainDashboardScene;
 				break;
 			case "managePlayersAndAdmins":
-				theManagePlayersAndAdminsViewControl.updateExistingPlayerAdminList();
-				theSceneToStage = theManagePlayersAndAdminsScene;
+				this.theManagePlayersAndAdminsViewControl.updateExistingPlayerAdminList();
+				theSceneToStage = this.theManagePlayersAndAdminsScene;
 				break;
 			case "editPlayersAndAdmins":
-				theSceneToStage = theEditPlayersAndAdminsScene;
+				theSceneToStage = this.theEditPlayersAndAdminsScene;
 				break;
 			case "createPlayersAndAdmins":
-				theSceneToStage = theCreatePlayersAndAdminsScene;
+				theSceneToStage = this.theCreatePlayersAndAdminsScene;
 				break;
 			case "manageItems":
-				theManageItemsViewControl.updateExistingItemsList();
-				theSceneToStage = theManageItemsScene;
+				this.theManageItemsViewControl.updateExistingItemsList();
+				theSceneToStage = this.theManageItemsScene;
 				break;
 			case "editItems":
-				theSceneToStage = theEditItemsScene;
+				theSceneToStage = this.theEditItemsScene;
 				break;
 			case "createItems":
-				theSceneToStage = theCreateItemsScene;
+				theSceneToStage = this.theCreateItemsScene;
 				break;
 			case "manageNPCCharacters":
-				theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
-				theSceneToStage = theManageNPCCharactersScene;
+				this.theManageNPCCharactersViewControl.updateExistingNPCCharactersList();
+				theSceneToStage = this.theManageNPCCharactersScene;
 				break;
 			case "editNPCCharacters":
-				theSceneToStage = theEditNPCCharactersScene;
+				theSceneToStage = this.theEditNPCCharactersScene;
 				break;
 			case "createNPCCharacters":
-				theSceneToStage = theCreateNPCCharactersScene;
+				theSceneToStage = this.theCreateNPCCharactersScene;
 				break;
 			case "manageQuestChains":
-				theManageQuestChainsViewControl.updateExistingConflictList();
-				theSceneToStage = theManageQuestChainsScene;
+				this.theManageQuestChainsViewControl.updateExistingConflictList();
+				theSceneToStage = this.theManageQuestChainsScene;
 				break;
 			case "manageTemplateTheQuest":
-				theEditConflictQuestsViewControl.updateExistingTheQuestList();
-				theSceneToStage = theManageTemplateTheQuestScene;
+				this.theEditConflictQuestsViewControl.updateExistingTheQuestList();
+				theSceneToStage = this.theManageTemplateTheQuestScene;
 				break;
 			case "manageTemplateVoyageAndReturn":
-				theEditConflictVoyageViewControl.updateExistingTheQuestList();
-				theSceneToStage = theManageTemplateVoyageAndReturnScene;
+				this.theEditConflictVoyageViewControl.updateExistingTheQuestList();
+				theSceneToStage = this.theManageTemplateVoyageAndReturnScene;
 				break;
 			case "manageTemplateDefeatTheMonster":
-				theEditConflictMonsterViewControl.updateExistingTheQuestList();
-				theSceneToStage = theManageTemplateDefeatTheMonsterScene;
+				this.theEditConflictMonsterViewControl.updateExistingTheQuestList();
+				theSceneToStage = this.theManageTemplateDefeatTheMonsterScene;
 				break;
 			case "manageTemplateCustom":
-				theEditConflictCustomViewControl.updateExistingTheQuestList();
-				theSceneToStage = theManageTemplateCustomScene;
+				this.theEditConflictCustomViewControl.updateExistingTheQuestList();
+				theSceneToStage = this.theManageTemplateCustomScene;
 				break;
 			case "editGameStory":
-				theSceneToStage = theEditGameStoryScene;
+				theSceneToStage = this.theEditGameStoryScene;
 				break;
 			default: break;
 		}
-        theMainDashboardStage.setScene(theSceneToStage);
-        showMainDashboardView();
+		this.theMainDashboardStage.setScene(theSceneToStage);
+		this.showMainDashboardView();
 	}
 	
 	private void createEditViewControls() throws SQLException {
-        theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
-        theEditItemsViewControl = new EditItemsViewControl(this);
-        theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
-        theEditGameStoryViewControl = new EditGameStoryViewControl(this);
+		this.theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
+		this.theEditItemsViewControl = new EditItemsViewControl(this);
+		this.theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
+		this.theEditGameStoryViewControl = new EditGameStoryViewControl(this);
 	}
 	
 	private Scene createScene(String viewFXMLFilename, ViewControl theViewControl) {
         try {
-            theFxmlLoader = new FXMLLoader(App.class.getResource(viewFXMLFilename + ".fxml"));
-            theFxmlLoader.setController(theViewControl);
-            Parent theParent = theFxmlLoader.load();
+        	this.theFxmlLoader = new FXMLLoader(App.class.getResource(viewFXMLFilename + ".fxml"));
+        	this.theFxmlLoader.setController(theViewControl);
+            Parent theParent = this.theFxmlLoader.load();
             return new Scene(theParent);
         } catch (IOException exception) {
             throw new RuntimeException(exception);

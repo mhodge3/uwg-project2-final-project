@@ -65,7 +65,7 @@ public class QuestDAL {
 			"pre_req_id_in_conflict) " +  
 			"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";		
 					
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			preparedStmt.setString (1, String.valueOf(questReceiverNpcId));
 			preparedStmt.setString (2, String.valueOf(questGiverNpcId));
 			preparedStmt.setString (3, String.valueOf(preReqQuestId));
@@ -87,7 +87,7 @@ public class QuestDAL {
 			System.err.println(e.getMessage());
 		}
 		finally {
-			theConnection.close();
+			this.theConnection.close();
 		}
 		return questId;
 	}
@@ -126,7 +126,7 @@ public class QuestDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return quest;
     }
@@ -165,7 +165,7 @@ public class QuestDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return quest;
     }

@@ -50,11 +50,11 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
      * @return the logic conrol
      */
     public EditPlayersAndAdminsControl getEditPlayersAndAdminsControl() {
-    	return theEditPlayersAndAdminsControl;
+    	return this.theEditPlayersAndAdminsControl;
     }
     
     private Boolean isPlayerToDeleteCurrentAdmin() {
-		if (this.theMainDashboardViewControl.getTheAdminPlayer().getPlayerId() == theEditPlayersAndAdminsControl.getSelectedPlayer().getPlayerId()) {
+		if (this.theMainDashboardViewControl.getTheAdminPlayer().getPlayerId() == this.theEditPlayersAndAdminsControl.getSelectedPlayer().getPlayerId()) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
 			alert.setHeaderText("User to Delete Cannot Be Current Admin Account");
@@ -74,11 +74,11 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("User Edit");
 		alert.setHeaderText("User Edit Status");
-		alert.setContentText("Are you sure you want to DELETE user: " + theEditPlayersAndAdminsControl.getSelectedPlayer().getPlayerName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE user: " + this.theEditPlayersAndAdminsControl.getSelectedPlayer().getPlayerName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				userDeleteError = theEditPlayersAndAdminsControl.deletePlayer(theEditPlayersAndAdminsControl.getSelectedPlayer());
+				userDeleteError = this.theEditPlayersAndAdminsControl.deletePlayer(this.theEditPlayersAndAdminsControl.getSelectedPlayer());
 			} catch (Exception e) {
 				userDeleteError = e.getMessage();
 			}
@@ -95,7 +95,7 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
 			alert.setHeaderText("User Edit Status");
 			alert.setContentText("The User was successfully deleted");
 			alert.showAndWait();
-			theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
+			this.theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
 		}
 	}
     
@@ -104,22 +104,22 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
 	 * @param thePlayerToEdit
 	 */
     public void setFormForSelectedPlayer(Player thePlayerToEdit) {
-    	editPlayerUserNameTextBox.setText(thePlayerToEdit.getPlayerName());
-    	editPlayerPasswordTextBox.setText(thePlayerToEdit.getPlayerPassword());
-    	editPlayerPasswordConfirmTextBox.setText(thePlayerToEdit.getPlayerPassword());
-    	editPlayerEmailTextBox.setText(thePlayerToEdit.getPlayerEmail());
-    	editPlayerUserCountryCodeTextBox.setText(thePlayerToEdit.getPlayerCountryCode());
-    	editPlayerAsAdminCheckBox.setSelected(thePlayerToEdit.getPlayerIsAdmin());
+    	this.editPlayerUserNameTextBox.setText(thePlayerToEdit.getPlayerName());
+    	this.editPlayerPasswordTextBox.setText(thePlayerToEdit.getPlayerPassword());
+    	this.editPlayerPasswordConfirmTextBox.setText(thePlayerToEdit.getPlayerPassword());
+    	this.editPlayerEmailTextBox.setText(thePlayerToEdit.getPlayerEmail());
+    	this.editPlayerUserCountryCodeTextBox.setText(thePlayerToEdit.getPlayerCountryCode());
+    	this.editPlayerAsAdminCheckBox.setSelected(thePlayerToEdit.getPlayerIsAdmin());
     }
     
 	@FXML
 	private void handlePlayerAndAdminEditBackButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
+		this.theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
 	}
     
 	@FXML
 	private void handlePlayerAndAdminEditSaveButton() throws SQLException {
-		String userCreationError = theEditPlayersAndAdminsControl.updatePlayer(editPlayerUserNameTextBox.getText(), editPlayerPasswordTextBox.getText(), editPlayerPasswordConfirmTextBox.getText(), editPlayerEmailTextBox.getText(), editPlayerUserCountryCodeTextBox.getText(), editPlayerAsAdminCheckBox.isSelected());
+		String userCreationError = this.theEditPlayersAndAdminsControl.updatePlayer(this.editPlayerUserNameTextBox.getText(), this.editPlayerPasswordTextBox.getText(), this.editPlayerPasswordConfirmTextBox.getText(), this.editPlayerEmailTextBox.getText(), this.editPlayerUserCountryCodeTextBox.getText(), this.editPlayerAsAdminCheckBox.isSelected());
 		if (userCreationError != null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
@@ -133,6 +133,6 @@ public class EditPlayersAndAdminsViewControl extends ViewControl {
 		alert.setHeaderText("Account Edit Status");
 		alert.setContentText("The User account was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
+		this.theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
 	}
 }

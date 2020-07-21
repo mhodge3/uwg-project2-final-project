@@ -58,7 +58,7 @@ public class Quest {
 	 * @return questReceiverNpcId
 	 */
 	public int getQuestReceiverNpcId() {
-		return questReceiverNpcId.get();
+		return this.questReceiverNpcId.get();
 	}
 	
 	/**
@@ -66,7 +66,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questReceiverNpcIdProperty() {
-	   return questReceiverNpcId;
+	   return this.questReceiverNpcId;
 	}
 	
 	
@@ -83,7 +83,7 @@ public class Quest {
 	 * @return questGiverNpcId
 	 */
 	public int getQuestGiverNpcId() {
-		return questGiverNpcId.get();
+		return this.questGiverNpcId.get();
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questGiverNpcIdProperty() {
-	   return questGiverNpcId;
+	   return this.questGiverNpcId;
 	}
 	
 	
@@ -108,7 +108,7 @@ public class Quest {
 	 * @return questId
 	 */
 	public int getQuestId() {
-		return questId.get();
+		return this.questId.get();
 	}
 	
 	/**
@@ -116,7 +116,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questIdProperty() {
-	   return questId;
+	   return this.questId;
 	}
 	
 	
@@ -158,7 +158,7 @@ public class Quest {
 	 * @return preReqQuestId
 	 */
 	public int getPreReqQuestId() {
-		return preReqQuestId.get();
+		return this.preReqQuestId.get();
 	}
 	
 	/**
@@ -166,7 +166,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty preReqQuestIdProperty() {
-	   return preReqQuestId;
+	   return this.preReqQuestId;
 	}
 	
 	
@@ -183,7 +183,7 @@ public class Quest {
 	 * @return conflictId
 	 */
 	public int getConflictId() {
-		return conflictId.get();
+		return this.conflictId.get();
 	}
 	
 	/**
@@ -191,7 +191,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty conflictIdProperty() {
-	   return conflictId;
+	   return this.conflictId;
 	}
 	
 	
@@ -208,7 +208,7 @@ public class Quest {
 	 * @return minCharacterLevel
 	 */
 	public int getMinCharacterLevel() {
-		return minCharacterLevel.get();
+		return this.minCharacterLevel.get();
 	}
 	
 	/**
@@ -216,7 +216,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty minCharacterLevelProperty() {
-	   return minCharacterLevel;
+	   return this.minCharacterLevel;
 	}
 	
 	
@@ -233,7 +233,7 @@ public class Quest {
 	 * @return questName
 	 */
 	public String getQuestName() {
-		return questName.get();
+		return this.questName.get();
 	}
 	
 	/**
@@ -241,7 +241,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final StringProperty questNameProperty() {
-	   return questName;
+	   return this.questName;
 	}
 	
 	/**
@@ -257,7 +257,7 @@ public class Quest {
 	 * @return questDescription
 	 */
 	public String getQuestDescription() {
-		return questDescription.get();
+		return this.questDescription.get();
 	}
 	
 	/**
@@ -265,7 +265,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final StringProperty questDescriptionProperty() {
-	   return questDescription;
+	   return this.questDescription;
 	}
 	
 	/**
@@ -281,7 +281,7 @@ public class Quest {
 	 * @return questGiverDialog
 	 */
 	public String getQuesGiverDialog() {
-		return questGiverDialog.get();
+		return this.questGiverDialog.get();
 	}
 	
 	/**
@@ -289,7 +289,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final StringProperty questGiverDialogProperty() {
-	   return questGiverDialog;
+	   return this.questGiverDialog;
 	}
 	
 	/**
@@ -305,7 +305,7 @@ public class Quest {
 	 * @return questReceiverDialog
 	 */
 	public String getQuestReceiverDialog() {
-		return questReceiverDialog.get();
+		return this.questReceiverDialog.get();
 	}
 	
 	/**
@@ -313,7 +313,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final StringProperty questReceiverDialogProperty() {
-	   return questReceiverDialog;
+	   return this.questReceiverDialog;
 	}
 	
 	/**
@@ -337,7 +337,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty idInConflictProperty() {
-	   return idInConflict;
+	   return this.idInConflict;
 	}
 	
 	
@@ -362,7 +362,7 @@ public class Quest {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty preReqIdInConflictProperty() {
-	   return preReqIdInConflict;
+	   return this.preReqIdInConflict;
 	}
 	
 	

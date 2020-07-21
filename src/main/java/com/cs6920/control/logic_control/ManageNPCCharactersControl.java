@@ -32,10 +32,10 @@ public class ManageNPCCharactersControl {
 	 * @throws SQLException
 	 */
 	public void updatePlayerArrayList() throws SQLException {
-		existingNPCArrayList = new ArrayList<NpcCharacter>();
-		existingNPCArrayList = nPCCharacterDAL.getAllNpc();
-		observableNPCList.clear();
-		observableNPCList.addAll(existingNPCArrayList);
+		this.existingNPCArrayList = new ArrayList<NpcCharacter>();
+		this.existingNPCArrayList = this.nPCCharacterDAL.getAllNpc();
+		this.observableNPCList.clear();
+		this.observableNPCList.addAll(this.existingNPCArrayList);
 	}
 	
 	/**
@@ -43,6 +43,6 @@ public class ManageNPCCharactersControl {
 	 * @return	the observable list
 	 */
 	public ObservableList<NpcCharacter> getObservablePlayerList() {
-		return observableNPCList;
+		return this.observableNPCList;
 	}
 }

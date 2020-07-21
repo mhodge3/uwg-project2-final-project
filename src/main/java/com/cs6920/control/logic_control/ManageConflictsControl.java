@@ -40,10 +40,10 @@ public class ManageConflictsControl {
 	 * @throws SQLException
 	 */
 	public void updateConflictArrayList() throws SQLException {
-		existingConflictArrayList = new ArrayList<Conflict>();
-		existingConflictArrayList = this.theConflictDAL.getConflicts();
-		observableConflictList.clear();
-		observableConflictList.addAll(existingConflictArrayList);
+		this.existingConflictArrayList = new ArrayList<Conflict>();
+		this.existingConflictArrayList = this.theConflictDAL.getConflicts();
+		this.observableConflictList.clear();
+		this.observableConflictList.addAll(this.existingConflictArrayList);
 	}
 	
 	public void createTheQuestConflict() throws SQLException {
@@ -72,7 +72,7 @@ public class ManageConflictsControl {
 			this.theQuestItemsDAL.deleteQuestItemsByQuestId(conflictQuest.getQuestId());
 			this.theQuestsController.deleteQuest(conflictQuest);
 		}
-		for (Conflict conflict : existingConflictArrayList) {
+		for (Conflict conflict : this.existingConflictArrayList) {
 			if (conflict.getConflictId() == conflictIdToDelete) {
 				this.theConflictDAL.deleteConflict(conflict);
 				break;
@@ -95,6 +95,6 @@ public class ManageConflictsControl {
 	 * @return	the observable list
 	 */
 	public ObservableList<Conflict> GetObservableConflictList() {
-		return observableConflictList;
+		return this.observableConflictList;
 	}
 }

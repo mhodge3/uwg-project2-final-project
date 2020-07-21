@@ -37,7 +37,7 @@ public class CreateNPCCharactersControl {
 			return "The NPC Description cannot be empty";
 		}
 		
-		if (theNPCCharacterDAL.createNpc(npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel)) {
+		if (this.theNPCCharacterDAL.createNpc(npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel)) {
 			return null;
 		}
 		else {

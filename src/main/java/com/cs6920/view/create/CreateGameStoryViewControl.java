@@ -41,22 +41,22 @@ public class CreateGameStoryViewControl extends ViewControl {
     
     
     private void resetCreateItemsView() {
-    	createGameStoryTextBox.setText("");
-    	createGameStorySummaryTextArea.setText("");
+    	this.createGameStoryTextBox.setText("");
+    	this.createGameStorySummaryTextArea.setText("");
 
     }
     
 	@FXML
 	private void handleItemCanelButton() throws SQLException {
-		resetCreateItemsView();
-		theMainDashboardViewControl.setMainDashboardStage("manageItems");
+		this.resetCreateItemsView();
+		this.theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
     
 	@FXML
 	private void handleItemCreateButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theCreateGameStoryControl.createGameStory(createGameStoryTextBox.getText(), createGameStorySummaryTextArea.getText());
+			itemCreationError = this.theCreateGameStoryControl.createGameStory(this.createGameStoryTextBox.getText(), this.createGameStorySummaryTextArea.getText());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
@@ -73,8 +73,8 @@ public class CreateGameStoryViewControl extends ViewControl {
 		alert.setHeaderText("Game Story Creation Status");
 		alert.setContentText("The Game Story was successfully created");
 		alert.showAndWait();
-		resetCreateItemsView();
-		theMainDashboardViewControl.setMainDashboardStage("manageItems");
+		this.resetCreateItemsView();
+		this.theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
 
 }

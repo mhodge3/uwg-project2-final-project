@@ -49,29 +49,29 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingNPCCharactersList() throws SQLException {
-    	theManageNPCCharactersControl.updatePlayerArrayList();
-    	existingNPCTableView.getItems().clear();
-    	existingNPCTableView.getItems().addAll(theManageNPCCharactersControl.getObservablePlayerList());
+    	this.theManageNPCCharactersControl.updatePlayerArrayList();
+    	this.existingNPCTableView.getItems().clear();
+    	this.existingNPCTableView.getItems().addAll(this.theManageNPCCharactersControl.getObservablePlayerList());
     }
 
 	@FXML
     private void initialize() throws SQLException {
-		npcIDTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcId"));
-		npcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcType"));
-		npcNameTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, String>("npcName"));
-		npcDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, String>("npcDescription"));
+		this.npcIDTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcId"));
+		this.npcTypeTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, Integer>("npcType"));
+		this.npcNameTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, String>("npcName"));
+		this.npcDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<NpcCharacter, String>("npcDescription"));
     }
 	
 	@FXML
 	private void handleNPCCharacterBackButton() throws SQLException {
-		theMainDashboardViewControl.loadMainDashboardView();
+		this.theMainDashboardViewControl.loadMainDashboardView();
 	}
 	
 	@FXML
 	private void handleEditSelectedNPCButton() throws SQLException {
-		if (existingNPCTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.setNPCToEdit(existingNPCTableView.getSelectionModel().getSelectedItem().getNpcId());
-			theMainDashboardViewControl.setMainDashboardStage("editNPCCharacters");
+		if (this.existingNPCTableView.getSelectionModel().getSelectedItem() != null) {
+			this.theMainDashboardViewControl.setNPCToEdit(this.existingNPCTableView.getSelectionModel().getSelectedItem().getNpcId());
+			this.theMainDashboardViewControl.setMainDashboardStage("editNPCCharacters");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -84,6 +84,6 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateNPCButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("createNPCCharacters");
+		this.theMainDashboardViewControl.setMainDashboardStage("createNPCCharacters");
 	}
 }

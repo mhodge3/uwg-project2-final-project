@@ -49,7 +49,7 @@ public class PlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return thePlayerArrayList;
     }

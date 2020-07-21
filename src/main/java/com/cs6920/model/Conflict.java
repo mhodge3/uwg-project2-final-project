@@ -50,7 +50,7 @@ public class Conflict {
 	 * @return conflictId
 	 */
 	public int getConflictId() {
-		return conflictId.get();
+		return this.conflictId.get();
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class Conflict {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty conflictIdProperty() {
-	   return conflictId;
+	   return this.conflictId;
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class Conflict {
 	 * @return conflictMinLvl
 	 */
 	public int getConflictMinLvl() {
-		return conflictMinLvl.get();
+		return this.conflictMinLvl.get();
 	}
 	
 	/**
@@ -82,7 +82,7 @@ public class Conflict {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty conflictMinLvlProperty() {
-	   return conflictMinLvl;
+	   return this.conflictMinLvl;
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class Conflict {
 	 * @return conflictName
 	 */
 	public String getConflictName() {
-		return conflictName.get();
+		return this.conflictName.get();
 	}
 	
 	/**
@@ -106,7 +106,7 @@ public class Conflict {
 	 * @return Property for TableView
 	 */
 	public final StringProperty conflictNameProperty() {
-	   return conflictName;
+	   return this.conflictName;
 	}
 	
 	/**
@@ -122,7 +122,7 @@ public class Conflict {
 	 * @return conflictTemplate
 	 */
 	public int getConflictTemplate() {
-		return conflictTemplate.get();
+		return this.conflictTemplate.get();
 	}
 	
 	/**
@@ -130,7 +130,7 @@ public class Conflict {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty conflictTemplateProperty() {
-	   return conflictTemplate;
+	   return this.conflictTemplate;
 	}
 	
 	/**
@@ -146,7 +146,7 @@ public class Conflict {
 	 * @return conflictDescription
 	 */
 	public String getConflictDescription() {
-		return conflictDescription.get();
+		return this.conflictDescription.get();
 	}
 	
 	/**
@@ -154,7 +154,7 @@ public class Conflict {
 	 * @return Property for TableView
 	 */
 	public final StringProperty conflictDescriptionProperty() {
-	   return conflictDescription;
+	   return this.conflictDescription;
 	}
 	
 	/**

@@ -52,7 +52,7 @@ public class EditGameStoryControl {
 			return "The Game Story Summary cannot be empty";
 		}
 		
-		if (theGameStoryDAL.updateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap, npcCharacterLevelCap))) {
+		if (this.theGameStoryDAL.updateGameStory(this.selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap, npcCharacterLevelCap))) {
 			this.getGameStoryFromDB();
 			return null;
 		}

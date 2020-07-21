@@ -50,7 +50,7 @@ public class EditItemsViewControl extends ViewControl {
      * @return the Item edited
      */
     public EditItemsControl getEditItemsControl() {
-    	return theEditItemsControl;
+    	return this.theEditItemsControl;
     }
     
     /**
@@ -58,17 +58,17 @@ public class EditItemsViewControl extends ViewControl {
      * @param theItemToEdit
      */
     public void setFormForSelectedItem(Item theItemToEdit) {
-    	editItemTypeTextBox.setText(String.valueOf(theItemToEdit.getItemType()));
-    	editItemNameTextBox.setText(theItemToEdit.getItemName());
-    	editItemDescriptionTextArea.setText(theItemToEdit.getItemDescription());
-    	editIsItemForQuestCheckBox.setSelected(theItemToEdit.getIsQuestItem());
-    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIsImplicitItem());
-    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIstrophy());
+    	this.editItemTypeTextBox.setText(String.valueOf(theItemToEdit.getItemType()));
+    	this.editItemNameTextBox.setText(theItemToEdit.getItemName());
+    	this.editItemDescriptionTextArea.setText(theItemToEdit.getItemDescription());
+    	this.editIsItemForQuestCheckBox.setSelected(theItemToEdit.getIsQuestItem());
+    	this.editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIsImplicitItem());
+    	this.editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIstrophy());
     }
     
 	@FXML
 	private void handleItemEditBackButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("manageItems");
+		this.theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
     
 	@FXML
@@ -77,11 +77,11 @@ public class EditItemsViewControl extends ViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Item Edit");
 		alert.setHeaderText("Item Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + theEditItemsControl.getSelectedItem().getItemName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE " + this.theEditItemsControl.getSelectedItem().getItemName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				itemDeleteError = theEditItemsControl.deleteItem(theEditItemsControl.getSelectedItem());
+				itemDeleteError = this.theEditItemsControl.deleteItem(this.theEditItemsControl.getSelectedItem());
 			} catch (Exception e) {
 				itemDeleteError = e.getMessage();
 			}
@@ -98,7 +98,7 @@ public class EditItemsViewControl extends ViewControl {
 			alert.setHeaderText("Item Edit Status");
 			alert.setContentText("The Item was successfully deleted");
 			alert.showAndWait();
-			theMainDashboardViewControl.setMainDashboardStage("manageItems");
+			this.theMainDashboardViewControl.setMainDashboardStage("manageItems");
 		}
 	}
     
@@ -106,7 +106,7 @@ public class EditItemsViewControl extends ViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.updateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected(), editIsItemTrophyCheckBox.isSelected());
+			itemCreationError = this.theEditItemsControl.updateItem(this.editItemNameTextBox.getText(), this.editItemDescriptionTextArea.getText(), Integer.parseInt(this.editItemTypeTextBox.getText()), this.editIsItemForQuestCheckBox.isSelected(), this.editIsItemImplicitCheckBox.isSelected(), this.editIsItemTrophyCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
@@ -123,6 +123,6 @@ public class EditItemsViewControl extends ViewControl {
 		alert.setHeaderText("Item Edit Status");
 		alert.setContentText("The Item was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.setMainDashboardStage("manageItems");
+		this.theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
 }

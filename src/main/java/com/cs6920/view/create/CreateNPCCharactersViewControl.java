@@ -65,15 +65,15 @@ public class CreateNPCCharactersViewControl extends ViewControl {
     
 	@FXML
 	private void handleNPCCreateCanelButton() throws SQLException {
-		resetCreateNPCCharactersView();
-		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
+		this.resetCreateNPCCharactersView();
+		this.theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
     
 	@FXML
 	private void handleNPCCreateButton() throws SQLException {
 		String npcCreationError = null;
 		try {
-			npcCreationError = theCreateNPCCharactersControl.createNpc(Integer.parseInt(createNPCType.getText()), createNPCNameTextBox.getText(), createNPCDescriptionTextBox.getText(), Double.parseDouble(createNPCPosX.getText()), Double.parseDouble(createNPCPosY.getText()), Double.parseDouble(createNPCPosZ.getText()), this.createNPCLevelSpinner.getValue());
+			npcCreationError = this.theCreateNPCCharactersControl.createNpc(Integer.parseInt(this.createNPCType.getText()), this.createNPCNameTextBox.getText(), this.createNPCDescriptionTextBox.getText(), Double.parseDouble(this.createNPCPosX.getText()), Double.parseDouble(this.createNPCPosY.getText()), Double.parseDouble(this.createNPCPosZ.getText()), this.createNPCLevelSpinner.getValue());
 		} catch (Exception e) {
 			npcCreationError = e.getMessage();
 		}
@@ -90,7 +90,7 @@ public class CreateNPCCharactersViewControl extends ViewControl {
 		alert.setHeaderText("NPC Creation Status");
 		alert.setContentText("The NPC was successfully created");
 		alert.showAndWait();
-		resetCreateNPCCharactersView();
-		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
+		this.resetCreateNPCCharactersView();
+		this.theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
 }

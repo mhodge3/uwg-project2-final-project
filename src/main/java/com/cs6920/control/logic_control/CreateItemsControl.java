@@ -39,7 +39,7 @@ public class CreateItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (theItemDAL.createItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem)) {
+		if (this.theItemDAL.createItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem)) {
 			return null;
 		}
 		else {

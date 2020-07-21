@@ -57,18 +57,18 @@ public class LoginViewControl extends ViewControl {
 	public LoginViewControl(LoginControl theLoginControl, Stage theLoginStage) {
 		this.theLoginControl = theLoginControl;
 		this.theLoginStage = theLoginStage;
-        theFxmlLoader = new FXMLLoader(App.class.getResource("LoginView.fxml"));
-        theFxmlLoader.setController(this);
-        theMainDashboardStage = new Stage();
-        theMainDashboardStage.setTitle("Story Mapper");
-        theMainDashboardStage.setWidth(800);
-        theMainDashboardStage.setHeight(600);
+		this.theFxmlLoader = new FXMLLoader(App.class.getResource("LoginView.fxml"));
+		this.theFxmlLoader.setController(this);
+		this.theMainDashboardStage = new Stage();
+		this.theMainDashboardStage.setTitle("Story Mapper");
+		this.theMainDashboardStage.setWidth(800);
+		this.theMainDashboardStage.setHeight(600);
 	} 
 	
 	@FXML
 	private void handleTestServerButtonAction()
 	{
-		loadingConnectionTestImage.setVisible(true);
+		this.loadingConnectionTestImage.setVisible(true);
 		Thread handleTestConnection = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
@@ -84,21 +84,21 @@ public class LoginViewControl extends ViewControl {
 	}
 	
 	private void testMessageSucces() {
-		dBConnectionMessageLabel.setText("Connection successful.");
-	    dBConnectionMessageLabel.setTextFill(Color.GREEN);
-		loadingConnectionTestImage.setVisible(false);
+		this.dBConnectionMessageLabel.setText("Connection successful.");
+		this.dBConnectionMessageLabel.setTextFill(Color.GREEN);
+		this.loadingConnectionTestImage.setVisible(false);
 	}
 	
 	private void testMessageFail() {
-	    dBConnectionMessageLabel.setText("A connection was not established.");
-	    dBConnectionMessageLabel.setTextFill(Color.RED);
-		loadingConnectionTestImage.setVisible(false);
+		this.dBConnectionMessageLabel.setText("A connection was not established.");
+		this.dBConnectionMessageLabel.setTextFill(Color.RED);
+		this.loadingConnectionTestImage.setVisible(false);
 	}
 	
 	@FXML
 	private void handleAdminLoginButtonAction() throws Exception
 	{
-		loadingLoginImage.setVisible(true);
+		this.loadingLoginImage.setVisible(true);
 		Thread handleAdminLogin = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
@@ -130,25 +130,25 @@ public class LoginViewControl extends ViewControl {
 	}
 	
 	private void setLoginMessageNoAccount() {
-		adminLoginMessageLabel.setText("No account was found");
-		adminLoginMessageLabel.setTextFill(Color.RED);
-		loadingLoginImage.setVisible(false);
+		this.adminLoginMessageLabel.setText("No account was found");
+		this.adminLoginMessageLabel.setTextFill(Color.RED);
+		this.loadingLoginImage.setVisible(false);
 	}
 	private void setLoginMessageError(String error) {
-		adminLoginMessageLabel.setText(error);
-		adminLoginMessageLabel.setTextFill(Color.RED);
+		this.adminLoginMessageLabel.setText(error);
+		this.adminLoginMessageLabel.setTextFill(Color.RED);
 	}
 	
 	private void setLoginMessageNotAdmin() {
-		adminLoginMessageLabel.setText("The Player is NOT an Admin");
-		adminLoginMessageLabel.setTextFill(Color.RED);
-		loadingLoginImage.setVisible(false);
+		this.adminLoginMessageLabel.setText("The Player is NOT an Admin");
+		this.adminLoginMessageLabel.setTextFill(Color.RED);
+		this.loadingLoginImage.setVisible(false);
 	}
 	
 	private void setLoginMessageIsAdmin() {
-		adminLoginMessageLabel.setText("The Player is an Admin");
-		adminLoginMessageLabel.setTextFill(Color.GREEN);
-		loadingLoginImage.setVisible(false);
+		this.adminLoginMessageLabel.setText("The Player is an Admin");
+		this.adminLoginMessageLabel.setTextFill(Color.GREEN);
+		this.loadingLoginImage.setVisible(false);
 	}
 	
 	/**
@@ -164,14 +164,14 @@ public class LoginViewControl extends ViewControl {
 	 * @return the DBConnection class instance
 	 */
 	public MySQLAccess getDBConnection() {
-		return theLoginControl.getDBConnection();
+		return this.theLoginControl.getDBConnection();
 	}
 	
 	/**
 	 * Clears login fields from last login and shows the login stage.
 	 */
 	public void showLoginStage() {
-		resetAdminLoginFields();
+		this.resetAdminLoginFields();
 		this.theLoginStage.show();
 	}
 	
@@ -192,17 +192,17 @@ public class LoginViewControl extends ViewControl {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        theLoginStage.setScene(new Scene(theLoginParentView));
-		loadingConnectionTestImage.setVisible(false);
-		loadingLoginImage.setVisible(false);
-        showLoginStage();
+        this.theLoginStage.setScene(new Scene(theLoginParentView));
+        this.loadingConnectionTestImage.setVisible(false);
+        this.loadingLoginImage.setVisible(false);
+        this.showLoginStage();
 	}
 	
 	private void resetAdminLoginFields() {
-		adminLoginMessageLabel.setText("");
-		adminNameLoginTextBox.setText("");
-		adminPasswordLoginTextBox.setText("");
-		dBConnectionMessageLabel.setText("");
+		this.adminLoginMessageLabel.setText("");
+		this.adminNameLoginTextBox.setText("");
+		this.adminPasswordLoginTextBox.setText("");
+		this.dBConnectionMessageLabel.setText("");
 	}
 	
 }

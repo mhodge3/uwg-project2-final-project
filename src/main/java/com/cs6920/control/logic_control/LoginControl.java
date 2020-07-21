@@ -46,7 +46,7 @@ public class LoginControl {
 	public Boolean testDBConnection(String host, String userName, String password, String dBName) {
 		buildConnectionString(host, userName, password, dBName);
 		try {
-			return theDBConnection.testDBConnection();
+			return this.theDBConnection.testDBConnection();
 		} catch (Exception e) {
 			return false;
 		}
@@ -57,7 +57,7 @@ public class LoginControl {
 	 * @return  The DBConnection class instance
 	 */
 	public MySQLAccess getDBConnection() {
-		return  theDBConnection;
+		return  this.theDBConnection;
 	}
 	
 	/**
@@ -86,7 +86,7 @@ public class LoginControl {
 	 * @param password
 	 */
 	public void buildConnectionString(String hostName, String userName, String password, String dBName) {
-		theDBConnection.buildConnectionString(hostName, userName, password, dBName);
+		this.theDBConnection.buildConnectionString(hostName, userName, password, dBName);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class LoginControl {
 	 * @throws Exception
 	 */
 	public Player getPlayer(String playerName, String playerPassword) throws Exception {
-		return theLoginDAL.getPlayer(playerName, playerPassword);
+		return this.theLoginDAL.getPlayer(playerName, playerPassword);
 	}
 	
 	/**
@@ -107,7 +107,7 @@ public class LoginControl {
 	 * @throws Exception
 	 */
 	public Boolean isPlayerAdmin(Player thePlayer) throws Exception {
-		Boolean isPlayerAnAdmin = theLoginDAL.isPlayerAdmin(thePlayer);
+		Boolean isPlayerAnAdmin = this.theLoginDAL.isPlayerAdmin(thePlayer);
 		return isPlayerAnAdmin;
 	}
 	
@@ -118,13 +118,13 @@ public class LoginControl {
 	 * @throws SQLException 
 	 */
 	public void setUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) throws SQLException {
-		if(theMainDashboardControl == null) {
-			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
-			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, theMainDashboardStage);
-			theMainDashboardViewControl.loadMainDashboardView();
+		if(this.theMainDashboardControl == null) {
+			this.theMainDashboardControl = new MainDashboardControl(theAdminPlayer, this.theLoginViewControl);
+			this.theMainDashboardViewControl = new MainDashboardViewControl(this.theMainDashboardControl, theMainDashboardStage);
+			this.theMainDashboardViewControl.loadMainDashboardView();
 		}
 		else {
-			theMainDashboardViewControl.showMainDashboardView();
+			this.theMainDashboardViewControl.showMainDashboardView();
 		}
 	}
 }

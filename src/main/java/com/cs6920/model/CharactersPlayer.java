@@ -60,7 +60,7 @@ public class CharactersPlayer {
 	 * @return characterId
 	 */
 	public int getCharacterId() {
-		return characterId.get();
+		return this.characterId.get();
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterIdProperty() {
-	   return characterId;
+	   return this.characterId;
 	}
 	
 	
@@ -85,7 +85,7 @@ public class CharactersPlayer {
 	 * @return characterPlayerId
 	 */
 	public int getCharacterPlayerId() {
-		return characterPlayerId.get();
+		return this.characterPlayerId.get();
 	}
 	
 	/**
@@ -93,7 +93,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterPlayerIdProperty() {
-	   return characterPlayerId;
+	   return this.characterPlayerId;
 	}
 	
 	
@@ -110,7 +110,7 @@ public class CharactersPlayer {
 	 * @return characterName
 	 */
 	public String getCharacterName() {
-		return characterName.get();
+		return this.characterName.get();
 	}
 	
 	/**
@@ -118,7 +118,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final StringProperty characterNameProperty() {
-	   return characterName;
+	   return this.characterName;
 	}
 	
 	
@@ -135,7 +135,7 @@ public class CharactersPlayer {
 	 * @return characterType
 	 */
 	public int getCharacterType() {
-		return characterType.get();
+		return this.characterType.get();
 	}
 	
 	/**
@@ -151,7 +151,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterTypeProperty() {
-	   return characterType;
+	   return this.characterType;
 	}
 	
 	/**
@@ -159,7 +159,7 @@ public class CharactersPlayer {
 	 * @return characterFaction
 	 */
 	public int getCharacterFaction() {
-		return characterFaction.get();
+		return this.characterFaction.get();
 	}
 	
 	/**
@@ -175,7 +175,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterFactionProperty() {
-	   return characterFaction;
+	   return this.characterFaction;
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public class CharactersPlayer {
 	 * @return characterPosX
 	 */
 	public double getCharacterPosX() {
-		return characterPosX.get();
+		return this.characterPosX.get();
 	}
 	
 	/**
@@ -199,7 +199,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty CharacterPosXProperty() {
-	   return characterPosX;
+	   return this.characterPosX;
 	}
 	
 	/**
@@ -207,7 +207,7 @@ public class CharactersPlayer {
 	 * @return CharacterPosY
 	 */
 	public double getCharacterPosY() {
-		return characterPosY.get();
+		return this.characterPosY.get();
 	}
 		
 	/**
@@ -223,7 +223,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty characterPosYProperty() {
-	   return characterPosY;
+	   return this.characterPosY;
 	}
 	
 	/**
@@ -231,7 +231,7 @@ public class CharactersPlayer {
 	 * @return CharacterPosZ
 	 */
 	public double getCharacterPosZ() {
-		return characterPosZ.get();
+		return this.characterPosZ.get();
 	}
 	
 	/**
@@ -247,7 +247,7 @@ public class CharactersPlayer {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty characterPosZProperty() {
-	   return characterPosZ;
+	   return this.characterPosZ;
 	}
 
 }

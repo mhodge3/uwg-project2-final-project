@@ -43,7 +43,7 @@ public class CharacterPlayerQuestLogDAL {
 					"quest_status) " +
 					"VALUES (?, ?, ?)";
 							
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(questId));
 			 preparedStmt.setString (2, String.valueOf(characterId));
 			 preparedStmt.setString (3, String.valueOf(questStatus));
@@ -54,7 +54,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -84,7 +84,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return questLog;
     }
@@ -114,7 +114,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return questLog;
     }
@@ -136,7 +136,7 @@ public class CharacterPlayerQuestLogDAL {
 					"quest_status = ? " +
 					"WHERE quest_id = ?";
 							
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(updatedStatus));
 			 preparedStmt.setString (2, String.valueOf(log.getQuestId()));
 			  
@@ -146,7 +146,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -163,7 +163,7 @@ public class CharacterPlayerQuestLogDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog " + 
 					"WHERE quest_id = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(log.getQuestId()));
 			
 			preparedStmt.execute();
@@ -172,7 +172,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

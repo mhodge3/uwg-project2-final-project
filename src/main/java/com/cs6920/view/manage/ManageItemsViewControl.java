@@ -55,32 +55,32 @@ public class ManageItemsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingItemsList() throws SQLException {
-    	theManageItemsControl.updateItemArrayList();
-    	existingItemTableView.getItems().clear();
-    	existingItemTableView.getItems().addAll(theManageItemsControl.getObservablePlayerList());
+    	this.theManageItemsControl.updateItemArrayList();
+    	this.existingItemTableView.getItems().clear();
+    	this.existingItemTableView.getItems().addAll(this.theManageItemsControl.getObservablePlayerList());
     }
 
 	@FXML
     private void initialize() throws SQLException {
-		itemIDTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemId"));
-		itemTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemType"));
-		itemNameTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemName"));
-		itemDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemDescription"));
-		itemIsImplicitTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isImplicitItem"));
-		itemIsForQuestTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isQuestItem"));
-		itemIsTrophyTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isTrophy"));
+		this.itemIDTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemId"));
+		this.itemTypeTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Integer>("itemType"));
+		this.itemNameTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemName"));
+		this.itemDescriptionTableColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("itemDescription"));
+		this.itemIsImplicitTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isImplicitItem"));
+		this.itemIsForQuestTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isQuestItem"));
+		this.itemIsTrophyTableColumn.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("isTrophy"));
     }
 	
 	@FXML
 	private void handleItemsBackButton() throws SQLException {
-		theMainDashboardViewControl.loadMainDashboardView();
+		this.theMainDashboardViewControl.loadMainDashboardView();
 	}
 	
 	@FXML
 	private void handleEditSelectedItemButton() throws SQLException {
-		if (existingItemTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.setItemToEdit(existingItemTableView.getSelectionModel().getSelectedItem().getItemId());
-			theMainDashboardViewControl.setMainDashboardStage("editItems");
+		if (this.existingItemTableView.getSelectionModel().getSelectedItem() != null) {
+			this.theMainDashboardViewControl.setItemToEdit(this.existingItemTableView.getSelectionModel().getSelectedItem().getItemId());
+			this.theMainDashboardViewControl.setMainDashboardStage("editItems");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -93,6 +93,6 @@ public class ManageItemsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateItemButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("createItems");
+		this.theMainDashboardViewControl.setMainDashboardStage("createItems");
 	}
 }

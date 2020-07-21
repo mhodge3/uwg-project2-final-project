@@ -39,7 +39,7 @@ public class Inventory {
 	 * @return itemdID
 	 */
 	public int getItemId() {
-		return itemId.get();
+		return this.itemId.get();
 	}
 	
 	/**
@@ -56,7 +56,7 @@ public class Inventory {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty itemIdProperty() {
-	   return itemId;
+	   return this.itemId;
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class Inventory {
 	 * @return characterId
 	 */
 	public int getCharacterId() {
-		return characterId.get();
+		return this.characterId.get();
 	}
 	
 	/**
@@ -72,7 +72,7 @@ public class Inventory {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterIdProperty() {
-	   return characterId;
+	   return this.characterId;
 	}
 	
 	

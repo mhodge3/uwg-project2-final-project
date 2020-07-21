@@ -59,7 +59,7 @@ public class Item {
 	 * @return isTrophy
 	 */
 	public boolean getIstrophy() {
-		return isTrophy.get();
+		return this.isTrophy.get();
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class Item {
 	 * @return itemdID
 	 */
 	public int getItemId() {
-		return itemId.get();
+		return this.itemId.get();
 	}
 	
 	/**
@@ -100,7 +100,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty itemIdProperty() {
-	   return itemId;
+	   return this.itemId;
 	}
 	
 	/**
@@ -109,7 +109,7 @@ public class Item {
 	 */
 	
 	public String getItemName() {
-		return itemName.get();
+		return this.itemName.get();
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final StringProperty itemNameProperty() {
-	   return itemName;
+	   return this.itemName;
 	}
 	
 	/**
@@ -133,7 +133,7 @@ public class Item {
 	 * @return itemDescription
 	 */
 	public String getItemDescription() {
-		return itemDescription.get();
+		return this.itemDescription.get();
 	}
 	
 	/**
@@ -149,7 +149,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final StringProperty itemDescriptionProperty() {
-	   return itemDescription;
+	   return this.itemDescription;
 	}
 	
 	/**
@@ -157,7 +157,7 @@ public class Item {
 	 * @return itemType
 	 */
 	public int getItemType() {
-		return itemType.get();
+		return this.itemType.get();
 	}
 	
 	/**
@@ -173,7 +173,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty itemTypeProperty() {
-	   return itemType;
+	   return this.itemType;
 	}
 	
 	/**
@@ -197,7 +197,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final BooleanProperty isQuestItemProperty() {
-	   return isQuestItem;
+	   return this.isQuestItem;
 	}
 	
 	/**
@@ -221,7 +221,7 @@ public class Item {
 	 * @return Property for TableView
 	 */
 	public final BooleanProperty isImplicitItemProperty() {
-	   return isImplicitItem;
+	   return this.isImplicitItem;
 	}
 	
 

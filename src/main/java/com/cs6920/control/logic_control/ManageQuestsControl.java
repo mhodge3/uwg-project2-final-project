@@ -47,8 +47,8 @@ public class ManageQuestsControl {
 	 * @throws SQLException
 	 */
 	public void updateTheQuestArrayList() throws SQLException {
-		observableTheQuestList.clear();
-		observableTheQuestList.addAll(existingTheQuestArrayList);
+		this.observableTheQuestList.clear();
+		this.observableTheQuestList.addAll(this.existingTheQuestArrayList);
 	}
 	
 	public int getConflictIdToEdit () {
@@ -74,7 +74,7 @@ public class ManageQuestsControl {
 		if (this.getQuestVariableType() == "custom") {
 			highestVariableQuest = 1;
 		}
-		for (Quest quest : existingTheQuestArrayList) {
+		for (Quest quest : this.existingTheQuestArrayList) {
 			if (quest.getQuestArcType().contentEquals("obstacle")) {
 				highestVariableQuest = quest.getidInConflict();
 			}
@@ -83,8 +83,8 @@ public class ManageQuestsControl {
 	}
 	
 	private void insertNewObstacleQuest(Quest newObstacleQuest) throws SQLException {
-		existingTheQuestArrayList.add(newObstacleQuest);
-		for (Quest quest : existingTheQuestArrayList) {
+		this.existingTheQuestArrayList.add(newObstacleQuest);
+		for (Quest quest : this.existingTheQuestArrayList) {
 			if (quest.getidInConflict() >= newObstacleQuest.getidInConflict() && quest.getQuestId() != 0) {
 				quest.setIdInConflict(quest.getidInConflict() + 1);
 				quest.setPreReqIdInConflict(quest.getidPreReqIdConflict() + 1);
@@ -98,7 +98,7 @@ public class ManageQuestsControl {
 		Quest obstacleQuest = new Quest(); 
 		obstacleQuest.setQuestArcType(this.getQuestVariableType());
 		obstacleQuest.setPreReqIdInConflict(highestObstacleQuestId);
-		obstacleQuest.setConflictId(theConflictIdToEdit);
+		obstacleQuest.setConflictId(this.theConflictIdToEdit);
 		obstacleQuest.setQuestId(0);
 		obstacleQuest.setIdInConflict(highestObstacleQuestId + 1);
 		obstacleQuest.setMinCharacterLevel(1);
@@ -113,7 +113,7 @@ public class ManageQuestsControl {
 	}
 	
 	public void updateQuestChainInDB() throws SQLException {
-		for (Quest quest : existingTheQuestArrayList) {
+		for (Quest quest : this.existingTheQuestArrayList) {
 			if (quest.getQuestId() == 0) {
 				int questId = this.theQuestsController.createQuest(quest.getQuestReceiverNpcId(), quest.getQuestGiverNpcId(), 
 						quest.getPreReqQuestId(), quest.getConflictId(), quest.getMinCharacterLevel(), 
@@ -131,10 +131,10 @@ public class ManageQuestsControl {
 			}
 		}
 		ArrayList<Quest> removedQuests = new ArrayList<Quest>();
-		ArrayList<Quest> existingQuests = this.theQuestsController.getQuestsByConflictID(theConflictIdToEdit);
+		ArrayList<Quest> existingQuests = this.theQuestsController.getQuestsByConflictID(this.theConflictIdToEdit);
 		for (Quest existingQuest : existingQuests) {
 			Boolean foundQuest = false;
-			for (Quest currentQuest : existingTheQuestArrayList) {
+			for (Quest currentQuest : this.existingTheQuestArrayList) {
 				if (currentQuest.getQuestId() == existingQuest.getQuestId()) {
 					foundQuest = true;
 					break;
@@ -156,18 +156,18 @@ public class ManageQuestsControl {
 	
 	public void removeQuest(int questIdToRemove) throws SQLException {
 		int idInConlictofRemovedQuest = 0;
-		for (Quest quest : existingTheQuestArrayList) {
+		for (Quest quest : this.existingTheQuestArrayList) {
 			if (quest.getQuestId() == questIdToRemove) {
 				idInConlictofRemovedQuest = quest.getidInConflict();
 				if (!canQuestBeRemoved(quest)) {
 					return;
 				}
-				existingTheQuestArrayList.remove(quest);
+				this.existingTheQuestArrayList.remove(quest);
 				break;
 			}
 		}
 		if (idInConlictofRemovedQuest > 0) {
-			for (Quest quest : existingTheQuestArrayList) {
+			for (Quest quest : this.existingTheQuestArrayList) {
 				if (quest.getidInConflict() > idInConlictofRemovedQuest) {
 					quest.setIdInConflict(quest.getidInConflict() - 1);
 					quest.setPreReqIdInConflict(quest.getidInConflict() - 1);
@@ -201,7 +201,7 @@ public class ManageQuestsControl {
     
     private int questArcTypeCount(String arcTypeName) {
 		int questCount = 0;
-		for (Quest quest : existingTheQuestArrayList) {
+		for (Quest quest : this.existingTheQuestArrayList) {
 			if (quest.getQuestArcType().contentEquals(arcTypeName)) {
 				questCount++;
 			}
@@ -298,12 +298,12 @@ public class ManageQuestsControl {
 		quest5.setQuestDescription("testing 5");
 		quest5.setQuestGiverDialog("Go");
 		quest5.setQuestReceiverDialog("Stop");
-		existingTheQuestArrayList.add(quest1);
-		existingTheQuestArrayList.add(quest2);
-		existingTheQuestArrayList.add(quest3);
-		existingTheQuestArrayList.add(quest4);
-		existingTheQuestArrayList.add(quest5);
-		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList.add(quest1);
+		this.existingTheQuestArrayList.add(quest2);
+		this.existingTheQuestArrayList.add(quest3);
+		this.existingTheQuestArrayList.add(quest4);
+		this.existingTheQuestArrayList.add(quest5);
+		this.createNewQuestChainInDB(this.existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.getQuestsByConflictID(this.theConflictToEdit.getConflictId());
     }
@@ -379,12 +379,12 @@ public class ManageQuestsControl {
 		quest5.setQuestDescription("testing 5");
 		quest5.setQuestGiverDialog("Go");
 		quest5.setQuestReceiverDialog("Stop");
-		existingTheQuestArrayList.add(quest1);
-		existingTheQuestArrayList.add(quest2);
-		existingTheQuestArrayList.add(quest3);
-		existingTheQuestArrayList.add(quest4);
-		existingTheQuestArrayList.add(quest5);
-		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList.add(quest1);
+		this.existingTheQuestArrayList.add(quest2);
+		this.existingTheQuestArrayList.add(quest3);
+		this.existingTheQuestArrayList.add(quest4);
+		this.existingTheQuestArrayList.add(quest5);
+		this.createNewQuestChainInDB(this.existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.getQuestsByConflictID(this.theConflictToEdit.getConflictId());
     }
@@ -446,11 +446,11 @@ public class ManageQuestsControl {
 		quest4.setQuestDescription("testing 4");
 		quest4.setQuestGiverDialog("Go");
 		quest4.setQuestReceiverDialog("Stop");
-		existingTheQuestArrayList.add(quest1);
-		existingTheQuestArrayList.add(quest2);
-		existingTheQuestArrayList.add(quest3);
-		existingTheQuestArrayList.add(quest4);
-		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList.add(quest1);
+		this.existingTheQuestArrayList.add(quest2);
+		this.existingTheQuestArrayList.add(quest3);
+		this.existingTheQuestArrayList.add(quest4);
+		this.createNewQuestChainInDB(this.existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.getQuestsByConflictID(this.theConflictToEdit.getConflictId());
     }
@@ -470,14 +470,14 @@ public class ManageQuestsControl {
 		quest1.setQuestDescription("testing 1");
 		quest1.setQuestGiverDialog("Go");
 		quest1.setQuestReceiverDialog("Stop");
-		existingTheQuestArrayList.add(quest1);
-		this.createNewQuestChainInDB(existingTheQuestArrayList);
+		this.existingTheQuestArrayList.add(quest1);
+		this.createNewQuestChainInDB(this.existingTheQuestArrayList);
 		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.getQuestsByConflictID(this.theConflictToEdit.getConflictId());
     }
 	
 	public void createQuestTemplateList () throws SQLException {
-		existingTheQuestArrayList = new ArrayList<Quest>();
+		this.existingTheQuestArrayList = new ArrayList<Quest>();
 		this.existingTheQuestArrayList = this.theQuestsController.getQuestsByConflictID(this.theConflictToEdit.getConflictId());
 		if (this.existingTheQuestArrayList.size() == 0) {
 			switch (this.theConflictToEdit.getConflictArcType()) {
@@ -499,7 +499,7 @@ public class ManageQuestsControl {
 	}
 	
 	public void clearExistingQuestsToEdit() {
-		existingTheQuestArrayList.clear();
+		this.existingTheQuestArrayList.clear();
 	}
 	
 	private void createNewQuestChainInDB (ArrayList<Quest> questsToCreate) throws SQLException {
@@ -513,6 +513,6 @@ public class ManageQuestsControl {
 	 * @return	the observable list
 	 */
 	public ObservableList<Quest> getObservableTheQuestList() {
-		return observableTheQuestList;
+		return this.observableTheQuestList;
 	}
 }

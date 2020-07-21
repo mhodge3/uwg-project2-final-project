@@ -40,7 +40,7 @@ public class QuestItems {
 	 * @return questId
 	 */
 	public int getQuestId() {
-		return questId.get();
+		return this.questId.get();
 	}
 	
 	/**
@@ -48,7 +48,7 @@ public class QuestItems {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questIdProperty() {
-	   return questId;
+	   return this.questId;
 	}
 	
 	
@@ -65,7 +65,7 @@ public class QuestItems {
 	 * @return itemId
 	 */
 	public int getItemId() {
-		return itemId.get();
+		return this.itemId.get();
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public class QuestItems {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty itemIdProperty() {
-	   return itemId;
+	   return this.itemId;
 	}
 	
 	
@@ -90,7 +90,7 @@ public class QuestItems {
 	 * @return itemQuantity
 	 */
 	public int getItemQuantity() {
-		return itemQuantity.get();
+		return this.itemQuantity.get();
 	}
 	
 	/**
@@ -98,7 +98,7 @@ public class QuestItems {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty itemQuantityProperty() {
-	   return itemQuantity;
+	   return this.itemQuantity;
 	}
 	
 	
@@ -115,7 +115,7 @@ public class QuestItems {
 	 * @return itemDisplayName
 	 */
 	public String getItemDisplayName() {
-		return itemDisplayName.get();
+		return this.itemDisplayName.get();
 	}
 	
 	/**
@@ -123,7 +123,7 @@ public class QuestItems {
 	 * @return Property for TableView
 	 */
 	public final StringProperty itemDisplayNameProperty() {
-	   return itemDisplayName;
+	   return this.itemDisplayName;
 	}
 	
 	

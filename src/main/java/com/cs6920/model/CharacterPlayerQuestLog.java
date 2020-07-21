@@ -41,7 +41,7 @@ public class CharacterPlayerQuestLog {
 	 * @return characterId
 	 */
 	public int getCharacterId() {
-		return characterId.get();
+		return this.characterId.get();
 	}
 	
 	/**
@@ -49,7 +49,7 @@ public class CharacterPlayerQuestLog {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty characterIdProperty() {
-	   return characterId;
+	   return this.characterId;
 	}
 	
 	
@@ -66,7 +66,7 @@ public class CharacterPlayerQuestLog {
 	 * @return questId
 	 */
 	public int getQuestId() {
-		return questId.get();
+		return this.questId.get();
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class CharacterPlayerQuestLog {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questIdProperty() {
-	   return questId;
+	   return this.questId;
 	}
 	
 	
@@ -91,7 +91,7 @@ public class CharacterPlayerQuestLog {
 	 * @return questStatus
 	 */
 	public int getQuestStatus() {
-		return questStatus.get();
+		return this.questStatus.get();
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class CharacterPlayerQuestLog {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty questStatusProperty() {
-	   return questStatus;
+	   return this.questStatus;
 	}
 	
 	

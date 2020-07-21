@@ -32,10 +32,10 @@ public class ManageItemsControl {
 	 * @throws SQLException
 	 */
 	public void updateItemArrayList() throws SQLException {
-		existingItemAdminArrayList = new ArrayList<Item>();
-		existingItemAdminArrayList = theItemDAL.getItems();
-		observableItemList.clear();
-		observableItemList.addAll(existingItemAdminArrayList);
+		this.existingItemAdminArrayList = new ArrayList<Item>();
+		this.existingItemAdminArrayList = this.theItemDAL.getItems();
+		this.observableItemList.clear();
+		this.observableItemList.addAll(this.existingItemAdminArrayList);
 	}
 	
 	/**
@@ -43,6 +43,6 @@ public class ManageItemsControl {
 	 * @return	the observable list
 	 */
 	public ObservableList<Item> getObservablePlayerList() {
-		return observableItemList;
+		return this.observableItemList;
 	}
 }

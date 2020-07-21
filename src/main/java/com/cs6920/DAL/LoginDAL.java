@@ -21,22 +21,22 @@ public class LoginDAL {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = theDBConnection.getDBConnection();
-            theStatement = theConnection.createStatement();
-            String pST = "SELECT * FROM `" + theDBConnection.getTheDBName() + "`.`players` "
-            		+ "WHERE `" + theDBConnection.getTheDBName() + "`.`players`.`player_name` = \"" + playerName + "\""
-            				+ "AND `" + theDBConnection.getTheDBName() + "`.`players`.`player_password` = \"" + playerPassword + "\";";
-            theResultSet = theStatement.executeQuery(pST);
-            if (theResultSet.next() != false) {
+            this.theConnection = this.theDBConnection.getDBConnection();
+            this.theStatement = this.theConnection.createStatement();
+            String pST = "SELECT * FROM `" + this.theDBConnection.getTheDBName() + "`.`players` "
+            		+ "WHERE `" + this.theDBConnection.getTheDBName() + "`.`players`.`player_name` = \"" + playerName + "\""
+            				+ "AND `" + this.theDBConnection.getTheDBName() + "`.`players`.`player_password` = \"" + playerPassword + "\";";
+            this.theResultSet = this.theStatement.executeQuery(pST);
+            if (this.theResultSet.next() != false) {
                 thePlayer = new Player();
-                thePlayer.setPlayerName(theResultSet.getString("player_name"));
-                thePlayer.setPlayerId(Integer.parseInt(theResultSet.getString("player_id")));
+                thePlayer.setPlayerName(this.theResultSet.getString("player_name"));
+                thePlayer.setPlayerId(Integer.parseInt(this.theResultSet.getString("player_id")));
             }
         } catch (Exception e) {
             thePlayer = null;
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return thePlayer;
     }
@@ -47,20 +47,20 @@ public class LoginDAL {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = theDBConnection.getDBConnection();
+            this.theConnection = this.theDBConnection.getDBConnection();
             // Statements allow to issue SQL queries to the database
-            theStatement = theConnection.createStatement();
-            String pST = "SELECT * FROM `" + theDBConnection.getTheDBName() + "`.`admins` "
-            		+ "WHERE `" + theDBConnection.getTheDBName() + "`.admins.`player_id` = \"" + thePlayer.getPlayerId() + "\" AND is_active = 1";
+            this.theStatement = this.theConnection.createStatement();
+            String pST = "SELECT * FROM `" + this.theDBConnection.getTheDBName() + "`.`admins` "
+            		+ "WHERE `" + this.theDBConnection.getTheDBName() + "`.admins.`player_id` = \"" + thePlayer.getPlayerId() + "\" AND is_active = 1";
             // Result set get the result of the SQL query
-            ResultSet theResultSet = theStatement.executeQuery(pST);
+            ResultSet theResultSet = this.theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {
                 isAdmin = true;
             }
         } catch (Exception e) {
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return isAdmin;
     }

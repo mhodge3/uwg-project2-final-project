@@ -30,7 +30,7 @@ public class PlayerController {
 	 */
 	public void setSelectedPlayer(int playerId) {
 		try {
-			theSelectedPlayer = thePlayerDAL.getPlayer(playerId);
+			this.theSelectedPlayer = this.thePlayerDAL.getPlayer(playerId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class PlayerController {
 	 * @throws Exception
 	 */
 	public Player getPlayer(String playerName, String playerPassword) throws Exception {
-		return thePlayerDAL.getPlayer(playerName, playerPassword);
+		return this.thePlayerDAL.getPlayer(playerName, playerPassword);
 	}
 	
 	/**
@@ -76,7 +76,7 @@ public class PlayerController {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
+		if (this.thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
 			return null;
 		}
 		else {
@@ -89,7 +89,7 @@ public class PlayerController {
 	 * @return The selected Player
 	 */
 	public Player getSelectedPlayer() {
-		return theSelectedPlayer;
+		return this.theSelectedPlayer;
 	}
 	
 	/**
@@ -121,7 +121,7 @@ public class PlayerController {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (thePlayerDAL.updatePlayer(theSelectedPlayer, new Player(theSelectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
+		if (this.thePlayerDAL.updatePlayer(this.theSelectedPlayer, new Player(this.theSelectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
 			return null;
 		}
 		else {
@@ -144,7 +144,7 @@ public class PlayerController {
 	 * @throws SQLException
 	 */
 	public Integer getLastInsertedId() throws SQLException {
-		return thePlayerDAL.getLastInsertedID();
+		return this.thePlayerDAL.getLastInsertedID();
 	}
 	
 	/**

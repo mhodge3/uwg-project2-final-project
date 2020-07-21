@@ -40,7 +40,7 @@ public class CreateGameStoryControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (theGameStoryDAL.createGameStory(gameStoryName, gameStorySummary)) {
+		if (this.theGameStoryDAL.createGameStory(gameStoryName, gameStorySummary)) {
 			return null;
 		}
 		else {

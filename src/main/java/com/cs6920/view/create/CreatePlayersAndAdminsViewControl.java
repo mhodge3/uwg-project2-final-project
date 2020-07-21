@@ -44,23 +44,23 @@ public class CreatePlayersAndAdminsViewControl extends ViewControl {
     }
     
     private void resetCreatePlayerAdminView() {
-    	createPlayerUserNameTextBox.setText("");
-    	createPlayerPasswordTextBox.setText("");
-    	createPlayerPasswordConfirmTextBox.setText("");
-    	createPlayerEmailTextBox.setText("");
-    	createPlayerUserCountryCodeTextBox.setText("USA");
-    	createPlayerAsAdminCheckBox.setSelected(false);
+    	this.createPlayerUserNameTextBox.setText("");
+    	this.createPlayerPasswordTextBox.setText("");
+    	this.createPlayerPasswordConfirmTextBox.setText("");
+    	this.createPlayerEmailTextBox.setText("");
+    	this.createPlayerUserCountryCodeTextBox.setText("USA");
+    	this.createPlayerAsAdminCheckBox.setSelected(false);
     }
     
 	@FXML
 	private void handlePlayerAndAdminCreateCanelButton() throws SQLException {
-		resetCreatePlayerAdminView();
-		theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
+		this.resetCreatePlayerAdminView();
+		this.theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
 	}
     
 	@FXML
 	private void handlePlayerAndAdminCreateButton() throws SQLException {
-		String userCreationError = theCreatePlayersAndAdminsControl.createPlayer(createPlayerUserNameTextBox.getText(), createPlayerPasswordTextBox.getText(), createPlayerPasswordConfirmTextBox.getText(), createPlayerEmailTextBox.getText(), createPlayerUserCountryCodeTextBox.getText(), createPlayerAsAdminCheckBox.isSelected());
+		String userCreationError = this.theCreatePlayersAndAdminsControl.createPlayer(this.createPlayerUserNameTextBox.getText(), this.createPlayerPasswordTextBox.getText(), this.createPlayerPasswordConfirmTextBox.getText(), this.createPlayerEmailTextBox.getText(), this.createPlayerUserCountryCodeTextBox.getText(), this.createPlayerAsAdminCheckBox.isSelected());
 		if (userCreationError != null) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
@@ -74,7 +74,7 @@ public class CreatePlayersAndAdminsViewControl extends ViewControl {
 		alert.setHeaderText("Account Creation Status");
 		alert.setContentText("The User account was successfully created");
 		alert.showAndWait();
-		resetCreatePlayerAdminView();
-		theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
+		this.resetCreatePlayerAdminView();
+		this.theMainDashboardViewControl.setMainDashboardStage("managePlayersAndAdmins");
 	}
 }

@@ -60,7 +60,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return theItemArrayList; 
 	}
@@ -100,7 +100,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return item; 
 	}
@@ -140,7 +140,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return item; 
 	}
@@ -157,7 +157,7 @@ public class ItemDAL {
             		"is_implicit_item, " +
             		"is_trophy_item) " +
 					"VALUES (?, ?, ?, ?, ?, ?)";
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, itemName);
 			  preparedStmt.setString (2, itemDescription);
 			  preparedStmt.setString (3, String.valueOf(itemType));
@@ -173,7 +173,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -192,7 +192,7 @@ public class ItemDAL {
             		"is_trophy_item = ? " +
             	    "WHERE item_id = ?";
 		
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, updatedItem.getItemName());
 			  preparedStmt.setString (2, updatedItem.getItemDescription());
 			  preparedStmt.setString (3, String.valueOf(updatedItem.getItemType()));
@@ -209,7 +209,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -220,7 +220,7 @@ public class ItemDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".items " + 
 					"WHERE item_id = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(item.getItemId()));
 			
 			preparedStmt.execute();
@@ -229,7 +229,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

@@ -32,10 +32,10 @@ public class ManagePlayersAndAdminsControl {
 	 * @throws SQLException
 	 */
 	public void updatePlayerArrayList() throws SQLException {
-		existingPlayerAdminArrayList = new ArrayList<Player>();
-		existingPlayerAdminArrayList = thePlayerDAL.getPlayers();
-		observablePlayerList.clear();
-		observablePlayerList.addAll(existingPlayerAdminArrayList);
+		this.existingPlayerAdminArrayList = new ArrayList<Player>();
+		this.existingPlayerAdminArrayList = this.thePlayerDAL.getPlayers();
+		this.observablePlayerList.clear();
+		this.observablePlayerList.addAll(this.existingPlayerAdminArrayList);
 	}
 	
 	/**
@@ -43,6 +43,6 @@ public class ManagePlayersAndAdminsControl {
 	 * @return	the observable list
 	 */
 	public ObservableList<Player> getObservablePlayerList() {
-		return observablePlayerList;
+		return this.observablePlayerList;
 	}
 }

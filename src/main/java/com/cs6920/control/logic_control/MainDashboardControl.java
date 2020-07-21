@@ -35,7 +35,7 @@ public class MainDashboardControl {
 	 * Begins the LoginViewControl's process for reseting to the Login View
 	 */
 	public void resetLoginView() {
-		theLoginViewControl.showLoginStage();
+		this.theLoginViewControl.showLoginStage();
 	}
 	
 	/**

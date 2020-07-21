@@ -55,7 +55,7 @@ public class QuestItemsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return theQuestItemsArrayList; 
 	}
@@ -89,7 +89,7 @@ public class QuestItemsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return questItem; 
 	}
@@ -106,7 +106,7 @@ public class QuestItemsDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".questitems " + 
 					"WHERE quest_id = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString(1, String.valueOf(questId));
 			preparedStmt.execute();
 		      success = true;
@@ -114,7 +114,7 @@ public class QuestItemsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -135,7 +135,7 @@ public class QuestItemsDAL {
             		"item_quantity, " + 
             		"item_display_name) " +
 					"VALUES (?, ?, ?, ?)";
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString(1, String.valueOf(questId));
 			  preparedStmt.setString(2, String.valueOf(itemId));
 			  preparedStmt.setString(3, String.valueOf(itemQuantity));
@@ -146,7 +146,7 @@ public class QuestItemsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -166,7 +166,7 @@ public class QuestItemsDAL {
 					"SET " + 
             		"item_quantity = ? " + 
             		"WHERE quest_id = ? AND item_id = ?";
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			  preparedStmt.setString(1, String.valueOf(itemQuantity));
 			  preparedStmt.setString(2, String.valueOf(questItem.getQuestId()));
 			  preparedStmt.setString(3, String.valueOf(questItem.getItemId()));
@@ -176,7 +176,7 @@ public class QuestItemsDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

@@ -32,7 +32,7 @@ public class Admin extends Player {
 	 * @return adminId
 	 */
 	public int getAdminId() {
-		return adminId.get();
+		return this.adminId.get();
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class Admin extends Player {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty adminIdProperty() {
-	   return playerId;
+	   return this.playerId;
 	}
 	
 	
@@ -57,7 +57,7 @@ public class Admin extends Player {
 	 * @return playerId
 	 */
 	public int getPlayerId() {
-		return playerId.get();
+		return this.playerId.get();
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public class Admin extends Player {
 	 * @return isActive
 	 */
 	public int getIsActive() {
-		return isActive.get();
+		return this.isActive.get();
 	}
 	
 	/**

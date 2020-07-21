@@ -51,9 +51,8 @@ public class CharactersPlayerDAL {
 					"character_posX, " +
 					"character_posY, " +
 					"character_posZ) " +
-					"VALUES (?, ?, ?, ?, ?, ?, ?)";
-			 System.out.println(query); 			
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+					"VALUES (?, ?, ?, ?, ?, ?, ?)";			
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(characterPlayerId));
 			 preparedStmt.setString (2, characterName);
 			 preparedStmt.setString (3, String.valueOf(characterType));
@@ -68,7 +67,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -103,7 +102,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return charactersPlayers;
     }
@@ -137,7 +136,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return charactersPlayer;
     }
@@ -171,7 +170,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
         return charactersPlayer;
     }
@@ -198,7 +197,7 @@ public class CharactersPlayerDAL {
 						"character_posZ = ? " +
 						"WHERE character_id = ?";
 							
-			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(updatedCharacter.getCharacterPlayerId()));
 			 preparedStmt.setString (2, updatedCharacter.getCharacterName());
 			 preparedStmt.setString (3, String.valueOf(updatedCharacter.getCharacterType()));
@@ -214,7 +213,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}
@@ -231,7 +230,7 @@ public class CharactersPlayerDAL {
 			this.theConnection = this.sqlAccess.getDBConnection();
 			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".charactersplayer " + 
 					"WHERE character_player_id = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(character.getCharacterPlayerId()));
 			
 			preparedStmt.execute();
@@ -240,7 +239,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

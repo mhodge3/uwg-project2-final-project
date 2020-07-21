@@ -29,7 +29,7 @@ public class EditPlayersAndAdminsControl {
 	 */
 	public void setSelectedPlayer(int playerId) {
 		try {
-			selectedPlayer = thePlayerDAL.getPlayer(playerId);
+			this.selectedPlayer = this.thePlayerDAL.getPlayer(playerId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class EditPlayersAndAdminsControl {
 	 * @return the Player object to edit
 	 */
 	public Player getSelectedPlayer() {
-		return selectedPlayer;
+		return this.selectedPlayer;
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class EditPlayersAndAdminsControl {
 	public String deletePlayer(Player playerToDelete) {
 		
 		try {
-			if (thePlayerDAL.deletePlayer(playerToDelete)) {
+			if (this.thePlayerDAL.deletePlayer(playerToDelete)) {
 				return null;
 			}
 			else {
@@ -91,7 +91,7 @@ public class EditPlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (thePlayerDAL.updatePlayer(selectedPlayer, new Player(selectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
+		if (this.thePlayerDAL.updatePlayer(this.selectedPlayer, new Player(this.selectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
 			return null;
 		}
 		else {

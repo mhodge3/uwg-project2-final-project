@@ -49,7 +49,7 @@ public class CreatePlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
+		if (this.thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
 			return null;
 		}
 		else {

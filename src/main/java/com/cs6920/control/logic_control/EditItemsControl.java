@@ -29,7 +29,7 @@ public class EditItemsControl {
 	 */
 	public void setSelectedItem(int itemId) {
 		try {
-			selectedItem = theItemDAL.getItemById(itemId);
+			this.selectedItem = this.theItemDAL.getItemById(itemId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class EditItemsControl {
 	 * @return
 	 */
 	public Item getSelectedItem() {
-		return selectedItem;
+		return this.selectedItem;
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class EditItemsControl {
 	public String deleteItem(Item itemToDelete) {
 		
 		try {
-			if (theItemDAL.deleteItem(itemToDelete)) {
+			if (this.theItemDAL.deleteItem(itemToDelete)) {
 				return null;
 			}
 			else {
@@ -81,7 +81,7 @@ public class EditItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (theItemDAL.updateItem(selectedItem, new Item(selectedItem.getItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem))) {
+		if (this.theItemDAL.updateItem(this.selectedItem, new Item(this.selectedItem.getItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem))) {
 			return null;
 		}
 		else {

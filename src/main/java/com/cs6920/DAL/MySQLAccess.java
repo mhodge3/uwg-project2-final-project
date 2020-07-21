@@ -41,7 +41,7 @@ public class MySQLAccess {
         // This will load the MySQL driver, each DB has its own driver
         Class.forName("com.mysql.cj.jdbc.Driver");
         // Setup the connection with the DB
-        theNewConnection = DriverManager.getConnection(connectionString, theDBUserName, theDBPassword);
+        theNewConnection = DriverManager.getConnection(this.connectionString, this.theDBUserName, this.theDBPassword);
         return theNewConnection;
     }
     
@@ -56,8 +56,8 @@ public class MySQLAccess {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = getDBConnection();
-        	theResultSet = null;
+            this.theConnection = getDBConnection();
+            this.theResultSet = null;
         	connectionSuccess = true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -77,7 +77,7 @@ public class MySQLAccess {
     	this.theDBName = dBName;
     	this.theDBUserName = userName;
     	this.theDBPassword = password;
-    	connectionString = "jdbc:mysql://" + hostName + "/?serverTimezone=UTC";
+    	this.connectionString = "jdbc:mysql://" + hostName + "/?serverTimezone=UTC";
     }
     
     /**
@@ -91,16 +91,16 @@ public class MySQLAccess {
     // You need to close the resultSet
     private void close() {
         try {
-            if (theResultSet != null) {
-                theResultSet.close();
+            if (this.theResultSet != null) {
+            	this.theResultSet.close();
             }
 
-            if (theStatement != null) {
-                theStatement.close();
+            if (this.theStatement != null) {
+            	this.theStatement.close();
             }
 
-            if (theConnection != null) {
-                theConnection.close();
+            if (this.theConnection != null) {
+            	this.theConnection.close();
             }
         } catch (Exception e) {
 

@@ -74,7 +74,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
     
 	@FXML
 	private void handleNPCEditBackButton() throws SQLException {
-		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
+		this.theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
     
 	@FXML
@@ -83,11 +83,11 @@ public class EditNPCCharactersViewControl extends ViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("NPC Edit");
 		alert.setHeaderText("NPC Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + theEditNPCCharactersControl.GetSelectedNPC().getNpcName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE " + this.theEditNPCCharactersControl.GetSelectedNPC().getNpcName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				npcDeleteError = theEditNPCCharactersControl.deleteNPC(theEditNPCCharactersControl.GetSelectedNPC());
+				npcDeleteError = this.theEditNPCCharactersControl.deleteNPC(this.theEditNPCCharactersControl.GetSelectedNPC());
 			} catch (Exception e) {
 				npcDeleteError = e.getMessage();
 			}
@@ -104,7 +104,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
 			alert.setHeaderText("NPC Edit Status");
 			alert.setContentText("The NPC was successfully deleted");
 			alert.showAndWait();
-			theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
+			this.theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 		}
 	}
     
@@ -112,7 +112,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
 	private void handleNPCEditSaveButton() throws SQLException {
 		String npcCreationError = null;
 		try {
-			npcCreationError = theEditNPCCharactersControl.updateNpc(theEditNPCCharactersControl.GetSelectedNPC().getNpcId(), Integer.parseInt(editNPCType.getText()), editNPCNameTextBox.getText(), editNPCDescriptionTextBox.getText(), Double.parseDouble(editNPCPosX.getText()), Double.parseDouble(editNPCPosY.getText()), Double.parseDouble(editNPCPosZ.getText()), this.editNPCLevelSpinner.getValue());
+			npcCreationError = this.theEditNPCCharactersControl.updateNpc(this.theEditNPCCharactersControl.GetSelectedNPC().getNpcId(), Integer.parseInt(this.editNPCType.getText()), this.editNPCNameTextBox.getText(), this.editNPCDescriptionTextBox.getText(), Double.parseDouble(this.editNPCPosX.getText()), Double.parseDouble(this.editNPCPosY.getText()), Double.parseDouble(this.editNPCPosZ.getText()), this.editNPCLevelSpinner.getValue());
 		} catch (Exception e) {
 			npcCreationError = e.getMessage();
 		}
@@ -129,6 +129,6 @@ public class EditNPCCharactersViewControl extends ViewControl {
 		alert.setHeaderText("NPC Edit Status");
 		alert.setContentText("The NPC was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
+		this.theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
 }

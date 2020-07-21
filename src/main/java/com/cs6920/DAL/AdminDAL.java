@@ -36,7 +36,7 @@ public class AdminDAL {
         } catch (Exception e) {
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return admin.getAdminId();
     }
@@ -64,7 +64,7 @@ public class AdminDAL {
 						"SET " +
 						"is_active = ? " +
 						"WHERE `player_id` = ?";
-			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(makeActive));
 			preparedStmt.setString (2, String.valueOf(playerId));
 			preparedStmt.execute();
@@ -87,7 +87,7 @@ public class AdminDAL {
 				String query = "INSERT INTO `" + this.sqlAccess.getTheDBName() + "`.`admins`" + 
 						"(`player_id`, `is_active`)" + 
 						"VALUES (?, ?)";
-				 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+				 PreparedStatement preparedStmt = this.theConnection.prepareStatement(query);
 				 preparedStmt.setString (1, String.valueOf(playerId));
 				 preparedStmt.setString (2, String.valueOf(makeActive));
 				  			  
@@ -98,7 +98,7 @@ public class AdminDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	theConnection.close();
+        	this.theConnection.close();
         }
 		return success;
 	}

@@ -63,7 +63,7 @@ public class NpcCharacter {
 	 * @return npcId
 	 */
 	public int getNpcId() {
-		return npcId.get();
+		return this.npcId.get();
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty npcIdProperty() {
-	   return npcId;
+	   return this.npcId;
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty npcLevelProperty() {
-	   return npcLevel;
+	   return this.npcLevel;
 	}
 	
 	/**
@@ -111,7 +111,7 @@ public class NpcCharacter {
 	 * @return npcDescprition
 	 */
 	public String getNpcDescprition() {
-		return npcDescprition.get();
+		return this.npcDescprition.get();
 	}
 	
 	/**
@@ -127,7 +127,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final StringProperty npcDescriptionProperty() {
-	   return npcDescprition;
+	   return this.npcDescprition;
 	}
 	
 	/**
@@ -135,7 +135,7 @@ public class NpcCharacter {
 	 * @return npcName
 	 */
 	public String getNpcName() {
-		return npcName.get();
+		return this.npcName.get();
 	}
 	
 	/**
@@ -151,7 +151,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final StringProperty npcNameProperty() {
-	   return npcName;
+	   return this.npcName;
 	}
 	
 	
@@ -160,7 +160,7 @@ public class NpcCharacter {
 	 * @return npcType
 	 */
 	public int getNpcType() {
-		return npcType.get();
+		return this.npcType.get();
 	}
 	
 	/**
@@ -176,7 +176,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty npcTypeProperty() {
-	   return npcType;
+	   return this.npcType;
 	}
 	
 	/**
@@ -184,7 +184,7 @@ public class NpcCharacter {
 	 * @return npcFaction
 	 */
 	public int getNpcFaction() {
-		return npcFaction.get();
+		return this.npcFaction.get();
 	}
 	
 	/**
@@ -200,7 +200,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final IntegerProperty npcFactionProperty() {
-	   return npcFaction;
+	   return this.npcFaction;
 	}
 	
 	/**
@@ -208,7 +208,7 @@ public class NpcCharacter {
 	 * @return npcPosX
 	 */
 	public double getNpcPosX() {
-		return npcPosX.get();
+		return this.npcPosX.get();
 	}
 	
 	/**
@@ -224,7 +224,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty npcPosXProperty() {
-	   return npcPosX;
+	   return this.npcPosX;
 	}
 	
 	/**
@@ -232,7 +232,7 @@ public class NpcCharacter {
 	 * @return npcPosY
 	 */
 	public double getNpcPosY() {
-		return npcPosY.get();
+		return this.npcPosY.get();
 	}
 		
 	/**
@@ -248,7 +248,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty npcPosYProperty() {
-	   return npcPosY;
+	   return this.npcPosY;
 	}
 	
 	/**
@@ -256,7 +256,7 @@ public class NpcCharacter {
 	 * @return npcPosZ
 	 */
 	public double getNpcPosZ() {
-		return npcPosZ.get();
+		return this.npcPosZ.get();
 	}
 	
 	/**
@@ -272,7 +272,7 @@ public class NpcCharacter {
 	 * @return Property for TableView
 	 */
 	public final DoubleProperty npcPosZProperty() {
-	   return npcPosZ;
+	   return this.npcPosZ;
 	}
 	
 	

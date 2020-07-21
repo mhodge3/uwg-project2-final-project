@@ -46,7 +46,7 @@ public class GameStory {
 	 * @return gameStoryName
 	 */
 	public String getGameStoryName() {
-		return gameStoryName.get();
+		return this.gameStoryName.get();
 	}
 	
 	/**
@@ -54,7 +54,7 @@ public class GameStory {
 	 * @return Property for TableView
 	 */
 	public final StringProperty gameStoryNameProperty() {
-	   return gameStoryName;
+	   return this.gameStoryName;
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class GameStory {
 	 * @return gameStoryName
 	 */
 	public String getGameStorySummary() {
-		return gameStorySummary.get();
+		return this.gameStorySummary.get();
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class GameStory {
 	 * @return Property for TableView
 	 */
 	public final StringProperty gameStorySummaryProperty() {
-	   return gameStorySummary;
+	   return this.gameStorySummary;
 	}
 	
 	/**
