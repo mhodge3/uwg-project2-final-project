@@ -128,5 +128,13 @@ public class GameStory {
 	public final IntegerProperty NpcCharacterLevelCapProperty() {
 	   return this.npcCharacterLevelCap;
 	}
+	
+	/**
+	 * Sets the npcCharacterLevelCap
+	 * @param npcCharacterLevelCap
+	 */
+	public void SetNpcCharacterLevelCap(int setNpcCharacterLevelCap) {
+		this.npcCharacterLevelCap = new SimpleIntegerProperty(setNpcCharacterLevelCap);
+	}
 
 }
