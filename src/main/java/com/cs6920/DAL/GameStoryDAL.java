@@ -127,14 +127,16 @@ public class GameStoryDAL {
 					"SET " +
 					"game_story_name = ?, " + 
             		"game_story_summary = ?, " + 
-            		"player_character_level_cap = ? " + 
+            		"player_character_level_cap = ?, " + 
+            		"npcr_character_level_cap = ? " + 
             	    "WHERE game_story_name = ?";
 		
 			 PreparedStatement preparedStmt = conn.prepareStatement(query);
 			  preparedStmt.setString (1, updatedGameStory.GetGameStoryName());
 			  preparedStmt.setString (2, updatedGameStory.GetGameStorySummary());
 			  preparedStmt.setString (3, String.valueOf(updatedGameStory.GetPlayerLevelCap()));
-			  preparedStmt.setString (4, String.valueOf(oldGameStory.GetGameStoryName()));
+			  preparedStmt.setString (4, String.valueOf(updatedGameStory.GetNpcCharacterLevelCap()));
+			  preparedStmt.setString (5, String.valueOf(oldGameStory.GetGameStoryName()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
