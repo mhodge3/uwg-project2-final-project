@@ -39,7 +39,7 @@ public class QuestItems {
 	 * Gets the questId
 	 * @return questId
 	 */
-	public int GetQuestId() {
+	public int getQuestId() {
 		return questId.get();
 	}
 	
@@ -56,7 +56,7 @@ public class QuestItems {
 	 * Sets the questId
 	 * @param setQuestId
 	 */
-	public void SetQuestId(int setQuestId) {
+	public void setQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
 	
@@ -64,7 +64,7 @@ public class QuestItems {
 	 * Gets the itemId
 	 * @return itemId
 	 */
-	public int GetItemId() {
+	public int getItemId() {
 		return itemId.get();
 	}
 	
@@ -81,7 +81,7 @@ public class QuestItems {
 	 * Sets the itemId
 	 * @param setItemId
 	 */
-	public void SetItemId(int setItemId) {
+	public void setItemId(int setItemId) {
 		this.itemId = new SimpleIntegerProperty(setItemId);
 	}
 	
@@ -89,7 +89,7 @@ public class QuestItems {
 	 * Gets the itemQuantity
 	 * @return itemQuantity
 	 */
-	public int GetItemQuantity() {
+	public int getItemQuantity() {
 		return itemQuantity.get();
 	}
 	
@@ -106,7 +106,7 @@ public class QuestItems {
 	 * Sets the itemQuantity
 	 * @param setItemQuantity
 	 */
-	public void SetItemQuantity(int setItemQuantity) {
+	public void setItemQuantity(int setItemQuantity) {
 		this.itemQuantity = new SimpleIntegerProperty(setItemQuantity);
 	}
 	
@@ -114,7 +114,7 @@ public class QuestItems {
 	 * Gets the itemDisplayName
 	 * @return itemDisplayName
 	 */
-	public String GetItemDisplayName() {
+	public String getItemDisplayName() {
 		return itemDisplayName.get();
 	}
 	
@@ -131,7 +131,7 @@ public class QuestItems {
 	 * Sets the itemDisplayName
 	 * @param itemDisplayName
 	 */
-	public void SetItemDisplayName(String itemDisplayName) {
+	public void setItemDisplayName(String itemDisplayName) {
 		this.itemDisplayName = new SimpleStringProperty(itemDisplayName);
 	}
 

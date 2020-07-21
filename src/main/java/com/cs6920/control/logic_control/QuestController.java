@@ -13,14 +13,14 @@ import com.cs6920.model.Quest;
  *
  */
 public class QuestController {
-	private QuestDAL dal;
+	private QuestDAL theQuestDAL;
 	
 	/**
 	 * Constructor for the QuestController
 	 * @param theDBConnection
 	 */
 	public QuestController(MySQLAccess theDBConnection) {
-		this.dal = new QuestDAL(theDBConnection);
+		this.theQuestDAL = new QuestDAL(theDBConnection);
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class QuestController {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public String CreateQuest(int questReceiverNpcId, int questGiverNpcId,
+	public String createQuest(int questReceiverNpcId, int questGiverNpcId,
 			int preReqQuestId, int conflictId, int minCharacterLevel, 
 			String questName, String questDescription, String questArcType, 
 			String questGiverDialog, String questReceiverDialog, int idInConflict,
@@ -76,7 +76,7 @@ public class QuestController {
 			return "The preReqId in the conflict cannot be empty";
 		}
 		
-		if (this.dal.CreateQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict) > 0) {
+		if (this.theQuestDAL.createQuest(questReceiverNpcId, questGiverNpcId, preReqQuestId, conflictId, minCharacterLevel, questName, questDescription, questArcType, questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict) > 0) {
 			return null;
 		}
 		else {
@@ -84,49 +84,49 @@ public class QuestController {
 		}
 	}
 
-	public String UdateQuest(Quest quest, int questReceiverNpcId, int questGiverNpcId,
+	public String updateQuest(Quest quest, int questReceiverNpcId, int questGiverNpcId,
 			int preReqQuestId, int conflictId, int minCharacterLevel, 
 			String questName, String questDescription, String questArcType, 
 			String questGiverDialog, String questReceiverDialog, int idInConflict,
 			int preReqIdInConflict) throws SQLException {
 		if (String.valueOf(questReceiverNpcId) == null) {
-			preReqQuestId = quest.GetQuestReceiverNpcId();
+			preReqQuestId = quest.getQuestReceiverNpcId();
 		}
 		if (String.valueOf(questGiverNpcId) == null) {
-			preReqQuestId = quest.GetQuestGiverNpcId();
+			preReqQuestId = quest.getQuestGiverNpcId();
 		}
 		if (String.valueOf(preReqQuestId) == null) {
-			preReqQuestId = quest.GetPreReqQuestId();
+			preReqQuestId = quest.getPreReqQuestId();
 		}
 		if (String.valueOf(minCharacterLevel) == null) {
-			minCharacterLevel = quest.GetMinCharacterLevel();
+			minCharacterLevel = quest.getMinCharacterLevel();
 		}
 		if (String.valueOf(conflictId) == null) {
-			conflictId = quest.GetConflictId();
+			conflictId = quest.getConflictId();
 		}
 		if (questName == null || questName.trim().length() == 0) {
-			questName = quest.GetQuestName();
+			questName = quest.getQuestName();
 		}
 		if (questDescription == null || questDescription.trim().length() == 0) {
-			questDescription = quest.GetQuestDescription();
+			questDescription = quest.getQuestDescription();
 		}
 		if (questArcType == null || questArcType.trim().length() == 0) {
-			questArcType = quest.GetQuestArcType();
+			questArcType = quest.getQuestArcType();
 		}
 		if (questGiverDialog == null || questGiverDialog.trim().length() == 0) {
-			questGiverDialog = quest.GetQuesGiverDialog();
+			questGiverDialog = quest.getQuesGiverDialog();
 		}
 		if (questGiverDialog == null || questGiverDialog.trim().length() == 0) {
-			questGiverDialog = quest.GetQuesGiverDialog();
+			questGiverDialog = quest.getQuesGiverDialog();
 		}
 		if (String.valueOf(idInConflict) == null) {
-			idInConflict = quest.GetidInConflict();
+			idInConflict = quest.getidInConflict();
 		}
 		if (String.valueOf(preReqIdInConflict) == null) {
-			preReqIdInConflict = quest.GetidPreReqIdConflict();
+			preReqIdInConflict = quest.getidPreReqIdConflict();
 		}
 		
-		if (this.dal.UpdateQuest(quest, questReceiverNpcId, questGiverNpcId, preReqQuestId, 
+		if (this.theQuestDAL.updateQuest(quest, questReceiverNpcId, questGiverNpcId, preReqQuestId, 
 				conflictId, minCharacterLevel, questName, questDescription, questArcType, 
 				questGiverDialog, questReceiverDialog, idInConflict, preReqIdInConflict)) {
 				return null;
@@ -142,8 +142,8 @@ public class QuestController {
 	 * @return The Quest looked up
 	 * @throws SQLException
 	 */
-	public Quest GetQuestByID(int questId) throws SQLException {
-		return this.GetQuestByID(questId);
+	public Quest getQuestByID(int questId) throws SQLException {
+		return this.getQuestByID(questId);
 	}
 	
 	/** 
@@ -152,8 +152,8 @@ public class QuestController {
 	 * @return The Quest looked up
 	 * @throws SQLException
 	 */
-	public Quest GetQuestByName(String questName) throws SQLException {
-		return this.GetQuestByName(questName);
+	public Quest getQuestByName(String questName) throws SQLException {
+		return this.getQuestByName(questName);
 	}
 	
 	/**
@@ -168,8 +168,8 @@ public class QuestController {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException 
 	 */
-	public boolean DeleteQuest(Quest quest) throws SQLException {
-		return this.DeleteQuest(quest);
+	public boolean deleteQuest(Quest quest) throws SQLException {
+		return this.deleteQuest(quest);
 	}
 
 }

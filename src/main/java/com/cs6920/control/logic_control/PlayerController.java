@@ -13,24 +13,24 @@ import com.cs6920.model.Player;
  *
  */
 public class PlayerController {
-	private PlayerDAL playerDAL;
-	private Player selectedPlayer;
+	private PlayerDAL thePlayerDAL;
+	private Player theSelectedPlayer;
 	
 	/**
 	 * Constructor for the PlayerDALontroller
 	 * @param theDBConnection
 	 */
 	public PlayerController(MySQLAccess theDBConnection) {
-		this.playerDAL = new PlayerDAL(theDBConnection);
+		this.thePlayerDAL = new PlayerDAL(theDBConnection);
 	}
 	
 	/**
 	 * Sets the selected player object from DB by id
 	 * @param playerId
 	 */
-	public void SetSelectedPlayer(int playerId) {
+	public void setSelectedPlayer(int playerId) {
 		try {
-			selectedPlayer = playerDAL.GetPlayer(playerId);
+			theSelectedPlayer = thePlayerDAL.getPlayer(playerId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,8 +44,8 @@ public class PlayerController {
 	 * @return The Player found
 	 * @throws Exception
 	 */
-	public Player GetPlayer(String playerName, String playerPassword) throws Exception {
-		return playerDAL.GetPlayer(playerName, playerPassword);
+	public Player getPlayer(String playerName, String playerPassword) throws Exception {
+		return thePlayerDAL.getPlayer(playerName, playerPassword);
 	}
 	
 	/**
@@ -59,7 +59,7 @@ public class PlayerController {
 	 * @return String = Error message
 	 * @throws SQLException
 	 */
-	public String CreatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
+	public String createPlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -76,7 +76,7 @@ public class PlayerController {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.CreatePlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
+		if (thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
 			return null;
 		}
 		else {
@@ -88,8 +88,8 @@ public class PlayerController {
 	 * Gets the Player object of the selected Player
 	 * @return The selected Player
 	 */
-	public Player GetSelectedPlayer() {
-		return selectedPlayer;
+	public Player getSelectedPlayer() {
+		return theSelectedPlayer;
 	}
 	
 	/**
@@ -104,7 +104,7 @@ public class PlayerController {
 	 * @return String = Error message
 	 * @throws SQLException
 	 */
-	public String UpdatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
+	public String updatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -121,7 +121,7 @@ public class PlayerController {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.UpdatePlayer(selectedPlayer, new Player(selectedPlayer.GetPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
+		if (thePlayerDAL.updatePlayer(theSelectedPlayer, new Player(theSelectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
 			return null;
 		}
 		else {
@@ -134,8 +134,8 @@ public class PlayerController {
 	 * @return the ArrayList of Users (players)
 	 * @throws SQLException
 	 */
-	public ArrayList<Player> GetPlayers() throws SQLException {
-		return this.playerDAL.GetPlayers();
+	public ArrayList<Player> getPlayers() throws SQLException {
+		return this.thePlayerDAL.getPlayers();
 	}
 	
 	/**
@@ -143,8 +143,8 @@ public class PlayerController {
 	 * @return
 	 * @throws SQLException
 	 */
-	public Integer GetLastInsertedId() throws SQLException {
-		return playerDAL.GetLastInsertedID();
+	public Integer getLastInsertedId() throws SQLException {
+		return thePlayerDAL.getLastInsertedID();
 	}
 	
 	/**
@@ -153,8 +153,8 @@ public class PlayerController {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public boolean DeletePlayer(Player player) throws SQLException {
-		return this.playerDAL.DeletePlayer(player);
+	public boolean deletePlayer(Player player) throws SQLException {
+		return this.thePlayerDAL.deletePlayer(player);
 	}
 	
 	/**
@@ -163,7 +163,7 @@ public class PlayerController {
 	 * @return True if Admin | False if not Admin
 	 * @throws Exception
 	 */
-	public Boolean IsPlayerAdmin(Player player) throws Exception {
-    	return this.playerDAL.IsPlayerAdmin(player);
+	public Boolean isPlayerAdmin(Player player) throws Exception {
+    	return this.thePlayerDAL.isPlayerAdmin(player);
     }
 }

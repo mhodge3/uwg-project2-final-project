@@ -54,28 +54,28 @@ public class EditConflictQuestsViewControl extends ViewControl {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
     	switch(arcType) {
 	    	case "The Quest":
-	        	this.theMainDashboardViewControl.SetTheEditConflictQuestsViewControl(this);
+	        	this.theMainDashboardViewControl.setTheEditConflictQuestsViewControl(this);
 	    		break;
 	    	case "Voyage and Return":
-	        	this.theMainDashboardViewControl.SetTheEditConflictVoyageViewControl(this);
+	        	this.theMainDashboardViewControl.setTheEditConflictVoyageViewControl(this);
 	    		break;
 	    	case "Defeat the Monster":
-	        	this.theMainDashboardViewControl.SetTheEditConflictMonsterViewControl(this);
+	        	this.theMainDashboardViewControl.setTheEditConflictMonsterViewControl(this);
 	    		break;
 	    	case "Custom":
-	        	this.theMainDashboardViewControl.SetTheEditConflictCustomViewControl(this);
+	        	this.theMainDashboardViewControl.setTheEditConflictCustomViewControl(this);
 	    		break;
     		default: break;
     	}
-    	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theManageQuestsControl = new ManageQuestsControl(theMainDashboardViewControl.getDBConnection());
     	
     }
     
-    public MainDashboardViewControl GetTheMainDashboardViewControl() {
+    public MainDashboardViewControl getTheMainDashboardViewControl() {
     	return this.theMainDashboardViewControl;
     }
     
-    public ManageQuestsControl GetTheManageQuestsControl() {
+    public ManageQuestsControl getTheManageQuestsControl() {
     	return this.theManageQuestsControl;
     }
 
@@ -102,15 +102,15 @@ public class EditConflictQuestsViewControl extends ViewControl {
     @FXML
     private void removeVariableQuest() throws SQLException {
     	if (questTableView.getSelectionModel().getSelectedItem() != null) {
-			theManageQuestsControl.removeQuest(questTableView.getSelectionModel().getSelectedItem().GetQuestId());
+			theManageQuestsControl.removeQuest(questTableView.getSelectionModel().getSelectedItem().getQuestId());
 			this.refreshTheQuestList();
 		}
     }
     
     @FXML
     private void updateConflictNameDescription() throws SQLException {
-    	this.theManageQuestsControl.getConflict().SetConflictName(storyConflictNameTextField.getText());
-    	this.theManageQuestsControl.getConflict().SetConflictDescription(storyConflictDescriptionTextArea.getText());
+    	this.theManageQuestsControl.getConflict().setConflictName(storyConflictNameTextField.getText());
+    	this.theManageQuestsControl.getConflict().setConflictDescription(storyConflictDescriptionTextArea.getText());
     	this.theManageQuestsControl.updateTheConflict();
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Story Conflict Update");
@@ -123,8 +123,8 @@ public class EditConflictQuestsViewControl extends ViewControl {
     private void editQuest(ActionEvent event) throws IOException, SQLException {
 		if (questTableView.getSelectionModel().getSelectedItem() != null) {
 			int theSelectedItemIndex = theManageQuestsControl.getExistingQuestList().indexOf(questTableView.getSelectionModel().getSelectedItem());
-			String theSelectedItemArcRole = theManageQuestsControl.getExistingQuestList().get(theSelectedItemIndex).GetQuestArcType();
-			switch (questTableView.getSelectionModel().getSelectedItem().GetQuestArcType()) {
+			String theSelectedItemArcRole = theManageQuestsControl.getExistingQuestList().get(theSelectedItemIndex).getQuestArcType();
+			switch (questTableView.getSelectionModel().getSelectedItem().getQuestArcType()) {
 				case "calling":
 					this.createEditQuestWindow(event, theSelectedItemIndex, "EditQuestCalling", theSelectedItemArcRole);
 					break;
@@ -176,7 +176,7 @@ public class EditConflictQuestsViewControl extends ViewControl {
     private void createEditQuestWindow(ActionEvent event, int questIdToEdit, String fxmlFileName, String questArcRole) throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(App.class.getResource(fxmlFileName + ".fxml"));
-        loader.setController(new EditQuestsViewControl(this, this.theMainDashboardViewControl.GetDBConnection(), questIdToEdit, questArcRole));
+        loader.setController(new EditQuestsViewControl(this, this.theMainDashboardViewControl.getDBConnection(), questIdToEdit, questArcRole));
         Parent root = loader.load();
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");
@@ -191,15 +191,15 @@ public class EditConflictQuestsViewControl extends ViewControl {
 	 */
     public void updateExistingTheQuestList() throws SQLException {
     	theManageQuestsControl.createQuestTemplateList();
-    	theManageQuestsControl.UpdateTheQuestArrayList();
+    	theManageQuestsControl.updateTheQuestArrayList();
     	this.refreshTheQuestList();
     }
     
     public void refreshTheQuestList() {
-		storyConflictNameTextField.setText(this.theManageQuestsControl.getConflict().GetConflictName());
-		storyConflictDescriptionTextArea.setText(this.theManageQuestsControl.getConflict().GetConflictDescription());
+		storyConflictNameTextField.setText(this.theManageQuestsControl.getConflict().getConflictName());
+		storyConflictDescriptionTextArea.setText(this.theManageQuestsControl.getConflict().getConflictDescription());
 		questTableView.getItems().clear();
-		questTableView.getItems().addAll(theManageQuestsControl.GetObservableTheQuestList());
+		questTableView.getItems().addAll(theManageQuestsControl.getObservableTheQuestList());
 		questTableView.refresh();
     }
     
@@ -208,13 +208,13 @@ public class EditConflictQuestsViewControl extends ViewControl {
      * @throws SQLException 
      */
     public void updateQuestList() throws SQLException {
-    	theManageQuestsControl.UpdateTheQuestArrayList();
+    	theManageQuestsControl.updateTheQuestArrayList();
 		questTableView.getItems().clear();
-		questTableView.getItems().addAll(theManageQuestsControl.GetObservableTheQuestList());
+		questTableView.getItems().addAll(theManageQuestsControl.getObservableTheQuestList());
     }
 	
 	@FXML
 	private void handleQuestChainsBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageQuestChains");
+		theMainDashboardViewControl.setMainDashboardStage("manageQuestChains");
 	}
 }

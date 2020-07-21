@@ -28,7 +28,7 @@ class testQuestDALCRUDCycle {
 	@Test
 	@Order(1)
 	public void createAQuestInDB() throws Exception {
-		int newId = this.dal.CreateQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
+		int newId = this.dal.createQuest(10, 12, 2, 2, 1, "test1", "test1 desc",
 				"arc", "giver dialog", "receiver dialog", 2, 3);
 		assertTrue(newId > 0);
 	}
@@ -44,69 +44,69 @@ class testQuestDALCRUDCycle {
 	@Test
 	@Order(3)
 	public void getQuestByNameDB() throws Exception {
-		this.quest = this.dal.GetQuestByName("test1");
+		this.quest = this.dal.getQuestByName("test1");
 		assertNotNull(this.quest);
-		assertEquals(this.quest.GetQuestReceiverNpcId(), 10);
-		assertEquals(this.quest.GetQuestGiverNpcId(), 12);
-		assertEquals(this.quest.GetPreReqQuestId(), 2);
-        assertEquals(this.quest.GetConflictId(), 2);
-		assertEquals(this.quest.GetMinCharacterLevel(), 1);
-		assertEquals(this.quest.GetQuestName(), "test1");
-		assertEquals(this.quest.GetQuestDescription(), "test1 desc");
-		assertEquals(this.quest.GetQuestArcType(), "arc");
-		assertEquals(this.quest.GetQuesGiverDialog(), "giver dialog");
-		assertEquals(this.quest.GetQuestReceiverDialog(), "receiver dialog");
-		assertEquals(this.quest.GetidInConflict(), 2);
-		assertEquals(this.quest.GetidPreReqIdConflict(), 3);
+		assertEquals(this.quest.getQuestReceiverNpcId(), 10);
+		assertEquals(this.quest.getQuestGiverNpcId(), 12);
+		assertEquals(this.quest.getPreReqQuestId(), 2);
+        assertEquals(this.quest.getConflictId(), 2);
+		assertEquals(this.quest.getMinCharacterLevel(), 1);
+		assertEquals(this.quest.getQuestName(), "test1");
+		assertEquals(this.quest.getQuestDescription(), "test1 desc");
+		assertEquals(this.quest.getQuestArcType(), "arc");
+		assertEquals(this.quest.getQuesGiverDialog(), "giver dialog");
+		assertEquals(this.quest.getQuestReceiverDialog(), "receiver dialog");
+		assertEquals(this.quest.getidInConflict(), 2);
+		assertEquals(this.quest.getidPreReqIdConflict(), 3);
 	}
 	
 	@Test
 	@Order(4)
 	public void getQuestByIdDB() throws Exception {
-		this.quest = this.dal.GetQuestByName("test1");
-		this.quest = this.dal.GetQuestByID(this.quest.GetQuestId());
+		this.quest = this.dal.getQuestByName("test1");
+		this.quest = this.dal.getQuestByID(this.quest.getQuestId());
 		assertNotNull(this.quest);
-		assertEquals(this.quest.GetQuestReceiverNpcId(), 10);
-		assertEquals(this.quest.GetQuestGiverNpcId(), 12);
-		assertEquals(this.quest.GetPreReqQuestId(), 2);
-		assertEquals(this.quest.GetConflictId(), 2);
-		assertEquals(this.quest.GetMinCharacterLevel(), 1);
-		assertEquals(this.quest.GetQuestName(), "test1");
-		assertEquals(this.quest.GetQuestDescription(), "test1 desc");
-		assertEquals(this.quest.GetQuestArcType(), "arc");
-		assertEquals(this.quest.GetQuesGiverDialog(), "giver dialog");
-		assertEquals(this.quest.GetQuestReceiverDialog(), "receiver dialog");
-		assertEquals(this.quest.GetidInConflict(), 2);
-		assertEquals(this.quest.GetidPreReqIdConflict(), 3);
+		assertEquals(this.quest.getQuestReceiverNpcId(), 10);
+		assertEquals(this.quest.getQuestGiverNpcId(), 12);
+		assertEquals(this.quest.getPreReqQuestId(), 2);
+		assertEquals(this.quest.getConflictId(), 2);
+		assertEquals(this.quest.getMinCharacterLevel(), 1);
+		assertEquals(this.quest.getQuestName(), "test1");
+		assertEquals(this.quest.getQuestDescription(), "test1 desc");
+		assertEquals(this.quest.getQuestArcType(), "arc");
+		assertEquals(this.quest.getQuesGiverDialog(), "giver dialog");
+		assertEquals(this.quest.getQuestReceiverDialog(), "receiver dialog");
+		assertEquals(this.quest.getidInConflict(), 2);
+		assertEquals(this.quest.getidPreReqIdConflict(), 3);
 	}
 	
 	@Test
 	@Order(5)
 	public void updateQuestInTheDB() throws Exception {
-		this.quest = this.dal.GetQuestByName("test1");
-		this.dal.UpdateQuest(this.quest, 10, 40, 0, 2, 3, "updated test1", "updated", "updated", "updated", "updated", 4, 5);
-		this.quest = this.dal.GetQuestByID(this.quest.GetQuestId());
+		this.quest = this.dal.getQuestByName("test1");
+		this.dal.updateQuest(this.quest, 10, 40, 0, 2, 3, "updated test1", "updated", "updated", "updated", "updated", 4, 5);
+		this.quest = this.dal.getQuestByID(this.quest.getQuestId());
 		assertNotNull(this.quest);
-		assertEquals(this.quest.GetQuestReceiverNpcId(), 10);
-		assertEquals(this.quest.GetQuestGiverNpcId(), 40);
-		assertEquals(this.quest.GetPreReqQuestId(), 0);
-		assertEquals(this.quest.GetConflictId(), 2);
-		assertEquals(this.quest.GetMinCharacterLevel(), 3);
-		assertEquals(this.quest.GetQuestName(), "updated test1");
-		assertEquals(this.quest.GetQuestDescription(), "updated");
-		assertEquals(this.quest.GetQuestArcType(), "updated");
-		assertEquals(this.quest.GetQuesGiverDialog(), "updated");
-		assertEquals(this.quest.GetQuestReceiverDialog(), "updated");
-		assertEquals(this.quest.GetidInConflict(), 4);
-		assertEquals(this.quest.GetidPreReqIdConflict(), 5);
+		assertEquals(this.quest.getQuestReceiverNpcId(), 10);
+		assertEquals(this.quest.getQuestGiverNpcId(), 40);
+		assertEquals(this.quest.getPreReqQuestId(), 0);
+		assertEquals(this.quest.getConflictId(), 2);
+		assertEquals(this.quest.getMinCharacterLevel(), 3);
+		assertEquals(this.quest.getQuestName(), "updated test1");
+		assertEquals(this.quest.getQuestDescription(), "updated");
+		assertEquals(this.quest.getQuestArcType(), "updated");
+		assertEquals(this.quest.getQuesGiverDialog(), "updated");
+		assertEquals(this.quest.getQuestReceiverDialog(), "updated");
+		assertEquals(this.quest.getidInConflict(), 4);
+		assertEquals(this.quest.getidPreReqIdConflict(), 5);
 	}
 	
 	@Test
 	@Order(6)
 	public void deleteAQuestFronDB() throws Exception {
-		this.quest = this.dal.GetQuestByName("updated test1");
-		assertTrue(this.dal.DeleteQuest(quest));
-		this.quest = this.dal.GetQuestByName("updated test1");
+		this.quest = this.dal.getQuestByName("updated test1");
+		assertTrue(this.dal.deleteQuest(quest));
+		this.quest = this.dal.getQuestByName("updated test1");
 		assertEquals(this.quest, null);
 	}
 

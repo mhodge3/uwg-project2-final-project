@@ -28,7 +28,7 @@ class testCharactersPlayerCRUDCycle {
 	@Test
 	@Order(1)
 	public void createACharactersPlayerInDB() throws Exception {
-		assertTrue(this.dal.CreateCharacterPlayer(1, "new character", 1, 3, 3.1, 4.2, 5.3));
+		assertTrue(this.dal.createCharacterPlayer(1, "new character", 1, 3, 3.1, 4.2, 5.3));
 		
 	}
 	
@@ -39,59 +39,59 @@ class testCharactersPlayerCRUDCycle {
 	@Test
 	@Order(2)
 	public void createANonPlayerCharactersPlayerInDB() throws Exception {
-		assertFalse(this.dal.CreateCharacterPlayer(100000, "new charter", 1, 3, 3.1, 4.2, 5.3));
+		assertFalse(this.dal.createCharacterPlayer(100000, "new charter", 1, 3, 3.1, 4.2, 5.3));
 		
 	}
 	
 	@Test
 	@Order(3)
 	public void getPlayerCharacterByCharacterNameFromDB() throws Exception {
-		this.character = this.dal.GetCharactersPlayerByName("new character");
-		assertEquals(this.character.GetCharacterPlayerId(), 1);
-		assertEquals(this.character.GetCharacterName(), "new character");
-		assertEquals(this.character.GetCharacterType(), 1);
-		assertEquals(this.character.GetCharacterFaction(), 3);
-		assertEquals(this.character.GetCharacterPosX(), 3.1);
-		assertEquals(this.character.GetCharacterPosY(), 4.2);
-		assertEquals(this.character.GetCharacterPosZ(), 5.3);
+		this.character = this.dal.getCharactersPlayerByName("new character");
+		assertEquals(this.character.getCharacterPlayerId(), 1);
+		assertEquals(this.character.getCharacterName(), "new character");
+		assertEquals(this.character.getCharacterType(), 1);
+		assertEquals(this.character.getCharacterFaction(), 3);
+		assertEquals(this.character.getCharacterPosX(), 3.1);
+		assertEquals(this.character.getCharacterPosY(), 4.2);
+		assertEquals(this.character.getCharacterPosZ(), 5.3);
 	}
 	
 	@Test
 	@Order(3)
 	public void getPlayerCharacterByCharacterIDFromDB() throws Exception {
-		this.character = this.dal.GetCharactersPlayerByName("new character");
-		this.character = this.dal.GetCharactersPlayerByID(this.character.GetCharacterId());
-		assertEquals(this.character.GetCharacterPlayerId(), 1);
-		assertEquals(this.character.GetCharacterName(), "new character");
-		assertEquals(this.character.GetCharacterType(), 1);
-		assertEquals(this.character.GetCharacterFaction(), 3);
-		assertEquals(this.character.GetCharacterPosX(), 3.1);
-		assertEquals(this.character.GetCharacterPosY(), 4.2);
-		assertEquals(this.character.GetCharacterPosZ(), 5.3);
+		this.character = this.dal.getCharactersPlayerByName("new character");
+		this.character = this.dal.getCharactersPlayerByID(this.character.getCharacterId());
+		assertEquals(this.character.getCharacterPlayerId(), 1);
+		assertEquals(this.character.getCharacterName(), "new character");
+		assertEquals(this.character.getCharacterType(), 1);
+		assertEquals(this.character.getCharacterFaction(), 3);
+		assertEquals(this.character.getCharacterPosX(), 3.1);
+		assertEquals(this.character.getCharacterPosY(), 4.2);
+		assertEquals(this.character.getCharacterPosZ(), 5.3);
 	}
 	
 	@Test
 	@Order(4)
 	public void updatePlayerCharacterInTheDB() throws Exception {
-		this.character = this.dal.GetCharactersPlayerByName("new character");
+		this.character = this.dal.getCharactersPlayerByName("new character");
 		CharactersPlayer updatedCharacter = new CharactersPlayer(1, 1, "updated character", 4, 4, 5.1, 5.2, 5.5);
-		assertTrue(this.dal.UpdateCharacterPlayer(this.character, updatedCharacter));
-		this.character = this.dal.GetCharactersPlayerByName("updated character");
-		assertEquals(this.character.GetCharacterPlayerId(), 1);
-		assertEquals(this.character.GetCharacterName(), "updated character");
-		assertEquals(this.character.GetCharacterType(), 4);
-		assertEquals(this.character.GetCharacterFaction(), 4);
-		assertEquals(this.character.GetCharacterPosX(), 5.1);
-		assertEquals(this.character.GetCharacterPosY(), 5.2);
-		assertEquals(this.character.GetCharacterPosZ(), 5.5);
+		assertTrue(this.dal.updateCharacterPlayer(this.character, updatedCharacter));
+		this.character = this.dal.getCharactersPlayerByName("updated character");
+		assertEquals(this.character.getCharacterPlayerId(), 1);
+		assertEquals(this.character.getCharacterName(), "updated character");
+		assertEquals(this.character.getCharacterType(), 4);
+		assertEquals(this.character.getCharacterFaction(), 4);
+		assertEquals(this.character.getCharacterPosX(), 5.1);
+		assertEquals(this.character.getCharacterPosY(), 5.2);
+		assertEquals(this.character.getCharacterPosZ(), 5.5);
 	}
 	
 	@Test
 	@Order(5)
 	public void deleteANpcCharacterInDB() throws Exception {
-		this.character = this.dal.GetCharactersPlayerByName("updated character");
-		assertTrue(this.dal.DeleteCharacterPlayer(this.character));
-		this.character = this.dal.GetCharactersPlayerByName("updated character");
+		this.character = this.dal.getCharactersPlayerByName("updated character");
+		assertTrue(this.dal.deleteCharacterPlayer(this.character));
+		this.character = this.dal.getCharactersPlayerByName("updated character");
 		assertEquals(this.character, null);
 	}
 }

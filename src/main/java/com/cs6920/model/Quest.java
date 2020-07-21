@@ -57,7 +57,7 @@ public class Quest {
 	 * Gets the questReceiverNpcId
 	 * @return questReceiverNpcId
 	 */
-	public int GetQuestReceiverNpcId() {
+	public int getQuestReceiverNpcId() {
 		return questReceiverNpcId.get();
 	}
 	
@@ -74,7 +74,7 @@ public class Quest {
 	 * Sets the questReceiverNpcId
 	 * @param questReceiverNpcId
 	 */
-	public void SetQuestReceiverNpcId(int questReceiverNpcId) {
+	public void setQuestReceiverNpcId(int questReceiverNpcId) {
 		this.questReceiverNpcId = new SimpleIntegerProperty(questReceiverNpcId);
 	}
 	
@@ -82,7 +82,7 @@ public class Quest {
 	 * Gets the questGiverNpcId
 	 * @return questGiverNpcId
 	 */
-	public int GetQuestGiverNpcId() {
+	public int getQuestGiverNpcId() {
 		return questGiverNpcId.get();
 	}
 	
@@ -99,7 +99,7 @@ public class Quest {
 	 * Sets the questGiverNpcId
 	 * @param questGiverNpcId
 	 */
-	public void SetQuestGiverNpcId(int questGiverNpcId) {
+	public void setQuestGiverNpcId(int questGiverNpcId) {
 		this.questGiverNpcId = new SimpleIntegerProperty(questGiverNpcId);
 	}
 	
@@ -107,7 +107,7 @@ public class Quest {
 	 * Gets the questId
 	 * @return questId
 	 */
-	public int GetQuestId() {
+	public int getQuestId() {
 		return questId.get();
 	}
 	
@@ -124,7 +124,7 @@ public class Quest {
 	 * Sets the questId
 	 * @param setQuestId
 	 */
-	public void SetQuestId(int setQuestId) {
+	public void setQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
 	
@@ -132,7 +132,7 @@ public class Quest {
 	 * Gets the questArcType
 	 * @return questArcType
 	 */
-	public String GetQuestArcType() {
+	public String getQuestArcType() {
 		return this.questArcType.get();
 	}
 	
@@ -149,7 +149,7 @@ public class Quest {
 	 * Sets the questArcType
 	 * @param questArcType
 	 */
-	public void SetQuestArcType(String questArcType) {
+	public void setQuestArcType(String questArcType) {
 		this.questArcType = new SimpleStringProperty(questArcType);
 	}
 	
@@ -157,7 +157,7 @@ public class Quest {
 	 * Gets the preReqQuestId
 	 * @return preReqQuestId
 	 */
-	public int GetPreReqQuestId() {
+	public int getPreReqQuestId() {
 		return preReqQuestId.get();
 	}
 	
@@ -174,7 +174,7 @@ public class Quest {
 	 * Sets the preReqQuestId
 	 * @param setPreReqQuestId
 	 */
-	public void SetPreReqQuestId(int setPreReqQuestId) {
+	public void setPreReqQuestId(int setPreReqQuestId) {
 		this.preReqQuestId = new SimpleIntegerProperty(setPreReqQuestId);
 	}
 	
@@ -182,7 +182,7 @@ public class Quest {
 	 * Gets the conflictId
 	 * @return conflictId
 	 */
-	public int GetConflictId() {
+	public int getConflictId() {
 		return conflictId.get();
 	}
 	
@@ -199,7 +199,7 @@ public class Quest {
 	 * Sets the conflictId
 	 * @param setConflictId
 	 */
-	public void SetConflictId(int setConflictId) {
+	public void setConflictId(int setConflictId) {
 		this.conflictId = new SimpleIntegerProperty(setConflictId);
 	}
 	
@@ -207,7 +207,7 @@ public class Quest {
 	 * Gets the minCharacterLevel
 	 * @return minCharacterLevel
 	 */
-	public int GetMinCharacterLevel() {
+	public int getMinCharacterLevel() {
 		return minCharacterLevel.get();
 	}
 	
@@ -224,7 +224,7 @@ public class Quest {
 	 * Sets the MinCharacterLevel
 	 * @param setMinCharacterLevel
 	 */
-	public void SetMinCharacterLevel(int setMinCharacterLevel) {
+	public void setMinCharacterLevel(int setMinCharacterLevel) {
 		this.minCharacterLevel = new SimpleIntegerProperty(setMinCharacterLevel);
 	}
 	
@@ -232,7 +232,7 @@ public class Quest {
 	 * Gets the questName
 	 * @return questName
 	 */
-	public String GetQuestName() {
+	public String getQuestName() {
 		return questName.get();
 	}
 	
@@ -248,7 +248,7 @@ public class Quest {
 	 * Sets the questName
 	 * @param stQuestName
 	 */
-	public void SetQuestName(String setQuestName) {
+	public void setQuestName(String setQuestName) {
 		this.questName = new SimpleStringProperty(setQuestName);
 	}
 	
@@ -256,7 +256,7 @@ public class Quest {
 	 * Gets the questDescription
 	 * @return questDescription
 	 */
-	public String GetQuestDescription() {
+	public String getQuestDescription() {
 		return questDescription.get();
 	}
 	
@@ -272,7 +272,7 @@ public class Quest {
 	 * Sets the questDescription
 	 * @param setQuestDescription
 	 */
-	public void SetQuestDescription(String setQuestDescription) {
+	public void setQuestDescription(String setQuestDescription) {
 		this.questDescription = new SimpleStringProperty(setQuestDescription);
 	}
 	
@@ -280,7 +280,7 @@ public class Quest {
 	 * Gets the questGiverDialog
 	 * @return questGiverDialog
 	 */
-	public String GetQuesGiverDialog() {
+	public String getQuesGiverDialog() {
 		return questGiverDialog.get();
 	}
 	
@@ -296,7 +296,7 @@ public class Quest {
 	 * Sets the questDescription
 	 * @param questGiverDialog
 	 */
-	public void SetQuestGiverDialog(String questGiverDialog) {
+	public void setQuestGiverDialog(String questGiverDialog) {
 		this.questGiverDialog = new SimpleStringProperty(questGiverDialog);
 	}
 	
@@ -304,7 +304,7 @@ public class Quest {
 	 * Gets the questReceiverDialog
 	 * @return questReceiverDialog
 	 */
-	public String GetQuestReceiverDialog() {
+	public String getQuestReceiverDialog() {
 		return questReceiverDialog.get();
 	}
 	
@@ -320,7 +320,7 @@ public class Quest {
 	 * Sets the questReceiverDialog
 	 * @param questReceiverDialog
 	 */
-	public void SetQuestReceiverDialog(String questReceiverDialog) {
+	public void setQuestReceiverDialog(String questReceiverDialog) {
 		this.questReceiverDialog = new SimpleStringProperty(questReceiverDialog);
 	}
 	
@@ -328,7 +328,7 @@ public class Quest {
 	 * Gets the idInConflict
 	 * @return idInConflict
 	 */
-	public int GetidInConflict() {
+	public int getidInConflict() {
 		return this.idInConflict.get();
 	}
 	
@@ -345,7 +345,7 @@ public class Quest {
 	 * Sets the idInConflict
 	 * @param idInConflict
 	 */
-	public void SetIdInConflict(int idInConflict) {
+	public void setIdInConflict(int idInConflict) {
 		this.idInConflict = new SimpleIntegerProperty(idInConflict);
 	}
 	
@@ -353,7 +353,7 @@ public class Quest {
 	 * Gets the preReqIdInConflict
 	 * @return preReqIdInConflict
 	 */
-	public int GetidPreReqIdConflict() {
+	public int getidPreReqIdConflict() {
 		return this.preReqIdInConflict.get();
 	}
 	
@@ -370,7 +370,7 @@ public class Quest {
 	 * Sets the preReqIdInConflict
 	 * @param preReqIdInConflict
 	 */
-	public void SetPreReqIdInConflict(int preReqIdInConflict) {
+	public void setPreReqIdInConflict(int preReqIdInConflict) {
 		this.preReqIdInConflict = new SimpleIntegerProperty(preReqIdInConflict);
 	}
 

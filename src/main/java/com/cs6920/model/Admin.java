@@ -31,7 +31,7 @@ public class Admin extends Player {
 	 * Gets the adminID
 	 * @return adminId
 	 */
-	public int GetAdminId() {
+	public int getAdminId() {
 		return adminId.get();
 	}
 	
@@ -48,7 +48,7 @@ public class Admin extends Player {
 	 * Sets the AdminId
 	 * @param setAdminId
 	 */
-	public void SetAdminID(int adminId) {
+	public void setAdminID(int adminId) {
 		this.adminId = new SimpleIntegerProperty(adminId);
 	}
 	
@@ -56,7 +56,7 @@ public class Admin extends Player {
 	 * Gets playerId
 	 * @return playerId
 	 */
-	public int GetPlayerId() {
+	public int getPlayerId() {
 		return playerId.get();
 	}
 	
@@ -64,7 +64,7 @@ public class Admin extends Player {
 	 * Sets the playerId
 	 * @param playerId
 	 */
-	public void SetPlayerId(int playerId) {
+	public void setPlayerId(int playerId) {
 		this.playerId = new SimpleIntegerProperty(playerId);
 	}
 	
@@ -72,7 +72,7 @@ public class Admin extends Player {
 	 * Gets isActive
 	 * @return isActive
 	 */
-	public int GetIsActive() {
+	public int getIsActive() {
 		return isActive.get();
 	}
 	
@@ -80,7 +80,7 @@ public class Admin extends Player {
 	 * Sets the isActive
 	 * @param isActive
 	 */
-	public void SetIsActive(int isActive) {
+	public void setIsActive(int isActive) {
 		this.isActive = new SimpleIntegerProperty(isActive);
 	}
 

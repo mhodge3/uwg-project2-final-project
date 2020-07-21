@@ -68,25 +68,25 @@ public class EditQuestsViewControl extends ViewControl {
 	private void setUpHeraldNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
 		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
-			npcNames.add(theNPC.GetNpcName());
+			npcNames.add(theNPC.getNpcName());
 		}
 		questHeraldNPCComboBox.getItems().addAll(npcNames);
-		questHeraldNPCComboBox.setValue(theEditQuestControl.GetNpcNameFromListById(theEditQuestControl.getQuestGiverNpcId()));
+		questHeraldNPCComboBox.setValue(theEditQuestControl.getNpcNameFromListById(theEditQuestControl.getQuestGiverNpcId()));
 	}
 	
 	private void setUpMentorNPCComboBox() throws SQLException {
 		ArrayList<String> npcNames = new ArrayList<String>();
 		for (NpcCharacter theNPC : (ObservableList<NpcCharacter>) theEditQuestControl.getTheObservableNPCs()) {
-			npcNames.add(theNPC.GetNpcName());
+			npcNames.add(theNPC.getNpcName());
 		}
 		questMentorNPCComboBox.getItems().addAll(npcNames);
-		questMentorNPCComboBox.setValue(theEditQuestControl.GetNpcNameFromListById(theEditQuestControl.getQuestReceiverNpcId()));
+		questMentorNPCComboBox.setValue(theEditQuestControl.getNpcNameFromListById(theEditQuestControl.getQuestReceiverNpcId()));
 	}
 	
 	private void setUpQuestItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
 		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableQuestItems()) {
-			itemNames.add(theItem.GetItemName());
+			itemNames.add(theItem.getItemName());
 		}
 		addQuestItemComboBox.getItems().addAll(itemNames);
 	}
@@ -94,7 +94,7 @@ public class EditQuestsViewControl extends ViewControl {
 	private void setUpRewardItemComboBox() throws SQLException {
 		ArrayList<String> itemNames = new ArrayList<String>();
 		for (Item theItem : (ObservableList<Item>) theEditQuestControl.getTheObservableRewardItems()) {
-			itemNames.add(theItem.GetItemName());
+			itemNames.add(theItem.getItemName());
 		}
 		addRewardItemComboBox.getItems().addAll(itemNames);
 	}
@@ -137,8 +137,8 @@ public class EditQuestsViewControl extends ViewControl {
 		theEditQuestControl.updateQuestReceiverDialog(editReceiverDialogTextArea.getText());
 		theEditQuestControl.updateQuestName(editQuestName.getText());
 		theEditQuestControl.updateQuestDescription(editQuestDescription.getText());
-		theEditQuestControl.updateGiverNPC(theEditQuestControl.GetNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
-		theEditQuestControl.updateReceiverNPC(theEditQuestControl.GetNpcIdFromListByName(questMentorNPCComboBox.getValue()));
+		theEditQuestControl.updateGiverNPC(theEditQuestControl.getNpcIdFromListByName(questHeraldNPCComboBox.getValue()));
+		theEditQuestControl.updateReceiverNPC(theEditQuestControl.getNpcIdFromListByName(questMentorNPCComboBox.getValue()));
 		theEditQuestControl.refreshQuestDisplay();
 		theEditQuestControl.getConflictTemplateTheQuestViewControl().refreshTheQuestList();
 		theEditQuestControl.updateQuestItemsInDB();
@@ -155,7 +155,7 @@ public class EditQuestsViewControl extends ViewControl {
     private void removeQuestItemNeeded() {
     	try {
     		if (itemsNeededTableView.getSelectionModel().getSelectedItem() != null) {
-    			theEditQuestControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+    			theEditQuestControl.removeQuestItemNeeded(itemsNeededTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), itemsNeededTableView.getSelectionModel().getSelectedItem().getItemQuantity());
 				itemsNeededTableView.getItems().clear();
 				itemsNeededTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsNeededList());
 				itemsNeededTableView.refresh();
@@ -185,7 +185,7 @@ public class EditQuestsViewControl extends ViewControl {
     private void removeQuestItemReward() {
     	try {
     		if (itemsRewardTableView.getSelectionModel().getSelectedItem() != null) {
-    			theEditQuestControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().GetItemQuantity());
+    			theEditQuestControl.removeQuestItemReward(itemsRewardTableView.getSelectionModel().getSelectedItem().getItemDisplayName(), itemsRewardTableView.getSelectionModel().getSelectedItem().getItemQuantity());
 	    		itemsRewardTableView.getItems().clear();
 	    		itemsRewardTableView.getItems().addAll(theEditQuestControl.getObservableQuestItemsRewardList());
 	    		itemsRewardTableView.refresh();

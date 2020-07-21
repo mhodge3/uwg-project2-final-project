@@ -72,24 +72,24 @@ public class LoginViewControl extends ViewControl {
 		Thread handleTestConnection = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
-				if (theLoginControl.TestDBConnection(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText())) {
-					Platform.runLater(() -> { TestMessageSucces(); });
+				if (theLoginControl.testDBConnection(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText())) {
+					Platform.runLater(() -> { testMessageSucces(); });
 				}
 				else {
-					Platform.runLater(() -> { TestMessageFail(); });
+					Platform.runLater(() -> { testMessageFail(); });
 				}
 		    }
 		});
 		handleTestConnection.start();
 	}
 	
-	private void TestMessageSucces() {
+	private void testMessageSucces() {
 		dBConnectionMessageLabel.setText("Connection successful.");
 	    dBConnectionMessageLabel.setTextFill(Color.GREEN);
 		loadingConnectionTestImage.setVisible(false);
 	}
 	
-	private void TestMessageFail() {
+	private void testMessageFail() {
 	    dBConnectionMessageLabel.setText("A connection was not established.");
 	    dBConnectionMessageLabel.setTextFill(Color.RED);
 		loadingConnectionTestImage.setVisible(false);
@@ -102,50 +102,50 @@ public class LoginViewControl extends ViewControl {
 		Thread handleAdminLogin = new Thread(new Runnable() {
 		    @Override
 		    public void run(){
-				Player thePlayerToLogIn = theLoginControl.UserLoginPlayer(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText(), adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
+				Player thePlayerToLogIn = theLoginControl.userLoginPlayer(hostTextInput.getText(), usernameDBTextInput.getText(), passwordDBTextInput.getText(), dBNameTextInput.getText(), adminNameLoginTextBox.getText(), adminPasswordLoginTextBox.getText());
 				if (thePlayerToLogIn != null) {
 					Platform.runLater(() -> { 
 						try {
-							if (theLoginControl.IsPlayerAdmin(thePlayerToLogIn)) {
-								thePlayerToLogIn.SetPlayerIsAdmin(true);
-								SetLoginMessageIsAdmin(); 
-								theLoginControl.SetUpMainDashboard(thePlayerToLogIn, theMainDashboardStage);
-								HideLoginStage();
+							if (theLoginControl.isPlayerAdmin(thePlayerToLogIn)) {
+								thePlayerToLogIn.setPlayerIsAdmin(true);
+								setLoginMessageIsAdmin(); 
+								theLoginControl.setUpMainDashboard(thePlayerToLogIn, theMainDashboardStage);
+								hideLoginStage();
 							}
 							else {
-								SetLoginMessageNotAdmin();;
+								setLoginMessageNotAdmin();;
 							}
 						} catch (Exception e) {
 							System.out.println(e.getMessage());
-							Platform.runLater(() -> { SetLoginMessageError(e.getMessage()); });
+							Platform.runLater(() -> { setLoginMessageError(e.getMessage()); });
 						}
 					});
 				}
 				else {
-					Platform.runLater(() -> { SetLoginMessageNoAccount(); });
+					Platform.runLater(() -> { setLoginMessageNoAccount(); });
 				}
 		    }
 		});
 		handleAdminLogin.start();
 	}
 	
-	private void SetLoginMessageNoAccount() {
+	private void setLoginMessageNoAccount() {
 		adminLoginMessageLabel.setText("No account was found");
 		adminLoginMessageLabel.setTextFill(Color.RED);
 		loadingLoginImage.setVisible(false);
 	}
-	private void SetLoginMessageError(String error) {
+	private void setLoginMessageError(String error) {
 		adminLoginMessageLabel.setText(error);
 		adminLoginMessageLabel.setTextFill(Color.RED);
 	}
 	
-	private void SetLoginMessageNotAdmin() {
+	private void setLoginMessageNotAdmin() {
 		adminLoginMessageLabel.setText("The Player is NOT an Admin");
 		adminLoginMessageLabel.setTextFill(Color.RED);
 		loadingLoginImage.setVisible(false);
 	}
 	
-	private void SetLoginMessageIsAdmin() {
+	private void setLoginMessageIsAdmin() {
 		adminLoginMessageLabel.setText("The Player is an Admin");
 		adminLoginMessageLabel.setTextFill(Color.GREEN);
 		loadingLoginImage.setVisible(false);
@@ -155,7 +155,7 @@ public class LoginViewControl extends ViewControl {
 	 * Gets the loading image for this view
 	 * @return the ImageView loading graphic
 	 */
-	public ImageView GetLoadingConnectionTestImage() {
+	public ImageView getLoadingConnectionTestImage() {
 		return this.loadingConnectionTestImage;
 	}
 	
@@ -163,14 +163,14 @@ public class LoginViewControl extends ViewControl {
 	 * Gets the DBConnection class instance
 	 * @return the DBConnection class instance
 	 */
-	public MySQLAccess GetDBConnection() {
-		return theLoginControl.GetDBConnection();
+	public MySQLAccess getDBConnection() {
+		return theLoginControl.getDBConnection();
 	}
 	
 	/**
 	 * Clears login fields from last login and shows the login stage.
 	 */
-	public void ShowLoginStage() {
+	public void showLoginStage() {
 		resetAdminLoginFields();
 		this.theLoginStage.show();
 	}
@@ -178,14 +178,14 @@ public class LoginViewControl extends ViewControl {
 	/**
 	 * Hide the Login stage
 	 */
-	public void HideLoginStage() {
+	public void hideLoginStage() {
 		this.theLoginStage.hide();
 	}
 	
 	/**
 	 * Creates the initial Login view. this is never destroyed, just hidden.
 	 */
-	public void LoadLoginView() {
+	public void loadLoginView() {
         Parent theLoginParentView;
         try {
         	theLoginParentView = theFxmlLoader.load();
@@ -195,7 +195,7 @@ public class LoginViewControl extends ViewControl {
         theLoginStage.setScene(new Scene(theLoginParentView));
 		loadingConnectionTestImage.setVisible(false);
 		loadingLoginImage.setVisible(false);
-        ShowLoginStage();
+        showLoginStage();
 	}
 	
 	private void resetAdminLoginFields() {

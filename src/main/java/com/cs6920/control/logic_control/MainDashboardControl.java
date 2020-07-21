@@ -27,22 +27,22 @@ public class MainDashboardControl {
 	 * Get the Player object that is an Admin
 	 * @return Player, the Admin Player
 	 */
-	public Player GetTheAdminPlayer() {
+	public Player getTheAdminPlayer() {
 		return this.theAdminPlayer;
 	}
 	
 	/**
 	 * Begins the LoginViewControl's process for reseting to the Login View
 	 */
-	public void ResetLoginView() {
-		theLoginViewControl.ShowLoginStage();
+	public void resetLoginView() {
+		theLoginViewControl.showLoginStage();
 	}
 	
 	/**
 	 * Gets the DBDconnection class instance for this run of the program
 	 * @return the DB Connection class
 	 */
-	public MySQLAccess GetDBConnection() {
-		return theLoginViewControl.GetDBConnection();
+	public MySQLAccess getDBConnection() {
+		return theLoginViewControl.getDBConnection();
 	}
 }

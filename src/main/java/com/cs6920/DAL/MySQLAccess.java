@@ -27,7 +27,7 @@ public class MySQLAccess {
      * Default constructor builds the initial connection string from hard coded values for a test server
      */
     public MySQLAccess() {
-    	BuildConnectionString("localhost", "root", "Theresa1", "rpg_story_mapper_db");
+    	buildConnectionString("localhost", "root", "Theresa1", "rpg_story_mapper_db");
     }
     
     /**
@@ -36,7 +36,7 @@ public class MySQLAccess {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public Connection GetDBConnection() throws ClassNotFoundException, SQLException {
+    public Connection getDBConnection() throws ClassNotFoundException, SQLException {
     	Connection theNewConnection;
         // This will load the MySQL driver, each DB has its own driver
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -50,13 +50,13 @@ public class MySQLAccess {
      * @return	bool, whether or not the server accessed
      * @throws Exception
      */
-    public Boolean TestDBConnection() throws Exception {
+    public Boolean testDBConnection() throws Exception {
     	Boolean connectionSuccess = false;
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = GetDBConnection();
+            theConnection = getDBConnection();
         	theResultSet = null;
         	connectionSuccess = true;
         } catch (Exception e) {
@@ -73,7 +73,7 @@ public class MySQLAccess {
      * @param userName	username to access the DB. Ex, root
      * @param password	password for this DB user. Ex, test1234
      */
-    public void BuildConnectionString(String hostName, String userName, String password, String dBName) {
+    public void buildConnectionString(String hostName, String userName, String password, String dBName) {
     	this.theDBName = dBName;
     	this.theDBUserName = userName;
     	this.theDBPassword = password;
@@ -84,7 +84,7 @@ public class MySQLAccess {
      * Get the name of the DB to look for on the host
      * @return the DB name
      */
-    public String GetTheDBName() {
+    public String getTheDBName() {
     	return this.theDBName;
     }
 

@@ -11,7 +11,7 @@ import com.cs6920.model.Admin;
  */
 public class AdminDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	public AdminDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
@@ -21,32 +21,32 @@ public class AdminDAL {
 	public int getAdminID(int playerID) throws Exception {
 		Admin admin = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM `" + this.sqlAccess.GetTheDBName() + "`.`admins` "
-            		+ "WHERE `" + this.sqlAccess.GetTheDBName() + "`.admins.`player_id` = "+ String.valueOf(playerID);
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM `" + this.sqlAccess.getTheDBName() + "`.`admins` "
+            		+ "WHERE `" + this.sqlAccess.getTheDBName() + "`.admins.`player_id` = "+ String.valueOf(playerID);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 admin = new Admin();
-                admin.SetAdminID(Integer.parseInt(results.getString("admin_id")));
-                admin.SetAdminID(Integer.parseInt(results.getString("player_id")));
-                admin.SetIsActive(Integer.parseInt(results.getString("is_active")));
+                admin.setAdminID(Integer.parseInt(results.getString("admin_id")));
+                admin.setAdminID(Integer.parseInt(results.getString("player_id")));
+                admin.setIsActive(Integer.parseInt(results.getString("is_active")));
             }
             
         } catch (Exception e) {
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
-		return admin.GetAdminId();
+		return admin.getAdminId();
     }
 	
 	private Boolean doesAdminExist(int playerId) {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".admins " + "WHERE player_id = \"" + playerId + "\"";
+			this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".admins " + "WHERE player_id = \"" + playerId + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next()) {
             	success = true;
@@ -60,11 +60,11 @@ public class AdminDAL {
 	private Boolean updateAdminActiveStatus(int playerId, int makeActive) {
 		Boolean success = false;
 		try {
-		String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".`admins`" +
+		String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".`admins`" +
 						"SET " +
 						"is_active = ? " +
 						"WHERE `player_id` = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(makeActive));
 			preparedStmt.setString (2, String.valueOf(playerId));
 			preparedStmt.execute();
@@ -76,18 +76,18 @@ public class AdminDAL {
 		return success;
 	}
 	
-	public boolean CreateAdmin(int playerId, int makeActive) throws SQLException {
+	public boolean createAdmin(int playerId, int makeActive) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
+			this.theConnection = this.sqlAccess.getDBConnection();
 			if (doesAdminExist(playerId)) {
 				this.updateAdminActiveStatus(playerId, makeActive);
 			}
 			else {
-				String query = "INSERT INTO `" + this.sqlAccess.GetTheDBName() + "`.`admins`" + 
+				String query = "INSERT INTO `" + this.sqlAccess.getTheDBName() + "`.`admins`" + 
 						"(`player_id`, `is_active`)" + 
 						"VALUES (?, ?)";
-				 PreparedStatement preparedStmt = conn.prepareStatement(query);
+				 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 				 preparedStmt.setString (1, String.valueOf(playerId));
 				 preparedStmt.setString (2, String.valueOf(makeActive));
 				  			  
@@ -98,7 +98,7 @@ public class AdminDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

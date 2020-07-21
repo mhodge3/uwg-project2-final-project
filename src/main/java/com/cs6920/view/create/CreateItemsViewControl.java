@@ -41,11 +41,11 @@ public class CreateItemsViewControl extends ViewControl {
 	 */
     public CreateItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theCreateItemsControl = new CreateItemsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theCreateItemsControl = new CreateItemsControl(theMainDashboardViewControl.getDBConnection());
     }
     
     
-    private void ResetCreateItemsView() {
+    private void resetCreateItemsView() {
     	createItemTypeTextBox.setText("");
     	createItemNameTextBox.setText("");
     	createItemDescriptionTextArea.setText("");
@@ -55,15 +55,15 @@ public class CreateItemsViewControl extends ViewControl {
     
 	@FXML
 	private void handleItemCanelButton() throws SQLException {
-		ResetCreateItemsView();
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+		resetCreateItemsView();
+		theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
     
 	@FXML
 	private void handleItemCreateButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theCreateItemsControl.CreateItem(createItemNameTextBox.getText(), createItemDescriptionTextArea.getText(), Integer.parseInt(createItemTypeTextBox.getText()), createIsItemForQuestCheckBox.isSelected(), createIsItemImplicitCheckBox.isSelected(), createIsItemTrophyCheckBox.isSelected());
+			itemCreationError = theCreateItemsControl.createItem(createItemNameTextBox.getText(), createItemDescriptionTextArea.getText(), Integer.parseInt(createItemTypeTextBox.getText()), createIsItemForQuestCheckBox.isSelected(), createIsItemImplicitCheckBox.isSelected(), createIsItemTrophyCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
@@ -80,7 +80,7 @@ public class CreateItemsViewControl extends ViewControl {
 		alert.setHeaderText("Item Creation Status");
 		alert.setContentText("The Item was successfully created");
 		alert.showAndWait();
-		ResetCreateItemsView();
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+		resetCreateItemsView();
+		theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
 }

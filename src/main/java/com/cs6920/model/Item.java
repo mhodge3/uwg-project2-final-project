@@ -82,7 +82,7 @@ public class Item {
 	 * Gets the Item Id
 	 * @return itemdID
 	 */
-	public int GetItemId() {
+	public int getItemId() {
 		return itemId.get();
 	}
 	
@@ -91,7 +91,7 @@ public class Item {
 	 * @param setItemID
 	 */
 	
-	public void SetItemId(int setItemID) {
+	public void setItemId(int setItemID) {
 		this.itemId = new SimpleIntegerProperty(setItemID);
 	}
 	
@@ -108,7 +108,7 @@ public class Item {
 	 * @return itemName
 	 */
 	
-	public String GetItemName() {
+	public String getItemName() {
 		return itemName.get();
 	}
 	
@@ -116,7 +116,7 @@ public class Item {
 	 * Sets the Item Name
 	 * @param setItemName
 	 */
-	public void SetItemName(String setItemName) {
+	public void setItemName(String setItemName) {
 		this.itemName = new SimpleStringProperty(setItemName);
 	}
 	
@@ -132,7 +132,7 @@ public class Item {
 	 * Gets the Item Description
 	 * @return itemDescription
 	 */
-	public String GetItemDescription() {
+	public String getItemDescription() {
 		return itemDescription.get();
 	}
 	
@@ -140,7 +140,7 @@ public class Item {
 	 * Sets the Item Description
 	 * @param setItemDescription
 	 */
-	public void SetItemDescription(String setItemDescription) {
+	public void setItemDescription(String setItemDescription) {
 		this.itemDescription = new SimpleStringProperty(setItemDescription);
 	}
 	
@@ -156,7 +156,7 @@ public class Item {
 	 * Gets the Item Type
 	 * @return itemType
 	 */
-	public int GetItemType() {
+	public int getItemType() {
 		return itemType.get();
 	}
 	
@@ -164,7 +164,7 @@ public class Item {
 	 * Sets the Item Type
 	 * @param setItemType
 	 */
-	public void SetItemType(int setItemType) {
+	public void setItemType(int setItemType) {
 		this.itemType = new SimpleIntegerProperty(setItemType);
 	}
 	
@@ -180,7 +180,7 @@ public class Item {
 	 * Gets the Is Quest Item
 	 * @return isQuestItem
 	 */
-	public Boolean GetIsQuestItem() {
+	public Boolean getIsQuestItem() {
 		return this.isQuestItem.get();
 	}
 	
@@ -188,7 +188,7 @@ public class Item {
 	 * Sets the IsQuestItem
 	 * @param setIsQuestItem
 	 */
-	public void SetIsQuestItem(Boolean setIsQuestItem) {
+	public void setIsQuestItem(Boolean setIsQuestItem) {
 		this.isQuestItem = new SimpleBooleanProperty(setIsQuestItem);
 	}
 	
@@ -204,7 +204,7 @@ public class Item {
 	 * Gets the isImplicitItem
 	 * @return isImplicitItem
 	 */
-	public Boolean GetIsImplicitItem() {
+	public Boolean getIsImplicitItem() {
 		return this.isImplicitItem.get();
 	}
 	
@@ -212,7 +212,7 @@ public class Item {
 	 * Sets the IsImplicitItem
 	 * @param setIsImplicitItem
 	 */
-	public void SetIsImplicitItem(Boolean setIsImplicitItem) {
+	public void setIsImplicitItem(Boolean setIsImplicitItem) {
 		this.isImplicitItem = new SimpleBooleanProperty(setIsImplicitItem);
 	}
 	

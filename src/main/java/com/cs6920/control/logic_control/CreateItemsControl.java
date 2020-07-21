@@ -11,14 +11,14 @@ import com.cs6920.DAL.MySQLAccess;
  * @version 6.23.2020
  */
 public class CreateItemsControl {
-	private ItemDAL itemDAL;
+	private ItemDAL theItemDAL;
 	
 	/**
 	 * Constructor that sets DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
 	public CreateItemsControl(MySQLAccess theDBConnection) {
-		this.itemDAL = new ItemDAL(theDBConnection);
+		this.theItemDAL = new ItemDAL(theDBConnection);
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class CreateItemsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
+	public String createItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		if (itemName == null || itemName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
@@ -39,7 +39,7 @@ public class CreateItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (itemDAL.CreateItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem)) {
+		if (theItemDAL.createItem(itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem)) {
 			return null;
 		}
 		else {

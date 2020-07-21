@@ -23,8 +23,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictMinLvlShouldBe1234() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictMinLvl(1234);
-		assertEquals(1234, testItem.GetConflictMinLvl());
+		testItem.setConflictMinLvl(1234);
+		assertEquals(1234, testItem.getConflictMinLvl());
 	}
 	
 	/**
@@ -34,8 +34,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictIdShouldBe1234() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictId(1234);
-		assertEquals(1234, testItem.GetConflictId());
+		testItem.setConflictId(1234);
+		assertEquals(1234, testItem.getConflictId());
 	}
 	
 	/**
@@ -45,8 +45,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictTemplateBe1234() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictTemplate(1234);
-		assertEquals(1234, testItem.GetConflictTemplate());
+		testItem.setConflictTemplate(1234);
+		assertEquals(1234, testItem.getConflictTemplate());
 	}
 	
 	/**
@@ -56,8 +56,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictNameBeTom() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictName("Tom");
-		assertEquals("Tom", testItem.GetConflictName());
+		testItem.setConflictName("Tom");
+		assertEquals("Tom", testItem.getConflictName());
 	}
 	
 	/**
@@ -67,8 +67,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictArcTypeShouldBeTom() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictArcType("Tom");
-		assertEquals("Tom", testItem.GetConflictArcType());
+		testItem.setConflictArcType("Tom");
+		assertEquals("Tom", testItem.getConflictArcType());
 	}
 	
 	/**
@@ -78,8 +78,8 @@ public class ConflictTests {
 	@Test
 	public void testGetConflictDescriptionBeTom() {
 		Conflict testItem = new Conflict();
-		testItem.SetConflictDescription("Tom");
-		assertEquals("Tom", testItem.GetConflictDescription());
+		testItem.setConflictDescription("Tom");
+		assertEquals("Tom", testItem.getConflictDescription());
 	}
 	
 	

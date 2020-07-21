@@ -62,7 +62,7 @@ public class NpcCharacter {
 	 * Gets the npcId
 	 * @return npcId
 	 */
-	public int GetNpcId() {
+	public int getNpcId() {
 		return npcId.get();
 	}
 	
@@ -70,7 +70,7 @@ public class NpcCharacter {
 	 * Sets the npcID
 	 * @param setNpcId
 	 */
-	public void SetNpcId(int setNpcId) {
+	public void setNpcId(int setNpcId) {
 		this.npcId = new SimpleIntegerProperty(setNpcId);
 	}
 	
@@ -86,7 +86,7 @@ public class NpcCharacter {
 	 * Gets the npcLevel
 	 * @return npcId
 	 */
-	public int GetNpcLevel() {
+	public int getNpcLevel() {
 		return this.npcLevel.get();
 	}
 	
@@ -94,7 +94,7 @@ public class NpcCharacter {
 	 * Sets the npcLevel
 	 * @param setNpcId
 	 */
-	public void SetNpcLevel(int npcLevel) {
+	public void setNpcLevel(int npcLevel) {
 		this.npcLevel = new SimpleIntegerProperty(npcLevel);
 	}
 	
@@ -110,7 +110,7 @@ public class NpcCharacter {
 	 * GEts the npcDescprition
 	 * @return npcDescprition
 	 */
-	public String GetNpcDescprition() {
+	public String getNpcDescprition() {
 		return npcDescprition.get();
 	}
 	
@@ -118,7 +118,7 @@ public class NpcCharacter {
 	 * Sets the NpcDescprition
 	 * @param setNpcDescprition
 	 */
-	public void SetNpcDescprition(String setNpcDescprition) {
+	public void setNpcDescprition(String setNpcDescprition) {
 		this.npcDescprition = new SimpleStringProperty(setNpcDescprition);
 	}
 	
@@ -134,7 +134,7 @@ public class NpcCharacter {
 	 * Gets the npcName
 	 * @return npcName
 	 */
-	public String GetNpcName() {
+	public String getNpcName() {
 		return npcName.get();
 	}
 	
@@ -142,7 +142,7 @@ public class NpcCharacter {
 	 * Sets the NpcName
 	 * @param setNpcName
 	 */
-	public void SetNpcName(String setNpcName) {
+	public void setNpcName(String setNpcName) {
 		this.npcName = new SimpleStringProperty(setNpcName);
 	}
 	
@@ -159,7 +159,7 @@ public class NpcCharacter {
 	 * Gets the npctype
 	 * @return npcType
 	 */
-	public int GetNpcType() {
+	public int getNpcType() {
 		return npcType.get();
 	}
 	
@@ -167,7 +167,7 @@ public class NpcCharacter {
 	 * Sets the npc Type
 	 * @param setNpcType
 	 */
-	public void SetNpcType(int setNpcType) {
+	public void setNpcType(int setNpcType) {
 		this.npcType = new SimpleIntegerProperty(setNpcType);
 	}
 	
@@ -183,7 +183,7 @@ public class NpcCharacter {
 	 * Gets the npcFaction
 	 * @return npcFaction
 	 */
-	public int GetNpcFaction() {
+	public int getNpcFaction() {
 		return npcFaction.get();
 	}
 	
@@ -191,7 +191,7 @@ public class NpcCharacter {
 	 * Sets the npc Faction
 	 * @param setNpcFaction
 	 */
-	public void SetNpcFaction(int setNpcFaction) {
+	public void setNpcFaction(int setNpcFaction) {
 		this.npcFaction = new SimpleIntegerProperty(setNpcFaction);
 	}
 	
@@ -207,7 +207,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosX
 	 * @return npcPosX
 	 */
-	public double GetNpcPosX() {
+	public double getNpcPosX() {
 		return npcPosX.get();
 	}
 	
@@ -215,7 +215,7 @@ public class NpcCharacter {
 	 * Sets the npcPosX
 	 * @param setNpcPosX
 	 */
-	public void SetNpcPosX(double setNpcPosX) {
+	public void setNpcPosX(double setNpcPosX) {
 		this.npcPosX = new SimpleDoubleProperty(setNpcPosX);
 	}
 	
@@ -231,7 +231,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosY
 	 * @return npcPosY
 	 */
-	public double GetNpcPosY() {
+	public double getNpcPosY() {
 		return npcPosY.get();
 	}
 		
@@ -239,7 +239,7 @@ public class NpcCharacter {
 	 * Sets the npcPosY
 	 * @param setNpcPosY
 	 */
-	public void SetNpcPosY(double setNpcPosY) {
+	public void setNpcPosY(double setNpcPosY) {
 		this.npcPosY = new SimpleDoubleProperty(setNpcPosY);
 	}
 	
@@ -255,7 +255,7 @@ public class NpcCharacter {
 	 * Gets the NpcPosZ
 	 * @return npcPosZ
 	 */
-	public double GetNpcPosZ() {
+	public double getNpcPosZ() {
 		return npcPosZ.get();
 	}
 	
@@ -263,7 +263,7 @@ public class NpcCharacter {
 	 * Sets the npcPosZ
 	 * @param setNpcPosZ
 	 */
-	public void SetNpcPosZ(double setNpcPosZ) {
+	public void setNpcPosZ(double setNpcPosZ) {
 		this.npcPosZ = new SimpleDoubleProperty(setNpcPosZ);
 	}
 	

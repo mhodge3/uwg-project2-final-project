@@ -12,7 +12,7 @@ import com.cs6920.model.Item;
  * @version 6.23.2020
  */
 public class EditItemsControl {
-	private ItemDAL itemDAL;
+	private ItemDAL theItemDAL;
 	private Item selectedItem;
 	
 	/**
@@ -20,16 +20,16 @@ public class EditItemsControl {
 	 * @param theDBConnection
 	 */
 	public EditItemsControl(MySQLAccess theDBConnection) {
-		this.itemDAL = new ItemDAL(theDBConnection);
+		this.theItemDAL = new ItemDAL(theDBConnection);
 	}
 	
 	/**
 	 * Sets an instance of the Item to that found by id
 	 * @param itemId
 	 */
-	public void SetSelectedItem(int itemId) {
+	public void setSelectedItem(int itemId) {
 		try {
-			selectedItem = itemDAL.GetItemById(itemId);
+			selectedItem = theItemDAL.getItemById(itemId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class EditItemsControl {
 	 * Get the Item object for editing
 	 * @return
 	 */
-	public Item GetSelectedItem() {
+	public Item getSelectedItem() {
 		return selectedItem;
 	}
 	
@@ -49,10 +49,10 @@ public class EditItemsControl {
 	 * @param itemToDelete
 	 * @return String, message for user on outcome of operation
 	 */
-	public String DeleteItem(Item itemToDelete) {
+	public String deleteItem(Item itemToDelete) {
 		
 		try {
-			if (itemDAL.DeleteItem(itemToDelete)) {
+			if (theItemDAL.deleteItem(itemToDelete)) {
 				return null;
 			}
 			else {
@@ -73,7 +73,7 @@ public class EditItemsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
+	public String updateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		if (itemName == null || itemName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
@@ -81,7 +81,7 @@ public class EditItemsControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (itemDAL.UpdateItem(selectedItem, new Item(selectedItem.GetItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem))) {
+		if (theItemDAL.updateItem(selectedItem, new Item(selectedItem.getItemId(), itemName, itemDescription, itemType, isQuestItem, isImplicitItem, isTrophyItem))) {
 			return null;
 		}
 		else {

@@ -24,8 +24,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterIDShouldBe1234() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterId(1234);
-		assertEquals(1234, testItem.GetCharacterId());
+		testItem.setCharacterId(1234);
+		assertEquals(1234, testItem.getCharacterId());
 	}
 
 	/**
@@ -35,8 +35,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterPlayerIdShouldBe1234() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterPlayerId(1234);
-		assertEquals(1234, testItem.GetCharacterPlayerId());
+		testItem.setCharacterPlayerId(1234);
+		assertEquals(1234, testItem.getCharacterPlayerId());
 	}
 	
 
@@ -47,8 +47,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterPlayerIdShouldBeTom() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterName("Tom");
-		assertEquals("Tom", testItem.GetCharacterName());
+		testItem.setCharacterName("Tom");
+		assertEquals("Tom", testItem.getCharacterName());
 	}
 	
 	/**
@@ -58,8 +58,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterFactionShouldBe1234() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterFaction(1234);
-		assertEquals(1234, testItem.GetCharacterFaction());
+		testItem.setCharacterFaction(1234);
+		assertEquals(1234, testItem.getCharacterFaction());
 	}
 	
 	/**
@@ -69,8 +69,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterPosZShouldBe1Point1() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterPosZ(1.1);
-		assertEquals(1.1, testItem.GetCharacterPosZ());
+		testItem.setCharacterPosZ(1.1);
+		assertEquals(1.1, testItem.getCharacterPosZ());
 	}
 	
 	/**
@@ -80,8 +80,8 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterPosYShouldBe1Point1() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterPosY(1.1);
-		assertEquals(1.1, testItem.GetCharacterPosY());
+		testItem.setCharacterPosY(1.1);
+		assertEquals(1.1, testItem.getCharacterPosY());
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class CharactersPlayerTests {
 	@Test
 	public void testGetCharacterPosXShouldBe1Point1() {
 		CharactersPlayer testItem = new CharactersPlayer();
-		testItem.SetCharacterPosX(1.1);
-		assertEquals(1.1, testItem.GetCharacterPosX());
+		testItem.setCharacterPosX(1.1);
+		assertEquals(1.1, testItem.getCharacterPosX());
 	}
 }

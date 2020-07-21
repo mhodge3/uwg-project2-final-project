@@ -42,14 +42,14 @@ public class EditItemsViewControl extends ViewControl {
 	 */
     public EditItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theEditItemsControl = new EditItemsControl(theMainDashboardViewControl.getDBConnection());
     }
     
     /**
      * Gets logic control for this Edit Item view control
      * @return the Item edited
      */
-    public EditItemsControl GetEditItemsControl() {
+    public EditItemsControl getEditItemsControl() {
     	return theEditItemsControl;
     }
     
@@ -57,18 +57,18 @@ public class EditItemsViewControl extends ViewControl {
      * Sets the form values to those of the Item to edit
      * @param theItemToEdit
      */
-    public void SetFormForSelectedItem(Item theItemToEdit) {
-    	editItemTypeTextBox.setText(String.valueOf(theItemToEdit.GetItemType()));
-    	editItemNameTextBox.setText(theItemToEdit.GetItemName());
-    	editItemDescriptionTextArea.setText(theItemToEdit.GetItemDescription());
-    	editIsItemForQuestCheckBox.setSelected(theItemToEdit.GetIsQuestItem());
-    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.GetIsImplicitItem());
+    public void setFormForSelectedItem(Item theItemToEdit) {
+    	editItemTypeTextBox.setText(String.valueOf(theItemToEdit.getItemType()));
+    	editItemNameTextBox.setText(theItemToEdit.getItemName());
+    	editItemDescriptionTextArea.setText(theItemToEdit.getItemDescription());
+    	editIsItemForQuestCheckBox.setSelected(theItemToEdit.getIsQuestItem());
+    	editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIsImplicitItem());
     	editIsItemImplicitCheckBox.setSelected(theItemToEdit.getIstrophy());
     }
     
 	@FXML
 	private void handleItemEditBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+		theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
     
 	@FXML
@@ -77,11 +77,11 @@ public class EditItemsViewControl extends ViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Item Edit");
 		alert.setHeaderText("Item Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + theEditItemsControl.GetSelectedItem().GetItemName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE " + theEditItemsControl.getSelectedItem().getItemName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				itemDeleteError = theEditItemsControl.DeleteItem(theEditItemsControl.GetSelectedItem());
+				itemDeleteError = theEditItemsControl.deleteItem(theEditItemsControl.getSelectedItem());
 			} catch (Exception e) {
 				itemDeleteError = e.getMessage();
 			}
@@ -98,7 +98,7 @@ public class EditItemsViewControl extends ViewControl {
 			alert.setHeaderText("Item Edit Status");
 			alert.setContentText("The Item was successfully deleted");
 			alert.showAndWait();
-			theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+			theMainDashboardViewControl.setMainDashboardStage("manageItems");
 		}
 	}
     
@@ -106,7 +106,7 @@ public class EditItemsViewControl extends ViewControl {
 	private void handleItemEditSaveButton() throws SQLException {
 		String itemCreationError = null;
 		try {
-			itemCreationError = theEditItemsControl.UpdateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected(), editIsItemTrophyCheckBox.isSelected());
+			itemCreationError = theEditItemsControl.updateItem(editItemNameTextBox.getText(), editItemDescriptionTextArea.getText(), Integer.parseInt(editItemTypeTextBox.getText()), editIsItemForQuestCheckBox.isSelected(), editIsItemImplicitCheckBox.isSelected(), editIsItemTrophyCheckBox.isSelected());
 		} catch (Exception e) {
 			itemCreationError = e.getMessage();
 		}
@@ -123,6 +123,6 @@ public class EditItemsViewControl extends ViewControl {
 		alert.setHeaderText("Item Edit Status");
 		alert.setContentText("The Item was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.SetMainDashboardStage("manageItems");
+		theMainDashboardViewControl.setMainDashboardStage("manageItems");
 	}
 }

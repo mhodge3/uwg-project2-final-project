@@ -21,8 +21,8 @@ public class PlayerTests {
 	@Test
 	public void testGetSetPlayerIDShouldBe1234() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerId(1234);
-		assertEquals(1234, testPlayerID.GetPlayerId());
+		testPlayerID.setPlayerId(1234);
+		assertEquals(1234, testPlayerID.getPlayerId());
 	}
 	
 	/**
@@ -32,8 +32,8 @@ public class PlayerTests {
 	@Test
 	public void testIsPlayerAdminShouldBeFalse() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerIsAdmin(false);
-		assertEquals(false, testPlayerID.GetPlayerIsAdmin());
+		testPlayerID.setPlayerIsAdmin(false);
+		assertEquals(false, testPlayerID.getPlayerIsAdmin());
 	}
 	
 	/**
@@ -43,8 +43,8 @@ public class PlayerTests {
 	@Test
 	public void testIsPlayerAdminShouldBeTrue() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerIsAdmin(true);
-		assertEquals(true, testPlayerID.GetPlayerIsAdmin());
+		testPlayerID.setPlayerIsAdmin(true);
+		assertEquals(true, testPlayerID.getPlayerIsAdmin());
 	}
 	
 	/**
@@ -54,8 +54,8 @@ public class PlayerTests {
 	@Test
 	public void testIsPlayerAdminShouldBeTom() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerName("Tom");
-		assertEquals("Tom", testPlayerID.GetPlayerName());
+		testPlayerID.setPlayerName("Tom");
+		assertEquals("Tom", testPlayerID.getPlayerName());
 	}
 	
 	/**
@@ -65,8 +65,8 @@ public class PlayerTests {
 	@Test
 	public void testGetPlayerEmailShouldBeTomAtYahooDotCom() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerEmail("tom@yahoo.com");
-		assertEquals("tom@yahoo.com", testPlayerID.GetPlayerEmail());
+		testPlayerID.setPlayerEmail("tom@yahoo.com");
+		assertEquals("tom@yahoo.com", testPlayerID.getPlayerEmail());
 	}
 	
 	/**
@@ -76,8 +76,8 @@ public class PlayerTests {
 	@Test
 	public void testGetPlayerCountryCodeShouldBeABCD() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerCountryCode("ABCD");
-		assertEquals("ABCD", testPlayerID.GetPlayerCountryCode());
+		testPlayerID.setPlayerCountryCode("ABCD");
+		assertEquals("ABCD", testPlayerID.getPlayerCountryCode());
 	}
 	
 	/**
@@ -87,8 +87,8 @@ public class PlayerTests {
 	@Test
 	public void testGetPlayerPasswordShouldBetestpassword() {
 		Player testPlayerID = new Player();
-		testPlayerID.SetPlayerPassword("testpassword");
-		assertEquals("testpassword", testPlayerID.GetPlayerPassword());
+		testPlayerID.setPlayerPassword("testpassword");
+		assertEquals("testpassword", testPlayerID.getPlayerPassword());
 	}
 	
 	

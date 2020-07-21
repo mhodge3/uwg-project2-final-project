@@ -31,9 +31,9 @@ public class ManageNPCCharactersControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdatePlayerArrayList() throws SQLException {
+	public void updatePlayerArrayList() throws SQLException {
 		existingNPCArrayList = new ArrayList<NpcCharacter>();
-		existingNPCArrayList = nPCCharacterDAL.GetAllNpc();
+		existingNPCArrayList = nPCCharacterDAL.getAllNpc();
 		observableNPCList.clear();
 		observableNPCList.addAll(existingNPCArrayList);
 	}
@@ -42,7 +42,7 @@ public class ManageNPCCharactersControl {
 	 * Get the Observable Player List
 	 * @return	the observable list
 	 */
-	public ObservableList<NpcCharacter> GetObservablePlayerList() {
+	public ObservableList<NpcCharacter> getObservablePlayerList() {
 		return observableNPCList;
 	}
 }

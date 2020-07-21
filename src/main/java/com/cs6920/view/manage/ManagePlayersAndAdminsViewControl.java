@@ -42,8 +42,8 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	 */
     public ManagePlayersAndAdminsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManagePlayersAndAdminsViewControl(this);
-    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theMainDashboardViewControl.setTheManagePlayersAndAdminsViewControl(this);
+    	this.theManagePlayersAndAdminsControl = new ManagePlayersAndAdminsControl(theMainDashboardViewControl.getDBConnection());
     }
 
 	@FXML
@@ -60,21 +60,21 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingPlayerAdminList() throws SQLException {
-    	theManagePlayersAndAdminsControl.UpdatePlayerArrayList();
+    	theManagePlayersAndAdminsControl.updatePlayerArrayList();
     	existingUserTableView.getItems().clear();
-    	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.GetObservablePlayerList());
+    	existingUserTableView.getItems().addAll(theManagePlayersAndAdminsControl.getObservablePlayerList());
     }
 	
 	@FXML
 	private void handlePlayerAndAdminBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
+		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
 	
 	@FXML
 	private void handleEditSelectedUserButton() throws SQLException {
 		if (existingUserTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetPlayerToEdit(existingUserTableView.getSelectionModel().getSelectedItem().GetPlayerId());
-			theMainDashboardViewControl.SetMainDashboardStage("editPlayersAndAdmins");
+			theMainDashboardViewControl.setPlayerToEdit(existingUserTableView.getSelectionModel().getSelectedItem().getPlayerId());
+			theMainDashboardViewControl.setMainDashboardStage("editPlayersAndAdmins");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -87,6 +87,6 @@ public class ManagePlayersAndAdminsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateUserButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("createPlayersAndAdmins");
+		theMainDashboardViewControl.setMainDashboardStage("createPlayersAndAdmins");
 	}
 }

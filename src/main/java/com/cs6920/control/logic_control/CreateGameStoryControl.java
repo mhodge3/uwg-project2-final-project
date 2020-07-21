@@ -15,14 +15,14 @@ import com.cs6920.DAL.GameStoryDAL;
  *
  */
 public class CreateGameStoryControl {
-	private GameStoryDAL gameStoryDAL;
+	private GameStoryDAL theGameStoryDAL;
 	
 	/**
 	 * Constructor that sets DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
 	public CreateGameStoryControl(MySQLAccess theDBConnection) {
-		this.gameStoryDAL = new GameStoryDAL(theDBConnection);
+		this.theGameStoryDAL = new GameStoryDAL(theDBConnection);
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class CreateGameStoryControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
+	public String createGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
 		if (gameStoryName == null || gameStoryName.trim().length() == 0) {
 			return "The Item Name cannot be empty";
 		}
@@ -40,7 +40,7 @@ public class CreateGameStoryControl {
 			return "The Item Description cannot be empty";
 		}
 		
-		if (gameStoryDAL.CreateGameStory(gameStoryName, gameStorySummary)) {
+		if (theGameStoryDAL.createGameStory(gameStoryName, gameStorySummary)) {
 			return null;
 		}
 		else {

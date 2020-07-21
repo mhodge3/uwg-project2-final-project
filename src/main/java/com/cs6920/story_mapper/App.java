@@ -8,7 +8,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App
+ * Begins the Java FX application
+ * @author Matthew Hodge
+ * @version 7.20.20
  */
 public class App extends Application {
 
@@ -21,12 +23,12 @@ public class App extends Application {
     	LoginControl theLoginControl = new LoginControl();
         LoginViewControl theLoginViewControl = new LoginViewControl(theLoginControl, theLoginStage);
         MySQLAccess theDBConnection = new MySQLAccess();
-        theLoginControl.SetTheDBConnection(theDBConnection);
-        theLoginControl.SetLoginViewControl(theLoginViewControl);
+        theLoginControl.setTheDBConnection(theDBConnection);
+        theLoginControl.setLoginViewControl(theLoginViewControl);
         theLoginStage.setTitle("Story Mapper");
         theLoginStage.setWidth(375);
         theLoginStage.setHeight(480);
-        theLoginViewControl.LoadLoginView();
+        theLoginViewControl.loadLoginView();
     }
 
 }

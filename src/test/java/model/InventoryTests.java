@@ -22,8 +22,8 @@ public class InventoryTests {
 	@Test
 	public void testGetItemIDShouldBe1234() {
 		Inventory testItem = new Inventory();
-		testItem.SetItemId(1234);
-		assertEquals(1234, testItem.GetItemId());
+		testItem.setItemId(1234);
+		assertEquals(1234, testItem.getItemId());
 	}
 	
 	/**
@@ -33,8 +33,8 @@ public class InventoryTests {
 	@Test
 	public void testGetCharacterIdShouldBe1234() {
 		Inventory testItem = new Inventory();
-		testItem.SetCharacterId(1234);
-		assertEquals(1234, testItem.GetCharacterId());
+		testItem.setCharacterId(1234);
+		assertEquals(1234, testItem.getCharacterId());
 	}
 	
 	

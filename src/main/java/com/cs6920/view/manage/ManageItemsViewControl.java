@@ -46,8 +46,8 @@ public class ManageItemsViewControl extends ViewControl {
 	 */
     public ManageItemsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManageItemsViewControl(this);
-    	this.theManageItemsControl = new ManageItemsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theMainDashboardViewControl.setTheManageItemsViewControl(this);
+    	this.theManageItemsControl = new ManageItemsControl(theMainDashboardViewControl.getDBConnection());
     }
     
 	/**
@@ -55,9 +55,9 @@ public class ManageItemsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingItemsList() throws SQLException {
-    	theManageItemsControl.UpdateItemArrayList();
+    	theManageItemsControl.updateItemArrayList();
     	existingItemTableView.getItems().clear();
-    	existingItemTableView.getItems().addAll(theManageItemsControl.GetObservablePlayerList());
+    	existingItemTableView.getItems().addAll(theManageItemsControl.getObservablePlayerList());
     }
 
 	@FXML
@@ -73,14 +73,14 @@ public class ManageItemsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleItemsBackButton() throws SQLException {
-		theMainDashboardViewControl.LoadMainDashboardView();
+		theMainDashboardViewControl.loadMainDashboardView();
 	}
 	
 	@FXML
 	private void handleEditSelectedItemButton() throws SQLException {
 		if (existingItemTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetItemToEdit(existingItemTableView.getSelectionModel().getSelectedItem().GetItemId());
-			theMainDashboardViewControl.SetMainDashboardStage("editItems");
+			theMainDashboardViewControl.setItemToEdit(existingItemTableView.getSelectionModel().getSelectedItem().getItemId());
+			theMainDashboardViewControl.setMainDashboardStage("editItems");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -93,6 +93,6 @@ public class ManageItemsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateItemButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("createItems");
+		theMainDashboardViewControl.setMainDashboardStage("createItems");
 	}
 }

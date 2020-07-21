@@ -16,7 +16,7 @@ import com.cs6920.model.Item;
  */
 public class ItemDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	/**
 	 * Creates a PlayerDAL object to be used by the controllers
@@ -30,12 +30,12 @@ public class ItemDAL {
 	 * @return The Array List of Items
 	 * @throws SQLException
 	 */
-	public ArrayList<Item> GetItems() throws SQLException {
+	public ArrayList<Item> getItems() throws SQLException {
 		ArrayList<Item> theItemArrayList = new ArrayList<Item>();
 		
 		try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT  item_id, " + 
             		"item_name, " + 
             		"item_description, " + 
@@ -43,16 +43,16 @@ public class ItemDAL {
             		"is_quest_item, " + 
             		"is_implicit_item, " +
             		"is_trophy_item " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".items ";
+            	"FROM " + this.sqlAccess.getTheDBName() + ".items ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	Item item = new Item();
-                item.SetItemId(Integer.parseInt(results.getString("item_id")));
-                item.SetItemName(results.getString("item_name"));
-                item.SetItemDescription(results.getString("item_description"));
-                item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
-                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
+                item.setItemId(Integer.parseInt(results.getString("item_id")));
+                item.setItemName(results.getString("item_name"));
+                item.setItemDescription(results.getString("item_description"));
+                item.setItemType(Integer.parseInt(results.getString("item_type")));
+                item.setIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
+                item.setIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
                 item.setIsTrophy(Integer.parseInt(results.getString("is_trophy_item")) > 0 ? true : false);
                 theItemArrayList.add(item);
             }
@@ -60,7 +60,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return theItemArrayList; 
 	}
@@ -70,12 +70,12 @@ public class ItemDAL {
 	 * @return The Item
 	 * @throws SQLException
 	 */
-	public Item GetItemById(int itemId) throws SQLException {
+	public Item getItemById(int itemId) throws SQLException {
 		Item item = null;
 		
 		try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT  item_id," + 
             		"item_name, " + 
             		"item_description, " + 
@@ -83,24 +83,24 @@ public class ItemDAL {
             		"is_quest_item, " + 
             		"is_implicit_item, " +
             		"is_trophy_item " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".items " +
+            	"FROM " + this.sqlAccess.getTheDBName() + ".items " +
             		"WHERE item_id = \"" + itemId + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	item = new Item();
-                item.SetItemId(Integer.parseInt(results.getString("item_id")));
-                item.SetItemName(results.getString("item_name"));
-                item.SetItemDescription(results.getString("item_description"));
-                item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
-                item.SetIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
+                item.setItemId(Integer.parseInt(results.getString("item_id")));
+                item.setItemName(results.getString("item_name"));
+                item.setItemDescription(results.getString("item_description"));
+                item.setItemType(Integer.parseInt(results.getString("item_type")));
+                item.setIsQuestItem(Integer.parseInt(results.getString("is_quest_item")) > 0 ? true : false);
+                item.setIsImplicitItem(Integer.parseInt(results.getString("is_implicit_item")) > 0 ? true : false);
                 item.setIsTrophy(Integer.parseInt(results.getString("is_trophy_item")) > 0 ? true : false);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return item; 
 	}
@@ -110,12 +110,12 @@ public class ItemDAL {
 	 * @return The Item
 	 * @throws SQLException
 	 */
-	public Item GetItemByName(String itemName) throws SQLException {
+	public Item getItemByName(String itemName) throws SQLException {
 		Item item = null;
 		
 		try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT  item_id," + 
             		"item_name, " + 
             		"item_description, " + 
@@ -123,33 +123,33 @@ public class ItemDAL {
             		"is_quest_item, " + 
             		"is_implicit_item, " +
             		"is_trophy_item " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".items " +
+            	"FROM " + this.sqlAccess.getTheDBName() + ".items " +
             		"WHERE item_name = \"" + itemName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	item = new Item();
-                item.SetItemId(Integer.parseInt(results.getString("item_id")));
-                item.SetItemName(results.getString("item_name"));
-                item.SetItemDescription(results.getString("item_description"));
-                item.SetItemType(Integer.parseInt(results.getString("item_type")));
-                item.SetIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
-                item.SetIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
+                item.setItemId(Integer.parseInt(results.getString("item_id")));
+                item.setItemName(results.getString("item_name"));
+                item.setItemDescription(results.getString("item_description"));
+                item.setItemType(Integer.parseInt(results.getString("item_type")));
+                item.setIsQuestItem(Boolean.parseBoolean(results.getString("is_quest_item")));
+                item.setIsImplicitItem(Boolean.parseBoolean(results.getString("is_implicit_item")));
                 item.setIsTrophy(Boolean.parseBoolean(results.getString("is_trophy_item")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return item; 
 	}
 	
-	public Boolean CreateItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
+	public Boolean createItem(String itemName, String itemDescription, int itemType, Boolean isQuestItem, Boolean isImplicitItem, Boolean isTrophyItem) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".items " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".items " + 
 					"(item_name, " + 
             		"item_description, " + 
             		"item_type, " + 
@@ -157,7 +157,7 @@ public class ItemDAL {
             		"is_implicit_item, " +
             		"is_trophy_item) " +
 					"VALUES (?, ?, ?, ?, ?, ?)";
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, itemName);
 			  preparedStmt.setString (2, itemDescription);
 			  preparedStmt.setString (3, String.valueOf(itemType));
@@ -173,16 +173,16 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
 	
-	public Boolean UpdateItem(Item oldItem, Item updatedItem) throws SQLException {
+	public Boolean updateItem(Item oldItem, Item updatedItem) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".items " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".items " + 
 					"SET " +
 					"item_name = ?, " + 
             		"item_description = ?, " + 
@@ -192,36 +192,36 @@ public class ItemDAL {
             		"is_trophy_item = ? " +
             	    "WHERE item_id = ?";
 		
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			  preparedStmt.setString (1, updatedItem.GetItemName());
-			  preparedStmt.setString (2, updatedItem.GetItemDescription());
-			  preparedStmt.setString (3, String.valueOf(updatedItem.GetItemType()));
-			  int questBoolToInt = updatedItem.GetIsQuestItem() ? 1 : 0;
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			  preparedStmt.setString (1, updatedItem.getItemName());
+			  preparedStmt.setString (2, updatedItem.getItemDescription());
+			  preparedStmt.setString (3, String.valueOf(updatedItem.getItemType()));
+			  int questBoolToInt = updatedItem.getIsQuestItem() ? 1 : 0;
 			  preparedStmt.setString (4, String.valueOf(questBoolToInt));
-			  int implicitBoolToInt = updatedItem.GetIsImplicitItem() ? 1 : 0;
+			  int implicitBoolToInt = updatedItem.getIsImplicitItem() ? 1 : 0;
 			  preparedStmt.setString (5, String.valueOf(implicitBoolToInt));
 			  int trophyBoolToInt = updatedItem.getIstrophy() ? 1 : 0;
 			  preparedStmt.setString (6, String.valueOf(trophyBoolToInt));
-			  preparedStmt.setString (7, String.valueOf(oldItem.GetItemId()));
+			  preparedStmt.setString (7, String.valueOf(oldItem.getItemId()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
 	
-	public boolean DeleteItem(Item item) throws SQLException {
+	public boolean deleteItem(Item item) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".items " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".items " + 
 					"WHERE item_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(item.GetItemId()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(item.getItemId()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -229,7 +229,7 @@ public class ItemDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

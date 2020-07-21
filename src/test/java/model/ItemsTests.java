@@ -24,8 +24,8 @@ public class ItemsTests {
 	@Test
 	public void testGetItemIDShouldBe1234() {
 		Item testItem = new Item();
-		testItem.SetItemId(1234);
-		assertEquals(1234, testItem.GetItemId());
+		testItem.setItemId(1234);
+		assertEquals(1234, testItem.getItemId());
 	}
 	
 	/**
@@ -35,8 +35,8 @@ public class ItemsTests {
 	@Test
 	public void testGetItemNameShouldBeTom() {
 		Item testItem = new Item();
-		testItem.SetItemName("Tom");
-		assertEquals("Tom", testItem.GetItemName());
+		testItem.setItemName("Tom");
+		assertEquals("Tom", testItem.getItemName());
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class ItemsTests {
 	@Test
 	public void testGetItemNameShouldBeASuperCool() {
 		Item testItem = new Item();
-		testItem.SetItemDescription("A Super Cool");
-		assertEquals("A Super Cool", testItem.GetItemDescription());
+		testItem.setItemDescription("A Super Cool");
+		assertEquals("A Super Cool", testItem.getItemDescription());
 	}
 	
 	/**
@@ -57,8 +57,8 @@ public class ItemsTests {
 	@Test
 	public void testGetItemTypeShouldBe1234() {
 		Item testItem = new Item();
-		testItem.SetItemType(1234);
-		assertEquals(1234, testItem.GetItemType());
+		testItem.setItemType(1234);
+		assertEquals(1234, testItem.getItemType());
 	}
 	
 	/**
@@ -68,8 +68,8 @@ public class ItemsTests {
 	@Test
 	public void testGetIsQuestItemShouldBeTrue() {
 		Item testItem = new Item();
-		testItem.SetIsQuestItem(true);
-		assertEquals(true, testItem.GetIsQuestItem());
+		testItem.setIsQuestItem(true);
+		assertEquals(true, testItem.getIsQuestItem());
 	}
 	
 	/**
@@ -79,8 +79,8 @@ public class ItemsTests {
 	@Test
 	public void testGetIsTrophyShouldBeTrue() {
 		Item testItem = new Item();
-		testItem.SetIsQuestItem(true);
-		assertEquals(true, testItem.GetIsQuestItem());
+		testItem.setIsQuestItem(true);
+		assertEquals(true, testItem.getIsQuestItem());
 	}
 	
 	/**
@@ -90,8 +90,8 @@ public class ItemsTests {
 	@Test
 	public void testGetIsImplicitItemShouldBe1234() {
 		Item testItem = new Item();
-		testItem.SetIsImplicitItem(false);
-		assertEquals(false, testItem.GetIsImplicitItem());
+		testItem.setIsImplicitItem(false);
+		assertEquals(false, testItem.getIsImplicitItem());
 	}
 
 }

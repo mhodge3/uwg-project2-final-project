@@ -40,8 +40,8 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	 */
     public ManageNPCCharactersViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManageNPCCharactersViewControl(this);
-    	this.theManageNPCCharactersControl = new ManageNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theMainDashboardViewControl.setTheManageNPCCharactersViewControl(this);
+    	this.theManageNPCCharactersControl = new ManageNPCCharactersControl(theMainDashboardViewControl.getDBConnection());
     }
     
 	/**
@@ -49,9 +49,9 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingNPCCharactersList() throws SQLException {
-    	theManageNPCCharactersControl.UpdatePlayerArrayList();
+    	theManageNPCCharactersControl.updatePlayerArrayList();
     	existingNPCTableView.getItems().clear();
-    	existingNPCTableView.getItems().addAll(theManageNPCCharactersControl.GetObservablePlayerList());
+    	existingNPCTableView.getItems().addAll(theManageNPCCharactersControl.getObservablePlayerList());
     }
 
 	@FXML
@@ -64,14 +64,14 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	
 	@FXML
 	private void handleNPCCharacterBackButton() throws SQLException {
-		theMainDashboardViewControl.LoadMainDashboardView();
+		theMainDashboardViewControl.loadMainDashboardView();
 	}
 	
 	@FXML
 	private void handleEditSelectedNPCButton() throws SQLException {
 		if (existingNPCTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetNPCToEdit(existingNPCTableView.getSelectionModel().getSelectedItem().GetNpcId());
-			theMainDashboardViewControl.SetMainDashboardStage("editNPCCharacters");
+			theMainDashboardViewControl.setNPCToEdit(existingNPCTableView.getSelectionModel().getSelectedItem().getNpcId());
+			theMainDashboardViewControl.setMainDashboardStage("editNPCCharacters");
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -84,6 +84,6 @@ public class ManageNPCCharactersViewControl extends ViewControl {
 	
 	@FXML
 	private void handleCreateNPCButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("createNPCCharacters");
+		theMainDashboardViewControl.setMainDashboardStage("createNPCCharacters");
 	}
 }

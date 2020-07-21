@@ -22,8 +22,8 @@ public class QuestsTests {
 	@Test
 	public void testGetQuestIDShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetQuestId(1234);
-		assertEquals(1234, testItem.GetQuestId());
+		testItem.setQuestId(1234);
+		assertEquals(1234, testItem.getQuestId());
 	}
 	
 	/**
@@ -33,8 +33,8 @@ public class QuestsTests {
 	@Test
 	public void testGetPreReqQuestIdShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetPreReqQuestId(1234);
-		assertEquals(1234, testItem.GetPreReqQuestId());
+		testItem.setPreReqQuestId(1234);
+		assertEquals(1234, testItem.getPreReqQuestId());
 	}
 	
 	/**
@@ -44,8 +44,8 @@ public class QuestsTests {
 	@Test
 	public void testGetConflictIdShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetConflictId(1234);
-		assertEquals(1234, testItem.GetConflictId());
+		testItem.setConflictId(1234);
+		assertEquals(1234, testItem.getConflictId());
 	}
 	
 	/**
@@ -55,8 +55,8 @@ public class QuestsTests {
 	@Test
 	public void testGetMinCharacterLevelShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetMinCharacterLevel(1234);
-		assertEquals(1234, testItem.GetMinCharacterLevel());
+		testItem.setMinCharacterLevel(1234);
+		assertEquals(1234, testItem.getMinCharacterLevel());
 	}
 	
 	/**
@@ -66,8 +66,8 @@ public class QuestsTests {
 	@Test
 	public void testGetQuestNameShouldBeTom() {
 		Quest testItem = new Quest();
-		testItem.SetQuestName("Tom");
-		assertEquals("Tom", testItem.GetQuestName());
+		testItem.setQuestName("Tom");
+		assertEquals("Tom", testItem.getQuestName());
 	}
 	
 	/**
@@ -77,8 +77,8 @@ public class QuestsTests {
 	@Test
 	public void testGetQuestDescriptionBeTom() {
 		Quest testItem = new Quest();
-		testItem.SetQuestDescription("Tom");
-		assertEquals("Tom", testItem.GetQuestDescription());
+		testItem.setQuestDescription("Tom");
+		assertEquals("Tom", testItem.getQuestDescription());
 	}
 	
 	/**
@@ -88,8 +88,8 @@ public class QuestsTests {
 	@Test
 	public void testGetQuestGiverNpcIdShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetQuestGiverNpcId(1234);
-		assertEquals(1234, testItem.GetQuestGiverNpcId());
+		testItem.setQuestGiverNpcId(1234);
+		assertEquals(1234, testItem.getQuestGiverNpcId());
 	}
 	
 	/**
@@ -99,8 +99,8 @@ public class QuestsTests {
 	@Test
 	public void testQuestReceiverNpcIdShouldBe1234() {
 		Quest testItem = new Quest();
-		testItem.SetQuestReceiverNpcId(1234);
-		assertEquals(1234, testItem.GetQuestReceiverNpcId());
+		testItem.setQuestReceiverNpcId(1234);
+		assertEquals(1234, testItem.getQuestReceiverNpcId());
 	}
 	
 	/**
@@ -110,8 +110,8 @@ public class QuestsTests {
 	@Test
 	public void testQuestArcTypeShouldBeTom() {
 		Quest testItem = new Quest();
-		testItem.SetQuestArcType("Tom");
-		assertEquals("Tom", testItem.GetQuestArcType());
+		testItem.setQuestArcType("Tom");
+		assertEquals("Tom", testItem.getQuestArcType());
 	}
 	
 	

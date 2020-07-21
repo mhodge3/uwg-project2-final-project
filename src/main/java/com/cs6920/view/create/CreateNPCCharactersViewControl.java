@@ -45,35 +45,35 @@ public class CreateNPCCharactersViewControl extends ViewControl {
 	 */
     public CreateNPCCharactersViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theCreateNPCCharactersControl = new CreateNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theCreateNPCCharactersControl = new CreateNPCCharactersControl(theMainDashboardViewControl.getDBConnection());
     }
     
-    private void ResetCreateNPCCharactersView() {
+    private void resetCreateNPCCharactersView() {
     	this.createNPCType.setText("");
     	this.createNPCNameTextBox.setText("");
     	this.createNPCDescriptionTextBox.setText("");
     	this.createNPCPosX.setText("");
     	this.createNPCPosY.setText("");
     	this.createNPCPosZ.setText("");
-		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), 1));
+		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().getNpcCharacterLevelCap(), 1));
     }
     
     @FXML
     private void initialize()  {
-		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), 1));
+		this.createNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().getNpcCharacterLevelCap(), 1));
     }
     
 	@FXML
 	private void handleNPCCreateCanelButton() throws SQLException {
-		ResetCreateNPCCharactersView();
-		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		resetCreateNPCCharactersView();
+		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
     
 	@FXML
 	private void handleNPCCreateButton() throws SQLException {
 		String npcCreationError = null;
 		try {
-			npcCreationError = theCreateNPCCharactersControl.CreateNpc(Integer.parseInt(createNPCType.getText()), createNPCNameTextBox.getText(), createNPCDescriptionTextBox.getText(), Double.parseDouble(createNPCPosX.getText()), Double.parseDouble(createNPCPosY.getText()), Double.parseDouble(createNPCPosZ.getText()), this.createNPCLevelSpinner.getValue());
+			npcCreationError = theCreateNPCCharactersControl.createNpc(Integer.parseInt(createNPCType.getText()), createNPCNameTextBox.getText(), createNPCDescriptionTextBox.getText(), Double.parseDouble(createNPCPosX.getText()), Double.parseDouble(createNPCPosY.getText()), Double.parseDouble(createNPCPosZ.getText()), this.createNPCLevelSpinner.getValue());
 		} catch (Exception e) {
 			npcCreationError = e.getMessage();
 		}
@@ -90,7 +90,7 @@ public class CreateNPCCharactersViewControl extends ViewControl {
 		alert.setHeaderText("NPC Creation Status");
 		alert.setContentText("The NPC was successfully created");
 		alert.showAndWait();
-		ResetCreateNPCCharactersView();
-		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		resetCreateNPCCharactersView();
+		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
 }

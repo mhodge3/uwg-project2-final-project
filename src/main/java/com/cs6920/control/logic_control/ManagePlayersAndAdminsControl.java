@@ -15,7 +15,7 @@ import com.cs6920.model.Player;
  * @version 6.13.2020
  */
 public class ManagePlayersAndAdminsControl {
-	private PlayerDAL playerDAL;
+	private PlayerDAL thePlayerDAL;
 	private ArrayList<Player> existingPlayerAdminArrayList;
 	private ObservableList<Player> observablePlayerList = FXCollections.observableArrayList();
 
@@ -24,16 +24,16 @@ public class ManagePlayersAndAdminsControl {
 	 * @param theDBConnection
 	 */
 	public ManagePlayersAndAdminsControl(MySQLAccess theDBConnection) {
-		this.playerDAL = new PlayerDAL(theDBConnection);
+		this.thePlayerDAL = new PlayerDAL(theDBConnection);
 	}
 
 	/**
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdatePlayerArrayList() throws SQLException {
+	public void updatePlayerArrayList() throws SQLException {
 		existingPlayerAdminArrayList = new ArrayList<Player>();
-		existingPlayerAdminArrayList = playerDAL.GetPlayers();
+		existingPlayerAdminArrayList = thePlayerDAL.getPlayers();
 		observablePlayerList.clear();
 		observablePlayerList.addAll(existingPlayerAdminArrayList);
 	}
@@ -42,7 +42,7 @@ public class ManagePlayersAndAdminsControl {
 	 * Get the Observable Player List
 	 * @return	the observable list
 	 */
-	public ObservableList<Player> GetObservablePlayerList() {
+	public ObservableList<Player> getObservablePlayerList() {
 		return observablePlayerList;
 	}
 }

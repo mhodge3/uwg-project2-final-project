@@ -17,7 +17,7 @@ import com.cs6920.model.CharactersPlayer;
  */
 public class CharactersPlayerDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	/**
 	 * Creates a CharactersPlayerDAL object to be used by the controllers
@@ -39,11 +39,11 @@ public class CharactersPlayerDAL {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public Boolean CreateCharacterPlayer(int characterPlayerId, String characterName, int characterType, int characterFaction, double characterPosX, double characterPosY, double characterPosZ) throws SQLException {
+	public Boolean createCharacterPlayer(int characterPlayerId, String characterName, int characterType, int characterFaction, double characterPosX, double characterPosY, double characterPosZ) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".charactersplayer " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".charactersplayer " + 
 					"(character_player_id, " +
 					"character_name, " +
 					"character_type, " +
@@ -53,7 +53,7 @@ public class CharactersPlayerDAL {
 					"character_posZ) " +
 					"VALUES (?, ?, ?, ?, ?, ?, ?)";
 			 System.out.println(query); 			
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(characterPlayerId));
 			 preparedStmt.setString (2, characterName);
 			 preparedStmt.setString (3, String.valueOf(characterType));
@@ -68,7 +68,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -79,31 +79,31 @@ public class CharactersPlayerDAL {
 	 * @return The CharactersPlayers list looked up
 	 * @throws SQLException
 	 */
-	public ArrayList<CharactersPlayer> GetCharactersPlayers(int playerId) throws SQLException {
+	public ArrayList<CharactersPlayer> getCharactersPlayers(int playerId) throws SQLException {
 		ArrayList<CharactersPlayer> charactersPlayers = new ArrayList<CharactersPlayer>();
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".charactersplayer "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".charactersplayer.character_player_id = " + playerId + ";";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".charactersplayer "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".charactersplayer.character_player_id = " + playerId + ";";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	CharactersPlayer charactersPlayer = new CharactersPlayer();
-                charactersPlayer.SetCharacterId(results.getInt("character_id"));
-                charactersPlayer.SetCharacterPlayerId(results.getInt("character_player_id"));
-                charactersPlayer.SetCharacterName(results.getString("character_name"));
-                charactersPlayer.SetCharacterType(results.getInt("character_type"));
-                charactersPlayer.SetCharacterFaction(results.getInt("character_faction"));
-                charactersPlayer.SetCharacterPosX(results.getDouble("character_posX"));
-                charactersPlayer.SetCharacterPosY(results.getDouble("character_posY"));
-                charactersPlayer.SetCharacterPosZ(results.getDouble("character_posZ"));
+                charactersPlayer.setCharacterId(results.getInt("character_id"));
+                charactersPlayer.setCharacterPlayerId(results.getInt("character_player_id"));
+                charactersPlayer.setCharacterName(results.getString("character_name"));
+                charactersPlayer.setCharacterType(results.getInt("character_type"));
+                charactersPlayer.setCharacterFaction(results.getInt("character_faction"));
+                charactersPlayer.setCharacterPosX(results.getDouble("character_posX"));
+                charactersPlayer.setCharacterPosY(results.getDouble("character_posY"));
+                charactersPlayer.setCharacterPosZ(results.getDouble("character_posZ"));
                 charactersPlayers.add(charactersPlayer);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return charactersPlayers;
     }
@@ -114,30 +114,30 @@ public class CharactersPlayerDAL {
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
-	public CharactersPlayer GetCharactersPlayerByID(int characterId) throws SQLException {
+	public CharactersPlayer getCharactersPlayerByID(int characterId) throws SQLException {
     	CharactersPlayer charactersPlayer = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".charactersplayer "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".charactersplayer.character_id = " + characterId + ";";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".charactersplayer "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".charactersplayer.character_id = " + characterId + ";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	charactersPlayer = new CharactersPlayer();
-                charactersPlayer.SetCharacterId(results.getInt("character_id"));
-                charactersPlayer.SetCharacterPlayerId(results.getInt("character_player_id"));
-                charactersPlayer.SetCharacterName(results.getString("character_name"));
-                charactersPlayer.SetCharacterType(results.getInt("character_type"));
-                charactersPlayer.SetCharacterFaction(results.getInt("character_faction"));
-                charactersPlayer.SetCharacterPosX(results.getDouble("character_posX"));
-                charactersPlayer.SetCharacterPosY(results.getDouble("character_posY"));
-                charactersPlayer.SetCharacterPosZ(results.getDouble("character_posZ"));
+                charactersPlayer.setCharacterId(results.getInt("character_id"));
+                charactersPlayer.setCharacterPlayerId(results.getInt("character_player_id"));
+                charactersPlayer.setCharacterName(results.getString("character_name"));
+                charactersPlayer.setCharacterType(results.getInt("character_type"));
+                charactersPlayer.setCharacterFaction(results.getInt("character_faction"));
+                charactersPlayer.setCharacterPosX(results.getDouble("character_posX"));
+                charactersPlayer.setCharacterPosY(results.getDouble("character_posY"));
+                charactersPlayer.setCharacterPosZ(results.getDouble("character_posZ"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return charactersPlayer;
     }
@@ -148,30 +148,30 @@ public class CharactersPlayerDAL {
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
-	public CharactersPlayer GetCharactersPlayerByName(String CharacterName) throws SQLException {
+	public CharactersPlayer getCharactersPlayerByName(String CharacterName) throws SQLException {
     	CharactersPlayer charactersPlayer = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".charactersPlayer "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".charactersplayer.character_name = \"" + CharacterName + "\"";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".charactersPlayer "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".charactersplayer.character_name = \"" + CharacterName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	charactersPlayer = new CharactersPlayer();
-                charactersPlayer.SetCharacterId(results.getInt("character_id"));
-                charactersPlayer.SetCharacterPlayerId(results.getInt("character_player_id"));
-                charactersPlayer.SetCharacterName(results.getString("character_name"));
-                charactersPlayer.SetCharacterType(results.getInt("character_type"));
-                charactersPlayer.SetCharacterFaction(results.getInt("character_faction"));
-                charactersPlayer.SetCharacterPosX(results.getDouble("character_posX"));
-                charactersPlayer.SetCharacterPosY(results.getDouble("character_posY"));
-                charactersPlayer.SetCharacterPosZ(results.getDouble("character_posZ"));
+                charactersPlayer.setCharacterId(results.getInt("character_id"));
+                charactersPlayer.setCharacterPlayerId(results.getInt("character_player_id"));
+                charactersPlayer.setCharacterName(results.getString("character_name"));
+                charactersPlayer.setCharacterType(results.getInt("character_type"));
+                charactersPlayer.setCharacterFaction(results.getInt("character_faction"));
+                charactersPlayer.setCharacterPosX(results.getDouble("character_posX"));
+                charactersPlayer.setCharacterPosY(results.getDouble("character_posY"));
+                charactersPlayer.setCharacterPosZ(results.getDouble("character_posZ"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return charactersPlayer;
     }
@@ -183,11 +183,11 @@ public class CharactersPlayerDAL {
 	 * @return True if updated | False if not updated
 	 * @throws SQLException
 	 */
-	public Boolean UpdateCharacterPlayer(CharactersPlayer oldCharacter, CharactersPlayer updatedCharacter) throws SQLException {
+	public Boolean updateCharacterPlayer(CharactersPlayer oldCharacter, CharactersPlayer updatedCharacter) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".charactersplayer " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".charactersplayer " + 
 					"SET " + 
 						"character_player_id = ?, " +
 						"character_name = ?, " +
@@ -198,15 +198,15 @@ public class CharactersPlayerDAL {
 						"character_posZ = ? " +
 						"WHERE character_id = ?";
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			 preparedStmt.setString (1, String.valueOf(updatedCharacter.GetCharacterPlayerId()));
-			 preparedStmt.setString (2, updatedCharacter.GetCharacterName());
-			 preparedStmt.setString (3, String.valueOf(updatedCharacter.GetCharacterType()));
-			 preparedStmt.setString (4, String.valueOf(updatedCharacter.GetCharacterFaction()));
-			 preparedStmt.setString (5, String.valueOf(updatedCharacter.GetCharacterPosX()));
-			 preparedStmt.setString (6, String.valueOf(updatedCharacter.GetCharacterPosY()));
-			 preparedStmt.setString (7, String.valueOf(updatedCharacter.GetCharacterPosZ()));
-			 preparedStmt.setString (8, String.valueOf(oldCharacter.GetCharacterId()));
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			 preparedStmt.setString (1, String.valueOf(updatedCharacter.getCharacterPlayerId()));
+			 preparedStmt.setString (2, updatedCharacter.getCharacterName());
+			 preparedStmt.setString (3, String.valueOf(updatedCharacter.getCharacterType()));
+			 preparedStmt.setString (4, String.valueOf(updatedCharacter.getCharacterFaction()));
+			 preparedStmt.setString (5, String.valueOf(updatedCharacter.getCharacterPosX()));
+			 preparedStmt.setString (6, String.valueOf(updatedCharacter.getCharacterPosY()));
+			 preparedStmt.setString (7, String.valueOf(updatedCharacter.getCharacterPosZ()));
+			 preparedStmt.setString (8, String.valueOf(oldCharacter.getCharacterId()));
 			  
 		      preparedStmt.execute();
 		      success = true;
@@ -214,7 +214,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -225,14 +225,14 @@ public class CharactersPlayerDAL {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public boolean DeleteCharacterPlayer(CharactersPlayer character) throws SQLException {
+	public boolean deleteCharacterPlayer(CharactersPlayer character) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".charactersplayer " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".charactersplayer " + 
 					"WHERE character_player_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(character.GetCharacterPlayerId()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(character.getCharacterPlayerId()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -240,7 +240,7 @@ public class CharactersPlayerDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

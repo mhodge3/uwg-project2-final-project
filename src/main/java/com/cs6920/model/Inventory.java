@@ -38,7 +38,7 @@ public class Inventory {
 	 * Gets the Item Id
 	 * @return itemdID
 	 */
-	public int GetItemId() {
+	public int getItemId() {
 		return itemId.get();
 	}
 	
@@ -47,7 +47,7 @@ public class Inventory {
 	 * @param setItemID
 	 */
 	
-	public void SetItemId(int setItemID) {
+	public void setItemId(int setItemID) {
 		this.itemId = new SimpleIntegerProperty(setItemID);
 	}
 	
@@ -63,7 +63,7 @@ public class Inventory {
 	 * Gets the characterId
 	 * @return characterId
 	 */
-	public int GetCharacterId() {
+	public int getCharacterId() {
 		return characterId.get();
 	}
 	
@@ -71,7 +71,7 @@ public class Inventory {
 	 * Gets the characterId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterIdProperty() {
+	public final IntegerProperty characterIdProperty() {
 	   return characterId;
 	}
 	
@@ -80,7 +80,7 @@ public class Inventory {
 	 * Sets the characterId
 	 * @param setCharacterId
 	 */
-	public void SetCharacterId(int setCharacterId) {
+	public void setCharacterId(int setCharacterId) {
 		this.characterId = new SimpleIntegerProperty(setCharacterId);
 	}
 	

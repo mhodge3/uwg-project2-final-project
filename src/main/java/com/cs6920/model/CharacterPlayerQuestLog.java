@@ -40,7 +40,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the characterId
 	 * @return characterId
 	 */
-	public int GetCharacterId() {
+	public int getCharacterId() {
 		return characterId.get();
 	}
 	
@@ -48,7 +48,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the characterId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterIdProperty() {
+	public final IntegerProperty characterIdProperty() {
 	   return characterId;
 	}
 	
@@ -57,7 +57,7 @@ public class CharacterPlayerQuestLog {
 	 * Sets the characterId
 	 * @param setCharacterId
 	 */
-	public void SetCharacterId(int setCharacterId) {
+	public void setCharacterId(int setCharacterId) {
 		this.characterId = new SimpleIntegerProperty(setCharacterId);
 	}
 	
@@ -65,7 +65,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the questId
 	 * @return questId
 	 */
-	public int GetQuestId() {
+	public int getQuestId() {
 		return questId.get();
 	}
 	
@@ -73,7 +73,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the questId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty QuestIdProperty() {
+	public final IntegerProperty questIdProperty() {
 	   return questId;
 	}
 	
@@ -82,7 +82,7 @@ public class CharacterPlayerQuestLog {
 	 * Sets the questId
 	 * @param setQuestId
 	 */
-	public void SetQuestId(int setQuestId) {
+	public void setQuestId(int setQuestId) {
 		this.questId = new SimpleIntegerProperty(setQuestId);
 	}
 	
@@ -90,7 +90,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the questStatus
 	 * @return questStatus
 	 */
-	public int GetQuestStatus() {
+	public int getQuestStatus() {
 		return questStatus.get();
 	}
 	
@@ -98,7 +98,7 @@ public class CharacterPlayerQuestLog {
 	 * Gets the QuestStatus property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty QuestStatusProperty() {
+	public final IntegerProperty questStatusProperty() {
 	   return questStatus;
 	}
 	
@@ -107,7 +107,7 @@ public class CharacterPlayerQuestLog {
 	 * Sets the questStatus
 	 * @param setQuestStatus
 	 */
-	public void SetQuestStatus(int setQuestStatus) {
+	public void setQuestStatus(int setQuestStatus) {
 		this.questStatus = new SimpleIntegerProperty(setQuestStatus);
 	}
 	

@@ -83,46 +83,46 @@ public class MainDashboardViewControl extends ViewControl {
 	public MainDashboardViewControl(MainDashboardControl theMainDashbaordControl, Stage theMainDashboardStage) throws SQLException {
 		this.theMainDashbaordControl = theMainDashbaordControl;
 		this.theMainDashboardStage = theMainDashboardStage;
-		this.CreateEditViewControls();
-		this.theMainDashboardScene = this.CreateScene("MainDashboardView", this);
-		this.theEditGameStoryScene = this.CreateScene("EditGameStory", this.theEditGameStoryViewControl);
+		this.createEditViewControls();
+		this.theMainDashboardScene = this.createScene("MainDashboardView", this);
+		this.theEditGameStoryScene = this.createScene("EditGameStory", this.theEditGameStoryViewControl);
 		
-		this.theManagePlayersAndAdminsScene = this.CreateScene("ManagePlayersAndAdminsView", new ManagePlayersAndAdminsViewControl(this));
-		this.theEditPlayersAndAdminsScene = this.CreateScene("EditPlayersAndAdminsView", this.theEditPlayersAndAdminsViewControl);
-		this.theCreatePlayersAndAdminsScene = this.CreateScene("CreatePlayersAndAdminsView", new CreatePlayersAndAdminsViewControl(this));
+		this.theManagePlayersAndAdminsScene = this.createScene("ManagePlayersAndAdminsView", new ManagePlayersAndAdminsViewControl(this));
+		this.theEditPlayersAndAdminsScene = this.createScene("EditPlayersAndAdminsView", this.theEditPlayersAndAdminsViewControl);
+		this.theCreatePlayersAndAdminsScene = this.createScene("CreatePlayersAndAdminsView", new CreatePlayersAndAdminsViewControl(this));
 		
-		this.theManageItemsScene = this.CreateScene("ManageItemsView", new ManageItemsViewControl(this));
-		this.theEditItemsScene = this.CreateScene("EditItemsView", this.theEditItemsViewControl);
-		this.theCreateItemsScene = this.CreateScene("CreateItemsView", new CreateItemsViewControl(this));
+		this.theManageItemsScene = this.createScene("ManageItemsView", new ManageItemsViewControl(this));
+		this.theEditItemsScene = this.createScene("EditItemsView", this.theEditItemsViewControl);
+		this.theCreateItemsScene = this.createScene("CreateItemsView", new CreateItemsViewControl(this));
 		
-		this.theManageNPCCharactersScene = this.CreateScene("ManageNPCCharactersView", new ManageNPCCharactersViewControl(this));
-		this.theEditNPCCharactersScene = this.CreateScene("EditNPCCharactersView", this.theEditNPCCharactersViewControl);
-		this.theCreateNPCCharactersScene = this.CreateScene("CreateNPCCharactersView", new CreateNPCCharactersViewControl(this));
+		this.theManageNPCCharactersScene = this.createScene("ManageNPCCharactersView", new ManageNPCCharactersViewControl(this));
+		this.theEditNPCCharactersScene = this.createScene("EditNPCCharactersView", this.theEditNPCCharactersViewControl);
+		this.theCreateNPCCharactersScene = this.createScene("CreateNPCCharactersView", new CreateNPCCharactersViewControl(this));
 		
-		this.theManageQuestChainsScene = this.CreateScene("ManageQuestChainsView", new ManageConflictsViewControl(this));
-		this.theManageTemplateVoyageAndReturnScene = this.CreateScene("ManageTemplateVoyageView", new EditConflictQuestsViewControl(this, "Voyage and Return"));
-		this.theManageTemplateTheQuestScene = this.CreateScene("ManageTemplateTheQuestView", new EditConflictQuestsViewControl(this, "The Quest"));
-		this.theManageTemplateDefeatTheMonsterScene = this.CreateScene("ManageTemplateMonsterView", new EditConflictQuestsViewControl(this, "Defeat the Monster"));
-		this.theManageTemplateCustomScene = this.CreateScene("ManageTemplateCustomView", new EditConflictQuestsViewControl(this, "Custom"));
+		this.theManageQuestChainsScene = this.createScene("ManageQuestChainsView", new ManageConflictsViewControl(this));
+		this.theManageTemplateVoyageAndReturnScene = this.createScene("ManageTemplateVoyageView", new EditConflictQuestsViewControl(this, "Voyage and Return"));
+		this.theManageTemplateTheQuestScene = this.createScene("ManageTemplateTheQuestView", new EditConflictQuestsViewControl(this, "The Quest"));
+		this.theManageTemplateDefeatTheMonsterScene = this.createScene("ManageTemplateMonsterView", new EditConflictQuestsViewControl(this, "Defeat the Monster"));
+		this.theManageTemplateCustomScene = this.createScene("ManageTemplateCustomView", new EditConflictQuestsViewControl(this, "Custom"));
 	} 
 	
 	public GameStory getTheGameStory() {
-		return this.theEditGameStoryViewControl.GetGameStoryEditControl().getGameStoryToEdit();
+		return this.theEditGameStoryViewControl.getGameStoryEditControl().getGameStoryToEdit();
 	}
 	
 	/**
 	 * Gets the Player object that is logged in as Admin
 	 * @return the Admin Player Object
 	 */
-	public Player GetTheAdminPlayer() {
-		return this.theMainDashbaordControl.GetTheAdminPlayer();
+	public Player getTheAdminPlayer() {
+		return this.theMainDashbaordControl.getTheAdminPlayer();
 	}
 	
 	/**
 	 * Sets the view control reference in the logic control the theManagePlayersAndAdminsViewControl
 	 * @param theManagePlayersAndAdminsViewControl
 	 */
-	public void SetTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
+	public void setTheManagePlayersAndAdminsViewControl(ManagePlayersAndAdminsViewControl theManagePlayersAndAdminsViewControl) {
 		this.theManagePlayersAndAdminsViewControl = theManagePlayersAndAdminsViewControl;
 	}
 	
@@ -130,7 +130,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theManageNPCCharactersViewControl
 	 * @param theManageNPCCharactersViewControl
 	 */
-	public void SetTheManageNPCCharactersViewControl(ManageNPCCharactersViewControl theManageNPCCharactersViewControl) {
+	public void setTheManageNPCCharactersViewControl(ManageNPCCharactersViewControl theManageNPCCharactersViewControl) {
 		this.theManageNPCCharactersViewControl = theManageNPCCharactersViewControl;
 	}
 
@@ -138,7 +138,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theManageItemsViewControl
 	 * @param theManageItemsViewControl
 	 */
-	public void SetTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
+	public void setTheManageItemsViewControl(ManageItemsViewControl theManageItemsViewControl) {
 		this.theManageItemsViewControl = theManageItemsViewControl;
 	}
 
@@ -146,7 +146,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theManageQuestChainsViewControl
 	 * @param theManageQuestChainsViewControl
 	 */
-	public void SetTheManageQuestChainsViewControl(ManageConflictsViewControl theManageQuestChainsViewControl) {
+	public void setTheManageQuestChainsViewControl(ManageConflictsViewControl theManageQuestChainsViewControl) {
 		this.theManageQuestChainsViewControl = theManageQuestChainsViewControl;
 	}
 
@@ -154,7 +154,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theEditConflictQuestsViewControl
 	 * @param theEditConflictQuestsViewControl
 	 */
-	public void SetTheEditConflictQuestsViewControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl) {
+	public void setTheEditConflictQuestsViewControl(EditConflictQuestsViewControl theEditConflictQuestsViewControl) {
 		this.theEditConflictQuestsViewControl = theEditConflictQuestsViewControl;
 	}
 
@@ -162,7 +162,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theEditConflictVoyageViewControl
 	 * @param theEditConflictVoyageViewControl
 	 */
-	public void SetTheEditConflictVoyageViewControl(EditConflictQuestsViewControl theEditConflictVoyageViewControl) {
+	public void setTheEditConflictVoyageViewControl(EditConflictQuestsViewControl theEditConflictVoyageViewControl) {
 		this.theEditConflictVoyageViewControl = theEditConflictVoyageViewControl;
 	}
 
@@ -170,7 +170,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theEditConflictMonsterViewControl
 	 * @param theEditConflictMonsterViewControl
 	 */
-	public void SetTheEditConflictMonsterViewControl(EditConflictQuestsViewControl theEditConflictMonsterViewControl) {
+	public void setTheEditConflictMonsterViewControl(EditConflictQuestsViewControl theEditConflictMonsterViewControl) {
 		this.theEditConflictMonsterViewControl = theEditConflictMonsterViewControl;
 	}
 
@@ -178,7 +178,7 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the view control reference in the logic control the theEditConflictCustomViewControl
 	 * @param theEditConflictCustomViewControl
 	 */
-	public void SetTheEditConflictCustomViewControl(EditConflictQuestsViewControl theEditConflictCustomViewControl) {
+	public void setTheEditConflictCustomViewControl(EditConflictQuestsViewControl theEditConflictCustomViewControl) {
 		this.theEditConflictCustomViewControl = theEditConflictCustomViewControl;
 	}
 	
@@ -186,42 +186,42 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Sets the id of the Player to be edited
 	 * @param playerIdToEdit
 	 */
-	public void SetPlayerToEdit(int playerIdToEdit) {
-		theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().SetSelectedPlayer(playerIdToEdit);
-		theEditPlayersAndAdminsViewControl.SetFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.GetEditPlayersAndAdminsControl().GetSelectedPlayer());
+	public void setPlayerToEdit(int playerIdToEdit) {
+		theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().setSelectedPlayer(playerIdToEdit);
+		theEditPlayersAndAdminsViewControl.setFormForSelectedPlayer(theEditPlayersAndAdminsViewControl.getEditPlayersAndAdminsControl().getSelectedPlayer());
 	}
 
 	/**
 	 * Sets the id of the NPCCharacter to be edited
 	 * @param npcIdToEdit
 	 */
-	public void SetNPCToEdit(int npcIdToEdit) {
-		theEditNPCCharactersViewControl.GetEditNPCCharactersControl().SetSelectedNPC(npcIdToEdit);
-		theEditNPCCharactersViewControl.SetFormForSelectedNPC(theEditNPCCharactersViewControl.GetEditNPCCharactersControl().GetSelectedNPC());
+	public void setNPCToEdit(int npcIdToEdit) {
+		theEditNPCCharactersViewControl.getEditNPCCharactersControl().setSelectedNPC(npcIdToEdit);
+		theEditNPCCharactersViewControl.setFormForSelectedNPC(theEditNPCCharactersViewControl.getEditNPCCharactersControl().GetSelectedNPC());
 	}
 
 	/**
 	 * Sets the id of the Item to be edited
 	 * @param itemIdToEdit
 	 */
-	public void SetItemToEdit(int itemIdToEdit) {
-		theEditItemsViewControl.GetEditItemsControl().SetSelectedItem(itemIdToEdit);
-		theEditItemsViewControl.SetFormForSelectedItem(theEditItemsViewControl.GetEditItemsControl().GetSelectedItem());
+	public void setItemToEdit(int itemIdToEdit) {
+		theEditItemsViewControl.getEditItemsControl().setSelectedItem(itemIdToEdit);
+		theEditItemsViewControl.setFormForSelectedItem(theEditItemsViewControl.getEditItemsControl().getSelectedItem());
 	}
 	
-	public void SetConflictToEdit(Conflict conflictToEdit, String arcType) {
+	public void setConflictToEdit(Conflict conflictToEdit, String arcType) {
     	switch(arcType) {
     	case "The Quest":
-    		this.theEditConflictQuestsViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		this.theEditConflictQuestsViewControl.getTheManageQuestsControl().setTheConflictToEdit(conflictToEdit);
     		break;
     	case "Voyage and Return":
-    		this.theEditConflictVoyageViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		this.theEditConflictVoyageViewControl.getTheManageQuestsControl().setTheConflictToEdit(conflictToEdit);
     		break;
     	case "Defeat the Monster":
-    		this.theEditConflictMonsterViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		this.theEditConflictMonsterViewControl.getTheManageQuestsControl().setTheConflictToEdit(conflictToEdit);
     		break;
     	case "Custom":
-    		this.theEditConflictCustomViewControl.GetTheManageQuestsControl().SetTheConflictToEdit(conflictToEdit);
+    		this.theEditConflictCustomViewControl.getTheManageQuestsControl().setTheConflictToEdit(conflictToEdit);
     		break;
 		default: break;
 	}
@@ -230,57 +230,57 @@ public class MainDashboardViewControl extends ViewControl {
 	
 	@FXML
 	private void initialize() {
-		this.gameStoryDashboardLabel.setText(this.getTheGameStory().GetGameStoryName() + " Management Dashboard");
+		this.gameStoryDashboardLabel.setText(this.getTheGameStory().getGameStoryName() + " Management Dashboard");
 	}
 
 	@FXML
 	private void handleManageEditGameStory() throws SQLException {
-		SetMainDashboardStage("editGameStory");
+		setMainDashboardStage("editGameStory");
 	}
 	
 	@FXML
 	private void handleLogoutButtonAction() throws Exception
 	{
-		theMainDashbaordControl.ResetLoginView();
+		theMainDashbaordControl.resetLoginView();
 		HideMainDashboardView();
 	}
 	
 	@FXML
 	public void handleManagePlayersAndAdminsButton() throws Exception
 	{
-		SetMainDashboardStage("managePlayersAndAdmins");
+		setMainDashboardStage("managePlayersAndAdmins");
 	}
 	
 	@FXML
 	private void handleItemsButton() throws Exception
 	{
-		SetMainDashboardStage("manageItems");
+		setMainDashboardStage("manageItems");
 	}
 	
 	@FXML
 	private void handleNPCCharactersButton() throws Exception
 	{
-		SetMainDashboardStage("manageNPCCharacters");
+		setMainDashboardStage("manageNPCCharacters");
 	}
 	
 	@FXML
 	private void handleQuestChainsButton() throws Exception
 	{
-		SetMainDashboardStage("manageQuestChains");
+		setMainDashboardStage("manageQuestChains");
 	}
 	
 	/**
 	 * Loads the new MainDashboard when the dashboard is first accessed
 	 * @throws SQLException 
 	 */
-	public void LoadMainDashboardView() throws SQLException {
-		SetMainDashboardStage("mainDashboard");
+	public void loadMainDashboardView() throws SQLException {
+		setMainDashboardStage("mainDashboard");
 	}
 	
 	/**
 	 * Enabiles the view of the MainDashboard
 	 */
-	public void ShowMainDashboardView() {
+	public void showMainDashboardView() {
 		theMainDashboardStage.show();
 	}
 	
@@ -295,8 +295,8 @@ public class MainDashboardViewControl extends ViewControl {
 	 * Get the instance of the DB Connection for this run of the program
 	 * @return	The DbConnection instance
 	 */
-	public MySQLAccess GetDBConnection() {
-		return theMainDashbaordControl.GetDBConnection();
+	public MySQLAccess getDBConnection() {
+		return theMainDashbaordControl.getDBConnection();
 	}
 	
 	/**
@@ -304,11 +304,11 @@ public class MainDashboardViewControl extends ViewControl {
 	 * @param theSceneNameToLoad	the String name of the scene to load
 	 * @throws SQLException 
 	 */
-	public void SetMainDashboardStage(String theSceneNameToLoad) throws SQLException {
+	public void setMainDashboardStage(String theSceneNameToLoad) throws SQLException {
 		Scene theSceneToStage = null;
 		switch (theSceneNameToLoad) {
 			case "mainDashboard":
-				this.gameStoryDashboardLabel.setText(this.getTheGameStory().GetGameStoryName() + " Management Dashboard");
+				this.gameStoryDashboardLabel.setText(this.getTheGameStory().getGameStoryName() + " Management Dashboard");
 				theSceneToStage = theMainDashboardScene;
 				break;
 			case "managePlayersAndAdmins":
@@ -367,17 +367,17 @@ public class MainDashboardViewControl extends ViewControl {
 			default: break;
 		}
         theMainDashboardStage.setScene(theSceneToStage);
-        ShowMainDashboardView();
+        showMainDashboardView();
 	}
 	
-	private void CreateEditViewControls() throws SQLException {
+	private void createEditViewControls() throws SQLException {
         theEditPlayersAndAdminsViewControl = new EditPlayersAndAdminsViewControl(this);
         theEditItemsViewControl = new EditItemsViewControl(this);
         theEditNPCCharactersViewControl = new EditNPCCharactersViewControl(this);
         theEditGameStoryViewControl = new EditGameStoryViewControl(this);
 	}
 	
-	private Scene CreateScene(String viewFXMLFilename, ViewControl theViewControl) {
+	private Scene createScene(String viewFXMLFilename, ViewControl theViewControl) {
         try {
             theFxmlLoader = new FXMLLoader(App.class.getResource(viewFXMLFilename + ".fxml"));
             theFxmlLoader.setController(theViewControl);

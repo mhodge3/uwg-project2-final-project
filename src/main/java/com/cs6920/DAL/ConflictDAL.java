@@ -16,7 +16,7 @@ import com.cs6920.model.Conflict;
  */
 public class ConflictDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	/**
 	 * Creates a ConflictDAL object to be used by the controllers
@@ -36,12 +36,12 @@ public class ConflictDAL {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public Boolean CreateConflict(int conflictMinLvl, int conflictTemplate, 
+	public Boolean createConflict(int conflictMinLvl, int conflictTemplate, 
 								  String conflictName, String conflictDescription, String arcType) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".conflicts " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".conflicts " + 
 					"(conflict_min_level, " +
 					"conflict_template, " +
 					"conflict_name, " +
@@ -49,7 +49,7 @@ public class ConflictDAL {
 					"conflict_arc_type) " +
 					"VALUES (?, ?, ?, ?, ?)";		
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(conflictMinLvl));
 			 preparedStmt.setString (2, String.valueOf(conflictTemplate));
 			 preparedStmt.setString (3, conflictName);
@@ -61,7 +61,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -72,28 +72,28 @@ public class ConflictDAL {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public Conflict GetQuestByID(int conflictId) throws SQLException {
+	public Conflict getQuestByID(int conflictId) throws SQLException {
 		Conflict conflict = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".conflicts "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".conflicts.conflict_id = \"" + conflictId + "\"";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".conflicts "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".conflicts.conflict_id = \"" + conflictId + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	conflict = new Conflict();
-            	conflict.SetConflictId(results.getInt("conflict_id"));
-            	conflict.SetConflictMinLvl(results.getInt("conflict_min_level"));
-            	conflict.SetConflictTemplate(results.getInt("conflict_template"));
-            	conflict.SetConflictName(results.getString("conflict_name"));
-            	conflict.SetConflictDescription(results.getString("conflict_description"));
-            	conflict.SetConflictArcType(results.getString("conflict_arc_type"));
+            	conflict.setConflictId(results.getInt("conflict_id"));
+            	conflict.setConflictMinLvl(results.getInt("conflict_min_level"));
+            	conflict.setConflictTemplate(results.getInt("conflict_template"));
+            	conflict.setConflictName(results.getString("conflict_name"));
+            	conflict.setConflictDescription(results.getString("conflict_description"));
+            	conflict.setConflictArcType(results.getString("conflict_arc_type"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return conflict;
     }
@@ -104,28 +104,28 @@ public class ConflictDAL {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public ArrayList<Conflict> GetConflicts() throws SQLException {
+	public ArrayList<Conflict> getConflicts() throws SQLException {
 		ArrayList<Conflict> conflicts = new ArrayList<Conflict>();
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".conflicts ";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".conflicts ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	Conflict conflict = new Conflict();
-            	conflict.SetConflictId(results.getInt("conflict_id"));
-            	conflict.SetConflictMinLvl(results.getInt("conflict_min_level"));
-            	conflict.SetConflictTemplate(results.getInt("conflict_template"));
-            	conflict.SetConflictName(results.getString("conflict_name"));
-            	conflict.SetConflictDescription(results.getString("conflict_description"));
-            	conflict.SetConflictArcType(results.getString("conflict_arc_type"));
+            	conflict.setConflictId(results.getInt("conflict_id"));
+            	conflict.setConflictMinLvl(results.getInt("conflict_min_level"));
+            	conflict.setConflictTemplate(results.getInt("conflict_template"));
+            	conflict.setConflictName(results.getString("conflict_name"));
+            	conflict.setConflictDescription(results.getString("conflict_description"));
+            	conflict.setConflictArcType(results.getString("conflict_arc_type"));
             	conflicts.add(conflict);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return conflicts;
     }
@@ -136,28 +136,28 @@ public class ConflictDAL {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public Conflict GetQuestByName(String conflictName) throws SQLException {
+	public Conflict getQuestByName(String conflictName) throws SQLException {
 		Conflict conflict = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".conflicts "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".conflicts.conflict_name = \"" + conflictName + "\"";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".conflicts "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".conflicts.conflict_name = \"" + conflictName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	conflict = new Conflict();
-            	conflict.SetConflictId(results.getInt("conflict_id"));
-            	conflict.SetConflictMinLvl(results.getInt("conflict_min_level"));
-            	conflict.SetConflictTemplate(results.getInt("conflict_template"));
-            	conflict.SetConflictName(results.getString("conflict_name"));
-            	conflict.SetConflictDescription(results.getString("conflict_description"));
-            	conflict.SetConflictArcType(results.getString("conflict_arc_type"));
+            	conflict.setConflictId(results.getInt("conflict_id"));
+            	conflict.setConflictMinLvl(results.getInt("conflict_min_level"));
+            	conflict.setConflictTemplate(results.getInt("conflict_template"));
+            	conflict.setConflictName(results.getString("conflict_name"));
+            	conflict.setConflictDescription(results.getString("conflict_description"));
+            	conflict.setConflictArcType(results.getString("conflict_arc_type"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return conflict;
     }
@@ -173,12 +173,12 @@ public class ConflictDAL {
 	 * @return True if updated | False if not updated
 	 * @throws SQLException
 	 */
-	public Boolean UpdateConflict(Conflict conflict, int conflictMinLvl, int conflictTemplate, 
+	public Boolean updateConflict(Conflict conflict, int conflictMinLvl, int conflictTemplate, 
 			  String conflictName, String conflictDescription, String arcType) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".conflicts " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".conflicts " + 
 					"SET " +
 					"conflict_min_level = ?, " +
 					"conflict_template = ?, " +
@@ -187,20 +187,20 @@ public class ConflictDAL {
 					"conflict_arc_type = ? " +
 					"WHERE conflict_id = ?";		
 
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			preparedStmt.setString (1, String.valueOf(conflictMinLvl));
 			preparedStmt.setString (2, String.valueOf(conflictTemplate));
 			preparedStmt.setString (3, conflictName);
 			preparedStmt.setString (4, conflictDescription);
 			preparedStmt.setString (5, arcType);
-			preparedStmt.setString (6, String.valueOf(conflict.GetConflictId()));
+			preparedStmt.setString (6, String.valueOf(conflict.getConflictId()));
 			preparedStmt.execute();
 			success = true;
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		finally {
-			conn.close();
+			theConnection.close();
 		}
 		return success;
 	}
@@ -211,14 +211,14 @@ public class ConflictDAL {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public boolean DeleteConflict(Conflict conflict) throws SQLException {
+	public boolean deleteConflict(Conflict conflict) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".conflicts " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".conflicts " + 
 					"WHERE conflict_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(conflict.GetConflictId()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(conflict.getConflictId()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -226,7 +226,7 @@ public class ConflictDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

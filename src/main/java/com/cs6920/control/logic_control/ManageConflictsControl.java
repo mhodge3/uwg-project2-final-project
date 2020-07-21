@@ -39,52 +39,51 @@ public class ManageConflictsControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateConflictArrayList() throws SQLException {
+	public void updateConflictArrayList() throws SQLException {
 		existingConflictArrayList = new ArrayList<Conflict>();
-		//existingConflictArrayList = playerDAL.GetPlayers();
-		existingConflictArrayList = this.theConflictDAL.GetConflicts();
+		existingConflictArrayList = this.theConflictDAL.getConflicts();
 		observableConflictList.clear();
 		observableConflictList.addAll(existingConflictArrayList);
 	}
 	
 	public void createTheQuestConflict() throws SQLException {
-		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "The Quest");
-		this.UpdateConflictArrayList();
+		this.theConflictDAL.createConflict(1, 0, "name - change me", "description - change me", "The Quest");
+		this.updateConflictArrayList();
 	}
 	
 	public void createVoyageConflict() throws SQLException {
-		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Voyage and Return");
-		this.UpdateConflictArrayList();
+		this.theConflictDAL.createConflict(1, 0, "name - change me", "description - change me", "Voyage and Return");
+		this.updateConflictArrayList();
 	}
 	
 	public void createMonsterConflict() throws SQLException {
-		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Defeat the Monster");
-		this.UpdateConflictArrayList();
+		this.theConflictDAL.createConflict(1, 0, "name - change me", "description - change me", "Defeat the Monster");
+		this.updateConflictArrayList();
 	}
 	
 	public void createCustomConflict() throws SQLException {
-		this.theConflictDAL.CreateConflict(1, 0, "name - change me", "description - change me", "Custom");
-		this.UpdateConflictArrayList();
+		this.theConflictDAL.createConflict(1, 0, "name - change me", "description - change me", "Custom");
+		this.updateConflictArrayList();
 	}
 	
 	public void deleteTheQuestConflict(int conflictIdToDelete) throws SQLException {
-		ArrayList<Quest> thisConflictsQuests = this.theQuestsController.GetQuestsByConflictID(conflictIdToDelete);
+		ArrayList<Quest> thisConflictsQuests = this.theQuestsController.getQuestsByConflictID(conflictIdToDelete);
 		for (Quest conflictQuest : thisConflictsQuests) {
-			this.theQuestItemsDAL.DeleteQuestItemsByQuestId(conflictQuest.GetQuestId());
-			this.theQuestsController.DeleteQuest(conflictQuest);
+			this.theQuestItemsDAL.deleteQuestItemsByQuestId(conflictQuest.getQuestId());
+			this.theQuestsController.deleteQuest(conflictQuest);
 		}
 		for (Conflict conflict : existingConflictArrayList) {
-			if (conflict.GetConflictId() == conflictIdToDelete) {
-				this.theConflictDAL.DeleteConflict(conflict);
+			if (conflict.getConflictId() == conflictIdToDelete) {
+				this.theConflictDAL.deleteConflict(conflict);
 				break;
 			}
 		}
-		this.UpdateConflictArrayList();
+		this.updateConflictArrayList();
 	}
 	
 	public Conflict getConflictById(int conflictId) {
 		for (Conflict conflict : this.existingConflictArrayList) {
-			if (conflict.GetConflictId() == conflictId) {
+			if (conflict.getConflictId() == conflictId) {
 				return conflict;
 			}
 		}

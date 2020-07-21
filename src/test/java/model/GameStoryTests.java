@@ -26,8 +26,8 @@ public class GameStoryTests {
 	@Test
 	public void testGetGameStoryNameBeTom() {
 		GameStory testItem = new GameStory();
-		testItem.SetGameStoryName("Tom");
-		assertEquals("Tom", testItem.GetGameStoryName());
+		testItem.setGameStoryName("Tom");
+		assertEquals("Tom", testItem.getGameStoryName());
 	}
 	
 	/**
@@ -37,8 +37,8 @@ public class GameStoryTests {
 	@Test
 	public void testGetGameStorySummaryBeTom() {
 		GameStory testItem = new GameStory();
-		testItem.SetGameStorySummary("Tom");
-		assertEquals("Tom", testItem.GetGameStorySummary());
+		testItem.setGameStorySummary("Tom");
+		assertEquals("Tom", testItem.getGameStorySummary());
 	}
 	
 	/**
@@ -48,8 +48,8 @@ public class GameStoryTests {
 	@Test
 	public void testGetPlayerLevelCapShouldBe1234() {
 		GameStory testItem = new GameStory();
-		testItem.SetPlayerLevelCap(1234);
-		assertEquals(1234, testItem.GetPlayerLevelCap());
+		testItem.setPlayerLevelCap(1234);
+		assertEquals(1234, testItem.getPlayerLevelCap());
 	}
 	
 	/**
@@ -59,8 +59,8 @@ public class GameStoryTests {
 	@Test
 	public void testGetNpcCharacterLevelCapCapShouldBe1234() {
 		GameStory testItem = new GameStory();
-		testItem.SetNpcCharacterLevelCap(1234);
-		assertEquals(1234, testItem.GetNpcCharacterLevelCap());
+		testItem.setNpcCharacterLevelCap(1234);
+		assertEquals(1234, testItem.getNpcCharacterLevelCap());
 	}
 
 	

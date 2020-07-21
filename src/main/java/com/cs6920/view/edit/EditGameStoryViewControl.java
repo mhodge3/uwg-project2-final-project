@@ -44,42 +44,42 @@ public class EditGameStoryViewControl extends ViewControl {
 	 */
     public EditGameStoryViewControl(MainDashboardViewControl theMainDashboardViewControl) throws SQLException {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.gameStoryEditControl = new EditGameStoryControl(theMainDashboardViewControl.GetDBConnection());
+    	this.gameStoryEditControl = new EditGameStoryControl(theMainDashboardViewControl.getDBConnection());
     }
     
     /**
      * Gets logic control for this Edit Game Story view control
      * @return the Item edited
      */
-    public EditGameStoryControl GetGameStoryEditControl() {
+    public EditGameStoryControl getGameStoryEditControl() {
     	return gameStoryEditControl;
     }
     
     @FXML
     public void initialize() {
-    	this.SetFormForSelectedGameStory(gameStoryEditControl.getGameStoryToEdit());
+    	this.setFormForSelectedGameStory(gameStoryEditControl.getGameStoryToEdit());
     }
     
     /**
      * Sets the form values to those of the GameStory to edit
      * @param theGameStoryToEdit
      */
-    public void SetFormForSelectedGameStory(GameStory theGameStoryToEdit) {
-    	editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.GetGameStoryName()));
-    	editGameStorySummaryTextArea.setText(theGameStoryToEdit.GetGameStorySummary());
-    	playerLevelCapTextField.setText(String.valueOf(theGameStoryToEdit.GetPlayerLevelCap()));
+    public void setFormForSelectedGameStory(GameStory theGameStoryToEdit) {
+    	editGameStoryNameTextBox.setText(String.valueOf(theGameStoryToEdit.getGameStoryName()));
+    	editGameStorySummaryTextArea.setText(theGameStoryToEdit.getGameStorySummary());
+    	playerLevelCapTextField.setText(String.valueOf(theGameStoryToEdit.getPlayerLevelCap()));
     }
     
 	@FXML
 	private void handleGameStoryEditCancelButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
+		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
     
 	@FXML
 	private void handleGameStorySaveButton() throws SQLException {
 		String gameStoryCreationError = null;
 		try {
-			gameStoryCreationError = gameStoryEditControl.UpdateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText(), Integer.parseInt(playerLevelCapTextField.getText()), Integer.parseInt(npcLevelCapTextField.getText()));
+			gameStoryCreationError = gameStoryEditControl.updateGameStory(editGameStoryNameTextBox.getText(), editGameStorySummaryTextArea.getText(), Integer.parseInt(playerLevelCapTextField.getText()), Integer.parseInt(npcLevelCapTextField.getText()));
 		} catch (Exception e) {
 			gameStoryCreationError = e.getMessage();
 		}
@@ -96,7 +96,7 @@ public class EditGameStoryViewControl extends ViewControl {
 		alert.setHeaderText("Game Story Edit Status");
 		alert.setContentText("The Game Story was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.SetMainDashboardStage("mainDashboard");
+		theMainDashboardViewControl.setMainDashboardStage("mainDashboard");
 	}
 
 }

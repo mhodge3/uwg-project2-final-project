@@ -12,17 +12,17 @@ import com.cs6920.model.NpcCharacter;
  */
 public class NpcCharacterDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	public NpcCharacterDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
 	}
 	
-	public NpcCharacter GetNpcById(int npcId) throws SQLException {
+	public NpcCharacter getNpcById(int npcId) throws SQLException {
 		NpcCharacter npc = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT character_npc_id, " +  
             	    "character_npc_name, " + 
             	    "character_npc_description, " +  
@@ -32,35 +32,35 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z,  " +
             	    "character_level  " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
+            	"FROM " + this.sqlAccess.getTheDBName() + ".characters_npc " +
             	"WHERE character_npc_id = " + String.valueOf(npcId);
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 npc = new NpcCharacter();
-                npc.SetNpcId(Integer.parseInt(results.getString("character_npc_id")));
-                npc.SetNpcName(results.getString("character_npc_name"));
-                npc.SetNpcDescprition(results.getString("character_npc_description"));
-                npc.SetNpcType(Integer.parseInt(results.getString("character_npc_type")));
-                npc.SetNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
-                npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
-                npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
-                npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
-                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
+                npc.setNpcId(Integer.parseInt(results.getString("character_npc_id")));
+                npc.setNpcName(results.getString("character_npc_name"));
+                npc.setNpcDescprition(results.getString("character_npc_description"));
+                npc.setNpcType(Integer.parseInt(results.getString("character_npc_type")));
+                npc.setNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
+                npc.setNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
+                npc.setNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
+                npc.setNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.setNpcLevel(Integer.parseInt(results.getString("character_level")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return npc;
     }
 	
-	public NpcCharacter GetNpcByName(String characterName) throws SQLException {
+	public NpcCharacter getNpcByName(String characterName) throws SQLException {
 		NpcCharacter npc = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT character_npc_id, " +  
             	    "character_npc_name, " + 
             	    "character_npc_description, " +  
@@ -70,36 +70,36 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z,  " +
             	    "character_level  " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " +
+            	"FROM " + this.sqlAccess.getTheDBName() + ".characters_npc " +
             	"WHERE character_npc_name = \"" + characterName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
                 npc = new NpcCharacter();
-                npc.SetNpcId(Integer.parseInt(results.getString("character_npc_id")));
-                npc.SetNpcName(results.getString("character_npc_name"));
-                npc.SetNpcDescprition(results.getString("character_npc_description"));
-                npc.SetNpcType(Integer.parseInt(results.getString("character_npc_type")));
-                npc.SetNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
-                npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
-                npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
-                npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
-                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
+                npc.setNpcId(Integer.parseInt(results.getString("character_npc_id")));
+                npc.setNpcName(results.getString("character_npc_name"));
+                npc.setNpcDescprition(results.getString("character_npc_description"));
+                npc.setNpcType(Integer.parseInt(results.getString("character_npc_type")));
+                npc.setNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
+                npc.setNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
+                npc.setNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
+                npc.setNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.setNpcLevel(Integer.parseInt(results.getString("character_level")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return npc;
     }
 	
-	public ArrayList<NpcCharacter> GetAllNpc() throws SQLException {
+	public ArrayList<NpcCharacter> getAllNpc() throws SQLException {
 		
 		ArrayList<NpcCharacter> allNpc = new ArrayList<NpcCharacter>();
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT character_npc_id, " +  
             	    "character_npc_name, " + 
             	    "character_npc_description, " +  
@@ -109,35 +109,35 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_y, " +
             	    "character_npc_pos_z,  " +
             	    "character_level  " +
-            	"FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc ";
+            	"FROM " + this.sqlAccess.getTheDBName() + ".characters_npc ";
             ResultSet results = statement.executeQuery(query);
             while (results.next() != false) {
             	NpcCharacter npc = new NpcCharacter();
-                npc.SetNpcId(Integer.parseInt(results.getString("character_npc_id")));
-                npc.SetNpcName(results.getString("character_npc_name"));
-                npc.SetNpcDescprition(results.getString("character_npc_description"));
-                npc.SetNpcType(Integer.parseInt(results.getString("character_npc_type")));
-                npc.SetNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
-                npc.SetNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
-                npc.SetNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
-                npc.SetNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
-                npc.SetNpcLevel(Integer.parseInt(results.getString("character_level")));
+                npc.setNpcId(Integer.parseInt(results.getString("character_npc_id")));
+                npc.setNpcName(results.getString("character_npc_name"));
+                npc.setNpcDescprition(results.getString("character_npc_description"));
+                npc.setNpcType(Integer.parseInt(results.getString("character_npc_type")));
+                npc.setNpcFaction(Integer.parseInt(results.getString("character_npc_faction")));
+                npc.setNpcPosX(Double.parseDouble(results.getString("character_npc_pos_x")));
+                npc.setNpcPosY(Double.parseDouble(results.getString("character_npc_pos_Y")));
+                npc.setNpcPosZ(Double.parseDouble(results.getString("character_npc_pos_Z")));
+                npc.setNpcLevel(Integer.parseInt(results.getString("character_level")));
                 allNpc.add(npc);
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return allNpc;
     }
 	
-	public Boolean CreateNpc(String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ, int npcLevel) throws SQLException {
+	public Boolean createNpc(String npcDescription, String npcName, int npcType, int npcFaction, double npcPosX, double npcPosY, double npcPosZ, int npcLevel) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".`characters_npc`" + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".`characters_npc`" + 
             	    "(character_npc_name, " +
             	    "character_npc_description, " +
             	    "character_npc_type, " + 
@@ -147,7 +147,7 @@ public class NpcCharacterDAL {
             	    "character_npc_pos_z, " +
             	    "character_level )" +
 					"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, npcName);
 			  preparedStmt.setString (2, npcDescription);
 			  preparedStmt.setString (3, String.valueOf(npcType));
@@ -163,16 +163,16 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
 	
-	public Boolean UpdateNpc(NpcCharacter oldCharacter, NpcCharacter updatedCharacter) throws SQLException {
+	public Boolean updateNpc(NpcCharacter oldCharacter, NpcCharacter updatedCharacter) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".characters_npc " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".characters_npc " + 
 					"SET " +
             	    "character_npc_name = ?, " +
             	    "character_npc_description = ?, " +
@@ -184,35 +184,35 @@ public class NpcCharacterDAL {
             	    "character_level = ? " +
             	    "WHERE character_npc_id = ?";
 		
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			  preparedStmt.setString (1, updatedCharacter.GetNpcName());
-			  preparedStmt.setString (2, updatedCharacter.GetNpcDescprition());
-			  preparedStmt.setString (3, String.valueOf(updatedCharacter.GetNpcType()));
-			  preparedStmt.setString (4, String.valueOf(updatedCharacter.GetNpcFaction()));
-			  preparedStmt.setString (5, String.valueOf(updatedCharacter.GetNpcPosX()));
-			  preparedStmt.setString (6, String.valueOf(updatedCharacter.GetNpcPosY()));
-			  preparedStmt.setString (7, String.valueOf(updatedCharacter.GetNpcPosZ()));
-			  preparedStmt.setString (8, String.valueOf(updatedCharacter.GetNpcLevel()));
-			  preparedStmt.setString (9, String.valueOf(oldCharacter.GetNpcId()));
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			  preparedStmt.setString (1, updatedCharacter.getNpcName());
+			  preparedStmt.setString (2, updatedCharacter.getNpcDescprition());
+			  preparedStmt.setString (3, String.valueOf(updatedCharacter.getNpcType()));
+			  preparedStmt.setString (4, String.valueOf(updatedCharacter.getNpcFaction()));
+			  preparedStmt.setString (5, String.valueOf(updatedCharacter.getNpcPosX()));
+			  preparedStmt.setString (6, String.valueOf(updatedCharacter.getNpcPosY()));
+			  preparedStmt.setString (7, String.valueOf(updatedCharacter.getNpcPosZ()));
+			  preparedStmt.setString (8, String.valueOf(updatedCharacter.getNpcLevel()));
+			  preparedStmt.setString (9, String.valueOf(oldCharacter.getNpcId()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
 	
-	public boolean DeleteNpc(NpcCharacter character) throws SQLException {
+	public boolean deleteNpc(NpcCharacter character) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".characters_npc " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".characters_npc " + 
 					"WHERE character_npc_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(character.GetNpcId()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(character.getNpcId()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -220,7 +220,7 @@ public class NpcCharacterDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

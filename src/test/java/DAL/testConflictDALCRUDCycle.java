@@ -27,61 +27,61 @@ class testConflictDALCRUDCycle {
 	@Test
 	@Order(1)
 	public void createACharactersPlayerInDB() throws Exception {
-		assertTrue(this.dal.CreateConflict(1, 2, "test1", "test1 desc", "arc test"));
+		assertTrue(this.dal.createConflict(1, 2, "test1", "test1 desc", "arc test"));
 	}
 	
 	@Test
 	@Order(2)
 	public void createAConflictDupilicatesInDB() throws Exception {
-		assertFalse(this.dal.CreateConflict(1, 2, "test1", "test1 desc", "arc test"));
+		assertFalse(this.dal.createConflict(1, 2, "test1", "test1 desc", "arc test"));
 		
 	}
 	
 	@Test
 	@Order(3)
 	public void getQuestByNameDB() throws Exception {
-		this.conflict = this.dal.GetQuestByName("test1");
+		this.conflict = this.dal.getQuestByName("test1");
 		assertNotNull(this.conflict);
-		assertEquals(this.conflict.GetConflictMinLvl(), 1);
-		assertEquals(this.conflict.GetConflictTemplate(), 2);
-		assertEquals(this.conflict.GetConflictName(), "test1");
-		assertEquals(this.conflict.GetConflictDescription(), "test1 desc");
-		assertEquals(this.conflict.GetConflictArcType(), "arc test");
+		assertEquals(this.conflict.getConflictMinLvl(), 1);
+		assertEquals(this.conflict.getConflictTemplate(), 2);
+		assertEquals(this.conflict.getConflictName(), "test1");
+		assertEquals(this.conflict.getConflictDescription(), "test1 desc");
+		assertEquals(this.conflict.getConflictArcType(), "arc test");
 	}
 	
 	@Test
 	@Order(4)
 	public void getQuestByIdDB() throws Exception {
-		this.conflict = this.dal.GetQuestByName("test1");
-		this.conflict = this.dal.GetQuestByID(this.conflict.GetConflictId());
+		this.conflict = this.dal.getQuestByName("test1");
+		this.conflict = this.dal.getQuestByID(this.conflict.getConflictId());
 		assertNotNull(this.conflict);
-		assertEquals(this.conflict.GetConflictMinLvl(), 1);
-		assertEquals(this.conflict.GetConflictTemplate(), 2);
-		assertEquals(this.conflict.GetConflictName(), "test1");
-		assertEquals(this.conflict.GetConflictDescription(), "test1 desc");
-		assertEquals(this.conflict.GetConflictArcType(), "arc test");
+		assertEquals(this.conflict.getConflictMinLvl(), 1);
+		assertEquals(this.conflict.getConflictTemplate(), 2);
+		assertEquals(this.conflict.getConflictName(), "test1");
+		assertEquals(this.conflict.getConflictDescription(), "test1 desc");
+		assertEquals(this.conflict.getConflictArcType(), "arc test");
 	}
 	
 	@Test
 	@Order(5)
 	public void updateQuestInTheDB() throws Exception {
-		this.conflict = this.dal.GetQuestByName("test1");
-		this.dal.UpdateConflict(conflict, 3, 4, "updated", "updated", "updated");
-		this.conflict = this.dal.GetQuestByName("updated");
+		this.conflict = this.dal.getQuestByName("test1");
+		this.dal.updateConflict(conflict, 3, 4, "updated", "updated", "updated");
+		this.conflict = this.dal.getQuestByName("updated");
 		assertNotNull(this.conflict);
-		assertEquals(this.conflict.GetConflictMinLvl(), 3);
-		assertEquals(this.conflict.GetConflictTemplate(), 4);
-		assertEquals(this.conflict.GetConflictName(), "updated");
-		assertEquals(this.conflict.GetConflictDescription(), "updated");
-		assertEquals(this.conflict.GetConflictArcType(), "updated");
+		assertEquals(this.conflict.getConflictMinLvl(), 3);
+		assertEquals(this.conflict.getConflictTemplate(), 4);
+		assertEquals(this.conflict.getConflictName(), "updated");
+		assertEquals(this.conflict.getConflictDescription(), "updated");
+		assertEquals(this.conflict.getConflictArcType(), "updated");
 	}
 	
 	@Test
 	@Order(6)
 	public void deleteANpcCharacterInDB() throws Exception {
-		this.conflict = this.dal.GetQuestByName("updated");
-		assertTrue(this.dal.DeleteConflict(conflict));
-		this.conflict = this.dal.GetQuestByName("updated");
+		this.conflict = this.dal.getQuestByName("updated");
+		assertTrue(this.dal.deleteConflict(conflict));
+		this.conflict = this.dal.getQuestByName("updated");
 		assertEquals(this.conflict, null);
 	}
 

@@ -26,7 +26,7 @@ public class LoginControl {
 	 * Gives this LoginControl a reference to its View control
 	 * @param theLoginViewControl
 	 */
-	public void SetLoginViewControl(LoginViewControl theLoginViewControl) {
+	public void setLoginViewControl(LoginViewControl theLoginViewControl) {
 		this.theLoginViewControl = theLoginViewControl;
 	}
 	
@@ -34,7 +34,7 @@ public class LoginControl {
 	 * Passes in the already created DB access object
 	 * @param theDBConnection the DB connection object
 	 */
-	public void SetTheDBConnection(MySQLAccess theDBConnection) {
+	public void setTheDBConnection(MySQLAccess theDBConnection) {
 		this.theDBConnection = theDBConnection;
 		this.theLoginDAL = new LoginDAL(theDBConnection);
 	}
@@ -43,10 +43,10 @@ public class LoginControl {
 	 * Check if a database can be accessed
 	 * @return true if yes, false if no
 	 */
-	public Boolean TestDBConnection(String host, String userName, String password, String dBName) {
-		BuildConnectionString(host, userName, password, dBName);
+	public Boolean testDBConnection(String host, String userName, String password, String dBName) {
+		buildConnectionString(host, userName, password, dBName);
 		try {
-			return theDBConnection.TestDBConnection();
+			return theDBConnection.testDBConnection();
 		} catch (Exception e) {
 			return false;
 		}
@@ -56,7 +56,7 @@ public class LoginControl {
 	 * Gets the DBConnection class instance for this run of the program
 	 * @return  The DBConnection class instance
 	 */
-	public MySQLAccess GetDBConnection() {
+	public MySQLAccess getDBConnection() {
 		return  theDBConnection;
 	}
 	
@@ -70,10 +70,10 @@ public class LoginControl {
 	 * @param loginPassword
 	 * @return Player, the Player found
 	 */
-	public Player UserLoginPlayer(String host, String userName, String password, String dBName, String loginName, String loginPassword) {
-		BuildConnectionString(host, userName, password, dBName);
+	public Player userLoginPlayer(String host, String userName, String password, String dBName, String loginName, String loginPassword) {
+		buildConnectionString(host, userName, password, dBName);
 		try {
-			return GetPlayer(loginName, loginPassword);
+			return getPlayer(loginName, loginPassword);
 		} catch (Exception e) {
 			return null;
 		}
@@ -85,8 +85,8 @@ public class LoginControl {
 	 * @param userName
 	 * @param password
 	 */
-	public void BuildConnectionString(String hostName, String userName, String password, String dBName) {
-		theDBConnection.BuildConnectionString(hostName, userName, password, dBName);
+	public void buildConnectionString(String hostName, String userName, String password, String dBName) {
+		theDBConnection.buildConnectionString(hostName, userName, password, dBName);
 	}
 	
 	/**
@@ -96,8 +96,8 @@ public class LoginControl {
 	 * @return The Player found
 	 * @throws Exception
 	 */
-	public Player GetPlayer(String playerName, String playerPassword) throws Exception {
-		return theLoginDAL.GetPlayer(playerName, playerPassword);
+	public Player getPlayer(String playerName, String playerPassword) throws Exception {
+		return theLoginDAL.getPlayer(playerName, playerPassword);
 	}
 	
 	/**
@@ -106,8 +106,8 @@ public class LoginControl {
 	 * @return true if yes, false if no
 	 * @throws Exception
 	 */
-	public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
-		Boolean isPlayerAnAdmin = theLoginDAL.IsPlayerAdmin(thePlayer);
+	public Boolean isPlayerAdmin(Player thePlayer) throws Exception {
+		Boolean isPlayerAnAdmin = theLoginDAL.isPlayerAdmin(thePlayer);
 		return isPlayerAnAdmin;
 	}
 	
@@ -117,14 +117,14 @@ public class LoginControl {
 	 * @param theMainDashboardStage
 	 * @throws SQLException 
 	 */
-	public void SetUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) throws SQLException {
+	public void setUpMainDashboard(Player theAdminPlayer, Stage theMainDashboardStage) throws SQLException {
 		if(theMainDashboardControl == null) {
 			theMainDashboardControl = new MainDashboardControl(theAdminPlayer, theLoginViewControl);
 			theMainDashboardViewControl = new MainDashboardViewControl(theMainDashboardControl, theMainDashboardStage);
-			theMainDashboardViewControl.LoadMainDashboardView();
+			theMainDashboardViewControl.loadMainDashboardView();
 		}
 		else {
-			theMainDashboardViewControl.ShowMainDashboardView();
+			theMainDashboardViewControl.showMainDashboardView();
 		}
 	}
 }

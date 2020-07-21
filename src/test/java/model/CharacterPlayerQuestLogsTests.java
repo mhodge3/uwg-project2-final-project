@@ -22,8 +22,8 @@ public class CharacterPlayerQuestLogsTests {
 	@Test
 	public void testGetCharacterIDShouldBe1234() {
 		CharacterPlayerQuestLog testItem = new CharacterPlayerQuestLog();
-		testItem.SetCharacterId(1234);
-		assertEquals(1234, testItem.GetCharacterId());
+		testItem.setCharacterId(1234);
+		assertEquals(1234, testItem.getCharacterId());
 	}
 	
 	/**
@@ -33,8 +33,8 @@ public class CharacterPlayerQuestLogsTests {
 	@Test
 	public void testGetQuestIdIDShouldBe1234() {
 		CharacterPlayerQuestLog testItem = new CharacterPlayerQuestLog();
-		testItem.SetQuestId(1234);
-		assertEquals(1234, testItem.GetQuestId());
+		testItem.setQuestId(1234);
+		assertEquals(1234, testItem.getQuestId());
 	}
 	
 	/**
@@ -44,8 +44,8 @@ public class CharacterPlayerQuestLogsTests {
 	@Test
 	public void testGetQuestStatusShouldBe1234() {
 		CharacterPlayerQuestLog testItem = new CharacterPlayerQuestLog();
-		testItem.SetQuestStatus(1234);
-		assertEquals(1234, testItem.GetQuestStatus());
+		testItem.setQuestStatus(1234);
+		assertEquals(1234, testItem.getQuestStatus());
 	}
 	
 	

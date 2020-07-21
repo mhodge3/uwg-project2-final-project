@@ -28,68 +28,68 @@ class testPlayerDAL {
 	@Test
 	@Order(1)
 	public void addAPlayerToDBShouldBeTrueIfAdded() throws Exception {
-		this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus.com", "USA", false);
-		Player player = this.dal.GetPlayer("bogus", "test1234");
-		assertEquals(player.GetPlayerName(), "bogus");
-		assertEquals(player.GetPlayerPassword(), "test1234");
-		assertEquals(player.GetPlayerEmail(), "bogus@bogus.com");
-		assertEquals(player.GetPlayerCountryCode(), "USA");
-		assertFalse(this.dal.IsPlayerAdmin(player));
+		this.dal.createPlayer("bogus", "test1234", "bogus@bogus.com", "USA", false);
+		Player player = this.dal.getPlayer("bogus", "test1234");
+		assertEquals(player.getPlayerName(), "bogus");
+		assertEquals(player.getPlayerPassword(), "test1234");
+		assertEquals(player.getPlayerEmail(), "bogus@bogus.com");
+		assertEquals(player.getPlayerCountryCode(), "USA");
+		assertFalse(this.dal.isPlayerAdmin(player));
 	}
 	
 	@Test
 	@Order(2)
 	public void addAAdminPlayerToDBShouldBeTrueIfAdded() throws Exception {
-		this.dal.CreatePlayer("joe", "test1234", "joe@joe.com", "USA", true);
-		Player player = this.dal.GetPlayer("joe", "test1234");
-		assertEquals(player.GetPlayerName(), "joe");
-		assertEquals(player.GetPlayerPassword(), "test1234");
-		assertEquals(player.GetPlayerEmail(), "joe@joe.com");
-		assertEquals(player.GetPlayerCountryCode(), "USA");
-		assertTrue(this.dal.IsPlayerAdmin(player));
+		this.dal.createPlayer("joe", "test1234", "joe@joe.com", "USA", true);
+		Player player = this.dal.getPlayer("joe", "test1234");
+		assertEquals(player.getPlayerName(), "joe");
+		assertEquals(player.getPlayerPassword(), "test1234");
+		assertEquals(player.getPlayerEmail(), "joe@joe.com");
+		assertEquals(player.getPlayerCountryCode(), "USA");
+		assertTrue(this.dal.isPlayerAdmin(player));
 	}
 	
 	@Test
 	@Order(3)
 	public void addAPlayerWithANonUniqueNameToDBShouldBefalse() throws Exception {
-		assertFalse(this.dal.CreatePlayer("bogus", "test1234", "bogus@bogus.com", "USA", false));
+		assertFalse(this.dal.createPlayer("bogus", "test1234", "bogus@bogus.com", "USA", false));
 	}
 	
 	@Test
 	@Order(4)
 	public void retrievesAddedPlayer() throws Exception {
-		Player player = this.dal.GetPlayer("bogus", "test1234");
-		assertEquals(player.GetPlayerName(), "bogus");
-		assertEquals(player.GetPlayerPassword(), "test1234");
-		assertEquals(player.GetPlayerEmail(), "bogus@bogus.com");
-		assertEquals(player.GetPlayerCountryCode(), "USA");
+		Player player = this.dal.getPlayer("bogus", "test1234");
+		assertEquals(player.getPlayerName(), "bogus");
+		assertEquals(player.getPlayerPassword(), "test1234");
+		assertEquals(player.getPlayerEmail(), "bogus@bogus.com");
+		assertEquals(player.getPlayerCountryCode(), "USA");
 	}
 	
 	@Test
 	@Order(5)
 	public void updateAPlayer() throws Exception {
-		Player oldPlayer = this.dal.GetPlayer("bogus", "test1234");
+		Player oldPlayer = this.dal.getPlayer("bogus", "test1234");
 		Player updatedPlayer = new Player(0, "bogus", false, "USA", "bogus@newemail.com", "newpw");
-		this.dal.UpdatePlayer(oldPlayer, updatedPlayer, false);
-		oldPlayer = this.dal.GetPlayer("bogus", "newpw");
-		assertEquals(oldPlayer.GetPlayerPassword(), "newpw");
+		this.dal.updatePlayer(oldPlayer, updatedPlayer, false);
+		oldPlayer = this.dal.getPlayer("bogus", "newpw");
+		assertEquals(oldPlayer.getPlayerPassword(), "newpw");
 	}
 	
 	@Test
 	@Order(6)
 	public void isPlayerAnAdmin() throws Exception {
-		Player player = this.dal.GetPlayer("bogus", "test1234");
-		Player admin = this.dal.GetPlayer("joe", "test1234");
-		assertFalse(this.dal.IsPlayerAdmin(player));
-		assertTrue(this.dal.IsPlayerAdmin(admin));
+		Player player = this.dal.getPlayer("bogus", "test1234");
+		Player admin = this.dal.getPlayer("joe", "test1234");
+		assertFalse(this.dal.isPlayerAdmin(player));
+		assertTrue(this.dal.isPlayerAdmin(admin));
 	}
 	
 	@Test
 	@Order(7)
 	public void deleteAPlayer() throws Exception {
-		Player player = this.dal.GetPlayer("bogus", "newpw");
-		this.dal.DeletePlayer(player);
-		player = this.dal.GetPlayer("bogus", "newpw");
+		Player player = this.dal.getPlayer("bogus", "newpw");
+		this.dal.deletePlayer(player);
+		player = this.dal.getPlayer("bogus", "newpw");
 		assertNull(player);
 	}
 
@@ -97,25 +97,25 @@ class testPlayerDAL {
 	@Test
 	@Order(7)
 	public void deleteAAdimPlayer() throws Exception {
-		Player admin = this.dal.GetPlayer("joe", "test1234");
-		this.dal.DeletePlayer(admin);
-		admin = this.dal.GetPlayer("joe", "test1234");
+		Player admin = this.dal.getPlayer("joe", "test1234");
+		this.dal.deletePlayer(admin);
+		admin = this.dal.getPlayer("joe", "test1234");
 		assertNull(admin);
 	}
 	
 	@Test
 	@Order(8)
 	public void retrievesNonPlayerShouldBeNull() throws Exception {
-		this.thePlayer = this.dal.GetPlayer("joe", "test1234");
+		this.thePlayer = this.dal.getPlayer("joe", "test1234");
 		assertEquals(this.thePlayer, null);
 	}
 	
 	@Test
 	@Order(9)
 	public void deleteAPlayerForCnostraintTesting() throws Exception {
-		Player player = this.dal.GetPlayer("player", "test1234");
-		assertTrue(this.dal.DeletePlayer(player));
-		player = this.dal.GetPlayer("player", "test1234");
+		Player player = this.dal.getPlayer("player", "test1234");
+		assertTrue(this.dal.deletePlayer(player));
+		player = this.dal.getPlayer("player", "test1234");
 		assertNull(player);
 	}
 

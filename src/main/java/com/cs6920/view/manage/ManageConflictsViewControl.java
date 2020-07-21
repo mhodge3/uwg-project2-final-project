@@ -40,8 +40,8 @@ public class ManageConflictsViewControl extends ViewControl {
 	 */
     public ManageConflictsViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theMainDashboardViewControl.SetTheManageQuestChainsViewControl(this);
-    	this.theManageConflictsControl = new ManageConflictsControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theMainDashboardViewControl.setTheManageQuestChainsViewControl(this);
+    	this.theManageConflictsControl = new ManageConflictsControl(theMainDashboardViewControl.getDBConnection());
     
     }
 
@@ -62,7 +62,7 @@ public class ManageConflictsViewControl extends ViewControl {
 	 * @throws SQLException 
 	 */
     public void updateExistingConflictList() throws SQLException {
-    	theManageConflictsControl.UpdateConflictArrayList();
+    	theManageConflictsControl.updateConflictArrayList();
     	this.updateConflictsTableDisplay();
     }
     
@@ -101,19 +101,19 @@ public class ManageConflictsViewControl extends ViewControl {
 	@FXML
 	private void handleEditQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theMainDashboardViewControl.SetConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType());
-			switch(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictArcType()) {
+			theMainDashboardViewControl.setConflictToEdit(theManageConflictsControl.getConflictById(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId()), conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType());
+			switch(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictArcType()) {
 				case "The Quest":
-					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateTheQuest");
+					theMainDashboardViewControl.setMainDashboardStage("manageTemplateTheQuest");
 					break;
 				case "Voyage and Return":
-					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateVoyageAndReturn");
+					theMainDashboardViewControl.setMainDashboardStage("manageTemplateVoyageAndReturn");
 					break;
 				case "Defeat the Monster":
-					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateDefeatTheMonster");
+					theMainDashboardViewControl.setMainDashboardStage("manageTemplateDefeatTheMonster");
 					break;
 				case "Custom":
-					theMainDashboardViewControl.SetMainDashboardStage("manageTemplateCustom");
+					theMainDashboardViewControl.setMainDashboardStage("manageTemplateCustom");
 					break;
 				default: break;
 			}
@@ -130,7 +130,7 @@ public class ManageConflictsViewControl extends ViewControl {
 	@FXML
 	private void handleDeleteQuestChainButton() throws SQLException {
 		if (conflictChainTableView.getSelectionModel().getSelectedItem() != null) {
-			theManageConflictsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().GetConflictId());
+			theManageConflictsControl.deleteTheQuestConflict(conflictChainTableView.getSelectionModel().getSelectedItem().getConflictId());
 	    	this.updateConflictsTableDisplay();
 		}
 		else {
@@ -144,6 +144,6 @@ public class ManageConflictsViewControl extends ViewControl {
 	
 	@FXML
 	private void handleQuestChainsBackButton() throws SQLException {
-		theMainDashboardViewControl.LoadMainDashboardView();
+		theMainDashboardViewControl.loadMainDashboardView();
 	}
 }

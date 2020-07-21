@@ -16,7 +16,7 @@ import com.cs6920.model.GameStory;
  */
 public class EditGameStoryControl {
 	
-	private GameStoryDAL gameStoryDAL;
+	private GameStoryDAL theGameStoryDAL;
 	private GameStory selectedGameStory;
 	
 	/**
@@ -25,12 +25,12 @@ public class EditGameStoryControl {
 	 * @throws SQLException 
 	 */
 	public EditGameStoryControl(MySQLAccess theDBConnection) throws SQLException {
-		this.gameStoryDAL = new GameStoryDAL(theDBConnection);
+		this.theGameStoryDAL = new GameStoryDAL(theDBConnection);
 		this.getGameStoryFromDB();
 	}
 	
 	private void getGameStoryFromDB() throws SQLException {
-		this.selectedGameStory = this.gameStoryDAL.GetGameStory();
+		this.selectedGameStory = this.theGameStoryDAL.getGameStory();
 	}
 	
 	public GameStory getGameStoryToEdit() {
@@ -44,7 +44,7 @@ public class EditGameStoryControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateGameStory(String gameStoryName, String gameStorySummary, int playerLevelCap, int npcCharacterLevelCap) throws SQLException {
+	public String updateGameStory(String gameStoryName, String gameStorySummary, int playerLevelCap, int npcCharacterLevelCap) throws SQLException {
 		if (gameStoryName == null || gameStoryName.trim().length() == 0) {
 			return "The Game Story cannot be empty";
 		}
@@ -52,7 +52,7 @@ public class EditGameStoryControl {
 			return "The Game Story Summary cannot be empty";
 		}
 		
-		if (gameStoryDAL.UpdateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap, npcCharacterLevelCap))) {
+		if (theGameStoryDAL.updateGameStory(selectedGameStory, new GameStory(gameStoryName, gameStorySummary, playerLevelCap, npcCharacterLevelCap))) {
 			this.getGameStoryFromDB();
 			return null;
 		}

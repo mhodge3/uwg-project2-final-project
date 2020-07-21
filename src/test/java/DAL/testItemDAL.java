@@ -18,40 +18,40 @@ class testItemDAL {
 	
 	@Test
 	public void retrievesItemWithID() throws Exception {
-		Item item = this.dal.GetItemById(1);
-		assertEquals(item.GetItemId(), 1);
-		assertEquals(item.GetItemName(), "Dagger of Suck");
-		assertEquals(item.GetItemDescription(), "You get what you get and you don't throw a fit.");
-		assertEquals(item.GetItemType(), 0);
-		assertEquals(item.GetIsQuestItem(), 0);
-		assertEquals(item.GetIsImplicitItem(), 0);
+		Item item = this.dal.getItemById(1);
+		assertEquals(item.getItemId(), 1);
+		assertEquals(item.getItemName(), "Dagger of Suck");
+		assertEquals(item.getItemDescription(), "You get what you get and you don't throw a fit.");
+		assertEquals(item.getItemType(), 0);
+		assertEquals(item.getIsQuestItem(), 0);
+		assertEquals(item.getIsImplicitItem(), 0);
 	}
 	
 	@Test
 	public void retrievesItemWithName() throws Exception {
-		Item item = this.dal.GetItemByName("Dagger of Suck");
-		assertEquals(item.GetItemId(), 1);
-		assertEquals(item.GetItemName(), "Dagger of Suck");
-		assertEquals(item.GetItemDescription(), "You get what you get and you don't throw a fit.");
-		assertEquals(item.GetItemType(), 0);
-		assertEquals(item.GetIsQuestItem(), 0);
-		assertEquals(item.GetIsImplicitItem(), 0);
+		Item item = this.dal.getItemByName("Dagger of Suck");
+		assertEquals(item.getItemId(), 1);
+		assertEquals(item.getItemName(), "Dagger of Suck");
+		assertEquals(item.getItemDescription(), "You get what you get and you don't throw a fit.");
+		assertEquals(item.getItemType(), 0);
+		assertEquals(item.getIsQuestItem(), 0);
+		assertEquals(item.getIsImplicitItem(), 0);
 	}
 	
 	@Test
 	public void retrievesNonItemShouldBeNull() throws Exception {
-		assertEquals(this.dal.GetItemById(0), null);
+		assertEquals(this.dal.getItemById(0), null);
 	}
 	
 	@Test
 	public void addAItemToDBShouldBeTrueIfAdded() throws Exception {
-		assertTrue(this.dal.CreateItem("cloak spell", "Invisibility cloak", 1, false, true, false));
-		Item item = this.dal.GetItemByName("cloak spell");
-		assertEquals(item.GetItemName(), "cloak spell");
-		assertEquals(item.GetItemDescription(), "Invisibility cloak");
-		assertEquals(item.GetItemType(), 1);
-		assertEquals(item.GetIsQuestItem(), 2);
-		assertEquals(item.GetIsImplicitItem(), 3);
+		assertTrue(this.dal.createItem("cloak spell", "Invisibility cloak", 1, false, true, false));
+		Item item = this.dal.getItemByName("cloak spell");
+		assertEquals(item.getItemName(), "cloak spell");
+		assertEquals(item.getItemDescription(), "Invisibility cloak");
+		assertEquals(item.getItemType(), 1);
+		assertEquals(item.getIsQuestItem(), 2);
+		assertEquals(item.getIsImplicitItem(), 3);
 	}
 	
 	/* Not sure what's up with this test at the moment, but a couple of subtle things changed in the model
@@ -67,9 +67,9 @@ class testItemDAL {
 	
 	@Test
 	public void deleteAItem() throws Exception {
-		Item item1 = this.dal.GetItemByName("cloak spell");
-		this.dal.DeleteItem(item1);
-		item1 = this.dal.GetItemByName("cloak spell");
+		Item item1 = this.dal.getItemByName("cloak spell");
+		this.dal.deleteItem(item1);
+		item1 = this.dal.getItemByName("cloak spell");
 		assertEquals(item1, null);
 	}
 	

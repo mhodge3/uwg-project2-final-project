@@ -14,10 +14,14 @@ import com.cs6920.model.Conflict;
 *
 */
 public class ConflictController {
-	private ConflictDAL dal;
+	private ConflictDAL theConflictDAL;
 	
+	/**
+	 * One parameter constructor for a ConflictController
+	 * @param theDBConnection
+	 */
 	public ConflictController(MySQLAccess theDBConnection) {
-		this.dal = new ConflictDAL(theDBConnection);
+		this.theConflictDAL = new ConflictDAL(theDBConnection);
 	}
 	
 	/**
@@ -31,7 +35,7 @@ public class ConflictController {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public String CreateConflict(int conflictMinLvl, int conflictTemplate, String conflictName, 
+	public String createConflict(int conflictMinLvl, int conflictTemplate, String conflictName, 
 								String conflictDescription, String arcType) throws SQLException {
 		if (String.valueOf(conflictMinLvl) == null) {
 			return "The conflict MinLevel cannot be empty";
@@ -49,7 +53,7 @@ public class ConflictController {
 			return "The arc type Code cannot be empty";
 		}
 		else {
-			this.dal.CreateConflict(conflictMinLvl, conflictTemplate, conflictName, conflictDescription, arcType);
+			this.theConflictDAL.createConflict(conflictMinLvl, conflictTemplate, conflictName, conflictDescription, arcType);
 			return null;
 		}
 	}
@@ -60,8 +64,8 @@ public class ConflictController {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public Conflict GetQuestByID(int conflictId) throws SQLException {
-		return this.GetQuestByID(conflictId);
+	public Conflict getQuestByID(int conflictId) throws SQLException {
+		return this.getQuestByID(conflictId);
     }
 	
 	/**
@@ -70,8 +74,8 @@ public class ConflictController {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public ArrayList<Conflict> GetConflicts() throws SQLException {
-		return this.dal.GetConflicts();
+	public ArrayList<Conflict> getConflicts() throws SQLException {
+		return this.theConflictDAL.getConflicts();
     }
 	
 	/**
@@ -80,8 +84,8 @@ public class ConflictController {
 	 * @return The Conflict found
 	 * @throws SQLException
 	 */
-	public Conflict GetQuestByName(String conflictName) throws SQLException {
-		return this.dal.GetQuestByName(conflictName);
+	public Conflict getQuestByName(String conflictName) throws SQLException {
+		return this.theConflictDAL.getQuestByName(conflictName);
     }
 	
 	/**
@@ -95,24 +99,24 @@ public class ConflictController {
 	 * @return True if updated | False if not updated
 	 * @throws SQLException
 	 */
-	public String UpdateConflict(Conflict conflict, int conflictMinLvl, int conflictTemplate, 
+	public String updateConflict(Conflict conflict, int conflictMinLvl, int conflictTemplate, 
 			  String conflictName, String conflictDescription, String arcType) throws SQLException {
 		if (String.valueOf(conflictMinLvl) == null) {
-			conflictMinLvl = conflict.GetConflictMinLvl();
+			conflictMinLvl = conflict.getConflictMinLvl();
 		}
 		if (String.valueOf(conflictTemplate) == null) {
-			conflictTemplate = conflict.GetConflictTemplate();
+			conflictTemplate = conflict.getConflictTemplate();
 		}
 		if (conflictName == null || conflictName.trim().length() == 0) {
-			conflictName = conflict.GetConflictName();
+			conflictName = conflict.getConflictName();
 		}
 		if (conflictDescription == null || conflictDescription.trim().length() == 0) {
-			conflictDescription = conflict.GetConflictDescription();
+			conflictDescription = conflict.getConflictDescription();
 		}
 		if (arcType == null || arcType.trim().length() == 0) {
-			arcType = conflict.GetConflictArcType();
+			arcType = conflict.getConflictArcType();
 		}
-		if (this.dal.UpdateConflict(conflict, conflictMinLvl, conflictTemplate, conflictName, conflictDescription, arcType)){
+		if (this.theConflictDAL.updateConflict(conflict, conflictMinLvl, conflictTemplate, conflictName, conflictDescription, arcType)){
 			return null;
 		}
 		else {
@@ -126,8 +130,8 @@ public class ConflictController {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public boolean DeleteConflict(Conflict conflict) throws SQLException {
-		return this.dal.DeleteConflict(conflict);
+	public boolean deleteConflict(Conflict conflict) throws SQLException {
+		return this.theConflictDAL.deleteConflict(conflict);
 	}
 
 }

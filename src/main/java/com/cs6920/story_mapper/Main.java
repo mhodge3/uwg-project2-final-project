@@ -7,8 +7,9 @@ package com.cs6920.story_mapper;
 
 
 /**
- *
- * @author matthewhodge
+ * Code entry point to the application, used to load dependancies, then enter the Java FX application
+ * @author Matthew Hodge
+ * @version 7.20.20
  */
 public class Main {
     

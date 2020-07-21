@@ -52,7 +52,7 @@ public class Player {
 	 * Gets the player Name
 	 * @return playerName
 	 */
-	public String GetPlayerName() {
+	public String getPlayerName() {
 		return playerName.get();
 	}
 	
@@ -68,7 +68,7 @@ public class Player {
 	 * Sets the playerName
 	 * @param userName
 	 */
-	public void SetPlayerName(String userName) {
+	public void setPlayerName(String userName) {
 		this.playerName = new SimpleStringProperty(userName);
 	}
 	
@@ -76,7 +76,7 @@ public class Player {
 	 * Gets PlayerIsAdmin
 	 * @return playerIsAdmin
 	 */
-	public Boolean GetPlayerIsAdmin() {
+	public Boolean getPlayerIsAdmin() {
 		return playerIsAdmin.getValue();
 	}
 	
@@ -84,7 +84,7 @@ public class Player {
 	 * Sets PlayerIsAdmin
 	 * @param playerIsAdmin
 	 */
-	public void SetPlayerIsAdmin(Boolean playerIsAdmin) {
+	public void setPlayerIsAdmin(Boolean playerIsAdmin) {
 		this.playerIsAdmin = new SimpleBooleanProperty(playerIsAdmin);
 	}
 
@@ -100,7 +100,7 @@ public class Player {
 	 * Gets playerId
 	 * @return playerId
 	 */
-	public int GetPlayerId() {
+	public int getPlayerId() {
 		return playerId.get();
 	}
 
@@ -116,7 +116,7 @@ public class Player {
 	 * Sets the playerId
 	 * @param playerId
 	 */
-	public void SetPlayerId(int playerId) {
+	public void setPlayerId(int playerId) {
 		this.playerId = new SimpleIntegerProperty(playerId);
 	}
 	
@@ -124,7 +124,7 @@ public class Player {
 	 * Gets player Country code
 	 * @return
 	 */
-	public String GetPlayerCountryCode() {
+	public String getPlayerCountryCode() {
 		return playerCountryCode.get();
 	}
 
@@ -140,7 +140,7 @@ public class Player {
 	 * Sets player Country code
 	 * @param setPlayerCountryCode
 	 */
-	public void SetPlayerCountryCode(String setPlayerCountryCode) {
+	public void setPlayerCountryCode(String setPlayerCountryCode) {
 		this.playerCountryCode = new SimpleStringProperty(setPlayerCountryCode);
 	}
 	
@@ -148,7 +148,7 @@ public class Player {
 	 * Gets the playerEmail
 	 * @return playerEmail
 	 */
-	public String GetPlayerEmail() {
+	public String getPlayerEmail() {
 		return playerEmail.get();
 	}
 
@@ -164,7 +164,7 @@ public class Player {
 	 * Sets the playerEmail
 	 * @param setPlayerEmail
 	 */
-	public void SetPlayerEmail(String setPlayerEmail) {
+	public void setPlayerEmail(String setPlayerEmail) {
 		this.playerEmail = new SimpleStringProperty(setPlayerEmail);
 	}
 	
@@ -172,7 +172,7 @@ public class Player {
 	 * Gets the playerPassword
 	 * @return playerPassword
 	 */
-	public String GetPlayerPassword() {
+	public String getPlayerPassword() {
 		return playerPassword;
 	}
 	
@@ -180,7 +180,7 @@ public class Player {
 	 * Sets the playerPassword
 	 * @param setPlayerPassword
 	 */
-	public void SetPlayerPassword(String setPlayerPassword) {
+	public void setPlayerPassword(String setPlayerPassword) {
 		this.playerPassword = setPlayerPassword;
 	}
 }

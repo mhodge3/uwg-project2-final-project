@@ -11,14 +11,14 @@ import com.cs6920.DAL.NpcCharacterDAL;
  * @version 6.23.2020
  */
 public class CreateNPCCharactersControl {
-	private NpcCharacterDAL npcDAL;
+	private NpcCharacterDAL theNPCCharacterDAL;
 	
 	/**
 	 * Constructor that sets DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
 	public CreateNPCCharactersControl(MySQLAccess theDBConnection) {
-		this.npcDAL = new NpcCharacterDAL(theDBConnection);
+		this.theNPCCharacterDAL = new NpcCharacterDAL(theDBConnection);
 	}
 	
 	/**
@@ -29,7 +29,7 @@ public class CreateNPCCharactersControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreateNpc(int npcType, String npcName, String npcDescription, Double npcPosX, Double npcPosY, Double npcPosZ, int npcLevel) throws SQLException {
+	public String createNpc(int npcType, String npcName, String npcDescription, Double npcPosX, Double npcPosY, Double npcPosZ, int npcLevel) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";
 		}
@@ -37,7 +37,7 @@ public class CreateNPCCharactersControl {
 			return "The NPC Description cannot be empty";
 		}
 		
-		if (npcDAL.CreateNpc(npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel)) {
+		if (theNPCCharacterDAL.createNpc(npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel)) {
 			return null;
 		}
 		else {

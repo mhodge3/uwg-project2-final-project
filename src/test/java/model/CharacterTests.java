@@ -22,8 +22,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcIDShouldBe1234() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcId(1234);
-		assertEquals(1234, testCharacter.GetNpcId());
+		testCharacter.setNpcId(1234);
+		assertEquals(1234, testCharacter.getNpcId());
 	}
 	
 	/**
@@ -33,8 +33,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcDescpritionShouldBeCoolPlayer() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcDescprition("cool player");
-		assertEquals("cool player", testCharacter.GetNpcDescprition());
+		testCharacter.setNpcDescprition("cool player");
+		assertEquals("cool player", testCharacter.getNpcDescprition());
 	}
 	
 	/**
@@ -44,8 +44,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcNameShouldBeTom() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcName("Tom");
-		assertEquals("Tom", testCharacter.GetNpcName());
+		testCharacter.setNpcName("Tom");
+		assertEquals("Tom", testCharacter.getNpcName());
 	}
 	
 	/**
@@ -55,8 +55,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcTypeShouldBe1() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcType(1);
-		assertEquals(1, testCharacter.GetNpcType());
+		testCharacter.setNpcType(1);
+		assertEquals(1, testCharacter.getNpcType());
 	}
 	
 	/**
@@ -66,8 +66,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcFactionShouldBe2() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcFaction(2);
-		assertEquals(2, testCharacter.GetNpcFaction());
+		testCharacter.setNpcFaction(2);
+		assertEquals(2, testCharacter.getNpcFaction());
 	}
 	
 	/**
@@ -77,8 +77,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcPosXPointShouldBe1Point1() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcPosX(1.1);
-		assertEquals(1.1, testCharacter.GetNpcPosX());
+		testCharacter.setNpcPosX(1.1);
+		assertEquals(1.1, testCharacter.getNpcPosX());
 	}
 	
 	/**
@@ -88,8 +88,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcPosYPointShouldBe1Point1() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcPosY(1.1);
-		assertEquals(1.1, testCharacter.GetNpcPosY());
+		testCharacter.setNpcPosY(1.1);
+		assertEquals(1.1, testCharacter.getNpcPosY());
 	}
 	
 	/**
@@ -99,8 +99,8 @@ public class CharacterTests {
 	@Test
 	public void testGetNpcPosZPointShouldBe1Point1() {
 		NpcCharacter testCharacter = new NpcCharacter();
-		testCharacter.SetNpcPosZ(1.1);
-		assertEquals(1.1, testCharacter.GetNpcPosZ());
+		testCharacter.setNpcPosZ(1.1);
+		assertEquals(1.1, testCharacter.getNpcPosZ());
 	}
 	
 	

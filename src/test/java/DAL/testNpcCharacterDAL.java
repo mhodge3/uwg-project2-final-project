@@ -59,37 +59,37 @@ class testNpcCharacterDAL {
 	
 	@Test
 	public void createANpcCharacterInDB() throws Exception {
-		assertTrue(this.dal.CreateNpc("the character", "Max", 1, 2, 2.1, 3.0, 4.0, 2));
-		this.character = this.dal.GetNpcByName("Max");
-		assertEquals(this.character.GetNpcName(),"Max");
-		assertEquals(this.character.GetNpcDescprition(),"the character");
-		assertEquals(this.character.GetNpcType(), 1);
-		assertEquals(this.character.GetNpcFaction(), 2);
-		assertEquals(this.character.GetNpcPosX(), 2.1);
-		assertEquals(this.character.GetNpcPosY(), 3.0);
-		assertEquals(this.character.GetNpcPosZ(), 4.0);
+		assertTrue(this.dal.createNpc("the character", "Max", 1, 2, 2.1, 3.0, 4.0, 2));
+		this.character = this.dal.getNpcByName("Max");
+		assertEquals(this.character.getNpcName(),"Max");
+		assertEquals(this.character.getNpcDescprition(),"the character");
+		assertEquals(this.character.getNpcType(), 1);
+		assertEquals(this.character.getNpcFaction(), 2);
+		assertEquals(this.character.getNpcPosX(), 2.1);
+		assertEquals(this.character.getNpcPosY(), 3.0);
+		assertEquals(this.character.getNpcPosZ(), 4.0);
 	}
 	
 	@Test
 	public void updateANpcCharacterInDB() throws Exception {
-		this.character = this.dal.GetNpcByName("Max");
+		this.character = this.dal.getNpcByName("Max");
 		NpcCharacter updatedCharacter = new NpcCharacter(0, "the good guy", "Max", 3, 7, 14.1, 337.5, 4.5, 1);
-		assertTrue(this.dal.UpdateNpc(this.character, updatedCharacter));
-		this.character = this.dal.GetNpcByName("Max");
-		assertEquals(this.character.GetNpcName(),"Max");
-		assertEquals(this.character.GetNpcDescprition(),"the good guy");
-		assertEquals(this.character.GetNpcType(), 3);
-		assertEquals(this.character.GetNpcFaction(), 7);
-		assertEquals(this.character.GetNpcPosX(), 14.1);
-		assertEquals(this.character.GetNpcPosY(), 337.5);
-		assertEquals(this.character.GetNpcPosZ(), 4.5);
+		assertTrue(this.dal.updateNpc(this.character, updatedCharacter));
+		this.character = this.dal.getNpcByName("Max");
+		assertEquals(this.character.getNpcName(),"Max");
+		assertEquals(this.character.getNpcDescprition(),"the good guy");
+		assertEquals(this.character.getNpcType(), 3);
+		assertEquals(this.character.getNpcFaction(), 7);
+		assertEquals(this.character.getNpcPosX(), 14.1);
+		assertEquals(this.character.getNpcPosY(), 337.5);
+		assertEquals(this.character.getNpcPosZ(), 4.5);
 	}
 	
 	@Test
 	public void deleteANpcCharacterInDB() throws Exception {
-		this.character = this.dal.GetNpcByName("Max");
-		assertTrue(this.dal.DeleteNpc(this.character));
-		this.character = this.dal.GetNpcByName("Max");
+		this.character = this.dal.getNpcByName("Max");
+		assertTrue(this.dal.deleteNpc(this.character));
+		this.character = this.dal.getNpcByName("Max");
 		assertEquals(this.character, null);
 	}
 	

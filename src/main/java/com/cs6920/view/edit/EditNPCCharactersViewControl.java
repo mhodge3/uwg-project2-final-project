@@ -47,14 +47,14 @@ public class EditNPCCharactersViewControl extends ViewControl {
 	 */
     public EditNPCCharactersViewControl(MainDashboardViewControl theMainDashboardViewControl) {
     	this.theMainDashboardViewControl = theMainDashboardViewControl;
-    	this.theEditNPCCharactersControl = new EditNPCCharactersControl(theMainDashboardViewControl.GetDBConnection());
+    	this.theEditNPCCharactersControl = new EditNPCCharactersControl(theMainDashboardViewControl.getDBConnection());
     }
     
     /**
      * Gets the logic control instance for this view
      * @return  the logic control instance
      */
-    public EditNPCCharactersControl GetEditNPCCharactersControl() {
+    public EditNPCCharactersControl getEditNPCCharactersControl() {
     	return theEditNPCCharactersControl;
     }
     
@@ -62,19 +62,19 @@ public class EditNPCCharactersViewControl extends ViewControl {
      * Sets the form values for the current NPC to edit
      * @param theNPCToEdit
      */
-    public void SetFormForSelectedNPC(NpcCharacter theNPCToEdit) {
-    	this.editNPCType.setText(String.valueOf(theNPCToEdit.GetNpcType()));
-    	this.editNPCNameTextBox.setText(theNPCToEdit.GetNpcName());
-    	this.editNPCDescriptionTextBox.setText(theNPCToEdit.GetNpcDescprition());
-    	this.editNPCPosX.setText(Double.toString(theNPCToEdit.GetNpcPosX()));
-    	this.editNPCPosY.setText(Double.toString(theNPCToEdit.GetNpcPosY()));
-    	this.editNPCPosZ.setText(Double.toString(theNPCToEdit.GetNpcPosZ()));
-		this.editNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().GetNpcCharacterLevelCap(), theNPCToEdit.GetNpcLevel()));
+    public void setFormForSelectedNPC(NpcCharacter theNPCToEdit) {
+    	this.editNPCType.setText(String.valueOf(theNPCToEdit.getNpcType()));
+    	this.editNPCNameTextBox.setText(theNPCToEdit.getNpcName());
+    	this.editNPCDescriptionTextBox.setText(theNPCToEdit.getNpcDescprition());
+    	this.editNPCPosX.setText(Double.toString(theNPCToEdit.getNpcPosX()));
+    	this.editNPCPosY.setText(Double.toString(theNPCToEdit.getNpcPosY()));
+    	this.editNPCPosZ.setText(Double.toString(theNPCToEdit.getNpcPosZ()));
+		this.editNPCLevelSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, this.theMainDashboardViewControl.getTheGameStory().getNpcCharacterLevelCap(), theNPCToEdit.getNpcLevel()));
     }
     
 	@FXML
 	private void handleNPCEditBackButton() throws SQLException {
-		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
     
 	@FXML
@@ -83,11 +83,11 @@ public class EditNPCCharactersViewControl extends ViewControl {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("NPC Edit");
 		alert.setHeaderText("NPC Edit Status");
-		alert.setContentText("Are you sure you want to DELETE " + theEditNPCCharactersControl.GetSelectedNPC().GetNpcName() + "? This operation cannot be undone.");
+		alert.setContentText("Are you sure you want to DELETE " + theEditNPCCharactersControl.GetSelectedNPC().getNpcName() + "? This operation cannot be undone.");
 		alert.showAndWait();
 		if (alert.getResult() == ButtonType.OK) {
 			try {
-				npcDeleteError = theEditNPCCharactersControl.DeleteNPC(theEditNPCCharactersControl.GetSelectedNPC());
+				npcDeleteError = theEditNPCCharactersControl.deleteNPC(theEditNPCCharactersControl.GetSelectedNPC());
 			} catch (Exception e) {
 				npcDeleteError = e.getMessage();
 			}
@@ -104,7 +104,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
 			alert.setHeaderText("NPC Edit Status");
 			alert.setContentText("The NPC was successfully deleted");
 			alert.showAndWait();
-			theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+			theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 		}
 	}
     
@@ -112,7 +112,7 @@ public class EditNPCCharactersViewControl extends ViewControl {
 	private void handleNPCEditSaveButton() throws SQLException {
 		String npcCreationError = null;
 		try {
-			npcCreationError = theEditNPCCharactersControl.UpdateNpc(theEditNPCCharactersControl.GetSelectedNPC().GetNpcId(), Integer.parseInt(editNPCType.getText()), editNPCNameTextBox.getText(), editNPCDescriptionTextBox.getText(), Double.parseDouble(editNPCPosX.getText()), Double.parseDouble(editNPCPosY.getText()), Double.parseDouble(editNPCPosZ.getText()), this.editNPCLevelSpinner.getValue());
+			npcCreationError = theEditNPCCharactersControl.updateNpc(theEditNPCCharactersControl.GetSelectedNPC().getNpcId(), Integer.parseInt(editNPCType.getText()), editNPCNameTextBox.getText(), editNPCDescriptionTextBox.getText(), Double.parseDouble(editNPCPosX.getText()), Double.parseDouble(editNPCPosY.getText()), Double.parseDouble(editNPCPosZ.getText()), this.editNPCLevelSpinner.getValue());
 		} catch (Exception e) {
 			npcCreationError = e.getMessage();
 		}
@@ -129,6 +129,6 @@ public class EditNPCCharactersViewControl extends ViewControl {
 		alert.setHeaderText("NPC Edit Status");
 		alert.setContentText("The NPC was successfully modified");
 		alert.showAndWait();
-		theMainDashboardViewControl.SetMainDashboardStage("manageNPCCharacters");
+		theMainDashboardViewControl.setMainDashboardStage("manageNPCCharacters");
 	}
 }

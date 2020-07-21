@@ -12,7 +12,7 @@ import com.cs6920.model.Player;
  * @version 6.23.2020
  */
 public class EditPlayersAndAdminsControl {
-	private PlayerDAL playerDAL;
+	private PlayerDAL thePlayerDAL;
 	private Player selectedPlayer;
 	
 	/**
@@ -20,16 +20,16 @@ public class EditPlayersAndAdminsControl {
 	 * @param theDBConnection
 	 */
 	public EditPlayersAndAdminsControl(MySQLAccess theDBConnection) {
-		this.playerDAL = new PlayerDAL(theDBConnection);
+		this.thePlayerDAL = new PlayerDAL(theDBConnection);
 	}
 	
 	/**
 	 * Sets an instance of the Player to that found by id
 	 * @param playerId
 	 */
-	public void SetSelectedPlayer(int playerId) {
+	public void setSelectedPlayer(int playerId) {
 		try {
-			selectedPlayer = playerDAL.GetPlayer(playerId);
+			selectedPlayer = thePlayerDAL.getPlayer(playerId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class EditPlayersAndAdminsControl {
 	 * Get the Player object for editing
 	 * @return the Player object to edit
 	 */
-	public Player GetSelectedPlayer() {
+	public Player getSelectedPlayer() {
 		return selectedPlayer;
 	}
 	
@@ -49,10 +49,10 @@ public class EditPlayersAndAdminsControl {
 	 * @param playerToDelete
 	 * @return String, message for user on outcome of operation
 	 */
-	public String DeletePlayer(Player playerToDelete) {
+	public String deletePlayer(Player playerToDelete) {
 		
 		try {
-			if (playerDAL.DeletePlayer(playerToDelete)) {
+			if (thePlayerDAL.deletePlayer(playerToDelete)) {
 				return null;
 			}
 			else {
@@ -74,7 +74,7 @@ public class EditPlayersAndAdminsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
+	public String updatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String playerEmail, String playerCountryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -91,7 +91,7 @@ public class EditPlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.UpdatePlayer(selectedPlayer, new Player(selectedPlayer.GetPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
+		if (thePlayerDAL.updatePlayer(selectedPlayer, new Player(selectedPlayer.getPlayerId(), playerName, makeAdmin, playerCountryCode, playerEmail, playerPassword), makeAdmin)) {
 			return null;
 		}
 		else {

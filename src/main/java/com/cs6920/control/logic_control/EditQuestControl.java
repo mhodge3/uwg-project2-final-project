@@ -38,22 +38,22 @@ public class EditQuestControl {
 		theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
 		theItemDAL = new ItemDAL(theDBConnection);
 		theQuestItemsDAL = new QuestItemsDAL(theDBConnection);
-		this.UpdateNPCArrayList();
-		ArrayList<Item> allItems = theItemDAL.GetItems();
+		this.updateNPCArrayList();
+		ArrayList<Item> allItems = theItemDAL.getItems();
 		existingQuestItems = new ArrayList<Item>();
 		existingRewardItems = new ArrayList<Item>();
 		for (Item item : allItems) {
-			if (item.GetIsQuestItem()) {
-				if (questArcRole.contentEquals("insight") && item.GetIsImplicitItem()) {
+			if (item.getIsQuestItem()) {
+				if (questArcRole.contentEquals("insight") && item.getIsImplicitItem()) {
 					existingQuestItems.add(item);
 				}
 				else if ((questArcRole.contentEquals("henchman") || questArcRole.contentEquals("monster") || questArcRole.contentEquals("return and reward")) && item.getIstrophy()) {
 					existingQuestItems.add(item);
 				}
-				else if (questArcRole.contentEquals("return new wisdom") && (item.GetIsImplicitItem() || item.getIstrophy())) {
+				else if (questArcRole.contentEquals("return new wisdom") && (item.getIsImplicitItem() || item.getIstrophy())) {
 					existingQuestItems.add(item);
 				}
-				else if (!questArcRole.contentEquals("insight") && !questArcRole.contentEquals("return and reward") && !questArcRole.contentEquals("return new wisdom") && !questArcRole.contentEquals("monster") && !questArcRole.contentEquals("henchman") && !item.GetIsImplicitItem() && !item.getIstrophy()){
+				else if (!questArcRole.contentEquals("insight") && !questArcRole.contentEquals("return and reward") && !questArcRole.contentEquals("return new wisdom") && !questArcRole.contentEquals("monster") && !questArcRole.contentEquals("henchman") && !item.getIsImplicitItem() && !item.getIstrophy()){
 					existingQuestItems.add(item);
 				}
 			} 
@@ -63,20 +63,20 @@ public class EditQuestControl {
 		}
 		theQuestItemsNeededList = new ArrayList<QuestItems>();
 		theQuestItemsRewardList = new ArrayList<QuestItems>();
-		ArrayList<QuestItems> existingQuestItems = this.theQuestItemsDAL.GetQuestItemsByQuestId(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		ArrayList<QuestItems> existingQuestItems = this.theQuestItemsDAL.getQuestItemsByQuestId(theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestId());
 		for (QuestItems questItem : existingQuestItems) {
-			Item theItem = this.theItemDAL.GetItemById(questItem.GetItemId());
-			if (theItem.GetIsQuestItem()) {
+			Item theItem = this.theItemDAL.getItemById(questItem.getItemId());
+			if (theItem.getIsQuestItem()) {
 				theQuestItemsNeededList.add(questItem);
 			}
 			else {
 				theQuestItemsRewardList.add(questItem);
 			}
 		}
-		this.UpdateQuestItemsNeededList();
-		this.UpdateQuestItemsRewardList();
-		this.UpdateQuestItemsArrayList();
-		this.UpdateRewardItemsArrayList();
+		this.updateQuestItemsNeededList();
+		this.updateQuestItemsRewardList();
+		this.updateQuestItemsArrayList();
+		this.updateRewardItemsArrayList();
 	}
 	
 	public EditConflictQuestsViewControl getConflictTemplateTheQuestViewControl() {
@@ -87,9 +87,9 @@ public class EditQuestControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateNPCArrayList() throws SQLException {
+	public void updateNPCArrayList() throws SQLException {
 		existingNPCArrayList = new ArrayList<NpcCharacter>();
-		existingNPCArrayList = theNpcCharacterDAL.GetAllNpc();
+		existingNPCArrayList = theNpcCharacterDAL.getAllNpc();
 		observableNPCList.clear();
 		observableNPCList.addAll(existingNPCArrayList);
 	}
@@ -98,7 +98,7 @@ public class EditQuestControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateQuestItemsArrayList() throws SQLException {
+	public void updateQuestItemsArrayList() throws SQLException {
 		observableQuestItemsList.clear();
 		observableQuestItemsList.addAll(existingQuestItems);
 	}
@@ -107,7 +107,7 @@ public class EditQuestControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateQuestItemsNeededList() throws SQLException {
+	public void updateQuestItemsNeededList() throws SQLException {
 		observableTheQuestItemsNeededList.clear();
 		observableTheQuestItemsNeededList.addAll(theQuestItemsNeededList);
 	}
@@ -116,7 +116,7 @@ public class EditQuestControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateQuestItemsRewardList() throws SQLException {
+	public void updateQuestItemsRewardList() throws SQLException {
 		observableTheQuestItemsRewardList.clear();
 		observableTheQuestItemsRewardList.addAll(theQuestItemsRewardList);
 	}
@@ -125,49 +125,49 @@ public class EditQuestControl {
 	 * Update the observable list of objects for any changes
 	 * @throws SQLException
 	 */
-	public void UpdateRewardItemsArrayList() throws SQLException {
+	public void updateRewardItemsArrayList() throws SQLException {
 		observableRewardItemsList.clear();
 		observableRewardItemsList.addAll(existingRewardItems);
 	}
 	
 	public void addQuestItemNeeded(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingQuestItems);
-		this.theQuestItemsNeededList.add(new QuestItems(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
-		this.UpdateQuestItemsNeededList();
+		this.theQuestItemsNeededList.add(new QuestItems(theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestId(), itemId, quantity, itemName));
+		this.updateQuestItemsNeededList();
 	}
 	
 	public void addQuestItemReward(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingRewardItems);
-		this.theQuestItemsRewardList.add(new QuestItems(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId(), itemId, quantity, itemName));
-		this.UpdateQuestItemsRewardList();
+		this.theQuestItemsRewardList.add(new QuestItems(theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestId(), itemId, quantity, itemName));
+		this.updateQuestItemsRewardList();
 	}
 	
 	public void removeQuestItemNeeded(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingQuestItems);
 		for (QuestItems questItemNeeded : theQuestItemsNeededList) {
-			if (questItemNeeded.GetItemId() == itemId && questItemNeeded.GetItemQuantity() == quantity) {
+			if (questItemNeeded.getItemId() == itemId && questItemNeeded.getItemQuantity() == quantity) {
 				theQuestItemsNeededList.remove(questItemNeeded);
 				break;
 			} 
 		}
-		this.UpdateQuestItemsNeededList();
+		this.updateQuestItemsNeededList();
 	}
 	
 	public void removeQuestItemReward(String itemName, int quantity) throws SQLException {
 		int itemId = this.getItemIdByName(itemName, existingRewardItems);
 		for (QuestItems questItemReward : theQuestItemsRewardList) {
-			if (questItemReward.GetItemId() == itemId && questItemReward.GetItemQuantity() == quantity) {
+			if (questItemReward.getItemId() == itemId && questItemReward.getItemQuantity() == quantity) {
 				theQuestItemsRewardList.remove(questItemReward);
 				break;
 			} 
 		}
-		this.UpdateQuestItemsRewardList();
+		this.updateQuestItemsRewardList();
 	}
 	
 	private int getItemIdByName(String itemName, ArrayList<Item> theItems) {
 		for (Item item : theItems) {
-			if (item.GetItemName().contentEquals(itemName)) {
-				return item.GetItemId();
+			if (item.getItemName().contentEquals(itemName)) {
+				return item.getItemId();
 			} 
 		}
 		return 0;
@@ -197,83 +197,83 @@ public class EditQuestControl {
 		return this.questIdToEdit;
 	}
 	
-	public String GetNpcNameFromListById(int npcId) {
+	public String getNpcNameFromListById(int npcId) {
 		for (NpcCharacter theNPC : existingNPCArrayList) {
-			if (theNPC.GetNpcId() == npcId) {
-				return theNPC.GetNpcName();
+			if (theNPC.getNpcId() == npcId) {
+				return theNPC.getNpcName();
 			}
 		}
 		return "none";
 	}
 	
-	public int GetNpcIdFromListByName(String npcName) {
+	public int getNpcIdFromListByName(String npcName) {
 		for (NpcCharacter theNPC : existingNPCArrayList) {
-			if (theNPC.GetNpcName().contentEquals(npcName)) {
-				return theNPC.GetNpcId();
+			if (theNPC.getNpcName().contentEquals(npcName)) {
+				return theNPC.getNpcId();
 			}
 		}
 		return 0;
 	}
 	
 	public void updateQuestName(String newQuestName) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestName(newQuestName);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestName(newQuestName);
 	}
 	
 	public void updateQuestDescription(String newQuestDescription) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestDescription(newQuestDescription);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestDescription(newQuestDescription);
 	}
 	
 	public void updateGiverNPC(int npcId) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverNpcId(npcId);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestGiverNpcId(npcId);
 	}
 	
 	public void updateQuestGiverDialog(String newQuestGiverDialog) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestGiverDialog(newQuestGiverDialog);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestGiverDialog(newQuestGiverDialog);
 	}
 	
 	public void updateQuestReceiverDialog(String newQuestReceiverDialog) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverDialog(newQuestReceiverDialog);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestReceiverDialog(newQuestReceiverDialog);
 	}
 	
 	public void updateReceiverNPC(int npcId) throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).SetQuestReceiverNpcId(npcId);
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).setQuestReceiverNpcId(npcId);
 	}
 	
 	public int getQuestGiverNpcId() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestGiverNpcId();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestGiverNpcId();
 	}
 	
 	public int getQuestReceiverNpcId() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverNpcId();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestReceiverNpcId();
 	}
 	
 	public String getQuestName() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestName();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestName();
 	}
 	
 	public String getQuestDescription() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestDescription();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestDescription();
 	}
 	
 	public String getGiverDialog() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuesGiverDialog();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuesGiverDialog();
 	}
 	
 	public String getReceiverDialog() throws SQLException {
-		return theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestReceiverDialog();
+		return theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestReceiverDialog();
 	}
 	
 	public void refreshQuestDisplay() throws SQLException {
-		theEditConflictQuestsViewControl.GetTheManageQuestsControl().updateQuestChainInDB();
+		theEditConflictQuestsViewControl.getTheManageQuestsControl().updateQuestChainInDB();
 	}
 	
 	public void updateQuestItemsInDB() throws SQLException {
-		this.theQuestItemsDAL.DeleteQuestItemsByQuestId(theEditConflictQuestsViewControl.GetTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).GetQuestId());
+		this.theQuestItemsDAL.deleteQuestItemsByQuestId(theEditConflictQuestsViewControl.getTheManageQuestsControl().getExistingQuestList().get(this.questIdToEdit).getQuestId());
 		for (QuestItems questItem : theQuestItemsNeededList) {
-			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+			this.theQuestItemsDAL.createQuestItem(questItem.getQuestId(), questItem.getItemId(), questItem.getItemQuantity(), questItem.getItemDisplayName());
 		}
 		for (QuestItems questItem : theQuestItemsRewardList) {
-			this.theQuestItemsDAL.CreateQuestItem(questItem.GetQuestId(), questItem.GetItemId(), questItem.GetItemQuantity(), questItem.GetItemDisplayName());
+			this.theQuestItemsDAL.createQuestItem(questItem.getQuestId(), questItem.getItemId(), questItem.getItemQuantity(), questItem.getItemDisplayName());
 		}
 	}
 }

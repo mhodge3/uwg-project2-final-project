@@ -12,7 +12,7 @@ import com.cs6920.model.NpcCharacter;
  * @version 6.23.2020
  */
 public class EditNPCCharactersControl {
-	private NpcCharacterDAL npcDAL;
+	private NpcCharacterDAL theNpcCharacterDAL;
 	private NpcCharacter selectedNPC;
 	
 	/**
@@ -20,16 +20,16 @@ public class EditNPCCharactersControl {
 	 * @param theDBConnection
 	 */
 	public EditNPCCharactersControl(MySQLAccess theDBConnection) {
-		this.npcDAL = new NpcCharacterDAL(theDBConnection);
+		this.theNpcCharacterDAL = new NpcCharacterDAL(theDBConnection);
 	}
 
 	/**
 	 * Sets an instance of the NPC to that found by id
 	 * @param npcId
 	 */
-	public void SetSelectedNPC(int npcId) {
+	public void setSelectedNPC(int npcId) {
 		try {
-			selectedNPC = npcDAL.GetNpcById(npcId);
+			selectedNPC = theNpcCharacterDAL.getNpcById(npcId);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,10 +49,10 @@ public class EditNPCCharactersControl {
 	 * @param npcToDelete
 	 * @return String, message for user on outcome of operation
 	 */
-	public String DeleteNPC(NpcCharacter npcToDelete) {
+	public String deleteNPC(NpcCharacter npcToDelete) {
 		
 		try {
-			if (npcDAL.DeleteNpc(npcToDelete)) {
+			if (theNpcCharacterDAL.deleteNpc(npcToDelete)) {
 				return null;
 			}
 			else {
@@ -76,7 +76,7 @@ public class EditNPCCharactersControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String UpdateNpc(int npcId, int npcType, String npcName, String npcDescription, Double npcPosX, Double npcPosY, Double npcPosZ, int npcLevel) throws SQLException {
+	public String updateNpc(int npcId, int npcType, String npcName, String npcDescription, Double npcPosX, Double npcPosY, Double npcPosZ, int npcLevel) throws SQLException {
 		if (npcName == null || npcName.trim().length() == 0) {
 			return "The NPC Name cannot be empty";
 		}
@@ -84,7 +84,7 @@ public class EditNPCCharactersControl {
 			return "The NPC Description cannot be empty";
 		}
 		
-		if (npcDAL.UpdateNpc(selectedNPC, new NpcCharacter(selectedNPC.GetNpcId(), npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel))) {
+		if (theNpcCharacterDAL.updateNpc(selectedNPC, new NpcCharacter(selectedNPC.getNpcId(), npcDescription, npcName, npcType, 0, npcPosX, npcPosY, npcPosZ, npcLevel))) {
 			return null;
 		}
 		else {

@@ -11,14 +11,14 @@ import com.cs6920.DAL.PlayerDAL;
  * @version 6.23.2020
  */
 public class CreatePlayersAndAdminsControl {
-	private PlayerDAL playerDAL;
+	private PlayerDAL thePlayerDAL;
 	
 	/**
 	 * Constructor that sets DAL to the current DBConnection class instance
 	 * @param theDBConnection
 	 */
 	public CreatePlayersAndAdminsControl(MySQLAccess theDBConnection) {
-		this.playerDAL = new PlayerDAL(theDBConnection);
+		this.thePlayerDAL = new PlayerDAL(theDBConnection);
 	}
 	
 	/**
@@ -32,7 +32,7 @@ public class CreatePlayersAndAdminsControl {
 	 * @return String, message for user on outcome of operation
 	 * @throws SQLException
 	 */
-	public String CreatePlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
+	public String createPlayer(String playerName, String playerPassword, String playerPasswordConfirm, String email, String countryCode, Boolean makeAdmin) throws SQLException {
 		if (playerName == null || playerName.trim().length() == 0) {
 			return "The User Name cannot be empty";
 		}
@@ -49,7 +49,7 @@ public class CreatePlayersAndAdminsControl {
 			return "The User Country Code cannot be empty";
 		}
 		
-		if (playerDAL.CreatePlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
+		if (thePlayerDAL.createPlayer(playerName, playerPassword, email, countryCode, makeAdmin)) {
 			return null;
 		}
 		else {

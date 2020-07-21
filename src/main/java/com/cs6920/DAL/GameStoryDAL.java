@@ -19,7 +19,7 @@ import com.cs6920.model.GameStory;
 public class GameStoryDAL {
 	
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	public GameStoryDAL(MySQLAccess theDBConnection) {
 		this.sqlAccess = theDBConnection;
@@ -30,27 +30,27 @@ public class GameStoryDAL {
 	 * @return The Game Story
 	 * @throws SQLException
 	 */
-	public GameStory GetGameStory() throws SQLException {
+	public GameStory getGameStory() throws SQLException {
 		GameStory story = null;
 		
 		try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT  * " + 
-            		"FROM " + this.sqlAccess.GetTheDBName() + ".gamestory;";
+            		"FROM " + this.sqlAccess.getTheDBName() + ".gamestory;";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	story = new GameStory();
-                story.SetGameStoryName(results.getString("game_story_name"));
-                story.SetGameStorySummary(results.getString("game_story_summary"));
-                story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
-                story.SetNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
+                story.setGameStoryName(results.getString("game_story_name"));
+                story.setGameStorySummary(results.getString("game_story_summary"));
+                story.setPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
+                story.setNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return story; 
 	}
@@ -60,28 +60,28 @@ public class GameStoryDAL {
 	 * @return The Game Story
 	 * @throws SQLException
 	 */
-	public GameStory GetGameStoryByName(String gameStoryName) throws SQLException {
+	public GameStory getGameStoryByName(String gameStoryName) throws SQLException {
 		GameStory story = null;
 		
 		try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
             String query = "SELECT  * " +  
-            		"FROM " + this.sqlAccess.GetTheDBName() + ".gamestory " +
+            		"FROM " + this.sqlAccess.getTheDBName() + ".gamestory " +
             		"WHERE game_story_name = \"" + gameStoryName + "\"";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	story = new GameStory();
-                story.SetGameStoryName(results.getString("game_story_name"));
-                story.SetGameStoryName(results.getString("game_story_summary"));
-                story.SetPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
-                story.SetNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
+                story.setGameStoryName(results.getString("game_story_name"));
+                story.setGameStoryName(results.getString("game_story_summary"));
+                story.setPlayerLevelCap(Integer.parseInt(results.getString("player_character_level_cap")));
+                story.setNpcCharacterLevelCap(Integer.parseInt(results.getString("npc_character_level_cap")));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return story; 
 	}
@@ -92,14 +92,14 @@ public class GameStoryDAL {
 	 * @return success
 	 * @throws SQLException
 	 */
-	public boolean DeleteGameStory(GameStory story) throws SQLException {
+	public boolean deleteGameStory(GameStory story) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".gamestory " + 
 					"WHERE game_story_name = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(story.GetGameStoryName()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(story.getGameStoryName()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -107,7 +107,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -119,11 +119,11 @@ public class GameStoryDAL {
 	 * @return success
 	 * @throws SQLException
 	 */
-	public Boolean UpdateGameStory(GameStory oldGameStory, GameStory updatedGameStory) throws SQLException {
+	public Boolean updateGameStory(GameStory oldGameStory, GameStory updatedGameStory) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".gamestory " + 
 					"SET " +
 					"game_story_name = ?, " + 
             		"game_story_summary = ?, " + 
@@ -131,19 +131,19 @@ public class GameStoryDAL {
             		"npc_character_level_cap = ? " + 
             	    "WHERE game_story_name = ?";
 		
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
-			  preparedStmt.setString (1, updatedGameStory.GetGameStoryName());
-			  preparedStmt.setString (2, updatedGameStory.GetGameStorySummary());
-			  preparedStmt.setString (3, String.valueOf(updatedGameStory.GetPlayerLevelCap()));
-			  preparedStmt.setString (4, String.valueOf(updatedGameStory.GetNpcCharacterLevelCap()));
-			  preparedStmt.setString (5, String.valueOf(oldGameStory.GetGameStoryName()));
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			  preparedStmt.setString (1, updatedGameStory.getGameStoryName());
+			  preparedStmt.setString (2, updatedGameStory.getGameStorySummary());
+			  preparedStmt.setString (3, String.valueOf(updatedGameStory.getPlayerLevelCap()));
+			  preparedStmt.setString (4, String.valueOf(updatedGameStory.getNpcCharacterLevelCap()));
+			  preparedStmt.setString (5, String.valueOf(oldGameStory.getGameStoryName()));
 		      preparedStmt.execute();
 		      success = true;
 		} catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -156,15 +156,15 @@ public class GameStoryDAL {
 	 * @throws SQLException
 	 */
 	
-	public Boolean CreateGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
+	public Boolean createGameStory(String gameStoryName, String gameStorySummary) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".gamestory " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".gamestory " + 
 					"(game_story_name, " + 
             		"game_story_summar " + 
 					"VALUES (?, ?)";
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			  preparedStmt.setString (1, gameStoryName);
 			  preparedStmt.setString (2, gameStorySummary);
 			  
@@ -174,7 +174,7 @@ public class GameStoryDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

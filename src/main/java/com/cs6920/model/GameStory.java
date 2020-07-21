@@ -45,7 +45,7 @@ public class GameStory {
 	 * Gets the gameStory Name
 	 * @return gameStoryName
 	 */
-	public String GetGameStoryName() {
+	public String getGameStoryName() {
 		return gameStoryName.get();
 	}
 	
@@ -53,7 +53,7 @@ public class GameStory {
 	 * Gets the game story name property
 	 * @return Property for TableView
 	 */
-	public final StringProperty GameStoryNameProperty() {
+	public final StringProperty gameStoryNameProperty() {
 	   return gameStoryName;
 	}
 	
@@ -61,7 +61,7 @@ public class GameStory {
 	 * Sets the gameStoryName
 	 * @param gameStoryName
 	 */
-	public void SetGameStoryName(String gameStoryName) {
+	public void setGameStoryName(String gameStoryName) {
 		this.gameStoryName = new SimpleStringProperty(gameStoryName);
 	}
 	
@@ -69,7 +69,7 @@ public class GameStory {
 	 * Gets the gameStorySummary Name
 	 * @return gameStoryName
 	 */
-	public String GetGameStorySummary() {
+	public String getGameStorySummary() {
 		return gameStorySummary.get();
 	}
 	
@@ -77,7 +77,7 @@ public class GameStory {
 	 * Gets the gameStorySummary property
 	 * @return Property for TableView
 	 */
-	public final StringProperty GameStorySummaryProperty() {
+	public final StringProperty gameStorySummaryProperty() {
 	   return gameStorySummary;
 	}
 	
@@ -85,7 +85,7 @@ public class GameStory {
 	 * Sets the gameStorySummary
 	 * @param gameStoryName
 	 */
-	public void SetGameStorySummary(String gameStorySummary) {
+	public void setGameStorySummary(String gameStorySummary) {
 		this.gameStorySummary = new SimpleStringProperty(gameStorySummary);
 	}
 	
@@ -93,7 +93,7 @@ public class GameStory {
 	 * Gets the playerLevelCap Name
 	 * @return playerLevelCap
 	 */
-	public int GetPlayerLevelCap() {
+	public int getPlayerLevelCap() {
 		return this.playerLevelCap.get();
 	}
 	
@@ -109,7 +109,7 @@ public class GameStory {
 	 * Sets the playerLevelCap
 	 * @param playerLevelCap
 	 */
-	public void SetPlayerLevelCap(int playerLevelCap) {
+	public void setPlayerLevelCap(int playerLevelCap) {
 		this.playerLevelCap = new SimpleIntegerProperty(playerLevelCap);
 	}
 	
@@ -117,7 +117,7 @@ public class GameStory {
 	 * Gets the npcCharacterLevelCap
 	 * @return npcCharacterLevelCap
 	 */
-	public int GetNpcCharacterLevelCap() {
+	public int getNpcCharacterLevelCap() {
 		return this.npcCharacterLevelCap.get();
 	}
 	
@@ -125,7 +125,7 @@ public class GameStory {
 	 * Gets the playerLevelCap property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty NpcCharacterLevelCapProperty() {
+	public final IntegerProperty npcCharacterLevelCapProperty() {
 	   return this.npcCharacterLevelCap;
 	}
 	
@@ -133,7 +133,7 @@ public class GameStory {
 	 * Sets the npcCharacterLevelCap
 	 * @param npcCharacterLevelCap
 	 */
-	public void SetNpcCharacterLevelCap(int setNpcCharacterLevelCap) {
+	public void setNpcCharacterLevelCap(int setNpcCharacterLevelCap) {
 		this.npcCharacterLevelCap = new SimpleIntegerProperty(setNpcCharacterLevelCap);
 	}
 

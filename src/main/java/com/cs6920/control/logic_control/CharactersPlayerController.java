@@ -15,14 +15,14 @@ import com.cs6920.model.CharactersPlayer;
 */
 public class CharactersPlayerController {
 
-	private CharactersPlayerDAL dal;
+	private CharactersPlayerDAL theCharacterPlayerDAL;
 	
 	/**
 	 * Constructor for the CharactersPlayerController
 	 * @param theDBConnection
 	 */
 	public CharactersPlayerController(MySQLAccess theDBConnection) {
-		this.dal = new CharactersPlayerDAL(theDBConnection);
+		this.theCharacterPlayerDAL = new CharactersPlayerDAL(theDBConnection);
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class CharactersPlayerController {
 	 * @param characterPosZ
 	 * @return Error message
 	 */
-	public String CreateCharacterPlayer(int characterPlayerId, String characterName, int characterType, int characterFaction, double characterPosX, double characterPosY, double characterPosZ) {
+	public String createCharacterPlayer(int characterPlayerId, String characterName, int characterType, int characterFaction, double characterPosX, double characterPosY, double characterPosZ) {
 		try {
 			if(String.valueOf(characterPlayerId) == null || characterPlayerId <= 0) {
 				return "The player ID cannot be empty or less than or equal to zero";
@@ -61,7 +61,7 @@ public class CharactersPlayerController {
 				return "The posY cannot be empty";
 			}
 			
-			if (this.dal.CreateCharacterPlayer(characterPlayerId, characterName, characterType, characterFaction, characterPosX, characterPosY, characterPosZ)) {
+			if (this.theCharacterPlayerDAL.createCharacterPlayer(characterPlayerId, characterName, characterType, characterFaction, characterPosX, characterPosY, characterPosZ)) {
 				return null;
 			}
 			else {
@@ -80,8 +80,8 @@ public class CharactersPlayerController {
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
-	public CharactersPlayer GetCharactersPlayerByID(int characterId) throws SQLException {
-    	return this.dal.GetCharactersPlayerByID(characterId);           
+	public CharactersPlayer getCharactersPlayerByID(int characterId) throws SQLException {
+    	return this.theCharacterPlayerDAL.getCharactersPlayerByID(characterId);           
         
     }
 	
@@ -91,8 +91,8 @@ public class CharactersPlayerController {
 	 * @return The CharactersPlayer looked up
 	 * @throws SQLException
 	 */
-	public CharactersPlayer GetCharactersPlayerByName(String CharacterName) throws SQLException {
-    	return this.dal.GetCharactersPlayerByName(CharacterName);
+	public CharactersPlayer getCharactersPlayerByName(String characterName) throws SQLException {
+    	return this.theCharacterPlayerDAL.getCharactersPlayerByName(characterName);
     }
 	
 	/**
@@ -101,8 +101,8 @@ public class CharactersPlayerController {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<CharactersPlayer> GetCharactersPlayers(int playerId) throws SQLException {
-		return this.GetCharactersPlayers(playerId);
+	public ArrayList<CharactersPlayer> getCharactersPlayers(int playerId) throws SQLException {
+		return this.getCharactersPlayers(playerId);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class CharactersPlayerController {
 	 */
 	public String updateCharacterPlayer(CharactersPlayer oldCharacter, CharactersPlayer updatedCharacter) {
 		try {
-			if (this.dal.UpdateCharacterPlayer(oldCharacter, updatedCharacter)) {
+			if (this.theCharacterPlayerDAL.updateCharacterPlayer(oldCharacter, updatedCharacter)) {
 				return null;
 			}
 			else {
@@ -131,9 +131,9 @@ public class CharactersPlayerController {
 	 * @param updatedCharacter
 	 * @return Error message
 	 */
-	public String DeleteCharacterPlayer(CharactersPlayer character) {
+	public String deleteCharacterPlayer(CharactersPlayer character) {
 		try {
-			if (this.dal.DeleteCharacterPlayer(character)) {
+			if (this.theCharacterPlayerDAL.deleteCharacterPlayer(character)) {
 				return null;
 			}
 			else {

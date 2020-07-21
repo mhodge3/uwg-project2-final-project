@@ -49,7 +49,7 @@ public class Conflict {
 	 * Gets the conflictId
 	 * @return conflictId
 	 */
-	public int GetConflictId() {
+	public int getConflictId() {
 		return conflictId.get();
 	}
 	
@@ -65,7 +65,7 @@ public class Conflict {
 	 * Sets the conflictId
 	 * @param setConflictId
 	 */
-	public void SetConflictId(int setConflictId) {
+	public void setConflictId(int setConflictId) {
 		this.conflictId = new SimpleIntegerProperty(setConflictId);
 	}
 	
@@ -73,7 +73,7 @@ public class Conflict {
 	 * Gets the conflictMinLvl
 	 * @return conflictMinLvl
 	 */
-	public int GetConflictMinLvl() {
+	public int getConflictMinLvl() {
 		return conflictMinLvl.get();
 	}
 	
@@ -89,7 +89,7 @@ public class Conflict {
 	 * Sets the conflictMinLvl
 	 * @param setConflictMinLvl
 	 */
-	public void SetConflictMinLvl(int setConflictMinLvl) {
+	public void setConflictMinLvl(int setConflictMinLvl) {
 		this.conflictMinLvl = new SimpleIntegerProperty(setConflictMinLvl);
 	}
 	
@@ -97,7 +97,7 @@ public class Conflict {
 	 * Gets the conflictName
 	 * @return conflictName
 	 */
-	public String GetConflictName() {
+	public String getConflictName() {
 		return conflictName.get();
 	}
 	
@@ -113,7 +113,7 @@ public class Conflict {
 	 * Sets the conflictName
 	 * @param conflictName
 	 */
-	public void SetConflictName(String SetConflictName) {
+	public void setConflictName(String SetConflictName) {
 		this.conflictName = new SimpleStringProperty(SetConflictName);
 	}
 	
@@ -121,7 +121,7 @@ public class Conflict {
 	 * Gets the conflictTemplate
 	 * @return conflictTemplate
 	 */
-	public int GetConflictTemplate() {
+	public int getConflictTemplate() {
 		return conflictTemplate.get();
 	}
 	
@@ -137,7 +137,7 @@ public class Conflict {
 	 * Sets the conflictTemplate
 	 * @param conflictTemplate
 	 */
-	public void SetConflictTemplate(int setConflictTemplate) {
+	public void setConflictTemplate(int setConflictTemplate) {
 		this.conflictTemplate = new SimpleIntegerProperty(setConflictTemplate);
 	}
 	
@@ -145,7 +145,7 @@ public class Conflict {
 	 * Gets the conflictDescription
 	 * @return conflictDescription
 	 */
-	public String GetConflictDescription() {
+	public String getConflictDescription() {
 		return conflictDescription.get();
 	}
 	
@@ -161,14 +161,14 @@ public class Conflict {
 	 * Sets the conflictTemplate
 	 * @param conflictTemplate
 	 */
-	public void SetConflictDescription(String setConflictDescription) {
+	public void setConflictDescription(String setConflictDescription) {
 		this.conflictDescription = new SimpleStringProperty(setConflictDescription);
 	}
 	/**
 	 * Gets the conflictDescription
 	 * @return conflictDescription
 	 */
-	public String GetConflictArcType() {
+	public String getConflictArcType() {
 		return this.conflictArcType.get();
 	}
 	
@@ -184,7 +184,7 @@ public class Conflict {
 	 * Sets the conflictTemplate
 	 * @param conflictTemplate
 	 */
-	public void SetConflictArcType(String arcType) {
+	public void setConflictArcType(String arcType) {
 		this.conflictArcType = new SimpleStringProperty(arcType);
 	}
 }

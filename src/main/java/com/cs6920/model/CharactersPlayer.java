@@ -59,7 +59,7 @@ public class CharactersPlayer {
 	 * Gets the characterId
 	 * @return characterId
 	 */
-	public int GetCharacterId() {
+	public int getCharacterId() {
 		return characterId.get();
 	}
 	
@@ -67,7 +67,7 @@ public class CharactersPlayer {
 	 * Gets the characterId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterIdProperty() {
+	public final IntegerProperty characterIdProperty() {
 	   return characterId;
 	}
 	
@@ -76,7 +76,7 @@ public class CharactersPlayer {
 	 * Sets the characterId
 	 * @param setCharacterId
 	 */
-	public void SetCharacterId(int setCharacterId) {
+	public void setCharacterId(int setCharacterId) {
 		this.characterId = new SimpleIntegerProperty(setCharacterId);
 	}
 	
@@ -84,7 +84,7 @@ public class CharactersPlayer {
 	 * Gets the characterPlayerId
 	 * @return characterPlayerId
 	 */
-	public int GetCharacterPlayerId() {
+	public int getCharacterPlayerId() {
 		return characterPlayerId.get();
 	}
 	
@@ -92,7 +92,7 @@ public class CharactersPlayer {
 	 * Gets the characterPlayerId property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterPlayerIdProperty() {
+	public final IntegerProperty characterPlayerIdProperty() {
 	   return characterPlayerId;
 	}
 	
@@ -101,7 +101,7 @@ public class CharactersPlayer {
 	 * Sets the characterPlayerId
 	 * @param setCharacterPlayerId
 	 */
-	public void SetCharacterPlayerId(int setPlayerCharacterId) {
+	public void setCharacterPlayerId(int setPlayerCharacterId) {
 		this.characterPlayerId = new SimpleIntegerProperty(setPlayerCharacterId);
 	}
 	
@@ -109,7 +109,7 @@ public class CharactersPlayer {
 	 * Gets the characterName
 	 * @return characterName
 	 */
-	public String GetCharacterName() {
+	public String getCharacterName() {
 		return characterName.get();
 	}
 	
@@ -117,7 +117,7 @@ public class CharactersPlayer {
 	 * Gets the characterName property
 	 * @return Property for TableView
 	 */
-	public final StringProperty CharacterNameProperty() {
+	public final StringProperty characterNameProperty() {
 	   return characterName;
 	}
 	
@@ -126,7 +126,7 @@ public class CharactersPlayer {
 	 * Sets the characterName
 	 * @param setCharacterName
 	 */
-	public void SetCharacterName(String setCharacterName) {
+	public void setCharacterName(String setCharacterName) {
 		this.characterName = new SimpleStringProperty(setCharacterName);
 	}
 	
@@ -134,7 +134,7 @@ public class CharactersPlayer {
 	 * Gets the characterType
 	 * @return characterType
 	 */
-	public int GetCharacterType() {
+	public int getCharacterType() {
 		return characterType.get();
 	}
 	
@@ -142,7 +142,7 @@ public class CharactersPlayer {
 	 * Sets the characterType
 	 * @param setCharacterType
 	 */
-	public void SetCharacterType(int setCharacterType) {
+	public void setCharacterType(int setCharacterType) {
 		this.characterType = new SimpleIntegerProperty(setCharacterType);
 	}
 	
@@ -150,7 +150,7 @@ public class CharactersPlayer {
 	 * Gets the characterType property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterTypeProperty() {
+	public final IntegerProperty characterTypeProperty() {
 	   return characterType;
 	}
 	
@@ -158,7 +158,7 @@ public class CharactersPlayer {
 	 * Gets the characterFaction
 	 * @return characterFaction
 	 */
-	public int GetCharacterFaction() {
+	public int getCharacterFaction() {
 		return characterFaction.get();
 	}
 	
@@ -166,7 +166,7 @@ public class CharactersPlayer {
 	 * Sets the characterFaction
 	 * @param setCharacterFaction
 	 */
-	public void SetCharacterFaction(int setCharacterFaction) {
+	public void setCharacterFaction(int setCharacterFaction) {
 		this.characterFaction= new SimpleIntegerProperty(setCharacterFaction);
 	}
 	
@@ -174,7 +174,7 @@ public class CharactersPlayer {
 	 * Gets the characterFaction property
 	 * @return Property for TableView
 	 */
-	public final IntegerProperty CharacterFactionProperty() {
+	public final IntegerProperty characterFactionProperty() {
 	   return characterFaction;
 	}
 	
@@ -182,7 +182,7 @@ public class CharactersPlayer {
 	 * Gets the characterPosX
 	 * @return characterPosX
 	 */
-	public double GetCharacterPosX() {
+	public double getCharacterPosX() {
 		return characterPosX.get();
 	}
 	
@@ -190,7 +190,7 @@ public class CharactersPlayer {
 	 * Sets the CharacterPosX
 	 * @param setCharacterPosX
 	 */
-	public void SetCharacterPosX(double setCharacterPosX) {
+	public void setCharacterPosX(double setCharacterPosX) {
 		this.characterPosX = new SimpleDoubleProperty(setCharacterPosX);
 	}
 	
@@ -206,7 +206,7 @@ public class CharactersPlayer {
 	 * Gets the  haracterPosY
 	 * @return CharacterPosY
 	 */
-	public double GetCharacterPosY() {
+	public double getCharacterPosY() {
 		return characterPosY.get();
 	}
 		
@@ -214,7 +214,7 @@ public class CharactersPlayer {
 	 * Sets the CharacterPosY
 	 * @param setCharacterPosY
 	 */
-	public void SetCharacterPosY(double setCharacterPosY) {
+	public void setCharacterPosY(double setCharacterPosY) {
 		this.characterPosY = new SimpleDoubleProperty(setCharacterPosY);
 	}
 	
@@ -222,7 +222,7 @@ public class CharactersPlayer {
 	 * Gets the CharacterPosY property
 	 * @return Property for TableView
 	 */
-	public final DoubleProperty CharacterPosYProperty() {
+	public final DoubleProperty characterPosYProperty() {
 	   return characterPosY;
 	}
 	
@@ -230,7 +230,7 @@ public class CharactersPlayer {
 	 * Gets the CharacterPosZ
 	 * @return CharacterPosZ
 	 */
-	public double GetCharacterPosZ() {
+	public double getCharacterPosZ() {
 		return characterPosZ.get();
 	}
 	
@@ -238,7 +238,7 @@ public class CharactersPlayer {
 	 * Sets the CharacterPosZ
 	 * @param setCharacterPosZ
 	 */
-	public void SetCharacterPosZ(double setCharacterPosZ) {
+	public void setCharacterPosZ(double setCharacterPosZ) {
 		this.characterPosZ = new SimpleDoubleProperty(setCharacterPosZ);
 	}
 	
@@ -246,10 +246,8 @@ public class CharactersPlayer {
 	 * Gets the characterPosZ property
 	 * @return Property for TableView
 	 */
-	public final DoubleProperty CharacterPosZProperty() {
+	public final DoubleProperty characterPosZProperty() {
 	   return characterPosZ;
 	}
-	
-	
 
 }

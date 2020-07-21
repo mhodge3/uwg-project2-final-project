@@ -16,7 +16,7 @@ import com.cs6920.model.CharacterPlayerQuestLog;
  */
 public class CharacterPlayerQuestLogDAL {
 	private MySQLAccess sqlAccess;
-	private Connection conn;
+	private Connection theConnection;
 	
 	/**
 	 * Creates a CharacterPlayerQuestLogDAL object to be used by the controllers
@@ -33,17 +33,17 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return True if inserted | False if not inserted
 	 * @throws SQLException
 	 */
-	public Boolean CreateCharacterPlayerQuestLog(int characterId, int questId, int questStatus) throws SQLException {
+	public Boolean createCharacterPlayerQuestLog(int characterId, int questId, int questStatus) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "INSERT INTO " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "INSERT INTO " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog " + 
 					"(quest_id, " +
 					"character_id, " +
 					"quest_status) " +
 					"VALUES (?, ?, ?)";
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(questId));
 			 preparedStmt.setString (2, String.valueOf(characterId));
 			 preparedStmt.setString (3, String.valueOf(questStatus));
@@ -54,7 +54,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -66,25 +66,25 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return The characterPlayerQuestLog looked up
 	 * @throws SQLException
 	 */
-	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByQuestId(int QuestId) throws SQLException {
+	public CharacterPlayerQuestLog getCharacterPlayerQuestLogByQuestId(int QuestId) throws SQLException {
 		CharacterPlayerQuestLog questLog = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog.quest_id = " + QuestId + ";";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog.quest_id = " + QuestId + ";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	questLog = new CharacterPlayerQuestLog();
-                questLog.SetQuestId(results.getInt("quest_id"));
-                questLog.SetCharacterId(results.getInt("character_id"));
-                questLog.SetQuestStatus(results.getInt("quest_status"));
+                questLog.setQuestId(results.getInt("quest_id"));
+                questLog.setCharacterId(results.getInt("character_id"));
+                questLog.setQuestStatus(results.getInt("quest_status"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return questLog;
     }
@@ -96,25 +96,25 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return The characterPlayerQuestLog looked up
 	 * @throws SQLException
 	 */
-	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByCharacterId(int characterID) throws SQLException {
+	public CharacterPlayerQuestLog getCharacterPlayerQuestLogByCharacterId(int characterID) throws SQLException {
 		CharacterPlayerQuestLog questLog = null;
         try {
-            this.conn = this.sqlAccess.GetDBConnection();
-            Statement statement = this.conn.createStatement();
-            String query = "SELECT * FROM " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog "
-            		+ "WHERE " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog.character_id = " + characterID + ";";
+            this.theConnection = this.sqlAccess.getDBConnection();
+            Statement statement = this.theConnection.createStatement();
+            String query = "SELECT * FROM " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog "
+            		+ "WHERE " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog.character_id = " + characterID + ";";
             ResultSet results = statement.executeQuery(query);
             if (results.next() != false) {
             	questLog = new CharacterPlayerQuestLog();
-                questLog.SetQuestId(results.getInt("quest_id"));
-                questLog.SetCharacterId(results.getInt("character_id"));
-                questLog.SetQuestStatus(results.getInt("quest_status"));
+                questLog.setQuestId(results.getInt("quest_id"));
+                questLog.setCharacterId(results.getInt("character_id"));
+                questLog.setQuestStatus(results.getInt("quest_status"));
             }
         } catch (Exception e) {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
         return questLog;
     }
@@ -127,18 +127,18 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return True if updated | False if not updated
 	 * @throws SQLException
 	 */
-	public Boolean UpdateCharacterPlayerQuestLogStatus(CharacterPlayerQuestLog log, int updatedStatus) throws SQLException {
+	public Boolean updateCharacterPlayerQuestLogStatus(CharacterPlayerQuestLog log, int updatedStatus) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "UPDATE " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "UPDATE " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog " + 
 					"SET " +
 					"quest_status = ? " +
 					"WHERE quest_id = ?";
 							
-			 PreparedStatement preparedStmt = conn.prepareStatement(query);
+			 PreparedStatement preparedStmt = theConnection.prepareStatement(query);
 			 preparedStmt.setString (1, String.valueOf(updatedStatus));
-			 preparedStmt.setString (2, String.valueOf(log.GetQuestId()));
+			 preparedStmt.setString (2, String.valueOf(log.getQuestId()));
 			  
 		      preparedStmt.execute();
 		      success = true;
@@ -146,7 +146,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}
@@ -157,14 +157,14 @@ public class CharacterPlayerQuestLogDAL {
 	 * @return True if deleted | False if not deleted
 	 * @throws SQLException
 	 */
-	public boolean DeleteCharacterPlayerQuestLog(CharacterPlayerQuestLog log) throws SQLException {
+	public boolean deleteCharacterPlayerQuestLog(CharacterPlayerQuestLog log) throws SQLException {
 		Boolean success = false;
 		try {
-			this.conn = this.sqlAccess.GetDBConnection();
-			String query = "DELETE FROM " + this.sqlAccess.GetTheDBName() + ".characterplayerquestlog " + 
+			this.theConnection = this.sqlAccess.getDBConnection();
+			String query = "DELETE FROM " + this.sqlAccess.getTheDBName() + ".characterplayerquestlog " + 
 					"WHERE quest_id = ?";
-			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setString (1, String.valueOf(log.GetQuestId()));
+			PreparedStatement preparedStmt = theConnection.prepareStatement(query);
+			preparedStmt.setString (1, String.valueOf(log.getQuestId()));
 			
 			preparedStmt.execute();
 		      success = true;
@@ -172,7 +172,7 @@ public class CharacterPlayerQuestLogDAL {
         	System.err.println(e.getMessage());
         }
         finally {
-        	conn.close();
+        	theConnection.close();
         }
 		return success;
 	}

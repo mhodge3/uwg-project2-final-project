@@ -16,21 +16,21 @@ public class LoginDAL {
 		this.theDBConnection = theDBConnection;
 	}
 	
-    public Player GetPlayer(String playerName, String playerPassword) throws Exception {
+    public Player getPlayer(String playerName, String playerPassword) throws Exception {
     	Player thePlayer = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = theDBConnection.GetDBConnection();
+            theConnection = theDBConnection.getDBConnection();
             theStatement = theConnection.createStatement();
-            String pST = "SELECT * FROM `" + theDBConnection.GetTheDBName() + "`.`players` "
-            		+ "WHERE `" + theDBConnection.GetTheDBName() + "`.`players`.`player_name` = \"" + playerName + "\""
-            				+ "AND `" + theDBConnection.GetTheDBName() + "`.`players`.`player_password` = \"" + playerPassword + "\";";
+            String pST = "SELECT * FROM `" + theDBConnection.getTheDBName() + "`.`players` "
+            		+ "WHERE `" + theDBConnection.getTheDBName() + "`.`players`.`player_name` = \"" + playerName + "\""
+            				+ "AND `" + theDBConnection.getTheDBName() + "`.`players`.`player_password` = \"" + playerPassword + "\";";
             theResultSet = theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {
                 thePlayer = new Player();
-                thePlayer.SetPlayerName(theResultSet.getString("player_name"));
-                thePlayer.SetPlayerId(Integer.parseInt(theResultSet.getString("player_id")));
+                thePlayer.setPlayerName(theResultSet.getString("player_name"));
+                thePlayer.setPlayerId(Integer.parseInt(theResultSet.getString("player_id")));
             }
         } catch (Exception e) {
             thePlayer = null;
@@ -41,17 +41,17 @@ public class LoginDAL {
         return thePlayer;
     }
 	
-    public Boolean IsPlayerAdmin(Player thePlayer) throws Exception {
+    public Boolean isPlayerAdmin(Player thePlayer) throws Exception {
     	Boolean isAdmin = false;
         try {
             // This will load the MySQL driver, each DB has its own driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Setup the connection with the DB
-            theConnection = theDBConnection.GetDBConnection();
+            theConnection = theDBConnection.getDBConnection();
             // Statements allow to issue SQL queries to the database
             theStatement = theConnection.createStatement();
-            String pST = "SELECT * FROM `" + theDBConnection.GetTheDBName() + "`.`admins` "
-            		+ "WHERE `" + theDBConnection.GetTheDBName() + "`.admins.`player_id` = \"" + thePlayer.GetPlayerId() + "\" AND is_active = 1";
+            String pST = "SELECT * FROM `" + theDBConnection.getTheDBName() + "`.`admins` "
+            		+ "WHERE `" + theDBConnection.getTheDBName() + "`.admins.`player_id` = \"" + thePlayer.getPlayerId() + "\" AND is_active = 1";
             // Result set get the result of the SQL query
             ResultSet theResultSet = theStatement.executeQuery(pST);
             if (theResultSet.next() != false) {

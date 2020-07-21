@@ -18,7 +18,7 @@ class testCharacterPlayerQuestLogDALCRUDCycle {
 	@Test
 	@Order(1)
 	public void createACharactersPlayerQuestLogInDB() throws Exception {
-		assertTrue(this.dal.CreateCharacterPlayerQuestLog(1, 1, 1));
+		assertTrue(this.dal.createCharacterPlayerQuestLog(1, 1, 1));
 		
 	}
 	
@@ -29,16 +29,16 @@ class testCharacterPlayerQuestLogDALCRUDCycle {
 	@Test
 	@Order(2)
 	public void createANonPlayerCharactersLogInDB() throws Exception {
-		assertFalse(this.dal.CreateCharacterPlayerQuestLog(1, 10000, 1));
+		assertFalse(this.dal.createCharacterPlayerQuestLog(1, 10000, 1));
 		
 	}
 	
 	@Test
 	@Order(3)
 	public void getQuestLogCharacterIDFromDB() throws Exception {
-		this.log = this.dal.GetCharacterPlayerQuestLogByCharacterId(1);
-		assertEquals(this.log.GetCharacterId(), 1);
-		assertEquals(this.log.GetQuestStatus(), 1);
+		this.log = this.dal.getCharacterPlayerQuestLogByCharacterId(1);
+		assertEquals(this.log.getCharacterId(), 1);
+		assertEquals(this.log.getQuestStatus(), 1);
 	}
 	
 	/*@Test
@@ -53,11 +53,11 @@ class testCharacterPlayerQuestLogDALCRUDCycle {
 	@Test
 	@Order(4)
 	public void updateQuestLogStatusInTheDB() throws Exception {
-		this.log = this.dal.GetCharacterPlayerQuestLogByCharacterId(1);
-		this.dal.UpdateCharacterPlayerQuestLogStatus(log, 0);
-		this.log = this.dal.GetCharacterPlayerQuestLogByCharacterId(1);
-		assertEquals(this.log.GetCharacterId(), 1);
-		assertEquals(this.log.GetQuestStatus(), 0);
+		this.log = this.dal.getCharacterPlayerQuestLogByCharacterId(1);
+		this.dal.updateCharacterPlayerQuestLogStatus(log, 0);
+		this.log = this.dal.getCharacterPlayerQuestLogByCharacterId(1);
+		assertEquals(this.log.getCharacterId(), 1);
+		assertEquals(this.log.getQuestStatus(), 0);
 	}
 	
 	

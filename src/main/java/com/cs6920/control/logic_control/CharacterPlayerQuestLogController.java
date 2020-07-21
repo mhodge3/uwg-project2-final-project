@@ -13,14 +13,14 @@ import com.cs6920.model.CharacterPlayerQuestLog;
 *
 */
 public class CharacterPlayerQuestLogController {
-	private CharacterPlayerQuestLogDAL dal;
+	private CharacterPlayerQuestLogDAL theCharacterPlayerQuestLogDAL;
 	
 	/**
 	 * Constructor for the CharacterPlayerQuestLogController
 	 * @param theDBConnection
 	 */
 	public CharacterPlayerQuestLogController(MySQLAccess theDBConnection) {
-		this.dal = new CharacterPlayerQuestLogDAL(theDBConnection);
+		this.theCharacterPlayerQuestLogDAL = new CharacterPlayerQuestLogDAL(theDBConnection);
 	}
 	
 	/**
@@ -31,10 +31,10 @@ public class CharacterPlayerQuestLogController {
 	 * @return Error message
 	 * @throws SQLException
 	 */
-	public String CreateCharacterPlayerQuestLog(int characterId, int questId, int questStatus) {
+	public String createCharacterPlayerQuestLog(int characterId, int questId, int questStatus) {
 		
 		try {
-			if(this.dal.CreateCharacterPlayerQuestLog(characterId, questId, questStatus)) {
+			if(this.theCharacterPlayerQuestLogDAL.createCharacterPlayerQuestLog(characterId, questId, questStatus)) {
 				return null;
 			}
 			else {
@@ -48,12 +48,12 @@ public class CharacterPlayerQuestLogController {
 	/**
 	 * Calls the GetCharacterPlayerQuestLogByQuestID method from the DAL
 	 * 
-	 * @param QuestId
+	 * @param questId
 	 * @return The characterPlayerQuestLog looked up
 	 */
-	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByQuestId(int QuestId) {
+	public CharacterPlayerQuestLog getCharacterPlayerQuestLogByQuestId(int questId) {
 		try {
-			return this.dal.GetCharacterPlayerQuestLogByQuestId(QuestId);
+			return this.theCharacterPlayerQuestLogDAL.getCharacterPlayerQuestLogByQuestId(questId);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -65,9 +65,9 @@ public class CharacterPlayerQuestLogController {
 	 * @param characterID
 	 * @return The characterPlayerQuestLog looked up
 	 */
-	public CharacterPlayerQuestLog GetCharacterPlayerQuestLogByCharacterId(int characterID) {
+	public CharacterPlayerQuestLog getCharacterPlayerQuestLogByCharacterId(int characterID) {
 		try {
-			return this.dal.GetCharacterPlayerQuestLogByCharacterId(characterID);
+			return this.theCharacterPlayerQuestLogDAL.getCharacterPlayerQuestLogByCharacterId(characterID);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -80,9 +80,9 @@ public class CharacterPlayerQuestLogController {
 	 * @param updatedStatus
 	 * @return Error message
 	 */
-	public String UpdateCharacterPlayerQuestLogStatus(CharacterPlayerQuestLog log, int updatedStatus) {
+	public String updateCharacterPlayerQuestLogStatus(CharacterPlayerQuestLog log, int updatedStatus) {
 		try {
-			if(this.dal.UpdateCharacterPlayerQuestLogStatus(log, updatedStatus)) {
+			if(this.theCharacterPlayerQuestLogDAL.updateCharacterPlayerQuestLogStatus(log, updatedStatus)) {
 				return null;
 			}
 			else {
@@ -98,9 +98,9 @@ public class CharacterPlayerQuestLogController {
 	 * @param log
 	 * @return Error message
 	 */
-	public String DeleteCharacterPlayerQuestLog(CharacterPlayerQuestLog log) {
+	public String deleteCharacterPlayerQuestLog(CharacterPlayerQuestLog log) {
 		try {
-			if(this.dal.DeleteCharacterPlayerQuestLog(log)) {
+			if(this.theCharacterPlayerQuestLogDAL.deleteCharacterPlayerQuestLog(log)) {
 				return null;
 			}
 			else {
