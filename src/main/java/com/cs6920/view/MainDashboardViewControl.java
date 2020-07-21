@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import com.cs6920.DAL.MySQLAccess;
-import com.cs6920.control.logic_control.EditGameStoryControl;
 import com.cs6920.control.logic_control.MainDashboardControl;
 
 import javafx.fxml.FXML;
