@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `rpg_story_mapper_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE  IF NOT EXISTS `rpg_story_mapper_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `rpg_story_mapper_db`;
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
@@ -90,11 +90,12 @@ CREATE TABLE `characters_npc` (
   `character_npc_pos_x` decimal(10,2) NOT NULL,
   `character_npc_pos_y` decimal(10,2) NOT NULL,
   `character_npc_pos_z` decimal(10,2) NOT NULL,
+  `character_level` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`character_npc_id`),
   UNIQUE KEY `demo.characters_npc_id_UNIQUE` (`character_npc_id`),
   UNIQUE KEY `demo.characters_npc_name_UNIQUE` (`character_npc_name`),
   UNIQUE KEY `demo.characters_npc_description_UNIQUE` (`character_npc_description`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +104,7 @@ CREATE TABLE `characters_npc` (
 
 LOCK TABLES `characters_npc` WRITE;
 /*!40000 ALTER TABLE `characters_npc` DISABLE KEYS */;
-INSERT INTO `characters_npc` VALUES (3,'Sir Dude Dudington','of Dudesville',0,0,0.00,0.00,0.00),(4,'The Other Guy','When you need an extra, he\'ll be there.',0,0,0.00,0.00,0.00);
+INSERT INTO `characters_npc` VALUES (3,'Sir Dude Dudington','of Dudesville',0,0,0.00,0.00,0.00,1),(4,'The Other Guy','When you need an extra, he\'ll be there.',0,0,0.00,0.00,0.00,1),(5,'Danny DeVito','Small agent.',0,0,0.00,0.00,0.00,1),(6,'Rainbow Randolph','Children\'s performer.',0,0,3.50,1.00,30.25,2),(8,'test','testtest',2,0,1.00,2.00,3.50,2);
 /*!40000 ALTER TABLE `characters_npc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,7 +158,7 @@ CREATE TABLE `conflicts` (
   `conflict_min_level` int DEFAULT NULL,
   PRIMARY KEY (`conflict_id`),
   UNIQUE KEY `confkict_id_UNIQUE` (`conflict_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +167,7 @@ CREATE TABLE `conflicts` (
 
 LOCK TABLES `conflicts` WRITE;
 /*!40000 ALTER TABLE `conflicts` DISABLE KEYS */;
-INSERT INTO `conflicts` VALUES (21,'name - change me','description - change me',0,'Voyage and Return',1),(27,'name - change me','description - change me',0,'Defeat the Monster',1),(28,'name - change me','description - change me',0,'The Quest',1),(29,'name - change me','description - change me',0,'Custom',1);
+INSERT INTO `conflicts` VALUES (33,'Defeat the Dinosaur','Kill it!',0,'Defeat the Monster',1);
 /*!40000 ALTER TABLE `conflicts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,6 +181,8 @@ DROP TABLE IF EXISTS `gamestory`;
 CREATE TABLE `gamestory` (
   `game_story_name` varchar(45) NOT NULL,
   `game_story_summary` varchar(255) NOT NULL,
+  `player_character_level_cap` int NOT NULL DEFAULT '60',
+  `npc_character_level_cap` int NOT NULL DEFAULT '70',
   PRIMARY KEY (`game_story_name`),
   UNIQUE KEY `game_story_name_UNIQUE` (`game_story_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -191,7 +194,7 @@ CREATE TABLE `gamestory` (
 
 LOCK TABLES `gamestory` WRITE;
 /*!40000 ALTER TABLE `gamestory` DISABLE KEYS */;
-INSERT INTO `gamestory` VALUES ('Game Name (change me)','Game Description (change me)');
+INSERT INTO `gamestory` VALUES ('World of Whack','Game Description (change me)',60,70);
 /*!40000 ALTER TABLE `gamestory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +246,7 @@ CREATE TABLE `items` (
   UNIQUE KEY `item_id_UNIQUE` (`item_id`),
   UNIQUE KEY `demo.item_name_UNIQUE` (`item_name`),
   UNIQUE KEY `demo.item_description_UNIQUE` (`item_description`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +255,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (3,'dagger of suck','it sucks.',0,0,0,0),(4,'sword of awesomeness','As good as it gets',0,0,0,0),(5,'stringy wolf meat','Mm. Chewey.',0,1,0,0),(6,'Discovered The Planes of Somewhere','You\'ve discovered \"The Planes of Somewhere\".',0,1,1,0),(7,'The Head of Some Donkus','The severed head of Some Donkus.',0,1,0,1);
+INSERT INTO `items` VALUES (3,'dagger of suck','it sucks.',0,0,0,0),(4,'sword of awesomeness','As good as it gets',0,0,0,0),(5,'stringy wolf meat','Mm. Chewey. 2',0,1,0,0),(6,'Discovered The Planes of Somewhere','You\'ve discovered \"The Planes of Somewhere\".',0,1,1,0),(7,'The Head of Some Donkus','The severed head of Some Donkus.',0,1,0,1),(9,'Tooth of the Purple Dinosaur 4','He loved you, and you loved him.',0,1,1,0),(13,'Head of the Tiger','tiger.',0,1,0,1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +285,7 @@ CREATE TABLE `players` (
 
 LOCK TABLES `players` WRITE;
 /*!40000 ALTER TABLE `players` DISABLE KEYS */;
-INSERT INTO `players` VALUES (1,'admin','test1234','admin@lol.com','USA'),(4,'player','test1234','player@lol.com','USA'),(5,'sum guy','test1234','guy@guy.com','USA');
+INSERT INTO `players` VALUES (1,'admin','test1234','admin@lol.com','USA'),(4,'player','test1234','player@lol.com','USA'),(5,'sum guy3','test1234','guy@guy.com','USA');
 /*!40000 ALTER TABLE `players` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,6 +311,7 @@ CREATE TABLE `questitems` (
 
 LOCK TABLES `questitems` WRITE;
 /*!40000 ALTER TABLE `questitems` DISABLE KEYS */;
+INSERT INTO `questitems` VALUES (854,5,2,'stringy wolf meat'),(856,4,1,'sword of awesomeness'),(856,9,1,'Tooth of the Purple Dinosaur');
 /*!40000 ALTER TABLE `questitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -336,7 +340,7 @@ CREATE TABLE `quests` (
   UNIQUE KEY `quest_id_UNIQUE` (`quest_id`),
   KEY `quests_questid_idx` (`pre_req_quest_id`) /*!80000 INVISIBLE */,
   KEY `fk_quests_conflict_id_idx` (`conflict_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=842 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=859 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -345,7 +349,7 @@ CREATE TABLE `quests` (
 
 LOCK TABLES `quests` WRITE;
 /*!40000 ALTER TABLE `quests` DISABLE KEYS */;
-INSERT INTO `quests` VALUES (0,0,784,0,21,1,'test 1','testing 1','calling','Go','Stop',1,0),(0,0,785,1,21,1,'test 2','testing 2','meeting mentor','Go','Stop',2,1),(0,0,786,2,21,1,'test 3','testing 3','leaving','Go','Stop',3,2),(0,0,787,3,21,1,'test 4','testing 4','insight','Go','Stop',4,3),(0,0,788,4,21,1,'test 5','testing 5','return new wisdom','Go','Stop',7,6),(0,0,818,2,21,1,'name - change me','description - change me','insight','Go','Stop',6,5),(0,0,819,2,21,1,'name - change me','description - change me','insight','Go','Stop',5,4),(0,0,831,0,27,1,'test 1','testing 1','calling','Go','Stop',1,0),(0,0,832,1,27,1,'test 2','testing 2','leaving','Go','Stop',2,1),(0,0,833,2,27,1,'test 3','testing 3','monster','Go','Stop',4,3),(0,0,834,3,27,1,'test 4','testing 4','return and reward','Go','Stop',5,4),(0,0,835,2,27,1,'name - change me','description - change me','henchman','Go','Stop',3,2),(0,0,836,0,28,1,'test 1','testing 1','calling','Go','Stop',1,0),(0,0,837,1,28,1,'test 2','testing 2','leaving','Go','Stop',2,1),(0,0,838,2,28,1,'test 3','testing 3','obstacle','Go','Stop',3,2),(0,0,839,3,28,1,'test 4','testing 4','obtain elixir','Go','Stop',4,3),(0,0,840,4,28,1,'test 5','testing 5','return elixir','Go','Stop',5,4),(0,0,841,0,29,1,'test 1','testing 1','custom','Go','Stop',1,0);
+INSERT INTO `quests` VALUES (4,3,854,0,33,1,'go find something','testing 1','calling','Go','Stop',1,0),(0,0,855,1,33,1,'test 2a','testing 3','leaving','Go','Stop',2,1),(0,4,856,2,33,1,'test 3','testing 3','monster','Go','Stop',4,3),(0,0,857,3,33,1,'test 4','testing 4','return and reward','Go','Stop',5,4),(0,0,858,2,33,1,'name - change me','description - change me','henchman','Go','Stop',3,2);
 /*!40000 ALTER TABLE `quests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -358,4 +362,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-06 12:28:32
+-- Dump completed on 2020-07-21 19:37:18
